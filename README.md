@@ -1,4 +1,4 @@
-# Edools 2 - Themes and CMS
+# Edools - Themes and CMS
 The Edools theme system is an AngularJS based app that defines a set of standard templates to enable the customization of layout and data to a school site.
 
 This document's objective is to build the documentation about our CMS. It should have the conceptual part of it and instruct about the creation of a theme.
