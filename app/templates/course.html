@@ -7,7 +7,7 @@
     <span class="subtitle">{{ course.subtitle }}</span>
 
     <div class="enroll text-center">
-      <button type="button" ng-click="addToCart(course)" class="btn btn-orange btn-lg">
+      <button type="button" add-to-cart="course" class="btn btn-orange btn-lg">
         <span>Matricule-se agora</span>
         <span class="label label-orange">{{ course.product.price | money:'R$' }}</span>
       </button>
