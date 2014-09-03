@@ -1,0 +1,26 @@
+/*********************************************************************
+*
+*  layout/checkout/wizard/connect
+*  Login and register on checkout form styles
+*
+*********************************************************************/
+.checkout {
+  %small-form {
+    .input-lg {
+      font-size: 14px;
+    }
+
+    .panel {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .page-signup-alt {
+    @extend %small-form;
+  }
+
+  .page-signin-alt {
+    @extend %small-form;
+  }
+}

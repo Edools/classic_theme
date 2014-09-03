@@ -1,0 +1,84 @@
+/*********************************************************************
+*
+*  layout/checkout/cart
+*  Cart page styles
+*
+*********************************************************************/
+.cart {
+  .cart-product {
+    .form-control {
+      height: 30px;
+    }
+  }
+
+  .cart-image {
+    padding: 5px;
+    height: 200px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+
+    .form-inline {
+      & > * {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.cart-total {
+  .courses {
+    margin-bottom: 10px;
+  }
+
+  .total {
+    margin-bottom: 20px;
+  }
+
+  .course {
+    @extend %clearfix;
+  }
+
+  .title {
+    float: left;
+    font-weight: bold;
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover {
+      color: $text-color;
+      text-decoration: none;
+    }
+  }
+
+  .price {
+    float: right;
+  }
+}
+
+.payment-ways {
+  .payment-ways-list {
+    margin: 0;
+    padding: 0 10px;
+
+    li {
+      list-style: none;
+    }
+  }
+}
+
+.secure-site {
+  .lock {
+    img {
+      width: 110px;
+      height: 110px;
+    }
+  }
+
+  p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+  }
+}

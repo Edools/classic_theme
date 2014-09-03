@@ -1,0 +1,46 @@
+/*********************************************************************
+*
+*  layout/main
+*  Main content styles
+*
+*********************************************************************/
+.main-header {
+  margin: 0;
+  padding: 30px;
+  background: $light-blue;
+  overflow: auto;
+
+  @media(max-width: $screen-small) {
+    min-height: 400px;
+  }
+
+  @media(min-width: $screen-tablet) {
+    min-height: 250px;
+  }
+
+  .image {
+    position: relative;
+    max-height: 200px;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  .info {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+
+    .title {
+      margin-bottom: 20px;
+      font-size: 36px;
+      font-weight: 400;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      font-weight: 100;
+    }
+  }
+}

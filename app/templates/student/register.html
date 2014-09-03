@@ -1,0 +1,41 @@
+<div class="page-signup-alt">
+  <h1 class="form-header">Crie sua conta</h1>
+  <!-- Form -->
+  <form register-form="newUser" class="panel">
+    <div class="form-group" ng-class="{'has-error': !registerForm.name.$pristine && registerForm.name.$invalid, 'has-success': registerForm.name.$valid}">
+      <input type="text" name="name" class="form-control input-lg" placeholder="Nome completo" ng-model="newUser.name" required>
+      <p class="help-block" ng-show="registerForm.name.$error.required && !registerForm.name.$pristine">O campo é obrigatório</p>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': !registerForm.email.$pristine && registerForm.email.$invalid, 'has-success': registerForm.email.$valid}">
+      <input type="email" name="email" class="form-control input-lg" placeholder="E-mail" ng-model="newUser.email" required>
+      <p class="help-block" ng-show="registerForm.email.$error.required && !registerForm.email.$pristine">O campo é obrigatório</p>
+      <p class="help-block" ng-show="registerForm.email.$error.email && !registerForm.email.$pristine">Este campo deve ser um e-email válido</p>
+      <p class="help-block" ng-show="registerForm.email.$error.server && !registerForm.email.$pristine">{{ registerForm.email.message }}</p>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': !registerForm.password.$pristine && registerForm.password.$invalid, 'has-success': registerForm.password.$valid}">
+      <input type="password" name="password" class="form-control input-lg" placeholder="Senha" ng-model="newUser.password" required ng-minlength="6">
+      <p class="help-block" ng-show="registerForm.password.$error.required && !registerForm.password.$pristine">O campo é obrigatório</p>
+      <p class="help-block" ng-show="registerForm.password.$error.minlength && !registerForm.password.$pristine">A senha deve ter ao menos 6 caracteres</p>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': !registerForm.passwordConfirm.$pristine && registerForm.passwordConfirm.$invalid, 'has-success': registerForm.passwordConfirm.$valid}">
+      <input type="password" name="passwordConfirm" class="form-control input-lg" placeholder="Confirmação de senha" equals="{{ newUser.password }}" ng-model="newUser.password_confirmation" required>
+      <p class="help-block" ng-show="registerForm.passwordConfirm.$error.required && !registerForm.passwordConfirm.$pristine">O campo é obrigatório</p>
+      <p class="help-block" ng-show="registerForm.passwordConfirm.$error.equals && !registerForm.passwordConfirm.$pristine">A senha e a confirmação devem ser iguais</p>
+    </div>
+  <!--
+    <div class="form-group" style="margin-top: 20px;margin-bottom: 20px;">
+      <label class="checkbox-inline">
+        <input type="checkbox" name="signup_confirm" class="px">
+        <span class="lbl">Eu concordo com os <a href="#" target="_blank">Termos e Condições</a></span>
+      </label>
+    </div> -->
+
+    <div class="form-actions">
+      <input type="submit" value="Criar conta" next="school.dashboard.enrollments" ng-disabled="registerForm.$invalid" class="btn btn-primary btn-lg btn-block">
+    </div>
+  </form>
+  <!-- / Form -->
+</div>

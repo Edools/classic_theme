@@ -1,0 +1,16 @@
+{
+  "name": "classic_theme",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap-sass": "~3.0.2",
+    "json3": "~3.2.6",
+    "es5-shim": "~2.1.0",
+    "font-awesome": "~4.1.0",
+    "edools-school": "~0.1.15"
+  },
+  "resolutions": {
+    "es5-shim": "2.3.0",
+    "angular": "1.2.23",
+    "angular-cookies": "~1.2.21"
+  }
+}

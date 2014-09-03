@@ -1,0 +1,64 @@
+/*********************************************************************
+*
+*  base/variables
+*  Project global variables
+*
+*********************************************************************/
+@import "../../bower_components/bootstrap-sass/lib/variables";
+
+// Paths
+$fonts-path:  "../assets/fonts";
+$images-path: "../assets/images";
+
+// Font-Awesome fonts path
+$fa-font-path: "#{$fonts-path}/font-awesome";
+
+$TEXT_COLOR : #555 !default;
+$LINK_COLOR : #4083a9 !default;
+$PLACEHOLDER_COLOR: #a7a9ac !default;
+
+/* Uncomment this if you like selection background */
+// $SELECTION_BACKGROUND_COLOR: #41bdce !default;
+// $SELECTION_TEXT_COLOR: #fff !default;
+
+/* Other colors you want, down here */
+$orange: #de8738;
+$light-blue: #208ac7;
+
+$info-color: #5bc0de;
+$success-color: #5ebd5e;
+$warning-color: #f4b04f;
+$danger-color: #e66454;
+
+//** Border color for table and cell borders.
+$table-border-color: darken(#eee, 4%);
+// Panel content padding
+$panel-content-padding: 20px;
+$panel-heading-bg: #fafafa;
+$panels-border-color: $table-border-color;
+$grid-gutter-width: 20px;
+
+// Panels
+$tabs-border-color: $table-border-color;
+$pagination-border-color: $table-border-color;
+$list-groups-border-color: $table-border-color;
+$accordion-border-color: $table-border-color;
+$panels-border-color: $table-border-color;
+
+// Wizard
+$wizard-step-number-size: 26px;
+$wizard-step-number-border-width: 2px;
+$wizard-step-number-margin: 10px;
+
+
+/* Screen sizes */
+$screen-desktop: 992px;
+$screen-tablet:  768px;
+$screen-small:   480px;
+
+
+// Modal sizes
+//
+$modal-lg: 900px;
+$modal-md: 600px;
+$modal-sm: 300px;

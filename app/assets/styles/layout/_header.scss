@@ -1,0 +1,30 @@
+/*********************************************************************
+*
+*  layout/header
+*  school header styles
+*
+*********************************************************************/
+
+.school-header {
+  .navbar-brand {
+    img {
+      height: 45px;
+    }
+  }
+
+  .navbar {
+    margin-bottom: 0;
+    background: lighten(#f2f2f2, 5%);
+
+    .navbar-nav {
+      position: relative;
+      @media (min-width: $screen-tablet) {
+        padding: 15px 0;
+      }
+    }
+
+    li a {
+      @include colorful-link($light-blue);
+    }
+  }
+}

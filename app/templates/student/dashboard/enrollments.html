@@ -1,0 +1,46 @@
+<div class="dashboard">
+  <div class="container dashboard-panel">
+    <ul class="nav nav-tabs nav-tabs-lg">
+      <li class="active">
+        <a link-to="school.dashboard.enrollments">
+          <i class="fa fa-video-camera"></i>
+          <div>Cursos</div>
+        </a>
+      </li>
+      <li>
+        <a link-to="school.dashboard.contact">
+          <i class="fa fa-comment"></i>
+          <div>Contato</div>
+        </a>
+      </li>
+    </ul>
+    <div class="panel tab-content tab-content-bordered">
+      <div ng-show="!$loader.isLoading">
+        <div ng-if="enrollments == undefined || enrollments.length == 0" class="alert alert-warning">Você ainda não está matriculado em nenhum curso.</div>
+        <div class="container">
+          <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in enrollments">
+            <div class="course">
+              <div class="course-image">
+                <img ng-if="enrollment.course.logo !== null" src="{{ enrollment.course.logo }}" />
+                <img ng-if="enrollment.course.logo === null" src="images/missing_edit_course.png" />
+                <div class="course-edit-overlay">
+                  <a class="btn btn-default btn-edit" link-to=".course({ courseId: enrollment.course.id, enrollmentId: enrollment.id })">
+                    <i class="fa fa-video-camera"></i>
+                    <span>Assistir curso</span>
+                  </a>
+                </div>
+              </div>
+              <div class="course-label">
+                <span max-lines="1">{{ enrollment.course.title }}</span>
+                <div>
+                  <i class="light-gray-text"><enrollment-status ng-model="enrollment"></enrollment-status></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <spinner name="dashboard" class="small"></spinner>
+    </div>
+  </div>
+</div>

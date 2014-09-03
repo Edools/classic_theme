@@ -1,0 +1,65 @@
+/*********************************************************************
+*
+*  sections/home
+*  Example section file
+*  e.g. For when there's a different section on home
+*
+*********************************************************************/
+.home.main-header {
+  .image {
+    max-height: 270px;
+
+    @media (max-width: $screen-small) {
+      margin-bottom: 20px;
+    }
+
+    img {
+      // make images bigger on desktop and tablet
+      @media (min-width: $screen-tablet) {
+        height: 270px;
+        max-height: 270px;
+
+        box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+      }
+    }
+  }
+
+  .info {
+    padding: 0 30px;
+
+    // text align to center only on tablets and smartphones
+    @media (max-width: $screen-tablet) {
+      text-align: center;
+    }
+
+    .title {
+      @media (max-width: $screen-small) {
+        font-size: 40px;
+        line-height: 1.5em;
+      }
+
+      font-size: 50px;
+      line-height: 55px;
+      font-weight: bold;
+
+      margin-top: 0;
+    }
+
+    .subtitle {
+      @media (max-width: $screen-small) {
+        font-size: 24px;
+        line-height: 32px;
+      }
+
+      font-weight: 300;
+      font-size: 32px;
+      line-height: 40px;
+
+      margin-top: 15px;
+    }
+  }
+}
+
+.home.course-list {
+
+}

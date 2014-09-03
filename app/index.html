@@ -1,0 +1,45 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Edools | Tema Clássico</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- build:css({.tmp,app}) assets/styles/main.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap-sass/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
+    <link rel="stylesheet" href="bower_components/mediaelement/build/mediaelementplayer.css" />
+    <link rel="stylesheet" href="bower_components/dropzone/downloads/css/dropzone.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <script src="https://cdn.edools.com/libs/xdomain/0.6/xdomain.min.js"></script>
+    <script>
+      xdomain.slaves({
+        'https://core.edools.com': '/proxy.html',
+        'https://ecommerce.edools.com': '/proxy.html'
+      });
+    </script>
+    <div id="schoolapp" ui-view></div>
+    <div id="themeapp" ng-app="theme">
+      <theme-loader type="school"></theme-loader>
+    </div>
+    <!-- // <script src="https://cdn.edools.com/libs/edools-school/0.1.15/edools-school.min.js"></script> -->
+
+    <script src="bower_components/edools-school/dist/edools-school.js"></script>
+
+    <!-- build:js({.tmp,app}) assets/scripts/app.js -->
+    <script src="assets/scripts/app.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<div class="dashboard">
+  <div class="container dashboard-panel">
+    <div ng-class="{'col-md-4': $state.is('school.dashboard.enrollments.course.content'), 'col-md-12': !$state.is('school.dashboard.enrollments.course.content')}">
+      <div class="course-page panel text-center fx-fade-right">
+        <br/>
+        <div class="row">
+          <a link-to=".">
+            <img class="course-page-image" src="{{ course.logo }}" alt="{{ course.title }}">
+          </a>
+        </div>
+        <div class="row">
+          <h4><strong>{{ course.title }}</strong></h4>
+        </div>
+      </div>
+
+      <article ng-if="course.modules !== undefined && course.modules.length > 0" class="course-content panel fx-fade-right">
+        <div class="panel-heading">
+          <strong class="panel-title">Conteúdo do curso</strong>
+        </div>
+        <div class="panel-body">
+          <content-tree type="dashboard" ng-model="course"></content-tree>
+        </div>
+      </article>
+    </div>
+    <div ui-view class="fx-fade-down fx-speed-400" ng-show="$state.is('school.dashboard.enrollments.course.content')" ng-class="{'col-md-8': $state.is('school.dashboard.enrollments.course.content')}"></div>
+  </div>
+</div>

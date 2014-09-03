@@ -1,0 +1,11 @@
+/*********************************************************************
+*
+*  layout/dashboard/content
+*  Content consumption view styles
+*
+*********************************************************************/
+$min-player-height: 450px;
+.course-content-player {
+  padding: 30px;
+  min-height: $min-player-height;
+}

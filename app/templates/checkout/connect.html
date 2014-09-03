@@ -1,0 +1,149 @@
+<div class="checkout">
+  <div class="container checkout-panel">
+    <div class="col-xs-12">
+      <h2>
+        <i class="fa fa-shopping-cart"></i>
+        <span>Carrinho de compras</span>
+      </h2>
+    </div>
+    <hr>
+    <div class="col-xs-12 col-md-8">
+      <div edools-wizard class="wizard">
+        <div class="wizard-wrapper">
+          <ul class="wizard-steps wizard-steps-justified">
+            <li wizard-state="school.checkout.connect">
+              <span class="wizard-step-number">1</span>
+              <span class="wizard-step-caption">
+                <i class="fa fa-user"></i>
+                <span>Conecte-se</span>
+              </span>
+            </li>
+            <li wizard-state="school.checkout.complete">
+              <span class="wizard-step-number">2</span>
+              <span class="wizard-step-caption">
+                <i class="fa fa-list"></i>
+                <span>Complete seu cadastro</span>
+              </span>
+            </li>
+            <li wizard-state="school.checkout.payment">
+              <span class="wizard-step-number">3</span>
+              <span class="wizard-step-caption">
+                <i class="fa fa-check"></i>
+                <span>Realize o pagamento</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="wizard-content panel">
+          <div ng-if="safe !== undefined && !safe" class="note note-warning">
+            <h4 class="note-title">Atenção!</h4>
+            <span>Você está entrando em uma área segura. Por favor, faça login novamente</span>
+          </div>
+          <div class="page-signup-alt col-xs-12 col-md-6">
+            <h4>Crie sua conta</h4>
+            <!-- Form -->
+            <form register-form="newUser" class="panel">
+              <div class="form-group" ng-class="{'has-error': !registerForm.name.$pristine && registerForm.name.$invalid, 'has-success': registerForm.name.$valid}">
+                <input type="text" name="name" class="form-control input-lg" placeholder="Nome completo" ng-model="newUser.name" required>
+                <p class="help-block" ng-show="registerForm.name.$error.required && !registerForm.name.$pristine">O campo é obrigatório</p>
+              </div>
+
+              <div class="form-group" ng-class="{'has-error': !registerForm.email.$pristine && registerForm.email.$invalid, 'has-success': registerForm.email.$valid}">
+                <input type="email" name="email" class="form-control input-lg" placeholder="E-mail" ng-model="newUser.email" required>
+                <p class="help-block" ng-show="registerForm.email.$error.required && !registerForm.email.$pristine">O campo é obrigatório</p>
+                <p class="help-block" ng-show="registerForm.email.$error.email && !registerForm.email.$pristine">Este campo deve ser um e-email válido</p>
+                <p class="help-block" ng-show="registerForm.email.$error.server && !registerForm.email.$pristine">{{ registerForm.email.message }}</p>
+              </div>
+
+              <div class="form-group" ng-class="{'has-error': !registerForm.password.$pristine && registerForm.password.$invalid, 'has-success': registerForm.password.$valid}">
+                <input type="password" name="password" class="form-control input-lg" placeholder="Senha" ng-model="newUser.password" required ng-minlength="6">
+                <p class="help-block" ng-show="registerForm.password.$error.required && !registerForm.password.$pristine">O campo é obrigatório</p>
+                <p class="help-block" ng-show="registerForm.password.$error.minlength && !registerForm.password.$pristine">A senha deve ter ao menos 6 caracteres</p>
+              </div>
+
+              <div class="form-group" ng-class="{'has-error': !registerForm.passwordConfirm.$pristine && registerForm.passwordConfirm.$invalid, 'has-success': registerForm.passwordConfirm.$valid}">
+                <input type="password" name="passwordConfirm" class="form-control input-lg" placeholder="Confirmação de senha" equals="{{ newUser.password }}" ng-model="newUser.password_confirmation" required>
+                <p class="help-block" ng-show="registerForm.passwordConfirm.$error.required && !registerForm.passwordConfirm.$pristine">O campo é obrigatório</p>
+                <p class="help-block" ng-show="registerForm.passwordConfirm.$error.equals && !registerForm.passwordConfirm.$pristine">A senha e a confirmação devem ser iguais</p>
+              </div>
+              <div class="form-actions">
+                <input type="submit" value="Criar conta" next="school.checkout.complete" ng-disabled="registerForm.$invalid" class="btn btn-primary btn-lg btn-block">
+              </div>
+            </form>
+            <!-- / Form -->
+          </div>
+          <div class="page-signin-alt col-xs-12 col-md-6">
+            <h4>Já possui conta?</h4>
+            <!-- Form -->
+            <form login-form="user" class="panel">
+              <div class="alert alert-danger" ng-show="userForm.invalidPassword">
+                <span>Usuário ou senha inválidos</span>
+              </div>
+              <div class="alert alert-danger" ng-show="lostSession">
+                <span>Sua sessão expirou. Faça login novamente.</span>
+              </div>
+              <div class="form-group" ng-class="{'has-error': !userForm.email.$pristine && userForm.email.$invalid, 'has-success': userForm.email.$valid}">
+                <input type="email" autofocus="true" name="email" class="form-control input-lg" placeholder="E-mail" ng-model="user.email" required>
+                <p class="help-block" ng-show="userForm.email.$error.required && !userForm.email.$pristine">O campo Email é obrigatório</p>
+                <p class="help-block" ng-show="userForm.email.$error.email && !userForm.email.$pristine">Este campo deve ser um e-email válido</p>
+              </div> <!-- / Username -->
+
+              <div class="form-group signin-password" ng-class="{'has-error': !userForm.password.$pristine && userForm.password.$invalid, 'has-success': userForm.password.$valid}">
+                <input type="password" name="password" class="form-control input-lg" placeholder="Senha" ng-model="user.password" required>
+                <a href="#" class="forgot">Esqueceu?</a>
+                <p class="help-block" ng-show="userForm.password.$error.required && !userForm.password.$pristine">O campo Senha é obrigatório</p>
+              </div> <!-- / Password -->
+
+              <div class="form-actions">
+                <input type="submit" value="Entrar" next="school.checkout.complete" ng-disabled="userForm.$invalid" class="btn btn-primary btn-flat btn-block btn-lg">
+              </div> <!-- / .form-actions -->
+            </form>
+            <!-- / Form -->
+          </div>
+        </div>
+      </div>
+      <spinner ng-show="$loader.isLoading"></spinner>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="cart-total panel">
+        <div class="panel-heading">
+          <strong class="panel-title">Total</strong>
+        </div>
+        <div class="panel-body">
+          <div class="courses">
+            <div class="course" ng-repeat="schoolProduct in schoolProducts">
+              <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
+              <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
+            </div>
+          </div>
+          <div class="total clearfix">
+            <span class="pull-right">
+              {{ totalPrice | money:'R$' }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="well secure-site">
+        <div class="row">
+          <div class="col-xs-4 lock">
+            <img class="pull-left" src="assets/images/lock.png" alt="Site seguro">
+          </div>
+          <div class="col-xs-8">
+            <h4><strong>Este site é seguro</strong></h4>
+            <p>Possuímos segurança SSL, a mesma utilizada em bancos online, garantindo a criptografia de suas informações.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="inline-images">
+              <img src="assets/images/aws.png" width="90" alt="Amazon Web Services">
+              <img src="assets/images/rede-logotipo.png" width="90" alt="Moip">
+              <script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=cOgBuInvPIKcjurG96qea0LtVll3Y6UnK6RSR6PsxhZ6ejjPps"></script>
+              <img style="cursor:pointer;cursor:hand" width="90" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

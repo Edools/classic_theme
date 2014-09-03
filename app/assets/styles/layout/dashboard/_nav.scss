@@ -1,0 +1,52 @@
+/*********************************************************************
+*
+*  layout/dashboard/nav
+*  Dashboard header nav
+*
+*********************************************************************/
+.dashboard-nav {
+  padding-top: 20px;
+
+  .nav {
+    & .open > a {
+      background: rgba(0,0,0, 0.05);
+    }
+  }
+
+  .nav-pills {
+    & > li {
+      & > a {
+        font-size: 14px;
+        color: #333;
+        padding: 8px 20px;
+        height: 32px;
+
+        &:hover {
+          background: rgba(0,0,0, 0.1)
+        }
+
+        &:focus,
+        &:active {
+          background: rgba(0,0,0, 0.05);
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    & > li {
+      & > a {
+        padding: 3px 20px;
+        color: #333;
+        font-size: 14px;
+        height: 23px;
+        border: 0;
+
+        &:hover {
+          background: rgba(0,0,0, 0.05);
+          border: 0;
+        }
+      }
+    }
+  }
+}

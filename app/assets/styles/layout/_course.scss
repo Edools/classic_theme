@@ -1,0 +1,92 @@
+/*********************************************************************
+*
+*  layout/course
+*  course page styles
+*
+*********************************************************************/
+.enroll {
+  margin-top: 40px;
+  margin-bottom: 20px;
+
+  .total-price {
+    margin-top: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+  }
+}
+
+.course-body {
+  min-height: 300px;
+  padding: 15px 30px;
+  margin: 0;
+  background: #f3f5f7;
+}
+
+.course-description {
+  padding: 10px 20px;
+  background: white;
+  margin-bottom: 20px;
+  @include panel();
+
+  header {
+    display: block;
+    height: 30px;
+  }
+
+  section {
+    display: block;
+  }
+
+  p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.8em;
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+}
+
+.topic {
+  .description {
+    font-size: 14px;
+  }
+}
+
+.modules {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.module {
+  padding: 5px 0;
+  border-bottom: 1px solid lighten(#ccc, 10%);
+}
+
+.module-info {
+  div {
+    display: inline-block;
+  }
+
+  .type {
+    line-height: 1.5em;
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 100;
+  }
+}
+
+.class {
+  padding: 5px 0;
+}
+
+.class-info {
+  .type {
+    left: -30px;
+    margin-right: 5px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+}

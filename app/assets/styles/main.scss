@@ -1,0 +1,53 @@
+/*********************************************************************
+*
+*  main.scss
+*  Main project file
+*
+*********************************************************************/
+
+@import "compass";
+
+// The loading order is very important
+@import "base/variables";
+
+@import "../../bower_components/font-awesome/scss/font-awesome";
+
+@import "base/functions";
+@import "base/mixins";
+@import "base/helpers";
+
+@import "core/basic";
+@import "core/typography";
+@import "core/util";
+
+@import "components/forms";
+@import "components/buttons";
+@import "components/panels";
+@import "components/labels";
+@import "components/navs";
+@import "components/input_groups";
+@import "components/notes";
+@import "components/modals";
+
+@import "layout/footer";
+@import "layout/header";
+@import "layout/main";
+@import "layout/course";
+@import "layout/home";
+@import "layout/auth/login";
+@import "layout/auth/register";
+@import "layout/dashboard/panel";
+@import "layout/dashboard/nav";
+@import "layout/dashboard/courses";
+@import "layout/dashboard/course";
+@import "layout/dashboard/content";
+@import "layout/dashboard/orders";
+@import "layout/checkout/panel";
+@import "layout/checkout/cart";
+@import "layout/checkout/wizard/connect";
+@import "layout/checkout/wizard/complete";
+@import "layout/checkout/wizard/payment";
+
+@import "plugins/ng_tree";
+@import "plugins/ng_breadcrumb";
+@import "plugins/wizard";

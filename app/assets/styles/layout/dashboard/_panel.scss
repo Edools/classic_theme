@@ -1,0 +1,42 @@
+/*********************************************************************
+*
+*  layout/dashboard/panel
+*  Dashboard panel styles
+*
+*********************************************************************/
+.dashboard {
+  background: #f3f5f7;
+}
+
+.dashboard-panel {
+  padding: 20px 0;
+
+  .nav-tabs {
+    border-bottom: 1px solid #ccc;
+
+    & > li {
+      & > a {
+        border-bottom: 1px solid #ccc;
+        padding: 10px 20px;
+        text-align: center;
+        color: #208ac7;
+        background: transparent;
+
+        &:hover {
+          color: #8fc25d;
+        }
+      }
+
+      &.active > a {
+        border: 1px solid #ccc;
+        border-bottom: 0;
+        color: #000;
+        background: white;
+      }
+    }
+  }
+
+  .panel {
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,28 @@
+<div class="page-signin-alt">
+  <h1 class="form-header">Entre com a sua conta</h1>
+  <!-- Form -->
+  <form login-form="user" class="panel">
+    <div class="alert alert-danger" ng-show="userForm.invalidPassword">
+      <span>Usuário ou senha inválidos</span>
+    </div>
+    <div class="alert alert-danger" ng-show="lostSession">
+      <span>Sua sessão expirou. Faça login novamente.</span>
+    </div>
+    <div class="form-group" ng-class="{'has-error': !userForm.email.$pristine && userForm.email.$invalid, 'has-success': userForm.email.$valid}">
+      <input type="email" autofocus="true" name="email" class="form-control input-lg" placeholder="E-mail" ng-model="user.email" required>
+      <p class="help-block" ng-show="userForm.email.$error.required && !userForm.email.$pristine">O campo Email é obrigatório</p>
+      <p class="help-block" ng-show="userForm.email.$error.email && !userForm.email.$pristine">Este campo deve ser um e-email válido</p>
+    </div> <!-- / Username -->
+
+    <div class="form-group signin-password" ng-class="{'has-error': !userForm.password.$pristine && userForm.password.$invalid, 'has-success': userForm.password.$valid}">
+      <input type="password" name="password" class="form-control input-lg" placeholder="Senha" ng-model="user.password" required>
+      <a href="#" class="forgot">Esqueceu?</a>
+      <p class="help-block" ng-show="userForm.password.$error.required && !userForm.password.$pristine">O campo Senha é obrigatório</p>
+    </div> <!-- / Password -->
+
+    <div class="form-actions">
+      <input type="submit" value="Entrar" next="school.dashboard.enrollments" ng-disabled="userForm.$invalid" class="btn btn-primary btn-flat btn-block btn-lg">
+    </div> <!-- / .form-actions -->
+  </form>
+  <!-- / Form -->
+</div>

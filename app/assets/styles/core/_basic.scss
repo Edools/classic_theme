@@ -1,0 +1,76 @@
+/*******************************************************************************
+*
+*  core/basic
+*
+*  Contains all main base styles and resets. It was
+*  heavily based on Paul Irish's HTML5 Boilerplate.
+*
+*  http://html5boilerplate.com/
+*
+*******************************************************************************/
+
+html {
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body,
+select {
+  color: $TEXT_COLOR;
+}
+
+/*********************************************************************
+*  =Links
+*********************************************************************/
+
+a {
+  color:#2c5a77;
+  &:hover {
+    color:#428bca;
+  }
+}
+
+/*********************************************************************
+*  =Selection
+*********************************************************************/
+
+/* Uncomment this to enable selection background color */
+// @mixin text_selection {
+//   background: $SELECTION_BACKGROUND_COLOR;
+//   color: $SELECTION_TEXT_COLOR;
+//   text-shadow: none;
+// }
+
+// ::-moz-selection { @include text_selection; }
+// ::selection { @include text_selection; }
+
+/*********************************************************************
+*  =Media
+*********************************************************************/
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+/* Correct overflow not hidden in IE9 */
+svg:not(:root) { overflow: hidden; }
+
+/*********************************************************************
+*  =Navigation
+*********************************************************************/
+nav ul,
+nav ol {
+  margin: 0;
+}
+
+/*********************************************************************
+*  =Theme app styles
+*********************************************************************/
+#themeapp {
+  height: 0;
+  width: 0;
+  position: absolute;
+}

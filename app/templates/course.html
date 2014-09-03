@@ -1,0 +1,43 @@
+<header class="course-header">
+  <div ng-if="course.logo" class="course-image col-xs-12 text-right col-md-4">
+    <img ng-src="{{ course.logo }}" alt="{{ course.title }}">
+  </div>
+  <div class="course-info col-xs-12 text-center" ng-class="{'col-md-8': course.logo !== null || course.logo !== '', 'col-md-12': course.logo === null || course.logo === ''}">
+    <h2 class="title">{{ course.title }}</h2>
+    <span class="subtitle">{{ course.subtitle }}</span>
+
+    <div class="enroll text-center">
+      <button type="button" ng-click="addToCart(course)" class="btn btn-orange btn-lg">
+        <span>Matricule-se agora</span>
+        <span class="label label-orange">{{ course.product.price | money:'R$' }}</span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="course-body row">
+  <div class="col-xs-12 col-md-1"></div>
+  <div class="col-xs-12 col-md-7">
+    <iframe src="//www.facebook.com/plugins/like.php?href=https://bureaudecursos.myedools.com/#/course/{{ course.id }}&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=632320270166624" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowTransparency="true"></iframe>
+    <article class="course-description">
+      <section ng-bind-html="course.description"></section>
+    </article>
+    <article ng-if="course.modules !== undefined && course.modules.length > 0" class="course-content panel">
+      <div class="panel-heading">
+        <strong class="panel-title">Conteúdo do curso</strong>
+      </div>
+      <div class="panel-body">
+        <content-tree type="home" ng-model="course"></content-tree>
+      </div>
+    </article>
+  </div>
+  <div class="topics col-xs-12 col-md-4">
+    <section ng-repeat="topic in course.topics" class="topic panel">
+      <div class="panel-heading">
+        <strong class="title panel-title">{{ topic.title }}</strong>
+      </div>
+      <div class="panel-body">
+        <p class="description" ng-bind-html="topic.description"></p>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,235 @@
+<div class="checkout">
+  <div class="container checkout-panel">
+    <div class="col-xs-12">
+      <h2>
+        <i class="fa fa-shopping-cart"></i>
+        <span>Carrinho de compras</span>
+      </h2>
+    </div>
+    <hr>
+    <div class="col-xs-12 col-md-8">
+      <div edools-wizard class="wizard">
+        <div class="wizard-wrapper">
+          <ul class="wizard-steps wizard-steps-justified">
+            <li wizard-state="school.checkout.connect">
+              <span class="wizard-step-number">1</span>
+              <span class="wizard-step-caption">
+                <i class="fa fa-user"></i>
+                <span>Conecte-se</span>
+              </span>
+            </li>
+            <li wizard-state="school.checkout.complete">
+              <span class="wizard-step-number">2</span>
+              <span class="wizard-step-caption">
+                <i class="fa fa-list"></i>
+                <span>Complete seu cadastro</span>
+              </span>
+            </li>
+            <li wizard-state="school.checkout.payment">
+              <span class="wizard-step-number">3</span>
+              <span class="wizard-step-caption">
+                <i class="fa fa-check"></i>
+                <span>Realize o pagamento</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="wizard-content panel">
+          <div class="registration-complete">
+            <div class="user-form">
+              <form name="customerForm">
+                <h4 class="form-title">
+                  <i class="fa fa-edit"></i>
+                  <span>Dados Pessoais</span>
+                </h4>
+                <hr>
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <div class="form-group has-feedback required" ng-class="{'has-error': !customerForm.first_name.$pristine && customerForm.first_name.$invalid, 'has-success': customerForm.first_name.$valid}">
+                      <label class="control-label">Nome</label>
+                      <input type="text" ng-model="customer.first_name" name="first_name" class="form-control" required>
+                      <p class="help-block" ng-show="customerForm.first_name.$error.required && !customerForm.first_name.$pristine">O campo é obrigatório</p>
+                      <p class="help-block" ng-show="customerForm.first_name.$error.email && !customerForm.first_name.$pristine">Este campo deve ser um e-email válido</p>
+                    </div>
+                    <div class="form-group required" ng-class="{'has-error': !customerForm.last_name.$pristine && customerForm.last_name.$invalid, 'has-success': customerForm.last_name.$valid}">
+                      <label class="control-label">Sobrenome</label>
+                      <input type="text" ng-model="customer.last_name" name="last_name" class="form-control" required>
+                      <p class="help-block" ng-show="customerForm.last_name.$error.required && !customerForm.last_name.$pristine">O campo é obrigatório</p>
+                    </div>
+                    <div class="form-group required" ng-class="{'has-error': !customerForm.email.$pristine && customerForm.email.$invalid, 'has-success': customerForm.email.$valid}">
+                      <label class="control-label">E-mail</label>
+                      <input type="email" ng-model="customer.email" name="email" class="form-control" required>
+                      <p class="help-block" ng-show="customerForm.email.$invalid">
+                        <span ng-show="customerForm.email.$error.email && !customerForm.email.$pristine">Preencha com um email válido</span>
+                        <span ng-show="customerForm.email.$error.required && !customerForm.email.$pristine">O campo é obrigatório</span>
+                      </p>
+                    </div>
+                    <div class="form-group required" ng-class="{'has-error': !customerForm.cpf.$pristine && customerForm.cpf.$invalid, 'has-success': customerForm.cpf.$valid}">
+                      <label class="control-label">CPF</label>
+                      <input type="text" ng-model="customer.cpf" ng-cpf ui-mask="999.999.999-99" name="cpf" ng-change="cleanServerErrors(customerForm.cpf)" class="form-control" required>
+                      <p class="help-block" ng-show="customerForm.cpf.$error.required && !customerForm.cpf.$pristine">O campo é obrigatório</p>
+                      <p class="help-block" ng-show="customerForm.cpf.$error.cpf && !customerForm.cpf.$pristine">Preencha com um CPF válido</p>
+                      <p class="help-block" ng-show="customerForm.cpf.$error.server && !customerForm.cpf.$pristine">{{ customerForm.cpf.message }}</p>
+                    </div>
+                    <div class="form-group required" ng-class="{'has-error': !customerForm.rg.$pristine && customerForm.rg.$invalid, 'has-success': customerForm.rg.$valid}">
+                      <label class="control-label">Identidade</label>
+                      <input type="text" ng-model="customer.rg" name="rg" ng-change="cleanServerErrors(customerForm.rg)" class="form-control" required>
+                      <p class="help-block" ng-show="customerForm.rg.$error.required && !customerForm.rg.$pristine">O campo é obrigatório</p>
+                      <p class="help-block" ng-show="customerForm.rg.$error.server && !customerForm.rg.$pristine">{{ customerForm.rg.message }}</p>
+                    </div>
+                    <div class="form-group required" ng-class="{'has-error': !customerForm.born_at.$pristine && customerForm.born_at.$invalid, 'has-success': customerForm.born_at.$valid}">
+                      <label class="control-label">Data de nascimento</label>
+                      <input type="text" ng-model="customer.bornAt" ui-mask="99/99/9999" name="born_at" class="form-control" required>
+                      <p class="help-block" ng-show="customerForm.born_at.$error.required && !customerForm.born_at.$pristine">O campo é obrigatório</p>
+                    </div>
+                  </div>
+                  <div class="col-xs-12- col-md-6">
+                    <div class="form-group required" ng-class="{'has-error': !customerForm.phone.$pristine && customerForm.phone.$invalid, 'has-success': customerForm.phone.$valid}">
+                      <label class="control-label">Telefone</label>
+                      <input type="text" ng-model="customer.phone" name="phone" class="form-control" required>
+                      <p class="help-block" ng-show="customerForm.phone.$error.required && !customerForm.phone.$pristine">O campo é obrigatório</p>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Skype</label>
+                      <input type="text" ng-model="customer.skype" name="skype" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Empresa</label>
+                      <input type="text" ng-model="customer.company_name" name="company_name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Cargo</label>
+                      <input type="text" ng-model="customer.company_position" name="company_position" class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="address-form">
+              <form name="addressForm">
+                <h4 class="form-title">
+                  <i class="fa fa-map-marker"></i>
+                  <span>Endereço</span>
+                </h4>
+                <hr>
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <div class="form-group required" ng-class="{'has-error': !addressForm.street.$pristine && addressForm.street.$invalid, 'has-success': addressForm.street.$valid}">
+                      <label class="control-label">Logradouro</label>
+                      <input type="text" ng-model="address.street" name="street" class="form-control" required>
+                      <p class="help-block" ng-show="addressForm.street.$error.required && !addressForm.street.$pristine">O campo é obrigatório</p>
+                    </div>
+                    <div class="form-group required" ng-class="{'has-error': !addressForm.number.$pristine && addressForm.number.$invalid, 'has-success': addressForm.number.$valid}">
+                      <label class="control-label">Nº</label>
+                      <input type="text" ng-model="address.number" name="number" class="form-control" required>
+                      <p class="help-block" ng-show="addressForm.number.$error.required && !addressForm.number.$pristine">O campo é obrigatório</p>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Complemento</label>
+                      <input type="text" ng-model="address.complement" name="complement" class="form-control">
+                    </div>
+                    <div class="form-group required" ng-class="{'has-error': !addressForm.district.$pristine && addressForm.district.$invalid, 'has-success': addressForm.district.$valid}">
+                      <label class="control-label">Bairro</label>
+                      <input type="text" ng-model="address.district" name="district" class="form-control" required>
+                      <p class="help-block" ng-show="addressForm.district.$error.required && !addressForm.district.$pristine">O campo é obrigatório</p>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <div class="form-group required" ng-class="{'has-error': !addressForm.city.$pristine && addressForm.city.$invalid, 'has-success': addressForm.city.$valid}">
+                      <label class="control-label">Cidade</label>
+                      <input type="text" ng-model="address.city" name="city" class="form-control" required>
+                      <p class="help-block" ng-show="addressForm.city.$error.required && !addressForm.city.$pristine">O campo é obrigatório</p>
+                    </div>
+                    <div class="form-group required" ng-class="{'has-error': !addressForm.state.$pristine && addressForm.state.$invalid, 'has-success': addressForm.state.$valid}">
+                      <label class="control-label">Estado</label>
+                      <input type="text" ng-model="address.state" name="state" class="form-control" required>
+                      <p class="help-block" ng-show="addressForm.state.$error.required && !addressForm.state.$pristine">O campo é obrigatório</p>
+                    </div>
+                    <div class="form-group required" ng-class="{'has-error': !addressForm.zip_code.$pristine && addressForm.zip_code.$invalid, 'has-success': addressForm.zip_code.$valid}">
+                      <label class="control-label">CEP</label>
+                      <input type="text" ng-model="address.zip_code" ui-mask="99999-999" name="zip_code" class="form-control" required>
+                      <p class="help-block" ng-show="addressForm.zip_code.$error.required && !addressForm.zip_code.$pristine">O campo é obrigatório</p>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="pull-right">
+              <button type="button" go-to-payment ng-disabled="customerForm.$invalid || addressForm.$invalid" class="btn btn-lg btn-success">Prosseguir para pagamento</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <spinner ng-show="$loader.isLoading"></spinner>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="cart-total panel">
+        <div class="panel-heading">
+          <strong class="panel-title">Total</strong>
+        </div>
+        <div class="panel-body">
+          <div class="courses">
+            <div class="course" ng-repeat="schoolProduct in schoolProducts">
+              <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
+              <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
+            </div>
+          </div>
+          <div class="total clearfix">
+            <span class="pull-right">
+              {{ totalPrice | money:'R$' }}
+            </span>
+          </div>
+          <a ng-if="$state.is('school.checkout.cart')" link-to="school.checkout.wizard.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+        </div>
+      </div>
+      <div ng-if="$state.is('school.checkout.cart')" class="payment-ways panel">
+        <div class="panel-heading">
+          <strong class="panel-title">Formas de pagamento</strong>
+        </div>
+        <div class="panel-body">
+          <ul class="payment-ways-list">
+            <li>
+              <i class="fa fa-check"></i>
+              <span>Cartão de Crédito</span>
+            </li>
+            <li>
+              <i class="fa fa-check"></i>
+              <span>Débito Online</span>
+            </li>
+            <li>
+              <i class="fa fa-check"></i>
+              <span>Boleto Bancário</span>
+            </li>
+          </ul>
+          <hr>
+          <div class="inline-images">
+            <img src="assets/images/formas-pagamento-cartoes.png" width="160" alt="Cartões">
+            <img src="assets/images/formas-pagamento-debito.png" width="100" alt="Cartões">
+            <img src="assets/images/formas-pagamento-boleto.png" width="30" alt="Cartões">
+          </div>
+        </div>
+      </div>
+      <div class="well secure-site">
+        <div class="row">
+          <div class="col-xs-4 lock">
+            <img class="pull-left" src="assets/images/lock.png" alt="Site seguro">
+          </div>
+          <div class="col-xs-8">
+            <h4><strong>Este site é seguro</strong></h4>
+            <p>Possuímos segurança SSL, a mesma utilizada em bancos online, garantindo a criptografia de suas informações.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="inline-images">
+              <img src="assets/images/aws.png" width="90" alt="Amazon Web Services">
+              <img src="assets/images/rede-logotipo.png" width="90" alt="Moip">
+              <script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=cOgBuInvPIKcjurG96qea0LtVll3Y6UnK6RSR6PsxhZ6ejjPps"></script>
+              <img style="cursor:pointer;cursor:hand" width="90" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

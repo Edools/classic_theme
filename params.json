@@ -1,0 +1,27 @@
+{
+  "school": {
+    "id": 224,
+    "type": "School"
+  },
+  "library": {
+    "id": 2
+  },
+  "key": "586d973f48fa2a114e5664d0c418554a:0d820b2f3c02a2ab13675cf6bd350e3f",
+  "schemas": {
+    "home": "schemas/home.json",
+    "courses": "schemas/courses.json",
+    "course": "schemas/course.json",
+    "page": "schemas/page.json",
+    "checkout": {
+      "cart": "schemas/checkout/cart.json"
+    },
+    "student": {
+      "dashboard": {
+        "enrollments": "schemas/student/dashboard/enrollments.json",
+        "course": "schemas/student/dashboard/course.json",
+        "content": "schemas/student/dashboard/content.json",
+        "contact": "schemas/student/dashboard/contact.json"
+      }
+    }
+  }
+}
