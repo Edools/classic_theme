@@ -4,14 +4,42 @@
 *  course page styles
 *
 *********************************************************************/
-.enroll {
-  margin-top: 40px;
-  margin-bottom: 20px;
+.course.main-header {
+  @media (max-width: $screen-small) {
+    min-height: 495px;
+  }
 
-  .total-price {
-    margin-top: 5px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 100;
+  .info {
+    min-height: 100px;
+    max-height: 120px;
+    margin-bottom: 20px;
+    @extend %clearfix;
+
+    @media (max-width: $screen-small) {
+      min-height: 150px;
+      max-height: 170px;
+    }
+  }
+
+  .image {
+    max-height: 230px;
+    text-align: right;
+
+    @media (min-width: $screen-tablet) {
+      text-align: center;
+    }
+  }
+
+  .enroll {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    max-width: 100%;
+
+    .label {
+      @media (max-width: $screen-small) {
+        display: block;
+      }
+    }
   }
 }
 
@@ -19,7 +47,7 @@
   min-height: 300px;
   padding: 15px 30px;
   margin: 0;
-  background: #f3f5f7;
+  background: lighten($light-gray, 2%);
 }
 
 .course-description {

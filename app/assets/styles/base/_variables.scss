@@ -13,9 +13,9 @@ $images-path: "../assets/images";
 // Font-Awesome fonts path
 $fa-font-path: "#{$fonts-path}/font-awesome";
 
-$TEXT_COLOR : #555 !default;
-$LINK_COLOR : #4083a9 !default;
-$PLACEHOLDER_COLOR: #a7a9ac !default;
+$text-color : #555 !default;
+$link-color : #4083a9 !default;
+$placeholder-color: #a7a9ac !default;
 
 /* Uncomment this if you like selection background */
 // $SELECTION_BACKGROUND_COLOR: #41bdce !default;
@@ -24,6 +24,7 @@ $PLACEHOLDER_COLOR: #a7a9ac !default;
 /* Other colors you want, down here */
 $orange: #de8738;
 $light-blue: #208ac7;
+$light-gray: #f2f2f2;
 
 $info-color: #5bc0de;
 $success-color: #5ebd5e;

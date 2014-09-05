@@ -6,7 +6,7 @@
   "library": {
     "id": 2
   },
-  "key": "586d973f48fa2a114e5664d0c418554a:0d820b2f3c02a2ab13675cf6bd350e3f",
+  "key": "e562cd23b60d0e1ddc1c9283c49cf9ac:2e3d7ec735bfb156ed8a67420971bfd7",
   "schemas": {
     "home": "schemas/home.json",
     "courses": "schemas/courses.json",
@@ -23,5 +23,10 @@
         "contact": "schemas/student/dashboard/contact.json"
       }
     }
-  }
+  },
+  "pages": [{
+    "title": "Um titulo ai",
+    "slug": "teste",
+    "content": "<p>hahahahahah</p>"
+  }]
 }

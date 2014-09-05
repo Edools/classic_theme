@@ -1,24 +1,24 @@
-<header class="course-header">
-  <div ng-if="course.logo" class="course-image col-xs-12 text-right col-md-4">
+<header class="main-header course">
+  <div ng-if="course.logo" class="image col-xs-12 col-md-5">
     <img ng-src="{{ course.logo }}" alt="{{ course.title }}">
   </div>
-  <div class="course-info col-xs-12 text-center" ng-class="{'col-md-8': course.logo !== null || course.logo !== '', 'col-md-12': course.logo === null || course.logo === ''}">
-    <h2 class="title">{{ course.title }}</h2>
-    <span class="subtitle">{{ course.subtitle }}</span>
+  <div class="col-xs-12 text-center" ng-class="{'col-md-7': course.logo !== null || course.logo !== '', 'col-md-12': course.logo === null || course.logo === ''}">
+    <div class="info">
+      <h2 class="title">{{ course.title }}</h2>
+      <span class="subtitle">{{ course.subtitle }}</span>
+    </div>
 
     <div class="enroll text-center">
-      <button type="button" add-to-cart="course" class="btn btn-orange btn-lg">
+      <button type="button" add-to-cart="course" class="btn btn-success btn-lg">
         <span>Matricule-se agora</span>
-        <span class="label label-orange">{{ course.product.price | money:'R$' }}</span>
+        <span class="label label-success">{{ course.product.price | money:'R$' }}</span>
       </button>
     </div>
   </div>
 </header>
 <div class="course-body row">
-  <div class="col-xs-12 col-md-1"></div>
-  <div class="col-xs-12 col-md-7">
-    <iframe src="//www.facebook.com/plugins/like.php?href=https://bureaudecursos.myedools.com/#/course/{{ course.id }}&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=632320270166624" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowTransparency="true"></iframe>
-    <article class="course-description">
+  <div class="col-xs-12 col-md-8">
+    <article ng-if="course.description != null && course.description != ''" class="course-description">
       <section ng-bind-html="course.description"></section>
     </article>
     <article ng-if="course.modules !== undefined && course.modules.length > 0" class="course-content panel">

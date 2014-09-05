@@ -1,27 +1,82 @@
 <div class="dashboard">
   <div class="container dashboard-panel">
-    <div ng-class="{'col-md-4': $state.is('school.dashboard.enrollments.course.content'), 'col-md-12': !$state.is('school.dashboard.enrollments.course.content')}">
-      <div class="course-page panel text-center fx-fade-right">
-        <br/>
-        <div class="row">
-          <a link-to=".">
-            <img class="course-page-image" src="{{ course.logo }}" alt="{{ course.title }}">
-          </a>
+
+    <div ng-class="{'col-md-4': $state.is('school.dashboard.enrollments.course.extraContent') || $state.is('school.dashboard.enrollments.course.content'), 'col-md-12': $state.is('school.dashboard.enrollments.course')}">
+      <div class="row course-container">
+        <div class="course-infos" ng-class="{'col-md-7': $state.is('school.dashboard.enrollments.course')}" ng-if="!$state.is('school.dashboard.enrollments.course.extraContent')">
+          <div class="course-page panel text-center fx-fade-right">
+            <br/>
+            <div class="row">
+              <a link-to=".">
+                <img class="course-page-image" ng-src="{{ course.logo }}" alt="{{ course.title }}">
+              </a>
+            </div>
+            <div class="row">
+              <h4>
+                <a link-to=".">
+                  <strong>{{ course.title }}</strong>
+                </a>
+              </h4>
+            </div>
+          </div>
+          <article ng-if="course.modules !== undefined && course.modules.length > 0"
+            class="course-content panel fx-fade-right">
+
+            <div class="panel-heading">
+              <strong class="panel-title">Conteúdo do curso</strong>
+            </div>
+
+            <div class="panel-body">
+              <content-tree type="dashboard" ng-model="course" lessons-info="lessons_info"></content-tree>
+            </div>
+          </article>
         </div>
-        <div class="row">
-          <h4><strong>{{ course.title }}</strong></h4>
+
+        <div class="course-progress" ng-class="{'col-md-5': $state.is('school.dashboard.enrollments.course')}" ng-if="!$state.is('school.dashboard.enrollments.course.extraContent') && $state.params.enrollmentId != null">
+
+          <div class="panel">
+            <div class="panel-heading">
+              <span class="panel-title">
+                <i class="panel-title-icon fa fa-check"></i>Progresso
+              </span>
+            </div>
+
+            <div class="panel-body">
+              <header class="progress-header">
+                <span class="label label-success">{{lessons_info.completed.length}}</span> aula(s) completa(s)
+                <span class="label label-warning">{{lessons_info.in_progress.length}}</span> aula(s) iniciada(s)
+                <span class="label label-info">{{lessons_info.total}}</span> aula(s) no total
+              </header>
+              <stacked-progress success="{{progress.completed}}" warning="{{progress.in_progress}}"></stacked-progress>
+            </div>
+          </div>
+        </div>
+
+        <div ng-class="{'col-md-5': $state.is('school.dashboard.enrollments.course')}" ng-if="$state.is('school.dashboard.enrollments.course') || $state.is('school.dashboard.enrollments.course.extraContent')">
+          <div class="panel" ng-if="extraContents != null && extraContents.length > 0">
+            <div class="panel-heading">
+              <strong class="panel-title">Material complementar</strong>
+            </div>
+            <div class="panel-body">
+              <ul class="modules">
+                <li class="module-item root" ng-repeat="extraContent in extraContents">
+                  <div class="class">
+                    <div class="class-info" ng-class="{'active': $state.params.extraContentId == extraContent.id.toString()}">
+                      <media-icon type="extraContent.media.type"></media-icon>
+                      <span ng-class="{'label-info': $state.params.extraContentId == extraContent.id.toString()}">
+                        <a class="title" link-to=".extraContent({ extraContentId: extraContent.id })">{{ extraContent.title }}</a>
+                      </span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-
-      <article ng-if="course.modules !== undefined && course.modules.length > 0" class="course-content panel fx-fade-right">
-        <div class="panel-heading">
-          <strong class="panel-title">Conteúdo do curso</strong>
-        </div>
-        <div class="panel-body">
-          <content-tree type="dashboard" ng-model="course"></content-tree>
-        </div>
-      </article>
     </div>
-    <div ui-view class="fx-fade-down fx-speed-400" ng-show="$state.is('school.dashboard.enrollments.course.content')" ng-class="{'col-md-8': $state.is('school.dashboard.enrollments.course.content')}"></div>
+
+    <div ui-view class="fx-fade-down fx-speed-400" ng-if="$state.is('school.dashboard.enrollments.course.content') || $state.is('school.dashboard.enrollments.course.extraContent')" ng-class="{'col-md-8': $state.is('school.dashboard.enrollments.course.content') || $state.is('school.dashboard.enrollments.course.extraContent')}">
+    </div>
   </div>
 </div>

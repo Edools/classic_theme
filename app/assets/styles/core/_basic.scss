@@ -17,7 +17,7 @@ html {
 
 body,
 select {
-  color: $TEXT_COLOR;
+  color: $text-color;
 }
 
 /*********************************************************************
@@ -25,9 +25,9 @@ select {
 *********************************************************************/
 
 a {
-  color:#2c5a77;
+  color:$link-color;
   &:hover {
-    color:#428bca;
+    color:$link-color;
   }
 }
 

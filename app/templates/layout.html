@@ -20,15 +20,15 @@
               <span>Carrinho</span>
             </a>
           </li>
-          <li ng-if="!$session.user">
+          <li ng-if="!$session.get()">
             <a link-to="school.auth.login">Entrar</a>
           </li>
-          <li ng-if="$session.user != undefined">
+          <li ng-if="$session.get() != undefined">
             <a link-to="school.dashboard.enrollments">Meus cursos</a>
           </li>
-          <li ng-if="$session.user != undefined" class="dropdown">
+          <li ng-if="$session.get() != undefined" class="dropdown">
             <a class="dropdown-toggle pointer" data-toggle="dropdown">
-              <span>{{ $session.user.first_name }}</span>
+              <span>{{ $session.get().first_name }}</span>
               <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu">
@@ -53,8 +53,8 @@
 </header>
 
 <div class="app-content">
-  <div ui-view="content" ng-class="{'loading': $loader.isLoading && $loader.isGlobal}"></div>
-  <spinner ng-if="$loader.isLoading && $loader.isGlobal" class="large"></spinner>
+  <div ui-view="content" ng-class="{'loading': $loader.get('global').isLoading}"></div>
+  <spinner name="global" class="large"></spinner>
 </div>
 
 <footer>

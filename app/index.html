@@ -13,14 +13,12 @@
     <!-- build:css({.tmp,app}) assets/styles/main.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap-sass/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
-    <link rel="stylesheet" href="bower_components/mediaelement/build/mediaelementplayer.css" />
-    <link rel="stylesheet" href="bower_components/dropzone/downloads/css/dropzone.css" />
     <!-- endbower -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">
+    <link href="https://cdn.edools.com/libs/edools-school/0.2.0/edools-school.css" rel="stylesheet" type="text/css"></link>
   </head>
   <body>
     <script src="https://cdn.edools.com/libs/xdomain/0.6/xdomain.min.js"></script>
@@ -34,12 +32,18 @@
     <div id="themeapp" ng-app="theme">
       <theme-loader type="school"></theme-loader>
     </div>
-    <!-- // <script src="https://cdn.edools.com/libs/edools-school/0.1.15/edools-school.min.js"></script> -->
+    <script src="https://cdn.edools.com/libs/edools-school/0.2.0/edools-school.min.js"></script>
 
-    <script src="bower_components/edools-school/dist/edools-school.js"></script>
+    <!-- build:js({.tmp,app}) assets/scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap-sass/dist/js/bootstrap.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) assets/scripts/app.js -->
-    <script src="assets/scripts/app.js"></script>
     <!-- endbuild -->
   </body>
 </html>

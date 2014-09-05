@@ -1,10 +1,9 @@
 /*********************************************************************
 *
-*  layout/dashboard/progress
-*  Course progress panel styles
+*  layout/page
+*  Static page layout
 *
 *********************************************************************/
-
-.progress-header {
-  padding: 5px 0;
+.page-body {
+  background: lighten($light-gray, 2%);
 }

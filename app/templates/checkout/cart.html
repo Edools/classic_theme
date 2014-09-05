@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <spinner ng-show="$loader.isLoading"></spinner>
+      <spinner name="cart"></spinner>
     </div>
     <div class="col-xs-12 col-md-4">
       <div class="cart-total panel">
@@ -57,12 +57,12 @@
               <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
             </div>
           </div>
-          <div class="total clearfix">
+          <div ng-if="totalPrice != null" class="total clearfix">
             <span class="pull-right">
               {{ totalPrice | money:'R$' }}
             </span>
           </div>
-          <a link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+          <a link-to="school.checkout.connect" ng-disabled="schoolProducts == null || schoolProducts.length == 0" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
         </div>
       </div>
       <div class="payment-ways panel">

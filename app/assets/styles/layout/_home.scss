@@ -5,6 +5,7 @@
 *  e.g. For when there's a different section on home
 *
 *********************************************************************/
+// home header
 .home.main-header {
   .image {
     max-height: 270px;
@@ -60,6 +61,74 @@
   }
 }
 
+// home courses list
 .home.course-list {
+  background: lighten($light-gray, 2%);
 
+  $course-height: 300px;
+  .course {
+    height: $course-height;
+    background: white;
+    margin-bottom: 20px;
+    @include card();
+
+    a:hover {
+      color: $text-color;
+    }
+  }
+
+  .image img {
+    width: 100%;
+    max-width: 100%;
+    max-height: $course-height/2;
+  }
+
+  .body {
+    padding: 10px;
+    min-height: $course-height/3;
+    @include colorful-link($text-color);
+    text-overflow: hidden;
+
+    .subtitle {
+      font-size: 1em;
+      font-style: italic;
+      color: #ccc;
+      line-height: 1em;
+      word-wrap: break-word;
+    }
+  }
+
+  .footer {
+    padding: 10px 5px 5px 5px;
+    border-top: 1px solid lighten(#ccc, 15%);
+    min-height: $course-height/6;
+
+    $footer-elem-height: 34px;
+    .well {
+      position: relative;
+      height: $footer-elem-height;
+      padding: 7px 8px 5px 8px;
+      margin: 0;
+
+      bottom: 0;
+      float: left;
+    }
+
+    .btn {
+      position: relative;
+      height: $footer-elem-height;
+      bottom: 0;
+      float: right;
+    }
+  }
+}
+
+//home about panel
+.home.about {
+  // increases the line heith a bit on small devices, to improve the readability
+  @media (max-height: $screen-tablet) {
+    h4 {
+      line-height: 1.5em;
+    }
+  }
 }

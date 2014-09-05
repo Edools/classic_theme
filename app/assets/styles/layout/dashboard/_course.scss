@@ -16,6 +16,14 @@
   }
 }
 
+.modules {
+  padding: 0;
+
+  .module-item {
+    list-style: none;
+  }
+}
+
 .dashboard-panel {
   .class-info {
     .title {

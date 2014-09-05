@@ -65,11 +65,12 @@ module.exports = function (grunt) {
           livereload: '<%= edools_server.server.options.livereload %>'
         },
         files: [
+          '<%= theme.app %>/*.html',
           '<%= theme.app %>/templates/**/*.html',
+          '<%= theme.app %>/schemas/**/*.json',
+          '<%= theme.app %>/assets/scripts/**/*.js',
           '<%= theme.temp %>/styles/**/*.css',
           '<%= theme.app %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= theme.app %>/bower_components/**/dist/edools-school.js',
-          '<%= theme.app %>/bower_components/**/dist/*.css',
           'params.json'
         ]
       }
