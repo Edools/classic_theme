@@ -29,7 +29,7 @@ module.exports = function (grunt) {
       temp: '.tmp',
       public: 'public',
       bucket: 'myedools_assets', // AWS S3 bucket to MyEdools assets
-      bucket_folder: 'bureau-theme',
+      bucket_folder: 'yourbucketfolder',
       bucket_url: 'https://s3.amazonaws.com/myedools_assets'
     },
 
@@ -405,10 +405,8 @@ module.exports = function (grunt) {
           url: 'https://themeDeploy:themeDeploy123@www.myedools.com/themes/deploy',
           method: 'POST',
           form: {
-            // school: 'demo',
-            // theme: '53ab222e72616969ed000000',
-            school: 'bureaujuridico',
-            theme: '53b1bb637261694455070000',
+            school: 'yourdain',
+            theme: 'yourid',
             package_url: '<%= theme.bucket_url %>/<%= theme.bucket_folder %>/<%= pkg.name %>.zip',
           },
         },
