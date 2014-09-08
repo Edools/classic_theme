@@ -1,0 +1,32 @@
+{
+  "school": {
+    "id": 224,
+    "type": "School"
+  },
+  "library": {
+    "id": 2
+  },
+  "key": "e562cd23b60d0e1ddc1c9283c49cf9ac:2e3d7ec735bfb156ed8a67420971bfd7",
+  "schemas": {
+    "home": "schemas/home.json",
+    "courses": "schemas/courses.json",
+    "course": "schemas/course.json",
+    "page": "schemas/page.json",
+    "checkout": {
+      "cart": "schemas/checkout/cart.json"
+    },
+    "student": {
+      "dashboard": {
+        "enrollments": "schemas/student/dashboard/enrollments.json",
+        "course": "schemas/student/dashboard/course.json",
+        "content": "schemas/student/dashboard/content.json",
+        "contact": "schemas/student/dashboard/contact.json"
+      }
+    }
+  },
+  "pages": [{
+    "title": "Um titulo ai",
+    "slug": "teste",
+    "content": "<p>hahahahahah</p>"
+  }]
+}

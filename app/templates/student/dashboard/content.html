@@ -1,0 +1,6 @@
+<div class="course-content-player card panel">
+  <activity ng-model="activity" respond-activity="true" enrollment-id="enrollmentId" lesson-id="lesson.id" ng-if="activity"></activity>
+  <media-player trackeable="true" ng-model="media" enrollment-id="enrollmentId" lesson-id="lesson.id" ng-if="media"></media-player>
+  <media-player ng-model="mediaExtraContent" ng-if="mediaExtraContent"></media-player>
+  <spinner name="content" class="small"></spinner>
+</div>

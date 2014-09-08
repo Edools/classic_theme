@@ -1,0 +1,19 @@
+<div class="module">
+  <div class="module-info">
+    <div class="title">{{ module.name }}</div>
+  </div>
+</div>
+<ol ui-tree-nodes ng-model="module.modules">
+  <li class="module-item sub" ng-repeat="module in module.course_modules" ng-include="subTemplateUrl" ui-tree-node></li>
+</ol>
+<ol ui-tree-nodes ng-model="module.modules">
+  <li class="module-item sub" ng-repeat="class in module.classes" ui-tree-node>
+    <div class="class">
+      <div class="class-info" ng-class="{'active': $state.params.contentId == class.lesson.id.toString()}">
+        <progress-icon ng-model="class"></progress-icon>
+        <class-icon ng-model="class"></class-icon>
+        <a class="title" link-to=".content({ contentId: class.lesson.id })">{{ class.lesson.title }}</a>
+      </div>
+    </div>
+  </li>
+</ol>

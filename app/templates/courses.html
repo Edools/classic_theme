@@ -1,0 +1,20 @@
+<div class="courses-list-page">
+  <div class="container">
+    <div class="col-xs-12">
+      <!-- Destaque -->
+      <ul class="listacursos">
+        <li ng-repeat="curso in schoolProducts" class="curso col-xs-12 col-md-4 text-center">
+          <a link-to="school.course({ courseId: curso.id })">
+            <img src="{{ curso.logo }}" alt="{{ curso.title }}">
+          </a>
+          <p class="rotulo">
+            <a link-to="school.course({ courseId: curso.id })">{{ curso.tag.title }}</a>
+          </p>
+          <p max-lines="2">
+            <a link-to="school.course({ courseId: curso.id })">{{ curso.title }}</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

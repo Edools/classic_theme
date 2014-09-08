@@ -1,0 +1,140 @@
+/*********************************************************************
+*
+*  layout/checkout/wizard/payment
+*  Payment page styles
+*
+*********************************************************************/
+.payment-form {
+  .nav-pills {
+    > li > a {
+      padding: 8px 20px;
+
+      // resetting font, because of bureau style
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      height: 32px;
+      color: #777;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.06);
+      }
+    }
+
+    > li.active > a {
+      color: white;
+      background-color: #428bca;
+    }
+  }
+
+  .radio {
+    cursor: pointer;
+  }
+
+  .form-inline {
+    margin-bottom: 15px;
+  }
+
+  .card-flags {
+    margin-bottom: 5px;
+  }
+
+  .card-flag {
+    &:after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      height: 24px;
+      width: 36px;
+      background: url(/images/credit_cards.png);
+    }
+
+    &.mastercard {
+      &:after {
+        background-position: -35px 0;
+      }
+    }
+
+    &.visa {
+      &:after {
+        background-position: 0 0;
+      }
+    }
+
+    &.amex {
+      &:after {
+        background-position: -70px 1px;
+      }
+    }
+
+    &.dinners {
+      &:after {
+        background-position: -145px 1px;
+      }
+    }
+
+    &.hipercard {
+      &:after {
+        background-position: -110px 1px;
+      }
+    }
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  .input-group-addon {
+    padding: 3px 0;
+  }
+
+  .bank-flags {
+    margin-bottom: 15px;
+  }
+
+  .bank-flag {
+    margin-right: 5px;
+
+    &:after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      height: 28px;
+      width: 31px;
+      background: url(/images/banks.png);
+    }
+
+    &.bb {
+      &:after {
+        background-position: 0 0;
+      }
+    }
+
+    &.bradesco {
+      &:after {
+        background-position: -65px 0;
+      }
+    }
+
+    &.itau {
+      &:after {
+        background-position: -31px 0;
+      }
+    }
+
+    &.boleto {
+      &:after {
+        background-position: -94px 0;
+      }
+    }
+  }
+
+  .control-label {
+    display: block;
+  }
+}
+
+.form-boleto {
+  .btn {
+    margin-bottom: 15px;
+  }
+}

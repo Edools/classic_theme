@@ -1,0 +1,203 @@
+<div class="checkout">
+  <div class="container checkout-panel">
+    <div class="col-xs-12">
+      <h2>
+        <i class="fa fa-shopping-cart"></i>
+        <span>Carrinho de compras</span>
+      </h2>
+    </div>
+    <hr>
+    <div class="col-xs-12 col-md-8">
+      <div edools-wizard class="wizard">
+        <div class="wizard-wrapper">
+          <ul class="wizard-steps wizard-steps-justified">
+            <li wizard-state="school.checkout.connect">
+              <span class="wizard-step-number">1</span>
+              <span class="wizard-step-caption">
+                <i class="fa fa-user"></i>
+                <span>Conecte-se</span>
+              </span>
+            </li>
+            <li wizard-state="school.checkout.complete">
+              <span class="wizard-step-number">2</span>
+              <span class="wizard-step-caption">
+                <i class="fa fa-list"></i>
+                <span>Complete seu cadastro</span>
+              </span>
+            </li>
+            <li wizard-state="school.checkout.payment">
+              <span class="wizard-step-number">3</span>
+              <span class="wizard-step-caption">
+                <i class="fa fa-check"></i>
+                <span>Realize o pagamento</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="wizard-content panel">
+          <div class="payment-form">
+            <div class="inline">
+              <img src="assets/images/lock.png" width="45" height="45" alt="Pagamento seguro">
+              <h3>Selecione sua forma de pagamento:</h3>
+            </div>
+            <ul class="nav nav-pills nav-justified">
+              <li class="active">
+                <a href="#credit" data-toggle="tab" select-payment="credit">Cartão de Crédito</a>
+              </li>
+              <!-- <li>
+                <a href="#debit" data-toggle="tab" select-payment="debit">Débito Online</a>
+              </li> -->
+              <li>
+                <a href="#boleto" data-toggle="tab" select-payment="boleto">Boleto Bancário</a>
+              </li>
+            </ul>
+            <hr>
+            <div class="tab-content">
+              <section id="credit" class="tab-pane fade in active">
+                <div ng-if="creditCardError" class="alert alert-danger">Ocorreu um erro com seu pagamento. Tente novamente ou entre em contato conosco.</div>
+                <form name="cardForm">
+                  <!-- <skeuocard ng-model="card"></skeuocard> -->
+                  <div class="well">
+                    <div class="form-group" ng-class="{'has-error': !cardForm.name.$pristine && cardForm.name.$invalid, 'has-success': cardForm.name.$valid}">
+                      <label class="control-label">Nome completo <small><i>(igual ao impresso no cartão)</i></small></label>
+                      <div class="input-group">
+                        <input type="text" name="name" class="form-control" ng-model="card.name" required>
+                      </div>
+                      <p class="help-block" ng-show="cardForm.name.$error.required && !cardForm.name.$pristine">O campo é obrigatório</p>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error': !cardForm.number.$pristine && cardForm.number.$invalid, 'has-success': cardForm.number.$valid}">
+                      <label class="control-label">Nº do cartão de crédito</label>
+                      <div class="input-group">
+                        <input type="text" name="number" class="form-control" ng-model="card.number" payments-validate="card" payments-type-model="card.type" payments-format="card" required>
+                        <span class="input-group-addon" ng-if="card.type != null">
+                          <span card-flag ng-model="card.type"></span>
+                        </span>
+                      </div>
+                      <p class="help-block" ng-show="cardForm.number.$error.required && !cardForm.number.$pristine">O campo é obrigatório</p>
+                      <p class="help-block" ng-show="cardForm.number.$error.card && !cardForm.number.$pristine">Insira um número de cartão válido</p>
+                    </div>
+                    <div class="form-inline row">
+                      <div class="form-group col-xs-12 col-sm-6" ng-class="{'has-error': !cardForm.cvc.$pristine && cardForm.cvc.$invalid, 'has-success': cardForm.cvc.$valid}">
+                        <label class="control-label">Cód. de segurança</label>
+                        <input type="text" name="cvc" ng-model="card.cvc" payments-type-model="card.type" payments-validate="cvc" payments-format="cvc" class="form-control" required>
+                      </div>
+                      <div class="form-group col-xs-12 col-sm-6" ng-class="{'has-error': !cardForm.expiry.$pristine && cardForm.expiry.$invalid, 'has-success': cardForm.expiry.$valid}">
+                        <label class="control-label">Validade (mês/ano)</label>
+                        <input type="text" name="expiry" ng-model="card.expiry" payments-validate="expiry" payments-format="expiry" class="form-control" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Parcelas</label>
+                      <div installments-select ng-model="card.installments" maximum-installments="gateway.maximum_number_of_installments" total-price="totalPrice"></div>
+                    </div>
+                  </div>
+                </form>
+                <button type="button" pay-button ng-disabled="cardForm.$invalid" class="btn btn-success pull-right">Efetuar pagamento</button>
+              </section>
+              <section id="debit" class="tab-pane fade">
+                <div class="bank-flags form-inline">
+                  <label class="radio bank-flag bb">
+                    <input type="radio" name="bank" class="px">
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="bank" class="px">
+                    <span class="lbl bank-flag bradesco"></span>
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="bank" class="px">
+                    <span class="lbl bank-flag itau"></span>
+                  </label>
+                </div>
+                <div class="note note-warning">
+                  <span>Desabilite o bloqueio de pop-ups do seu navegador</span>
+                </div>
+                <button type="button" pay-button class="btn btn-success pull-right">Efetuar pagamento</button>
+              </section>
+              <section id="boleto" class="form-boleto tab-pane fade">
+                <div class="note note-warning">
+                  <span>Desabilite o bloqueio de pop-ups do seu navegador</span>
+                </div>
+                <div class="note note-info">
+                  <span>O prazo para compensação de um boleto bancário é de até 3 dias úteis, após a realização do pagamento. O curso só irá ser liberado após a compensação do mesmo.</span>
+                </div>
+                <div class="text-center">
+                  <button type="button" pay-button class="btn btn-lg btn-success">Gerar Boleto</button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <spinner name="payment"></spinner>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="cart-total panel">
+        <div class="panel-heading">
+          <strong class="panel-title">Total</strong>
+        </div>
+        <div class="panel-body">
+          <div class="courses">
+            <div class="course" ng-repeat="schoolProduct in schoolProducts">
+              <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
+              <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
+            </div>
+          </div>
+          <div class="total clearfix">
+            <span class="pull-right">
+              {{ totalPrice | money:'R$' }}
+            </span>
+          </div>
+          <a ng-if="$state.is('school.checkout.cart')" link-to="school.checkout.wizard.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+        </div>
+      </div>
+      <div ng-if="$state.is('school.checkout.cart')" class="payment-ways panel">
+        <div class="panel-heading">
+          <strong class="panel-title">Formas de pagamento</strong>
+        </div>
+        <div class="panel-body">
+          <ul class="payment-ways-list">
+            <li>
+              <i class="fa fa-check"></i>
+              <span>Cartão de Crédito</span>
+            </li>
+            <!-- <li>
+              <i class="fa fa-check"></i>
+              <span>Débito Online</span>
+            </li> -->
+            <li>
+              <i class="fa fa-check"></i>
+              <span>Boleto Bancário</span>
+            </li>
+          </ul>
+          <hr>
+          <div class="inline-images">
+            <img src="assets/images/formas-pagamento-cartoes.png" width="160" alt="Cartões">
+            <img src="assets/images/formas-pagamento-debito.png" width="100" alt="Cartões">
+            <img src="assets/images/formas-pagamento-boleto.png" width="30" alt="Cartões">
+          </div>
+        </div>
+      </div>
+      <div class="well secure-site">
+        <div class="row">
+          <div class="col-xs-4 lock">
+            <img class="pull-left" src="assets/images/lock.png" alt="Site seguro">
+          </div>
+          <div class="col-xs-8">
+            <h4><strong>Este site é seguro</strong></h4>
+            <p>Possuímos segurança SSL, a mesma utilizada em bancos online, garantindo a criptografia de suas informações.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="inline-images">
+              <img src="assets/images/aws.png" width="90" alt="Amazon Web Services">
+              <img src="assets/images/rede-logotipo.png" width="90" alt="Moip">
+              <script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=cOgBuInvPIKcjurG96qea0LtVll3Y6UnK6RSR6PsxhZ6ejjPps"></script>
+              <img style="cursor:pointer;cursor:hand" width="90" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

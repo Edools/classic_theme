@@ -1,0 +1,41 @@
+{
+  "name": "classic_theme",
+  "version": "0.0.1",
+  "description": "Edools classic school theme",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "edools-grunt-server": "0.0.6",
+    "express": "^4.7.2",
+    "grunt": "~0.4.1",
+    "grunt-autoprefixer": "~0.4.0",
+    "grunt-bower-install": "~1.0.0",
+    "grunt-cdnify": "~0.0.2",
+    "grunt-concurrent": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compass": "~0.7.2",
+    "grunt-contrib-compress": "~0.9.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-htmlmin": "~0.1.3",
+    "grunt-contrib-imagemin": "~0.3.0",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-newer": "~0.6.1",
+    "grunt-http": "~1.4.0",
+    "grunt-s3": "~0.2.0-alpha.3",
+    "grunt-svgmin": "~0.2.0",
+    "grunt-usemin": "~2.0.0",
+    "load-grunt-tasks": "~0.4.0",
+    "jshint-stylish": "~0.1.3",
+    "time-grunt": "~0.2.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "preinstall": "npm install -g bower grunt-cli"
+  }
+}

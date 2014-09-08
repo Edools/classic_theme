@@ -1,0 +1,53 @@
+<div class="dashboard">
+  <div class="container dashboard-panel">
+    <div class="panel col-xs-12">
+      <h3>Meus Pedidos</h3>
+
+      <div class="table-responsive">
+        <table class="order-table table table-bordered">
+          <thead>
+            <tr>
+              <th class="col-xs-1">Nº</th>
+              <th class="col-xs-4">Status</th>
+              <th class="col-xs-3 text-center">Data do pedido</th>
+              <th class="col-xs-3">
+                <span class="pull-right">Total</span>
+              </th>
+              <th class="col-xs-1"></th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="order in orders | orderBy:'created_at':true">
+            <tr>
+              <td class="column id">{{ order.id }}</td>
+              <td class="column status">{{ order.status | translate }}</td>
+              <td class="column creation text-center">{{ order.created_at | date:'dd/MM/yyyy' }}</td>
+              <td class="column total">
+                <span class="pull-right">{{ order.amount_to_pay | money:'R$' }}</span>
+              </td>
+              <td class="column items">
+                <a class="pointer" ng-click="order.viewItems = !order.viewItems">
+                  <span class="label label-info">ver itens do pedido</span>
+                </a>
+              </td>
+            </tr>
+            <tr ng-if="order.viewItems">
+              <td class="order-items" ng-repeat="item in order.items" colspan="5">
+                <div class="col-xs-3">
+                  <div class="card text-center">
+                    <img class="order-item-image" ng-src="{{ item.schoolProduct.logo }}" alt="{{ item.schoolProduct.title }}">
+                    <span class="label label-default">{{ item.schoolProduct.title }}</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert alert-info" ng-if="orders == undefined || orders.length == 0">
+        Você ainda não fez nenhum pedido. Confira <a ui-sref="school.home">nossos cursos</a>.
+      </div>
+    </div>
+  </div>
+  <spinner name="orders"></spinner>
+</div>

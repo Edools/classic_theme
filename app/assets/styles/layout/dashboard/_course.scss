@@ -1,0 +1,59 @@
+/*********************************************************************
+*
+*  layout/dashboard/course
+*  Course detail styles
+*
+*********************************************************************/
+.course-page {
+  .course-info {
+    padding: 30px;
+    border-radius: 5px;
+  }
+
+  .course-page-image {
+    max-width: 300px;
+    max-height: 200px;
+  }
+}
+
+.modules {
+  padding: 0;
+
+  .module-item {
+    list-style: none;
+  }
+}
+
+.dashboard-panel {
+  .class-info {
+    .title {
+      text-decoration: none;
+      color: #555;
+    }
+
+    .lesson-icon {
+      opacity: 0.3;
+      margin-right: 3px;
+    }
+
+    .type {
+      margin-right: 3px;
+    }
+
+    &.active {
+      .title {
+        font-weight: bold;
+      }
+
+      .lesson-icon {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      .lesson-icon {
+        opacity: 1;
+      }
+    }
+  }
+}

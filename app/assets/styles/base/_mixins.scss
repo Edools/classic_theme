@@ -1,0 +1,158 @@
+/*********************************************************************
+*
+*  base/mixins
+*  Placeholders that makes our MUCH life much easier
+*
+*********************************************************************/
+
+/*********************************************************************
+*  =Colorful links
+*
+*  Provide a set of colors for normal, :visited, :hover, and :active
+*  links, based on a base color. Should be used like this:
+*
+*  .my-class a {
+*    @include colorful-links(#abcdef);
+*  }
+*********************************************************************/
+
+@mixin colorful-link($color) {
+  @include single-transition(color, .1s, ease-out);
+
+  color: $color;
+
+  &:visited { color: $color; }
+  &:hover   { color: adjust-color($color, $lightness: +10%); }
+  &:active  { color: adjust-color($color, $lightness: -5%); }
+}
+
+/*********************************************************************
+*  panel
+*  Panel like box mixin
+*
+*  .my-class a {
+*    @include panel();
+*  }
+*********************************************************************/
+@mixin panel($border-color: #ccc) {
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  box-shadow: 3px 4px 0 rgba(0,0,0,0.06);
+}
+
+/*********************************************************************
+*  card
+*  Material design card
+*
+*  .my-class a {
+*    @include card();
+*  }
+*********************************************************************/
+@mixin card($border-color: #ccc) {
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0, 0.26);
+}
+
+/*********************************************************************
+*  user-select-none
+*  Disable user selection
+*
+*  .my-class {
+*    @include user-select-none();
+*  }
+*********************************************************************/
+@mixin user-select-none() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+// Form state mixin
+//
+@mixin pixel-form-state-base($color, $font-color, $border-color, $input-border-color: darken($border-color, 17%)) {
+  .control-label {
+    color: $text-color;
+  }
+
+  .help-block {
+    background: $color;
+    border-color: $border-color;
+    color: $font-color;
+    background-size: 20px 20px;
+
+    &:before {
+      border-bottom-color: darken($border-color, 10%);
+    }
+
+    &:after{
+      border-bottom-color: lighten($color, 1%);
+    }
+  }
+
+  .form-control {
+    border-color: $input-border-color;
+    @include box-shadow(none);
+    &:focus,
+    &.focus {
+      border-color: darken($input-border-color, 10%) !important;
+      @include box-shadow(none);
+    }
+  }
+  .input-group-addon {
+    color: $font-color;
+    border-color: $border-color;
+    background-color: $color;
+  }
+
+  .form-control-feedback {
+    color: darken($input-border-color, 10%);
+  }
+}
+
+// Light form state mixin
+//
+@mixin pixel-form-state-light($color, $font-color, $border-color) {
+  @include pixel-form-state-base($color, $font-color, $border-color);
+}
+
+@mixin pixel-form-state-simple($color) {
+  .help-block {
+    color: $color !important;
+  }
+}
+
+
+// Dark form state mixin
+//
+@mixin pixel-form-state-dark($color, $input-border-color, $stripes-opacity: .06) {
+  @include pixel-form-state-base($color, $font-color: #fff, $border-color: darken($color, 10%), $input-border-color: $color);
+  .help-block {
+    background: $color;
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,$stripes-opacity)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,$stripes-opacity)), color-stop(.75, rgba(255,255,255,$stripes-opacity)), color-stop(.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,$stripes-opacity) 25%, transparent 25%, transparent 50%, rgba(255,255,255,$stripes-opacity) 50%, rgba(255,255,255,$stripes-opacity) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(45deg, rgba(255,255,255,$stripes-opacity) 25%, transparent 25%, transparent 50%, rgba(255,255,255,$stripes-opacity) 50%, rgba(255,255,255,$stripes-opacity) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255,255,255,$stripes-opacity) 25%, transparent 25%, transparent 50%, rgba(255,255,255,$stripes-opacity) 50%, rgba(255,255,255,$stripes-opacity) 75%, transparent 75%, transparent);
+    background-size: 20px 20px;
+  }
+}
+
+// Note states mixin
+//
+@mixin pixel-note-mixin($color, $bg-color) {
+  border-color: $color;
+  background: $bg-color;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $color;
+  }
+}

@@ -1,0 +1,92 @@
+<header class="school-header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-menu">
+          <span class="sr-only">Abrir navegação</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" link-to="school.home">
+          <img src="assets/images/logo.png" alt="Edools">
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="header-menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a link-to="school.checkout.cart">
+              <i class="fa fa-shopping-cart"></i>
+              <span>Carrinho</span>
+            </a>
+          </li>
+          <li ng-if="!$session.get()">
+            <a link-to="school.auth.login">Entrar</a>
+          </li>
+          <li ng-if="$session.get() != undefined">
+            <a link-to="school.dashboard.enrollments">Meus cursos</a>
+          </li>
+          <li ng-if="$session.get() != undefined" class="dropdown">
+            <a class="dropdown-toggle pointer" data-toggle="dropdown">
+              <span>{{ $session.get().first_name }}</span>
+              <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a link-to="school.dashboard.orders">
+                  <i class="fa fa-list-ul"></i>
+                  <span>Meus Pedidos</span>
+                </a>
+              </li>
+              <li>
+                <a link-to="school.auth.logout">
+                  <i class="fa fa-power-off"></i>
+                  <span>Sair</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </div>
+</header>
+
+<div class="app-content">
+  <div ui-view="content" ng-class="{'loading': $loader.get('global').isLoading}"></div>
+  <spinner name="global" class="large"></spinner>
+</div>
+
+<footer>
+  <div class="container">
+    <section class="footer-info row">
+      <div class="col-xs-12 col-md-6">
+
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <h2>Telefone</h2>
+        <p>(21) 3741-8007</p>
+        <br>
+        <h2>Email</h2>
+        <p><a href="mailto:contato@bizstart.com.br">contato@bizstart.com.br</a></p>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <h2>Site</h2>
+        <p><a href="http://www.bizstart.com.br">www.bizstart.com.br</a></p>
+        <br>
+        <h2>Redes Sociais</h2>
+        <a href="http://www.facebook.com/workshopbizstart"><i class="fa fa-facebook fa-lg"></i></a>
+        <a href="http://www.twitter.com/BizstartBR"><i class="fa fa-twitter fa-lg"></i></a>
+      </div>
+    </section>
+
+    <section class="footer-school row copyright">
+      <div class="pull-right">
+        Plataforma de ensino por
+        <a href="http://www.edools.com" class="brand scroller" target="blank" title="Edools">
+          <img alt="Edools" src="assets/images/logo.png" width="90" />
+        </a>
+      </div>
+    </section>
+  </div>
+</footer>

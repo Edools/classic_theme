@@ -1,0 +1,120 @@
+/*********************************************************************
+*
+*  layout/course
+*  course page styles
+*
+*********************************************************************/
+.course.main-header {
+  @media (max-width: $screen-small) {
+    min-height: 495px;
+  }
+
+  .info {
+    min-height: 100px;
+    max-height: 120px;
+    margin-bottom: 20px;
+    @extend %clearfix;
+
+    @media (max-width: $screen-small) {
+      min-height: 150px;
+      max-height: 170px;
+    }
+  }
+
+  .image {
+    max-height: 230px;
+    text-align: right;
+
+    @media (min-width: $screen-tablet) {
+      text-align: center;
+    }
+  }
+
+  .enroll {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    max-width: 100%;
+
+    .label {
+      @media (max-width: $screen-small) {
+        display: block;
+      }
+    }
+  }
+}
+
+.course-body {
+  min-height: 300px;
+  padding: 15px 30px;
+  margin: 0;
+  background: lighten($light-gray, 2%);
+}
+
+.course-description {
+  padding: 10px 20px;
+  background: white;
+  margin-bottom: 20px;
+  @include panel();
+
+  header {
+    display: block;
+    height: 30px;
+  }
+
+  section {
+    display: block;
+  }
+
+  p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.8em;
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+}
+
+.topic {
+  .description {
+    font-size: 14px;
+  }
+}
+
+.modules {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.module {
+  padding: 5px 0;
+  border-bottom: 1px solid lighten(#ccc, 10%);
+}
+
+.module-info {
+  div {
+    display: inline-block;
+  }
+
+  .type {
+    line-height: 1.5em;
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 100;
+  }
+}
+
+.class {
+  padding: 5px 0;
+}
+
+.class-info {
+  .type {
+    left: -30px;
+    margin-right: 5px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+}

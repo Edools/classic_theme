@@ -1,0 +1,118 @@
+<div class="checkout">
+  <div class="container checkout-panel">
+    <div class="col-xs-12">
+      <h2>
+        <i class="fa fa-shopping-cart"></i>
+        <span>Carrinho de compras</span>
+      </h2>
+    </div>
+    <hr>
+    <div class="col-xs-12 col-md-8">
+      <div class="cart">
+        <div ng-if="schoolProducts == undefined || schoolProducts.length == 0" class="note note-warning">
+          Ainda não há items no seu carrinho.
+        </div>
+        <div class="panel cart-product" ng-repeat="schoolProduct in schoolProducts">
+          <div class="panel-heading">
+            <a class="panel-title" link-to="school.course({ courseId: schoolProduct.id })">
+              <strong>{{ schoolProduct.title }}</strong>
+            </a>
+            <div class="pull-right">
+              <a class="pointer" remove-from-cart="schoolProduct">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="col-xs-12 col-md-4 card cart-image">
+              <img src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
+            </div>
+            <div class="col-xs-12 col-md-8 cart-subtitle">
+              <p>{{ schoolProduct.subtitle }}</p>
+              <hr>
+              <div class="col-xs-12 col-sm-4">
+                <h4><strong>{{ (schoolProduct.product.price | money:'R$') || 'R$ --' }}</strong></h4>
+              </div>
+              <div class="col-xs-12 col-sm-8 input-group">
+                <input type="text" placeholder="Cupom de desconto" class="form-control">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-success">Ok</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <spinner name="cart"></spinner>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="cart-total panel">
+        <div class="panel-heading">
+          <strong class="panel-title">Total</strong>
+        </div>
+        <div class="panel-body">
+          <div class="courses">
+            <div class="course" ng-repeat="schoolProduct in schoolProducts">
+              <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
+              <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
+            </div>
+          </div>
+          <div ng-if="totalPrice != null" class="total clearfix">
+            <span class="pull-right">
+              {{ totalPrice | money:'R$' }}
+            </span>
+          </div>
+          <a link-to="school.checkout.connect" ng-disabled="schoolProducts == null || schoolProducts.length == 0" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+        </div>
+      </div>
+      <div class="payment-ways panel">
+        <div class="panel-heading">
+          <strong class="panel-title">Formas de pagamento</strong>
+        </div>
+        <div class="panel-body">
+          <ul class="payment-ways-list">
+            <li>
+              <i class="fa fa-check"></i>
+              <span>Cartão de Crédito</span>
+            </li>
+            <li>
+              <i class="fa fa-check"></i>
+              <span>Débito Online</span>
+            </li>
+            <li>
+              <i class="fa fa-check"></i>
+              <span>Boleto Bancário</span>
+            </li>
+          </ul>
+          <hr>
+          <div class="inline-images">
+            <img src="assets/images/formas-pagamento-cartoes.png" width="160" alt="Cartões">
+            <img src="assets/images/formas-pagamento-debito.png" width="100" alt="Cartões">
+            <img src="assets/images/formas-pagamento-boleto.png" width="30" alt="Cartões">
+          </div>
+        </div>
+      </div>
+      <div class="well secure-site">
+        <div class="row">
+          <div class="col-xs-4 lock">
+            <img class="pull-left" src="assets/images/lock.png" alt="Site seguro">
+          </div>
+          <div class="col-xs-8">
+            <h4><strong>Este site é seguro</strong></h4>
+            <p>Possuímos segurança SSL, a mesma utilizada em bancos online, garantindo a criptografia de suas informações.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="inline-images">
+              <img src="assets/images/aws.png" width="90" alt="Amazon Web Services">
+              <img src="assets/images/rede-logotipo.png" width="90" alt="Redecard">
+              <script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=cOgBuInvPIKcjurG96qea0LtVll3Y6UnK6RSR6PsxhZ6ejjPps"></script>
+              <img style="cursor:pointer;cursor:hand" width="90" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+/*********************************************************************
+*
+*  core/buttons
+*  Project custom buttons file
+*
+*********************************************************************/
+.btn-primary {
+  border: 0px;
+  background: #2c5a77;
+}
+.btn-orange {
+  color: #fff;
+  border: 0px;
+  background: #de8738;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    color: #fff;
+    background-color: #eb9d56;
+    border-color:#285e8e;
+  }
+}
