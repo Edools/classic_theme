@@ -81,13 +81,16 @@
     width: 100%;
     max-width: 100%;
     max-height: $course-height/2;
+    height: $course-height/2;
   }
 
   .body {
     padding: 10px;
-    min-height: $course-height/3;
+    max-height: $course-height/3;
+    height: $course-height/3;
     @include colorful-link($text-color);
     text-overflow: hidden;
+    overflow: hidden;
 
     .subtitle {
       font-size: 1em;
