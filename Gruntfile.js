@@ -27,9 +27,9 @@ module.exports = function (grunt) {
       dist: 'dist',
       temp: '.tmp',
       public: 'public',
-      bucket: 'myedools_assets', // AWS S3 bucket to MyEdools assets
-      bucket_folder: 'yourbucketfolder',
-      bucket_url: 'https://s3.amazonaws.com/myedools_assets'
+      bucket: 'myedools_themes', // AWS S3 bucket to MyEdools assets
+      bucket_folder: 'your_bucket_folder',
+      bucket_url: 'https://s3.amazonaws.com/<%= theme.bucket %>'
     },
 
     // Watches files for changes and runs tasks based on the changed files
@@ -298,6 +298,7 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'templates/**/*.html',
+            'schemas/**/*.json',
             'assets/images/**/*.{webp}',
             'assets/fonts/**/*.{otf,eot,svg,ttf,woff}'
           ]
@@ -390,8 +391,6 @@ module.exports = function (grunt) {
             options: { verify: true },
             src: '<%= theme.public %>/*',
             dest: '<%= theme.bucket_folder %>'
-            //rel: '<%= theme.dist %>'
-
           }
         ]
       }
@@ -404,8 +403,8 @@ module.exports = function (grunt) {
           url: 'https://themeDeploy:themeDeploy123@www.myedools.com/themes/deploy',
           method: 'POST',
           form: {
-            school: 'yourdain',
-            theme: 'yourid',
+            school: 'your_domain',
+            theme: 'your_theme_id',
             package_url: '<%= theme.bucket_url %>/<%= theme.bucket_folder %>/<%= pkg.name %>.zip',
           },
         },
