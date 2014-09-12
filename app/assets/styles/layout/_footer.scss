@@ -1,0 +1,40 @@
+/*********************************************************************
+*
+*  layout/footer
+*  Footer styles
+*
+*********************************************************************/
+.school-footer {
+  background: #595959;
+  border-top: 4px solid #7B7B7B;
+  padding: 20px 0;
+
+  color: white;
+  a {
+    @include colorful-link(white);
+  }
+
+  h4 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #979797;
+  }
+
+  .description {
+    font-size: 1.1em;
+    font-weight: 100;
+    padding-bottom: 30px;
+    border-bottom: 1px solid white;
+  }
+
+  address {
+    margin-top: 20px;
+    font-size: 0.8em;
+  }
+}
+
+.copyright-footer {
+  padding: 10px 0;
+  background: #373737;
+  color: white;
+}
