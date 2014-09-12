@@ -28,7 +28,7 @@ module.exports = function (grunt) {
       temp: '.tmp',
       public: 'public',
       bucket: 'myedools_themes', // AWS S3 bucket to MyEdools assets
-      bucket_folder: 'your_bucket_folder',
+      bucket_folder: 'demo',
       bucket_url: 'https://s3.amazonaws.com/<%= theme.bucket %>'
     },
 
@@ -265,7 +265,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= theme.dist %>',
-          src: ['*.html', 'views/**/*.html'],
+          src: ['*.html', 'templates/**/*.html'],
           dest: '<%= theme.dist %>'
         }]
       }
@@ -403,11 +403,25 @@ module.exports = function (grunt) {
           url: 'https://themeDeploy:themeDeploy123@www.myedools.com/themes/deploy',
           method: 'POST',
           form: {
-            school: 'your_domain',
-            theme: 'your_theme_id',
+            school: 'demo',
+            theme: '53ab222e72616969ed000000',
             package_url: '<%= theme.bucket_url %>/<%= theme.bucket_folder %>/<%= pkg.name %>.zip',
           },
         },
+      }
+    },
+
+    edools_deploy: {
+      options: {
+        domain: 'demo',
+        theme: '53ab222e72616969ed000000',
+        token: 'b40bbce82ef79ea6be0fb3294e7d948c:b712a32e4fb59e141e935da4c79ebce1',
+        package_file: '<%= theme.public %>/<%= pkg.name %>.zip'
+      },
+      dist: {
+        files: [
+          {expand: true, cwd: '<%= theme.dist %>/' ,src: ['**']}
+        ]
       }
     },
 
@@ -470,7 +484,6 @@ module.exports = function (grunt) {
   grunt.registerTask('deploy', [
     'build',
     'compress',
-    's3:production',
-    'http:myedools'
+    'edools_deploy'
   ]);
 };
