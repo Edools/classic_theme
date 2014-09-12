@@ -26,10 +26,7 @@ module.exports = function (grunt) {
       app: 'app',
       dist: 'dist',
       temp: '.tmp',
-      public: 'public',
-      bucket: 'myedools_themes', // AWS S3 bucket to MyEdools assets
-      bucket_folder: 'demo',
-      bucket_url: 'https://s3.amazonaws.com/<%= theme.bucket %>'
+      public: 'public'
     },
 
     // Watches files for changes and runs tasks based on the changed files
@@ -376,46 +373,11 @@ module.exports = function (grunt) {
       }
     },
 
-    // AWS S3 upload
-    s3: {
-      options: {
-        access: 'public-read'
-      },
-      production:{
-        options: {
-          bucket: '<%= theme.bucket %>'
-        },
-        sync: [
-          {
-            // make sure this document is newer than the one on S3 and replace it
-            options: { verify: true },
-            src: '<%= theme.public %>/*',
-            dest: '<%= theme.bucket_folder %>'
-          }
-        ]
-      }
-    },
-
-    // Send POST request to Theme System (MyEdools.com)
-    http: {
-      myedools: {
-        options: {
-          url: 'https://themeDeploy:themeDeploy123@www.myedools.com/themes/deploy',
-          method: 'POST',
-          form: {
-            school: 'demo',
-            theme: '53ab222e72616969ed000000',
-            package_url: '<%= theme.bucket_url %>/<%= theme.bucket_folder %>/<%= pkg.name %>.zip',
-          },
-        },
-      }
-    },
-
     edools_deploy: {
       options: {
-        domain: 'demo',
-        theme: '53ab222e72616969ed000000',
-        token: 'b40bbce82ef79ea6be0fb3294e7d948c:b712a32e4fb59e141e935da4c79ebce1',
+        domain: 'your_domain',
+        theme: 'your_theme_id',
+        token: 'your_authorization_token',
         package_file: '<%= theme.public %>/<%= pkg.name %>.zip'
       },
       dist: {
