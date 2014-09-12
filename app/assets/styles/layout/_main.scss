@@ -7,7 +7,7 @@
 .main-header {
   margin: 0;
   padding: 30px;
-  background: $light-blue;
+  background: $light-gray;
   overflow: auto;
 
   @media(max-width: $screen-small) {
@@ -29,7 +29,7 @@
   }
 
   .info {
-    color: white;
+    color: $dark-gray;
     font-family: 'Open Sans', sans-serif;
 
     .title {
