@@ -49,9 +49,9 @@ module.exports = function (grunt) {
         files: ['test/spec/**/*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
-      compass: {
+      libsass: {
         files: ['<%= theme.app %>/assets/styles/**/*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer']
+        tasks: ['libsass:server', 'autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -154,30 +154,18 @@ module.exports = function (grunt) {
     },
 
     // Compiles Sass to CSS and generates necessary files if requested
-    compass: {
+    libsass: {
       options: {
-        sassDir: '<%= theme.app %>/assets/styles',
-        cssDir: '<%= theme.temp %>/styles',
-        generatedImagesDir: '<%= theme.temp %>/images/generated',
-        imagesDir: '<%= theme.app %>/assets/images',
-        javascriptsDir: '<%= theme.app %>/assets/scripts',
-        fontsDir: '<%= theme.app %>/assets/fonts',
-        httpImagesPath: '/images',
-        httpGeneratedImagesPath: '/images/generated',
-        httpFontsPath: '/fonts',
-        relativeAssets: false,
-        assetCacheBuster: false,
-        raw: 'Sass::Script::Number.precision = 10\n'
-      },
-      dist: {
-        options: {
-          generatedImagesDir: '<%= theme.dist %>/images/generated'
-        }
+        loadPath: ['<%= theme.app %>/bower_components/compass-mixins/lib']
       },
       server: {
-        options: {
-          debugInfo: true
-        }
+        files: [{
+          expand: true,
+          cwd: '<%= theme.app %>/assets/styles',
+          src: ['main.scss'],
+          dest: '<%= theme.temp %>/styles',
+          ext: '.css'
+        }]
       }
     },
 
@@ -317,13 +305,13 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'compass:server'
+        'libsass:server'
       ],
       test: [
-        'compass'
+        'libsass'
       ],
       dist: [
-        'compass:dist',
+        'libsass:server',
         'imagemin',
         'svgmin'
       ]
