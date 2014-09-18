@@ -5,7 +5,7 @@
       <ul class="listacursos">
         <li ng-repeat="curso in schoolProducts" class="curso col-xs-12 col-md-4 text-center">
           <a link-to="school.course({ courseId: curso.id })">
-            <img src="{{ curso.logo }}" alt="{{ curso.title }}">
+            <img ng-src="{{ curso.logo }}" alt="{{ curso.title }}">
           </a>
           <p class="rotulo">
             <a link-to="school.course({ courseId: curso.id })">{{ curso.tag.title }}</a>
