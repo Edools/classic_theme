@@ -22,8 +22,8 @@
           <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in enrollments">
             <div class="course">
               <div class="course-image">
-                <img ng-if="enrollment.course.logo !== null" src="{{ enrollment.course.logo }}" />
-                <img ng-if="enrollment.course.logo === null" src="images/missing_edit_course.png" />
+                <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
+                <img ng-if="enrollment.course.logo === null" src="assets/images/missing-course-logo.png" />
                 <div class="course-edit-overlay">
                   <a class="btn btn-default btn-edit" link-to=".course({ courseId: enrollment.course.id, enrollmentId: enrollment.id })">
                     <i class="fa fa-video-camera"></i>
