@@ -50,3 +50,7 @@
 .app-content {
   min-height: 400px;
 }
+
+[ui-view="content"] {
+  height: 100%;
+}
