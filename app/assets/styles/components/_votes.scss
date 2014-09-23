@@ -1,0 +1,34 @@
+/*********************************************************************
+*
+*  components/votes
+*  Up and down votes component
+*
+*********************************************************************/
+.votes {
+  $no-vote-color: #aaa;
+  $vote-up-color: #9eb03a;
+  $vote-down-color: #b30429;
+
+  font-size: 12px;
+  a.vote {
+    cursor: pointer;
+    color: $no-vote-color;
+    &:hover {
+      color: darken($no-vote-color, 10%);
+    }
+  }
+
+  a.up.active {
+    color: $vote-up-color;
+    &:hover {
+      color: darken($vote-up-color, 10%);
+    }
+  }
+
+  a.down.active {
+    color: $vote-down-color;
+    &:hover {
+      color: darken($vote-down-color, 10%);
+    }
+  }
+}

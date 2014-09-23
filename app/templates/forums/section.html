@@ -7,11 +7,11 @@
       <strong>Seções</strong>
     </div>
     <div class="forum-sections list-group widget-threads">
-      <div ng-if="section.child_forum_sections === undefined || section.child_forum_sections.length === 0" class="alert alert-info text-center">Ainda não há seções aqui.</div>
+      <div ng-if="(section.child_forum_sections === undefined || section.child_forum_sections.length === 0) && !$loader.get('forum').isLoading" class="alert alert-info text-center">Ainda não há seções aqui.</div>
       <article ng-repeat="childSection in section.child_forum_sections" class="section list-group-item">
         <div class="section-content clearfix">
           <h4 class="list-group-item-heading">
-            <a ng-if="!childSection.editable" ui-sref="admin.education.forums.section({ sectionId: childSection.id })">{{ childSection.title }}</a>
+            <a ng-if="!childSection.editable" link-to="school.forums.section({ sectionId: childSection.id })">{{ childSection.title }}</a>
             <span ng-if="childSection.editable" editable-text="childSection.title" required>{{ childSection.title }}</span>
           </h4>
           <p ng-if="!childSection.editable" class="list-group-item-text" clamp="3">{{ childSection.description }}</p>
@@ -20,20 +20,6 @@
         <div ng-if="!childSection.editable" class="section-meta">
           <strong>{{ childSection.child_forum_sections.length || 0 }} sub-seções</strong>
           <strong>{{ childSection.forum_questions.length || 0 }} perguntas</strong>
-        </div>
-        <div class="section-controls">
-          <button ng-if="childSection.editable" type="button" class="btn btn-success btn-labeled btn-xs" ng-click="saveChildSection(childSection)">
-            <i class="btn-label fa fa-save"></i>
-            <span>Salvar</span>
-          </button>
-          <button ng-if="!childSection.editable" type="button" class="btn btn-warning btn-labeled btn-xs" ng-click="childSection.editable = true">
-            <i class="btn-label fa fa-pencil"></i>
-            <span>Editar</span>
-          </button>
-          <button type="button" class="btn btn-danger btn-labeled btn-xs" ng-click="removeChildSection(childSection)">
-            <i class="btn-label fa fa-trash-o"></i>
-            <span>Apagar</span>
-          </button>
         </div>
         <hr ng-if="childSection.forum_questions !== undefined && childSection.forum_questions.length > 0"/>
         <div ng-if="childSection.forum_questions !== undefined && childSection.forum_questions.length > 0" class="popular-thread">
@@ -62,18 +48,21 @@
     <div ng-if="!section.isRoot">
       <div class="panel-heading">
         <strong>Perguntas</strong>
+        <div class="panel-heading-controls">
+          <button link-to="school.forums.question.new({ sectionId: section.id })" type="button" class="btn btn-xs btn-primary">Fazer uma pergunta</button>
+        </div>
       </div>
-      <div ng-if="section.forum_questions === undefined || section.forum_questions.length === 0" class="alert alert-info text-center">Ainda não há perguntas nesta seção.</div>
+      <div ng-if="(section.forum_questions === undefined || section.forum_questions.length === 0) && !$loader.get('forum').isLoading" class="alert alert-info text-center">Ainda não há perguntas nesta seção.</div>
     </div>
     <div ng-if="section.forum_questions !== undefined && section.forum_questions.length > 0" class="panel-body forum-questions widget-threads">
       <article ng-repeat="question in section.forum_questions" class="thread">
-        <img class="thread-avatar" ng-src="{{ question.user.image }}" alt="Usuário">
+        <img class="thread-avatar" ng-src="{{ question.user.cover_image_url }}" alt="Usuário">
         <div class="thread-body">
           <span class="thread-time">2d</span>
-          <a ui-sref="admin.education.forums.question" class="thread-title">{{ question.title }}</a>
+          <a link-to="school.forums.question.view({ sectionId: section.id, questionId: question.id })" class="thread-title">{{ question.title }}</a>
           <div class="thread-info votes">
-            <a href="">{{ question.forum_answers.length }} respostas</a>,
-            feita por <a href="">{{ question.user.first_name }}</a>
+            <a link-to="school.forums.question.view({ sectionId: section.id, questionId: question.id })">{{ question.forum_answers.length }} respostas</a>,
+            feita por <a>{{ question.user.first_name }}</a>
             <a class="vote up">
               <span>{{ question.upvotes }} <i class="fa fa-thumbs-up"></i></span>
             </a>
@@ -85,4 +74,5 @@
       </article>
     </div>
   </div>
+  <spinner name="forum"></spinner>
 </div>

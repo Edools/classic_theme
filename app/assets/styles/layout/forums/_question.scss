@@ -1,0 +1,95 @@
+/*********************************************************************
+*
+*  layout/education/forums/question
+*  Question screen layout
+*
+*********************************************************************/
+.question-page {
+  hr {
+    width: 100%;
+  }
+}
+
+@mixin forum-answer-avatar ($size) {
+  text-align: center;
+
+  & .avatar {
+    height: $size;
+    width: $size;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  & .name {
+    display: block;
+    font-size: 14px;
+  }
+}
+
+
+$question-user-avatar-size: 48px;
+.question-user {
+  @include forum-answer-avatar($question-user-avatar-size);
+}
+
+.question {
+  display: block;
+
+  .title {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .time {
+    float: right;
+    font-size: 12px;
+    color: #aaa;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+}
+
+.teacher-answers {
+  margin-top: 20px;
+}
+
+.answer {
+  padding: 10px;
+
+  &:hover {
+    background: #eee;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .content {
+    .text {
+      font-size: 14px;
+    }
+
+    .time {
+      float: right;
+      font-size: 12px;
+      color: #aaa;
+    }
+  }
+
+  .user {
+    @include forum-answer-avatar($question-user-avatar-size);
+  }
+}
+
+$teacher-answer-color: #f9f1c7;
+.highlighted-answers {
+  .answer {
+    background: $teacher-answer-color;
+
+    &:hover {
+      background: darken($teacher-answer-color, 3%);
+    }
+  }
+}

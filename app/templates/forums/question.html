@@ -1,0 +1,149 @@
+<div class="forum-panel">
+  <div class="question-page container">
+    <div class="panel-body">
+      <article class="question row">
+        <div class="question-user col-xs-12 col-sm-1">
+          <img class="avatar" ng-src="{{ question.user.cover_image_url }}" alt="">
+          <span class="name">{{ question.user | fullname }}</span>
+          <i class="fa fa-graduation-cap" tooltip="Aluno"></i>
+        </div>
+        <div class="content col-xs-12 col-sm-11">
+          <span class="time">2d</span>
+          <h3 class="title">{{ question.title }}</h3>
+          <div class="description" ng-bind-html="question.description"></div>
+          <div class="votes">
+            <a class="vote up active">
+              <span>80</span>
+              <i class="fa fa-thumbs-up"></i>
+            </a>
+            <a class="vote down">
+              <span>30</span>
+              <i class="fa fa-thumbs-down"></i>
+            </a>
+          </div>
+        </div>
+      </article>
+      <hr>
+      <input type="text" placeholder="Responder..." class="form-control">
+      <section class="highlighted-answers row">
+        <h4>
+          <i class="glyphicon glyphicon-pushpin"></i>
+          <span>Respostas destacadas</span>
+        </h4>
+        <article class="answer row">
+          <div class="user col-xs-12 col-sm-1">
+            <img class="avatar" src="https://cdn.edools.com/assets/images/users/default.jpeg" alt="">
+            <span class="name">John Doe</span>
+            <i class="fa fa-group" tooltip="Professor"></i>
+          </div>
+          <div class="content col-xs-12 col-sm-11">
+            <div class="time">2d</div>
+            <div class="text">
+              <p>Casamentiss faiz malandris se pirulitá, Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer Ispecialista im mé intende tudis nuam golada, vinho, uiski, carirí, rum da jamaikis, só num pode ser mijis. Adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="votes">
+              <a class="vote up active">
+                <span>80</span>
+                <i class="fa fa-thumbs-up"></i>
+              </a>
+              <a class="vote down">
+                <span>30</span>
+                <i class="fa fa-thumbs-down"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="answer row">
+          <div class="user col-xs-12 col-sm-1">
+            <img class="avatar" src="https://cdn.edools.com/assets/images/users/default.jpeg" alt="">
+            <span class="name">John Doe</span>
+            <i class="fa fa-graduation-cap" tooltip="Aluno"></i>
+          </div>
+          <div class="content col-xs-12 col-sm-11">
+            <div class="time">2d</div>
+            <div class="text">
+              <p>Casamentiss faiz malandris se pirulitá, Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer Ispecialista im mé intende tudis nuam golada, vinho, uiski, carirí, rum da jamaikis, só num pode ser mijis. Adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="votes">
+              <a class="vote up active">
+                <span>80</span>
+                <i class="fa fa-thumbs-up"></i>
+              </a>
+              <a class="vote down">
+                <span>30</span>
+                <i class="fa fa-thumbs-down"></i>
+              </a>
+
+              <button type="button" class="btn btn-danger btn-labeled btn-xs pull-right">
+                <i class="btn-label fa fa-times"></i>
+                <span>Remover destaque</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+      <section class="question-answers row">
+        <h4>
+          <i class="fa fa-graduation-cap"></i>
+          <span>Respostas dos alunos</span>
+        </h4>
+        <article class="answer row">
+          <div class="user col-xs-12 col-sm-1">
+            <img class="avatar" src="https://cdn.edools.com/assets/images/users/default.jpeg" alt="">
+            <span class="name">John Doe</span>
+            <i class="fa fa-graduation-cap" tooltip="Aluno"></i>
+          </div>
+          <div class="content col-xs-12 col-sm-11">
+            <div class="time">15h</div>
+            <div class="text">
+              <p>Casamentiss faiz malandris se pirulitá, Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer Ispecialista im mé intende tudis nuam golada, vinho, uiski, carirí, rum da jamaikis, só num pode ser mijis. Adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="votes">
+              <a class="vote up active">
+                <span>80</span>
+                <i class="fa fa-thumbs-up"></i>
+              </a>
+              <a class="vote down">
+                <span>30</span>
+                <i class="fa fa-thumbs-down"></i>
+              </a>
+
+              <button type="button" class="btn btn-primary btn-labeled btn-xs pull-right">
+                <i class="btn-label glyphicon glyphicon-pushpin"></i>
+                <span>Destacar resposta</span>
+              </button>
+            </div>
+          </div>
+        </article>
+        <article class="answer row">
+          <div class="user col-xs-12 col-sm-1">
+            <img class="avatar" src="https://cdn.edools.com/assets/images/users/default.jpeg" alt="">
+            <span class="name">John Doe</span>
+            <i class="fa fa-graduation-cap" tooltip="Aluno"></i>
+          </div>
+          <div class="content col-xs-12 col-sm-11">
+            <div class="time">2h</div>
+            <div class="text">
+              <p>Casamentiss faiz malandris se pirulitá, Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer Ispecialista im mé intende tudis nuam golada, vinho, uiski, carirí, rum da jamaikis, só num pode ser mijis. Adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="votes">
+              <a class="vote up active">
+                <span>80</span>
+                <i class="fa fa-thumbs-up"></i>
+              </a>
+              <a class="vote down">
+                <span>30</span>
+                <i class="fa fa-thumbs-down"></i>
+              </a>
+
+              <button type="button" class="btn btn-primary btn-labeled btn-xs pull-right">
+                <i class="btn-label glyphicon glyphicon-pushpin"></i>
+                <span>Destacar resposta</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </div>
+</div>

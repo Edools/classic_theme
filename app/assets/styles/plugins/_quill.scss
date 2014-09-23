@@ -1,0 +1,32 @@
+/*********************************************************************
+*
+*  plugins/quill
+*  Quill.js custom styles
+*
+*********************************************************************/
+quill-editor {
+  @include card();
+  height: auto;
+  width: auto;
+  display: block;
+
+  &.editor-sm {
+    height: 200px;
+  }
+
+  &.editor-md {
+    height: 400px;
+  }
+
+  &.editor-lg {
+    height: 600px;
+  }
+}
+
+.ql-toolbar-container {
+  border-bottom: 1px solid #ccc;
+}
+
+.ql-container {
+  height: 85%;
+}

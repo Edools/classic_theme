@@ -6,5 +6,93 @@
 *********************************************************************/
 .forum-panel {
   background: #f3f5f7;
-  height: 100%;
+  min-height: 400px;
+}
+
+$list-item-background-color: #eee;
+
+.forum-sections {
+  .section {
+    padding: 15px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+
+    &:hover {
+      background: $list-item-background-color;
+    }
+
+    .section-content {
+      width: 80%;
+      display: inline-block;
+      vertical-align: text-top;
+    }
+
+    .section-meta {
+      display: inline-block;
+      vertical-align: text-top;
+      margin-right: 20px;
+
+      strong, span {
+        display: block;
+      }
+    }
+
+    .section-controls {
+      display: inline-block;
+      vertical-align: text-top;
+      float: right;
+
+      button {
+        display: block;
+        width: 75px;
+        margin-bottom: 5px;
+      }
+    }
+
+    hr {
+      margin-bottom: 15px;
+    }
+
+    .popular-thread {
+      margin-left: 30px;
+    }
+  }
+}
+
+.forum-breadcrumb {
+  background: #34495e !important;
+}
+
+.forum-questions {
+  &.panel-body {
+    padding: 0;
+  }
+
+  .thread {
+    margin: 0 !important;
+    padding: 15px 10px !important;
+    max-height: 100%;
+
+    &:hover {
+      background: $list-item-background-color;
+    }
+  }
+
+  $avatar-size: 48px;
+  .thread-avatar {
+    width: $avatar-size !important;
+    height: $avatar-size !important;
+    vertical-align: middle;
+  }
+
+  .thread-body {
+    height: 50px;
+    padding: 6px 0 !important;
+    margin-left: $avatar-size + 10px !important;
+    vertical-align: middle;
+  }
+
+  .thread-title {
+    font-size: 16px;
+  }
 }
