@@ -21,7 +21,7 @@
           <strong>{{ childSection.child_forum_sections.length || 0 }} sub-seções</strong>
           <strong>{{ childSection.forum_questions.length || 0 }} perguntas</strong>
         </div>
-        <hr ng-if="childSection.forum_questions !== undefined && childSection.forum_questions.length > 0"/>
+        <!-- <hr ng-if="childSection.forum_questions !== undefined && childSection.forum_questions.length > 0"/>
         <div ng-if="childSection.forum_questions !== undefined && childSection.forum_questions.length > 0" class="popular-thread">
           <i>Pergunta mais popular:</i>
           <div class="thread">
@@ -41,7 +41,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </article>
     </div>
 
@@ -58,17 +58,17 @@
       <article ng-repeat="question in section.forum_questions" class="thread">
         <img class="thread-avatar" ng-src="{{ question.user.cover_image_url }}" alt="Usuário">
         <div class="thread-body">
-          <span class="thread-time">2d</span>
+          <timeago ng-model="question.created_at" class="thread-time"></timeago>
           <a link-to="school.forums.question.view({ sectionId: section.id, questionId: question.id })" class="thread-title">{{ question.title }}</a>
           <div class="thread-info votes">
-            <a link-to="school.forums.question.view({ sectionId: section.id, questionId: question.id })">{{ question.forum_answers.length }} respostas</a>,
+            <a link-to="school.forums.question.view({ sectionId: section.id, questionId: question.id })">{{ question.forum_answers.length || 0 }} respostas</a>,
             feita por <a>{{ question.user.first_name }}</a>
-            <a class="vote up">
+            <!-- <a class="vote up">
               <span>{{ question.upvotes }} <i class="fa fa-thumbs-up"></i></span>
             </a>
             <a class="vote down">
               <span>{{ question.downvotes }} <i class="fa fa-thumbs-down"></i></span>
-            </a>
+            </a> -->
           </div>
         </div>
       </article>
