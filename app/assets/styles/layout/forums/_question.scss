@@ -52,6 +52,7 @@ $question-user-avatar-size: 48px;
 }
 
 .answer-action {
+  position: relative;
   padding-bottom: 45px;
 
   [autogrow-input] {

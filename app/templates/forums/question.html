@@ -26,13 +26,14 @@
       <hr>
       <div class="answer-action">
         <textarea type="text" autogrow-input ng-model="answer.text" placeholder="Responder..." class="form-control"></textarea>
-        <button ng-disabled="!answer.text" class="btn btn-success pull-right">Responder</button>
+        <button ng-disabled="!answer.text" ng-click="postAnswer(answer)" class="btn btn-success pull-right">Responder</button>
+        <spinner name="answer" class="small"></spinner>
       </div>
       <div ng-if="question.forum_answers == null || question.forum_answers.length == 0" class="note note-warning">
         <h4 class="note-title">Atenção!</h4>
         Ainda não há respostas para esta pergunta.
       </div>
-      <section class="highlighted-answers row">
+      <section class="highlighted-answers col-xs-12">
         <h4 ng-if="question.fixedAnswers != null && question.fixedAnswers.length > 0">
           <i class="glyphicon glyphicon-pushpin"></i>
           <span>Respostas destacadas</span>
@@ -59,12 +60,12 @@
           </div>
         </article>
       </section>
-      <section class="question-answers row">
-        <h4 ng-if="question.answers != null && question.answers.length > 0">
+      <section class="question-answers col-xs-12">
+        <h4 ng-if="question.forum_answers != null && question.forum_answers.length > 0">
           <i class="fa fa-graduation-cap"></i>
           <span>Respostas dos alunos</span>
         </h4>
-        <article ng-repeat="answer in question.answers" class="answer row">
+        <article ng-repeat="answer in question.forum_answers" class="answer row">
           <div class="user col-xs-12 col-sm-1">
             <img class="avatar" src="{{ answer.user.cover_image_url }}" alt="{{ answer.user | fullname }}">
             <span class="name">{{ answer.user | fullname }}</span>
