@@ -7,6 +7,10 @@
 .forum-panel {
   background: #f3f5f7;
   min-height: 400px;
+
+  .breadcrumb {
+    margin-top: 15px;
+  }
 }
 
 $list-item-background-color: #eee;

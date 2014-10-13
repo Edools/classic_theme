@@ -1,17 +1,18 @@
 <div class="forum-panel">
   <div class="question-page container">
+    <forum-breadcrumb ng-model="section" question="question"></forum-breadcrumb>
     <div class="panel-body">
       <article class="question row">
         <div class="question-user col-xs-12 col-sm-1">
           <img class="avatar" ng-src="{{ question.user.cover_image_url }}" alt="">
           <span class="name">{{ question.user | fullname }}</span>
-          <i class="fa fa-graduation-cap" tooltip="Aluno"></i>
+          <i class="fa" ng-class="{'fa-group': question.user.type == 'Collaborator', 'fa-graduation-cap': question.user.type == 'Student'}" tooltip="{{ question.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
         </div>
         <div class="content col-xs-12 col-sm-11">
           <timeago ng-model="question.created_at" class="time"></timeago>
           <h3 class="title">{{ question.title }}</h3>
           <div class="description" ng-bind-html="question.description"></div>
-          <div class="votes">
+          <!-- <div class="votes">
             <a class="vote up active">
               <span>80</span>
               <i class="fa fa-thumbs-up"></i>
@@ -20,7 +21,7 @@
               <span>30</span>
               <i class="fa fa-thumbs-down"></i>
             </a>
-          </div>
+          </div> -->
         </div>
       </article>
       <hr>
@@ -33,12 +34,12 @@
         <h4 class="note-title">Atenção!</h4>
         Ainda não há respostas para esta pergunta.
       </div>
-      <section class="highlighted-answers col-xs-12">
-        <h4 ng-if="question.fixedAnswers != null && question.fixedAnswers.length > 0">
+      <section class="highlighted-answers">
+        <h4 ng-if="question.highlighted_answers != null && question.highlighted_answers.length > 0">
           <i class="glyphicon glyphicon-pushpin"></i>
           <span>Respostas destacadas</span>
         </h4>
-        <article ng-repeat="answer in question.fixedAnswers" class="answer row">
+        <article ng-repeat="answer in question.highlighted_answers" class="answer row">
           <div class="user col-xs-12 col-sm-1">
             <img class="avatar" src="{{ answer.user.cover_image_url }}" alt="{{ answer.user | fullname }}">
             <span class="name">{{ answer.user | fullname }}</span>
@@ -60,19 +61,19 @@
           </div>
         </article>
       </section>
-      <section class="question-answers col-xs-12">
-        <h4 ng-if="question.forum_answers != null && question.forum_answers.length > 0">
+      <section class="question-answers">
+        <h4 ng-if="question.answers != null && question.answers.length > 0">
           <i class="fa fa-graduation-cap"></i>
           <span>Respostas dos alunos</span>
         </h4>
-        <article ng-repeat="answer in question.forum_answers" class="answer row">
+        <article ng-repeat="answer in question.answers | orderBy:'created_at':true" class="answer row">
           <div class="user col-xs-12 col-sm-1">
             <img class="avatar" src="{{ answer.user.cover_image_url }}" alt="{{ answer.user | fullname }}">
             <span class="name">{{ answer.user | fullname }}</span>
             <i class="fa" ng-class="{'fa-group': answer.user.type == 'Collaborator', 'fa-graduation-cap': answer.user.type == 'Student'}" tooltip="{{ answer.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
           </div>
           <div class="content col-xs-12 col-sm-11">
-            <div class="time">2d</div>
+            <timeago class="time" ng-model="answer.created_at"></timeago>
             <div class="text" ng-bind-html="answer.text"></div>
             <!-- <div class="votes">
               <a class="vote up active">

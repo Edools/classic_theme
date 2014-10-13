@@ -1,10 +1,10 @@
 {
   "school": {
-    "id": 224,
+    "id": 11,
     "type": "School"
   },
   "library": {
-    "id": 2
+    "id": 1
   },
   "forum": {
     "id": 1

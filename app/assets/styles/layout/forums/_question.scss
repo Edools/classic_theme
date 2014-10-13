@@ -42,7 +42,6 @@ $question-user-avatar-size: 48px;
 
   .time {
     float: right;
-    font-size: 12px;
     color: #aaa;
   }
 
@@ -79,15 +78,34 @@ $question-user-avatar-size: 48px;
     border-bottom: 1px solid #ccc;
   }
 
+  &:hover,
+  &:active,
+  &:focus {
+    .content .btn {
+      display: block;
+    }
+  }
+
   .content {
+    min-height: 80px;
+    position: relative;
+
     .text {
       font-size: 14px;
+      text-align: justify;
     }
 
     .time {
       float: right;
-      font-size: 12px;
       color: #aaa;
+      padding-left: 5px;
+    }
+
+    .btn {
+      position: absolute;
+      display: none;
+      right: 0;
+      bottom: -5px;
     }
   }
 

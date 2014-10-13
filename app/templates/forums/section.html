@@ -1,7 +1,5 @@
 <div class="forum-panel">
   <div class="container">
-    <h2 class="section-title">Fóruns</h2>
-
     <forum-breadcrumb ng-model="section"></forum-breadcrumb>
     <div class="panel-heading">
       <strong>Seções</strong>
@@ -61,7 +59,7 @@
           <timeago ng-model="question.created_at" class="thread-time"></timeago>
           <a link-to="school.forums.question.view({ sectionId: section.id, questionId: question.id })" class="thread-title">{{ question.title }}</a>
           <div class="thread-info votes">
-            <a link-to="school.forums.question.view({ sectionId: section.id, questionId: question.id })">{{ question.forum_answers.length || 0 }} respostas</a>,
+            <a link-to="school.forums.question.view({ sectionId: section.id, questionId: question.id })">{{ question.forum_answers_count || 0 }} respostas</a>,
             feita por <a>{{ question.user.first_name }}</a>
             <!-- <a class="vote up">
               <span>{{ question.upvotes }} <i class="fa fa-thumbs-up"></i></span>
