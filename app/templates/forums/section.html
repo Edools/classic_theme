@@ -16,7 +16,7 @@
           <p ng-if="childSection.editable" e-style="width: 100%;" editable-textarea="childSection.description" required>{{ childSection.description }}</p>
         </div>
         <div ng-if="!childSection.editable" class="section-meta">
-          <strong>{{ childSection.child_forum_sections.length || 0 }} sub-seções</strong>
+          <strong>{{ childSection.child_forum_sections_count || 0 }} sub-seções</strong>
           <strong>{{ childSection.forum_questions.length || 0 }} perguntas</strong>
         </div>
         <!-- <hr ng-if="childSection.forum_questions !== undefined && childSection.forum_questions.length > 0"/>
