@@ -41,7 +41,7 @@
         </h4>
         <article ng-repeat="answer in question.highlighted_answers" class="answer row">
           <div class="user col-xs-12 col-sm-1">
-            <img class="avatar" src="{{ answer.user.cover_image_url }}" alt="{{ answer.user | fullname }}">
+            <img class="avatar" ng-src="{{ answer.user.cover_image_url }}" alt="{{ answer.user | fullname }}">
             <span class="name">{{ answer.user | fullname }}</span>
             <i class="fa" ng-class="{'fa-group': answer.user.type == 'Collaborator', 'fa-graduation-cap': answer.user.type == 'Student'}" tooltip="{{ answer.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
           </div>
@@ -68,7 +68,7 @@
         </h4>
         <article ng-repeat="answer in question.answers | orderBy:'created_at':true" class="answer row">
           <div class="user col-xs-12 col-sm-1">
-            <img class="avatar" src="{{ answer.user.cover_image_url }}" alt="{{ answer.user | fullname }}">
+            <img class="avatar" ng-src="{{ answer.user.cover_image_url }}" alt="{{ answer.user | fullname }}">
             <span class="name">{{ answer.user | fullname }}</span>
             <i class="fa" ng-class="{'fa-group': answer.user.type == 'Collaborator', 'fa-graduation-cap': answer.user.type == 'Student'}" tooltip="{{ answer.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
           </div>
