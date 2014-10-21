@@ -31,12 +31,12 @@
               <p>{{ schoolProduct.subtitle }}</p>
               <hr>
               <div class="col-xs-12 col-sm-4">
-                <h4><strong>{{ (schoolProduct.product.price | money:'R$') || 'R$ --' }}</strong></h4>
+                <h4><strong>{{ schoolProduct.item.amount_to_pay | money:'R$' }}</strong></h4>
               </div>
-              <div class="col-xs-12 col-sm-8 input-group">
-                <input type="text" placeholder="Cupom de desconto" class="form-control">
+              <div class="col-xs-12 col-sm-8 input-group" ng-if="schoolProduct.item.total === schoolProduct.item.amount_to_pay">
+                <input type="text" placeholder="Cupom de desconto" class="form-control" ng-model="coupon.name">
                 <span class="input-group-btn">
-                  <button type="button" class="btn btn-success">Ok</button>
+                  <button type="button" class="btn btn-success" ng-click="applyCoupon(schoolProduct, coupon)">Ok</button>
                 </span>
               </div>
             </div>
@@ -54,7 +54,7 @@
           <div class="courses">
             <div class="course" ng-repeat="schoolProduct in schoolProducts">
               <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
-              <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
+              <span class="price">{{ schoolProduct.item.amount_to_pay | money:'R$' }}</span>
             </div>
           </div>
           <div ng-if="totalPrice != null" class="total clearfix">

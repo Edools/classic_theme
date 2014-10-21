@@ -5,7 +5,7 @@
 *
 *********************************************************************/
 .checkout {
-  %small-form {
+  @mixin small-form () {
     .input-lg {
       font-size: 14px;
     }
@@ -17,10 +17,12 @@
   }
 
   .page-signup-alt {
-    @extend %small-form;
+    background: #fff;
+    @include small-form();
   }
 
   .page-signin-alt {
-    @extend %small-form;
+    background: #fff;
+    @include small-form();
   }
 }
