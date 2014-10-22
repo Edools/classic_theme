@@ -10,7 +10,7 @@
           <div class="content col-xs-12 col-sm-11">
             <input type="text" class="title form-control" ng-model="question.title" name="title" placeholder="Título da sua pergunta" required>
             <div class="description">
-              <quill-editor class="editor-md" ng-model="question.description"></quill-editor>
+              <ck-editor ng-model="question.description" hide-source="true"></ck-editor>
             </div>
           </div>
         </article>
