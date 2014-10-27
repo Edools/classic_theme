@@ -15,11 +15,11 @@
         </a>
       </li> -->
     </ul>
-    <div class="panel tab-content tab-content-bordered">
+    <section class="panel tab-content tab-content-bordered">
       <div ng-show="!$loader.isLoading">
-        <div ng-if="enrollments == undefined || enrollments.length == 0" class="alert alert-warning">Você ainda não está matriculado em nenhum curso.</div>
+        <div ng-if="(enrollments == undefined || enrollments.length == 0) && (pendingEnrollments == undefined || pendingEnrollments.length === 0) && !$loader.get('dashboard').isLoading" class="alert alert-warning">Você ainda não está matriculado em nenhum curso.</div>
         <div class="container">
-          <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in enrollments">
+          <article class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in enrollments">
             <div class="course">
               <div class="course-image">
                 <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
@@ -38,10 +38,25 @@
                 </div>
               </div>
             </div>
-          </div>
+          </article>
+          <h4 ng-if="pendingEnrollments != undefined || pendingEnrollments.length > 0">Matrículas pendentes:</h4>
+          <article class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in pendingEnrollments">
+            <div class="course">
+              <div class="course-image">
+                <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
+                <img ng-if="enrollment.course.logo === null" src="assets/images/missing-course-logo.png" />
+              </div>
+              <div class="course-label">
+                <span max-lines="1">{{ enrollment.course.title }}</span>
+                <div>
+                  <i class="light-gray-text"><enrollment-status ng-model="enrollment"></enrollment-status></i>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
       <spinner name="dashboard" class="small"></spinner>
-    </div>
+    </section>
   </div>
 </div>
