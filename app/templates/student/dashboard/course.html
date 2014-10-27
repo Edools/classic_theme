@@ -4,7 +4,7 @@
     <div ng-class="{'col-md-4': $state.is('school.dashboard.enrollments.course.extraContent') || $state.is('school.dashboard.enrollments.course.content'), 'col-md-12': $state.is('school.dashboard.enrollments.course')}">
       <div class="row course-container">
         <div class="course-infos" ng-class="{'col-md-7': $state.is('school.dashboard.enrollments.course')}" ng-if="!$state.is('school.dashboard.enrollments.course.extraContent')">
-          <div class="course-page panel text-center fx-fade-right">
+          <div class="course-page panel text-center">
             <br/>
             <div class="row">
               <a link-to=".">
@@ -20,7 +20,7 @@
             </div>
           </div>
           <article ng-if="course.modules !== undefined && course.modules.length > 0"
-            class="course-content panel fx-fade-right">
+            class="course-content panel">
 
             <div class="panel-heading">
               <strong class="panel-title">Conteúdo do curso</strong>
@@ -76,7 +76,7 @@
       </div>
     </div>
 
-    <div ui-view class="fx-fade-down fx-speed-400" ng-if="$state.is('school.dashboard.enrollments.course.content') || $state.is('school.dashboard.enrollments.course.extraContent')" ng-class="{'col-md-8': $state.is('school.dashboard.enrollments.course.content') || $state.is('school.dashboard.enrollments.course.extraContent')}">
+    <div ui-view ng-if="$state.is('school.dashboard.enrollments.course.content') || $state.is('school.dashboard.enrollments.course.extraContent')" ng-class="{'col-md-8': $state.is('school.dashboard.enrollments.course.content') || $state.is('school.dashboard.enrollments.course.extraContent')}">
     </div>
   </div>
 </div>
