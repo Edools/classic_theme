@@ -18,14 +18,14 @@
     <!-- endbuild -->
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">
-    <link href="https://cdn.edools.com/libs/edools-school/0.4.2/edools-school.css" rel="stylesheet" type="text/css"></link>
+    <link href="https://cdn.edools.com/libs/edools-school/0.4.4/edools-school.css" rel="stylesheet" type="text/css"></link>
   </head>
   <body>
     <div id="schoolapp" ui-view></div>
     <div id="themeapp" ng-app="theme">
       <theme-loader type="school"></theme-loader>
     </div>
-    <script src="https://cdn.edools.com/libs/edools-school/0.4.2/edools-school.min.js"></script>
+    <script src="https://cdn.edools.com/libs/edools-school/0.4.4/edools-school.min.js"></script>
 
     <!-- build:js({.tmp,app}) assets/scripts/vendor.js -->
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -36,5 +36,14 @@
 
     <!-- build:js({.tmp,app}) assets/scripts/app.js -->
     <!-- endbuild -->
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=632320270166624&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
   </body>
 </html>

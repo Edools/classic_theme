@@ -17,7 +17,7 @@
   </div>
 </header>
 <div class="course-body row">
-  <div class="col-xs-12 col-md-8">
+  <div ng-class="{'col-md-8': course.topics.length > 0 || course.class_teachers.length > 0}" class="col-xs-12">
     <article ng-if="course.description != null && course.description != ''" class="course-description">
       <section ng-bind-html="course.description"></section>
     </article>
@@ -29,6 +29,7 @@
         <content-tree type="home" ng-model="course"></content-tree>
       </div>
     </article>
+    <div class="fb-comments" data-href="{{ $location.absUrl() }}" data-width="790" data-numposts="5" data-colorscheme="light"></div>
   </div>
   <div class="topics col-xs-12 col-md-4">
     <section ng-repeat="topic in course.topics" class="topic panel">
@@ -37,6 +38,19 @@
       </div>
       <div class="panel-body">
         <p class="description" ng-bind-html="topic.description"></p>
+      </div>
+    </section>
+
+    <section ng-if="course.class_teachers.length > 0" class="topic panel teachers">
+      <div class="panel-heading">
+        <strong class="title panel-title">Professores</strong>
+      </div>
+      <div class="panel-body">
+        <div ng-repeat="teacher in course.class_teachers">
+          <img ng-if="teacher.photo_url" ng-src="{{ teacher.photo_url }}" alt="{{ teacher.full_name }}" class="image col-xs-12 col-md-12">
+          <h4 class="teacher-name">{{ teacher.full_name }}</h4>
+          <p class="description" ng-bind-html="teacher.about"></p>
+        </div>
       </div>
     </section>
   </div>
