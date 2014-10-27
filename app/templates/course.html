@@ -29,7 +29,8 @@
         <content-tree type="home" ng-model="course"></content-tree>
       </div>
     </article>
-    <div class="fb-comments" data-href="{{ $location.absUrl() }}" data-width="790" data-numposts="5" data-colorscheme="light"></div>
+    <!-- <div class="fb-comments" data-href="https://demo.myedools.com/#/course/156" data-width="790" data-numposts="5" data-colorscheme="light"></div> -->
+    <div ng-if="$location.absUrl()" class="fb-comments" data-href="{{ $location.absUrl() }}" data-width="790" data-numposts="5" data-colorscheme="light"></div>
   </div>
   <div class="topics col-xs-12 col-md-4">
     <section ng-repeat="topic in course.topics" class="topic panel">
