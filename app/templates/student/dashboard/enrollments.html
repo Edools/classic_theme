@@ -1,4 +1,9 @@
 <div class="dashboard">
+  <div class="alert alert-danger" ng-if="unauthorized">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>Acesso não autorizado. </strong> Esses são os cursos em que você está matriculado.
+  </div>
+
   <div class="container dashboard-panel">
     <ul class="nav nav-tabs nav-tabs-lg">
       <li class="active">
