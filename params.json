@@ -9,6 +9,7 @@
   "forum": {
     "id": 1
   },
+  "apps":["school", "ecommerce", "forum"],
   "key": "0deeefea8ed413cfd46deaee6a9e0a8f:8905479a41af1d94b85c5186ec33408d",
   "pages": [{
     "title": "Um titulo ai",
