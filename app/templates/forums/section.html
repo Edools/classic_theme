@@ -17,7 +17,7 @@
         </div>
         <div ng-if="!childSection.editable" class="section-meta">
           <strong>{{ childSection.child_forum_sections_count || 0 }} sub-seções</strong>
-          <strong>{{ childSection.forum_questions.length || 0 }} perguntas</strong>
+          <strong>{{ childSection.forum_questions_count || 0 }} perguntas</strong>
         </div>
         <!-- <hr ng-if="childSection.forum_questions !== undefined && childSection.forum_questions.length > 0"/>
         <div ng-if="childSection.forum_questions !== undefined && childSection.forum_questions.length > 0" class="popular-thread">
