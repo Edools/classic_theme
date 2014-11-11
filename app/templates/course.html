@@ -17,7 +17,7 @@
   </div>
 </header>
 <div class="course-body row">
-  <div ng-class="{'col-md-8': course.topics.length > 0 || course.class_teachers.length > 0}" class="col-xs-12">
+  <div class="col-xs-12 col-md-8">
     <article ng-if="course.description != null && course.description != ''" class="course-description">
       <section ng-bind-html="course.description"></section>
     </article>
@@ -29,8 +29,7 @@
         <content-tree type="home" ng-model="course"></content-tree>
       </div>
     </article>
-    <!-- <div class="fb-comments" data-href="https://demo.myedools.com/#/course/156" data-width="790" data-numposts="5" data-colorscheme="light"></div> -->
-    <div class="fb-comments" data-href="{{ $location.absUrl() }}" data-width="790" data-numposts="5" data-colorscheme="light"></div>
+    <div class="fb-comments" data-href="{{ $location.absUrl() }}" data-width="790" data-numposts="10" data-colorscheme="light"></div>
   </div>
   <div class="topics col-xs-12 col-md-4">
     <section ng-repeat="topic in course.topics" class="topic panel">
