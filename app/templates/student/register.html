@@ -5,13 +5,14 @@
     <div class="form-group" ng-class="{'has-error': !registerForm.name.$pristine && registerForm.name.$invalid, 'has-success': registerForm.name.$valid}">
       <input type="text" name="name" class="form-control input-lg" placeholder="Nome completo" ng-model="newUser.name" required>
       <p class="help-block" ng-show="registerForm.name.$error.required && !registerForm.name.$pristine">O campo é obrigatório</p>
+      <p class="help-block" ng-show="registerForm.name.$error.server && !registerForm.name.$pristine">{{ registerForm.name.serverError }}</p>
     </div>
 
     <div class="form-group" ng-class="{'has-error': !registerForm.email.$pristine && registerForm.email.$invalid, 'has-success': registerForm.email.$valid}">
-      <input type="email" name="email" class="form-control input-lg" placeholder="E-mail" ng-model="newUser.email" required>
+      <input type="email" name="email" class="form-control input-lg" placeholder="E-mail" ng-model="newUser.email" ng-change="resetServerValidity(registerForm.email)" required>
       <p class="help-block" ng-show="registerForm.email.$error.required && !registerForm.email.$pristine">O campo é obrigatório</p>
       <p class="help-block" ng-show="registerForm.email.$error.email && !registerForm.email.$pristine">Este campo deve ser um e-email válido</p>
-      <p class="help-block" ng-show="registerForm.email.$error.server && !registerForm.email.$pristine">{{ registerForm.email.message }}</p>
+      <p class="help-block" ng-show="registerForm.email.$error.server && !registerForm.email.$pristine">{{ registerForm.email.serverError }}</p>
     </div>
 
     <div class="form-group" ng-class="{'has-error': !registerForm.password.$pristine && registerForm.password.$invalid, 'has-success': registerForm.password.$valid}">
