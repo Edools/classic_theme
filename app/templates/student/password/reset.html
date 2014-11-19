@@ -1,0 +1,28 @@
+<div class="page-signin-alt">
+  <h1 class="form-header">Redefinição de senha</h1>
+
+
+  <!-- Form -->
+  <form name="requestForm" ng-submit="reset(user)" novalidate class="panel">
+    <div ng-if="requestForm.noToken" class="alert alert-warning fade in">Você não tem um token para trocar a senha. Acesse <a ui-sref="school.auth.password.request">esta</a> página para receber um email com as instruções.</div>
+    <div ng-if="requestForm.invalidToken" class="alert alert-danger fade in">Ops... seu token é inválido. Acesse <a ui-sref="school.auth.password.request">esta</a> página para receber um email com a instruções.</div>
+    <div class="form-group" ng-class="{'has-error': !requestForm.password.$pristine && requestForm.password.$invalid, 'has-success': requestForm.password.$valid}">
+      <input type="password" name="password" ng-minlength="6" class="form-control input-lg" placeholder="Nova senha" ng-model="user.password" required>
+      <p class="help-block" ng-show="requestForm.password.$error.minlength && !requestForm.password.$pristine">A senha deve ter ao menos 6 caracteres</p>
+      <p class="help-block" ng-show="requestForm.password.$error.required && !requestForm.password.$pristine">O campo é obrigatório</p>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': !requestForm.passwordConfirm.$pristine && requestForm.passwordConfirm.$invalid, 'has-success': requestForm.passwordConfirm.$valid}">
+      <input type="password" name="passwordConfirm" ng-minlength="6" equals="{{ user.password }}" class="form-control input-lg" placeholder="Confirmação da nova senha" ng-model="user.password_confirmation" required>
+      <p class="help-block" ng-show="requestForm.passwordConfirm.$error.minlength && !requestForm.passwordConfirm.$pristine">A senha deve ter ao menos 6 caracteres</p>
+      <p class="help-block" ng-show="requestForm.passwordConfirm.$error.equals && !requestForm.passwordConfirm.$pristine">A confirmação deve ser igual à senha</p>
+      <p class="help-block" ng-show="requestForm.passwordConfirm.$error.required && !requestForm.passwordConfirm.$pristine">O campo é obrigatório</p>
+    </div>
+
+    <div class="form-actions">
+      <input type="submit" value="Redefinir" ng-disabled="requestForm.$invalid" class="btn btn-primary btn-flat btn-block btn-lg">
+    </div> <!-- / .form-actions -->
+    <spinner name="password" class="small"></spinner>
+  </form>
+  <!-- / Form -->
+</div>

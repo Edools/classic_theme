@@ -1,0 +1,22 @@
+<div class="page-signin-alt">
+  <h1 class="form-header">Redefinição de senha</h1>
+
+
+  <!-- Form -->
+  <form name="requestForm" ng-submit="request(user)" novalidate class="panel">
+    <div ng-if="requestForm.noUser" class="alert alert-danger fade in">Não há nenhum usuário com este email.</div>
+    <div ng-if="requestForm.error" class="alert alert-danger fade in">Ops.. ocorreu um erro nesta operação. Se o erro persistir, contate o nosso suporte.</div>
+    <div ng-if="requestForm.success" class="alert alert-success fade in">Pronto. Agora você vai receber um email com as instruções para a recupreção da senha.</div>
+    <div class="form-group" ng-class="{'has-error': !requestForm.email.$pristine && requestForm.email.$invalid, 'has-success': requestForm.email.$valid}">
+      <input type="email" name="email" class="form-control input-lg" placeholder="E-mail" ng-model="user.email" required>
+      <p class="help-block" ng-show="requestForm.email.$error.required && !requestForm.email.$pristine">O campo Email é obrigatório</p>
+      <p class="help-block" ng-show="requestForm.email.$error.email && !requestForm.email.$pristine">Este campo deve ser um e-email válido</p>
+    </div> <!-- / Username -->
+
+    <div class="form-actions">
+      <input type="submit" value="Redefinir" ng-disabled="requestForm.$invalid" class="btn btn-primary btn-flat btn-block btn-lg">
+    </div> <!-- / .form-actions -->
+    <spinner name="password" class="large"></spinner>
+  </form>
+  <!-- / Form -->
+</div>
