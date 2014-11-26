@@ -1,0 +1,42 @@
+<div class="dashboard">
+  <div class="container dashboard-panel">
+    <ul class="nav nav-tabs nav-tabs-lg">
+      <li>
+        <a link-to="school.dashboard.enrollments">
+          <i class="fa fa-video-camera"></i>
+          <div>Cursos</div>
+        </a>
+      </li>
+      <li class="active">
+        <a link-to="school.dashboard.certificates">
+          <i class="fa fa-certificate"></i>
+          <div>Certificados</div>
+        </a>
+      </li>
+    </ul>
+    <section class="panel tab-content tab-content-bordered">
+      <div ng-show="!$loader.isLoading">
+        <div class="container">
+          <article class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in enrollments">
+            <div class="course">
+              <div class="course-image">
+                <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
+                <img ng-if="enrollment.course.logo === null" src="assets/images/missing-course-logo.png" />
+                <div class="course-edit-overlay">
+                  <a class="btn btn-default btn-edit" download="enrollment-2.pdf" ng-href="{{ enrollment.certificate_url }}">
+                    <i class="fa fa-download"></i>
+                    <span>Download certificado</span>
+                  </a>
+                </div>
+              </div>
+              <div class="course-label">
+                <span max-lines="1">{{ enrollment.course.title }}</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <spinner name="dashboard" class="small"></spinner>
+    </section>
+  </div>
+</div>
