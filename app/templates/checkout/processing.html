@@ -1,20 +1,14 @@
-<!-->Esse payment-processing-page é o componente principal da tela, que controla o tempo que a tela vai esperar e mostra ou esconde os outros componentes</!-->
-<payment-processing-page timer="60"> <!--> O atributo timer é medido em segundos </!-->
+<payment-processing-page timer="60">
   <div class="container">
-    <!-->Esse payment-processing-content é o conteúdo que será mostrado durante o procesamento e vai ser escondido quando tiver sucesso ou fracasso.</!-->
     <payment-processing-content>
       <spinner name="processing"></spinner>
       <h2 class="processing-title">Estamos processando seu pagamento, aguarde...</h2>
-      <!-->O countdown desse timer também é em segundos. E o {{ mminutes }} e {{ sseconds }} com a letra repetida é pra ficar no formato 00:00. Isso vale pra horas também.</!-->
       <timer countdown="60" interval="1000">{{ mminutes }}:{{ sseconds }}</timer>
     </payment-processing-content>
 
-    <!-->O conteudo desse elemento vai ser mostrado se o pagamento for aceito dentro do tempo estipulado. O redirect-time é pra configurar depois de quanto tempo o usuário vai ser redirecionado pra dashboard, também é em segundos.</!-->
     <payment-processing-success redirect-time="10">
       <h2>Sua compra foi aprovada! Você será direcionado ao curso em &nbsp;<timer countdown="10" interval="1000">{{ seconds }}</timer>s.</h2>
     </payment-processing-success>
-
-    <!-->O conteudo desse elemento vai ser mostrado se o pagamento não for aceito dentro do tempo estipulado</!-->
     <payment-processing-failure>
       <h2>Sua compra ainda não foi autorizada pelo banco emissor. Não se preocupe, nós recebemos o seu pedido, porém é normal que o processo dure um pouco mais às vezes. Nós notificaremos você por email assim que a compra for concluída.</h2>
     </payment-processing-failure>
