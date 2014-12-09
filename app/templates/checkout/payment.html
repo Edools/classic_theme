@@ -7,6 +7,13 @@
       </h2>
     </div>
     <hr>
+    <payment-errors>
+      <div class="alert alert-danger" ng-if="errors.length > 0">
+        <strong>Ops... aconteceu algo de errado</strong>
+        <br>
+        <span ng-repeat="error in errors">{{ error.message | translate }}</span>
+      </div>
+    </payment-errors>
     <div class="col-xs-12 col-md-8">
       <div edools-wizard class="wizard">
         <div class="wizard-wrapper">

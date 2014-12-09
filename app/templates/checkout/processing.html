@@ -1,0 +1,15 @@
+<payment-processing-page timer="60000">
+  <div class="container">
+    <payment-processing-content>
+      <spinner name="processing"></spinner>
+      <h2 class="processing-title">Estamos processando seu pagamento, aguarde...</h2>
+    </payment-processing-content>
+
+    <payment-processing-success redirect-time="5000">
+      <h2>Sua compra foi aprovada! Você será direcionado ao curso em {{ seconds }}s.</h2>
+    </payment-processing-success>
+    <payment-processing-failure>
+      <h2>Sua compra ainda não foi autorizada pelo banco emissor. Não se preocupe, nós recebemos o seu pedido, porém é normal que o processo dure um pouco mais às vezes. Nós notificaremos você por email assim que a compra for concluída.</h2>
+    </payment-processing-failure>
+  </div>
+</payment-processing-page>
