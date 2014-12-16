@@ -4,4 +4,4 @@ public
 .tmp
 .sass-cache
 app/bower_components
-Gruntfile.demo.js
+.idea/
