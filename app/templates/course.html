@@ -1,6 +1,7 @@
 <header class="main-header course">
-  <div ng-if="course.logo" class="image col-xs-12 col-md-5">
-    <img ng-src="{{ course.logo }}" alt="{{ course.title }}">
+  <div ng-if="course.logo || course.video_cover" class="course-image col-xs-12 text-right col-md-5">
+    <img ng-if="!course.video_cover" ng-src="{{ course.logo }}" alt="{{ course.title }}">
+    <video-player ng-if="course.video_cover" width="450" height="210" ng-model="course.video_cover.media"></video-player>
   </div>
   <div class="col-xs-12 text-center" ng-class="{'col-md-7': course.logo !== null || course.logo !== '', 'col-md-12': course.logo === null || course.logo === ''}">
     <div class="info">
