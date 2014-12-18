@@ -16,7 +16,7 @@
 
     <div class="form-group signin-password" ng-class="{'has-error': !userForm.password.$pristine && userForm.password.$invalid, 'has-success': userForm.password.$valid}">
       <input type="password" name="password" class="form-control input-lg" placeholder="Senha" ng-model="user.password" required>
-      <a href="#" class="forgot">Esqueceu?</a>
+      <a link-to="school.auth.password.request" class="forgot">Esqueceu?</a>
       <p class="help-block" ng-show="userForm.password.$error.required && !userForm.password.$pristine">O campo Senha é obrigatório</p>
     </div> <!-- / Password -->
 
