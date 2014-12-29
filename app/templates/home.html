@@ -23,8 +23,17 @@
           </div>
         </a>
         <div class="footer">
-          <div class="pull-left well">{{ schoolProduct.product.price | money:'R$' }}</div>
-          <button type="button" add-to-cart="schoolProduct" class="btn btn-success">Matricule-se</button>
+          <div class="col-xs-12">
+            <div class="pull-left well">{{ schoolProduct.product.price | money:'R$' }}</div>
+            <button type="button" add-to-cart="schoolProduct" class="btn btn-success">Comprar</button>
+          </div>
+          <br/><br/>
+          <div class="col-xs-12" ng-if="schoolProduct.product.plan">
+            <div class="pull-left well">
+              {{ schoolProduct.product.plan.price | money:'R$' }} {{ schoolProduct.product.plan.interval_length }}/{{ schoolProduct.product.plan.interval_unit | translate }}
+            </div>
+            <button type="button" ng-click="goToSubscriptionCheckout(schoolProduct.product.plan, schoolProduct)" class="btn btn-success">Assinar</button>
+          </div>
         </div>
       </div>
     </div>
