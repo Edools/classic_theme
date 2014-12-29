@@ -19,7 +19,7 @@
 </header>
 <div class="course-body row">
   <div class="col-xs-12 col-md-8">
-    <article ng-if="course.description != null && course.description != ''" class="course-description">
+    <article ng-if="course.description" class="course-description">
       <section ng-bind-html="course.description"></section>
     </article>
     <article ng-if="course.modules !== undefined && course.modules.length > 0" class="course-content panel">

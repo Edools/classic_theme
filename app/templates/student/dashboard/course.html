@@ -47,7 +47,7 @@
                 <span class="label label-warning">{{lessons_info.in_progress.length}}</span> aula(s) iniciada(s)
                 <span class="label label-info">{{lessons_info.total}}</span> aula(s) no total
               </header>
-              <stacked-progress success="{{progress.completed}}" warning="{{progress.in_progress}}"></stacked-progress>
+              <stacked-progress success="{{lessons_info.completed.length}}" warning="{{lessons_info.in_progress.length}}"></stacked-progress>
             </div>
           </div>
         </div>
