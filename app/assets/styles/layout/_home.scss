@@ -120,7 +120,8 @@
     .btn {
       position: relative;
       height: $footer-elem-height;
-      bottom: 0;
+      padding-top: 4px;
+      bottom: 0px;
       float: right;
     }
   }
