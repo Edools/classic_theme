@@ -1,3 +1,3 @@
 Edools.events.subscribe('school.course', function () {
-  $('.module-item').css('border', '1px solid red');
+  $('.module-item').css('background', 'red');
 });
