@@ -65,7 +65,7 @@
 .home.course-list {
   background: lighten($light-gray, 2%);
 
-  $course-height: 350px;
+  $course-height: 300px;
   .course {
     height: $course-height;
     background: white;
@@ -86,7 +86,7 @@
 
   .body {
     padding: 10px;
-    max-height: $course-height/4;
+    max-height: $course-height/3;
     height: $course-height/3;
     @include colorful-link($text-color);
     text-overflow: hidden;
@@ -102,15 +102,15 @@
   }
 
   .footer {
-    padding: 10px 5px 5px 5px;
+    padding: 7px 5px 5px 5px;
     border-top: 1px solid lighten(#ccc, 15%);
     min-height: $course-height/6;
 
-    $footer-elem-height: 30px;
+    $footer-elem-height: 34px;
     .well {
       position: relative;
       height: $footer-elem-height;
-      padding: 5px 8px 5px 8px;
+      padding: 7px 8px 5px 8px;
       margin: 0;
 
       bottom: 0;
@@ -120,9 +120,13 @@
     .btn {
       position: relative;
       height: $footer-elem-height;
-      padding-top: 4px;
+      padding: 6px 8px;
       bottom: 0px;
       float: right;
+    }
+
+    div {
+      padding: 0px;
     }
   }
 }
