@@ -111,12 +111,18 @@
         </div>
         <div class="panel-body">
           <div class="courses">
+            <div class="course" ng-if="plan">
+              <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
+              <span class="price">
+                <subscription-plan plan="plan"></subscription-plan>
+              </span>
+            </div>
             <div class="course" ng-repeat="schoolProduct in schoolProducts">
               <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
               <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
             </div>
           </div>
-          <div class="total clearfix">
+          <div class="total clearfix" ng-if="schoolProducts">
             <span class="pull-right">
               {{ totalPrice | money:'R$' }}
             </span>

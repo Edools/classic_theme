@@ -10,16 +10,40 @@
     </div>
 
     <div class="enroll text-center">
-      <button type="button" add-to-cart="course" class="btn btn-success btn-lg">
-        <span>Matricule-se agora</span>
-        <span class="label label-success">{{ course.product.price | money:'R$' }}</span>
-      </button>
+      <div class="col-xs-12" ng-if="course.product.plans.length === 0">
+        <button type="button" add-to-cart="course" class="btn btn-success btn-lg">
+          <span>Matricule-se agora</span>
+          <span class="label label-success">{{ course.product.price | money:'R$' }}</span>
+        </button>
+      </div>
+
+      <div class="col-xs-12" ng-if="course.product.plans.length !== 0">
+        <button ng-click="goToSubscriptionCheckout(course.product.plan, course)"
+          type="button" class="btn btn-success" ng-if="course.product.plans.length === 1">
+          Matricule-se agora
+          <subscription-plan plan="course.product.plan"></subscription-plan>
+        </button>
+
+        <div class="btn-group">
+          <a class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" ng-if="course.product.plans.length > 1">
+            Matricule-se agora
+            <subscription-plan plan="course.product.plan"></subscription-plan>
+          </a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="plan in course.product.plans">
+              <a ng-click="goToSubscriptionCheckout(plan, course)">
+                <subscription-plan plan="plan"></subscription-plan>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </header>
 <div class="course-body row">
   <div class="col-xs-12 col-md-8">
-    <article ng-if="course.description != null && course.description != ''" class="course-description">
+    <article ng-if="course.description" class="course-description">
       <section ng-bind-html="course.description"></section>
     </article>
     <article ng-if="course.modules !== undefined && course.modules.length > 0" class="course-content panel">
