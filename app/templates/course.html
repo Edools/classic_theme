@@ -24,8 +24,8 @@
           <subscription-plan plan="course.product.plan"></subscription-plan>
         </button>
 
-        <div class="btn-group" ng-class="course.plansOpened ? 'open' : ''">
-          <a class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" tooltip="Assinar" ng-click="course.plansOpened = !course.plansOpened" ng-if="course.product.plans.length > 1">
+        <div class="btn-group">
+          <a class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" ng-if="course.product.plans.length > 1">
             Matricule-se agora
             <subscription-plan plan="course.product.plan"></subscription-plan>
           </a>

@@ -123,10 +123,20 @@
       padding: 6px 8px;
       bottom: 0px;
       float: right;
+
     }
 
-    div {
+    .info {
       padding: 0px;
+    }
+
+    a:hover {
+      color: #FFF;
+    }
+
+    .dropdown-menu a:hover {
+      color: #000;
+      cursor: pointer;
     }
   }
 }
