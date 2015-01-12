@@ -2,10 +2,10 @@
   "name": "classic_theme",
   "version": "0.0.1",
   "dependencies": {
-    "bootstrap-sass": "~3.0.2",
     "json3": "~3.2.6",
     "es5-shim": "~2.1.0",
     "font-awesome": "~4.1.0",
-    "compass-mixins": "~1.0.2"
+    "compass-mixins": "~1.0.2",
+    "bootstrap-sass-official": "~3.3.1"
   }
 }
