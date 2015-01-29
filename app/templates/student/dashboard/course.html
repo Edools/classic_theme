@@ -19,15 +19,13 @@
               </h4>
             </div>
           </div>
-          <article ng-if="course.modules !== undefined && course.modules.length > 0"
-            class="course-content panel">
-
+          <article class="course-content panel">
             <div class="panel-heading">
               <strong class="panel-title">Conteúdo do curso</strong>
             </div>
 
             <div class="panel-body">
-              <content-tree type="dashboard" ng-model="course" lessons-info="lessons_info"></content-tree>
+              <content-tree type="dashboard" ng-model="course" lessons-info="lessons_info" lazy="false"></content-tree>
             </div>
           </article>
         </div>
