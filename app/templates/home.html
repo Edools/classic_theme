@@ -12,7 +12,7 @@
     <h2>Cursos</h2>
     <div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="schoolProduct in schoolProducts">
       <div class="course">
-        <a link-to="school.course({ courseId: schoolProduct.id })">
+        <a link-to="school.product({ schoolProductId: schoolProduct.id })">
           <div class="image">
             <img ng-if="schoolProduct.logo" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
             <img ng-if="!schoolProduct.logo" src="assets/images/missing-course-logo.png" alt="Em construção">
