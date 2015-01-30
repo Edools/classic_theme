@@ -58,7 +58,45 @@
         </strong>
       </div>
       <div class="panel-body">
-        <content-school-product type="home" ng-model="schoolProduct"></content-school-product>
+        <content-tree type="home" ng-model="schoolProduct" ng-if="schoolProduct.modules"></content-tree>
+
+        <div class="col-xs-12" ng-if="schoolProduct.path">
+          <div class="row course-path" ng-repeat="course in schoolProduct.path.courses | limitTo:maxLimit || limitInitial">
+            <div class="col-xs-6" >
+              <div class="course-image col-xs-12 text-right col-md-5">
+                <img ng-if="course.image_url" ng-src="{{ course.image_url }}" alt="{{ course.name }}">
+                <img ng-if="!course.image_url" src="https://cdn.edools.com/themes/5478b11b7268652fbe000000/images/ca098ae8.missing_edit_course.png" class="ng-scope">
+              </div>
+            </div>
+
+            <div class="col-xs-6" >
+              <div class="info">
+                <h3 class="title">
+                  {{ course.name }}
+                </h3>
+                <span class="subtitle">
+                  {{ course.description }}
+                </span>
+                <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
+                      ng-if="!course.details" ng-click="toggleDetails(course)">
+                  VER CURSO DETALHADO
+                </span>
+                <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
+                      ng-if="course.details" ng-click="toggleDetails(course)">
+                  ESCONDER DETALHE DO CURSO
+                </span>
+
+                <content-tree type="home" ng-model="course" ng-if="course.modules !== undefined && course.modules.length > 0 && course.details"></content-tree>
+              </div>
+            </div>
+          </div>
+
+          <div class="row text-center" ng-if="limitInitial < schoolProduct.path.courses.length">
+            <h6 class="text-light-gray text-semibold text-xs" ng-click="toggleMaxLimit(schoolProduct.path.courses)" style="cursor:pointer">
+              {{ maxLimit === limitInitial || maxLimit === undefined ? 'VER TODOS' : 'RETIRAR A LISTA' }}
+            </h6>
+          </div>
+        </div>
       </div>
     </article>
     <div class="fb-comments" data-href="{{ $location.absUrl() }}" data-width="790" data-numposts="10" data-colorscheme="light"></div>
