@@ -1,0 +1,127 @@
+<header class="main-header course">
+  <div ng-if="schoolProduct.logo || schoolProduct.video_cover" class="course-image col-xs-12 text-right col-md-5">
+    <img ng-if="!schoolProduct.video_cover" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
+    <video-player ng-if="schoolProduct.video_cover" width="450" height="210" ng-model="schoolProduct.video_cover.media"></video-player>
+  </div>
+  <div class="col-xs-12 text-center" ng-class="{'col-md-7': schoolProduct.logo !== null || schoolProduct.logo !== '', 'col-md-12': schoolProduct.logo === null || schoolProduct.logo === ''}">
+    <div class="info">
+      <h2 class="title">{{ schoolProduct.title }}</h2>
+      <span class="subtitle">{{ schoolProduct.subtitle }}</span>
+    </div>
+
+    <div class="enroll text-center">
+      <div class="col-xs-12" ng-if="schoolProduct.product.plans.length === 0">
+        <button type="button" add-to-cart="schoolProduct" class="btn btn-success btn-lg">
+          <span>Matricule-se agora</span>
+          <span class="label label-success">{{ schoolProduct.product.price | money:'R$' }}</span>
+        </button>
+      </div>
+
+      <div class="col-xs-12" ng-if="schoolProduct.product.plans.length !== 0">
+        <button ng-click="goToSubscriptionCheckout(schoolProduct.product.plan, schoolProduct)"
+          type="button" class="btn btn-success" ng-if="schoolProduct.product.plans.length === 1">
+          Matricule-se agora
+          <subscription-plan plan="schoolProduct.product.plan"></subscription-plan>
+        </button>
+
+        <div class="btn-group">
+          <a class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" ng-if="schoolProduct.product.plans.length > 1">
+            Matricule-se agora
+            <subscription-plan plan="schoolProduct.product.plan"></subscription-plan>
+          </a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="plan in schoolProduct.product.plans">
+              <a ng-click="goToSubscriptionCheckout(plan, schoolProduct)">
+                <subscription-plan plan="plan"></subscription-plan>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="course-body row">
+  <div class="col-xs-12 col-md-8">
+    <article ng-if="schoolProduct.description" class="course-description">
+      <section ng-bind-html="schoolProduct.description"></section>
+    </article>
+    <article ng-if="(schoolProduct.modules !== undefined && schoolProduct.modules.length > 0) ||
+                    (schoolProduct.path.courses !== undefined && schoolProduct.path.courses.length > 0)"
+             class="course-content panel">
+      <div class="panel-heading">
+        <strong class="panel-title" ng-if="schoolProduct.modules">Conteúdo do curso</strong>
+        <strong class="panel-title" ng-if="schoolProduct.path">
+          {{ schoolProduct.path.courses.length }}
+          <ng-pluralize count="schoolProduct.path.courses.length" when="{'one': ' curso ', 'other': ' cursos '}"></ng-pluralize>
+          neste pacote
+        </strong>
+      </div>
+      <div class="panel-body">
+        <content-tree type="home" ng-model="schoolProduct" ng-if="schoolProduct.modules"></content-tree>
+
+        <div class="col-xs-12" ng-if="schoolProduct.path">
+          <div class="row course-path" ng-repeat="course in schoolProduct.path.courses | limitTo:maxLimit || limitInitial">
+            <div class="col-xs-6" >
+              <div class="course-image col-xs-12 text-right col-md-5">
+                <img ng-if="course.image_url" ng-src="{{ course.image_url }}" alt="{{ course.name }}">
+                <img ng-if="!course.image_url" src="https://cdn.edools.com/themes/5478b11b7268652fbe000000/images/ca098ae8.missing_edit_course.png" class="ng-scope">
+              </div>
+            </div>
+
+            <div class="col-xs-6" >
+              <div class="info">
+                <h3 class="title">
+                  {{ course.name }}
+                </h3>
+                <span class="subtitle">
+                  {{ course.description }}
+                </span>
+                <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
+                      ng-if="!course.details" ng-click="toggleDetails(course)">
+                  VER CURSO DETALHADO
+                </span>
+                <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
+                      ng-if="course.details" ng-click="toggleDetails(course)">
+                  ESCONDER DETALHE DO CURSO
+                </span>
+
+                <content-tree type="home" ng-model="course" ng-if="course.modules !== undefined && course.modules.length > 0 && course.details"></content-tree>
+              </div>
+            </div>
+          </div>
+
+          <div class="row text-center" ng-if="limitInitial < schoolProduct.path.courses.length">
+            <h6 class="text-light-gray text-semibold text-xs" ng-click="toggleMaxLimit(schoolProduct.path.courses)" style="cursor:pointer">
+              {{ maxLimit === limitInitial || maxLimit === undefined ? 'VER TODOS' : 'RETIRAR A LISTA' }}
+            </h6>
+          </div>
+        </div>
+      </div>
+    </article>
+    <div class="fb-comments" data-href="{{ $location.absUrl() }}" data-width="790" data-numposts="10" data-colorscheme="light"></div>
+  </div>
+  <div class="topics col-xs-12 col-md-4">
+    <section ng-repeat="topic in schoolProduct.topics" class="topic panel">
+      <div class="panel-heading">
+        <strong class="title panel-title">{{ topic.title }}</strong>
+      </div>
+      <div class="panel-body">
+        <p class="description" ng-bind-html="topic.description"></p>
+      </div>
+    </section>
+
+    <section ng-if="schoolProduct.class_teachers.length > 0" class="topic panel teachers">
+      <div class="panel-heading">
+        <strong class="title panel-title">Professores</strong>
+      </div>
+      <div class="panel-body">
+        <div ng-repeat="teacher in schoolProduct.class_teachers">
+          <img ng-if="teacher.photo_url" ng-src="{{ teacher.photo_url }}" alt="{{ teacher.full_name }}" class="image col-xs-12 col-md-12">
+          <h4 class="teacher-name">{{ teacher.full_name }}</h4>
+          <p class="description" ng-bind-html="teacher.about"></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
