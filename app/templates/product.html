@@ -46,26 +46,24 @@
     <article ng-if="schoolProduct.description" class="course-description">
       <section ng-bind-html="schoolProduct.description"></section>
     </article>
-    <article ng-if="(schoolProduct.modules !== undefined && schoolProduct.modules.length > 0) ||
-                    (schoolProduct.path.courses !== undefined && schoolProduct.path.courses.length > 0)"
-             class="course-content panel">
+    <article class="course-content panel">
       <div class="panel-heading">
-        <strong class="panel-title" ng-if="schoolProduct.modules">Conteúdo do curso</strong>
-        <strong class="panel-title" ng-if="schoolProduct.path">
+        <strong class="panel-title" ng-if="schoolProduct.library_resource.resource.type === 'course'">Conteúdo do curso</strong>
+        <strong class="panel-title" ng-if="schoolProduct.library_resource.resource.type === 'path'">
           {{ schoolProduct.path.courses.length }}
           <ng-pluralize count="schoolProduct.path.courses.length" when="{'one': ' curso ', 'other': ' cursos '}"></ng-pluralize>
           neste pacote
         </strong>
       </div>
       <div class="panel-body">
-        <content-tree type="home" ng-model="schoolProduct" ng-if="schoolProduct.modules"></content-tree>
+        <content-tree type="home" ng-model="schoolProduct" ng-if="schoolProduct.library_resource.resource.type === 'course'" lazy="true"></content-tree>
 
-        <div class="col-xs-12" ng-if="schoolProduct.path">
+        <div class="col-xs-12" ng-if="schoolProduct.library_resource.resource.type === 'path'">
           <div class="row course-path" ng-repeat="course in schoolProduct.path.courses | limitTo:maxLimit || limitInitial">
             <div class="col-xs-6" >
               <div class="course-image col-xs-12 text-right col-md-5">
                 <img ng-if="course.image_url" ng-src="{{ course.image_url }}" alt="{{ course.name }}">
-                <img ng-if="!course.image_url" src="https://cdn.edools.com/themes/5478b11b7268652fbe000000/images/ca098ae8.missing_edit_course.png" class="ng-scope">
+                <img ng-if="!course.image_url" src="assets/images/missing-course-logo.png">
               </div>
             </div>
 
@@ -77,7 +75,7 @@
                 <span class="subtitle">
                   {{ course.description }}
                 </span>
-                <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
+                <!-- <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
                       ng-if="!course.details" ng-click="toggleDetails(course)">
                   VER CURSO DETALHADO
                 </span>
@@ -86,7 +84,7 @@
                   ESCONDER DETALHE DO CURSO
                 </span>
 
-                <content-tree type="home" ng-model="course" ng-if="course.modules !== undefined && course.modules.length > 0 && course.details"></content-tree>
+                <content-tree type="home" ng-model="course" ng-if="course.modules !== undefined && course.modules.length > 0 && course.details"></content-tree> -->
               </div>
             </div>
           </div>
