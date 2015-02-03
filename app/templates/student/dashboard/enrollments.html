@@ -35,10 +35,16 @@
               <div class="course-image">
                 <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
                 <img ng-if="enrollment.course.logo === null" src="assets/images/missing-course-logo.png" />
-                <div class="course-edit-overlay">
+                <div class="course-edit-overlay" ng-if="enrollment.school_product.library_resource.resource_type === 'Course'">
                   <a class="btn btn-default btn-edit" link-to=".course({ courseId: enrollment.course.id, enrollmentId: enrollment.id })">
                     <i class="fa fa-video-camera"></i>
                     <span>Assistir curso</span>
+                  </a>
+                </div>
+                <div class="course-edit-overlay" ng-if="enrollment.school_product.library_resource.resource_type === 'Path'">
+                  <a class="btn btn-default btn-edit" link-to=".path({ pathId: enrollment.school_product.library_resource.resource_id, enrollmentId: enrollment.id })">
+                    <i class="fa fa-video-camera"></i>
+                    <span>Acessar Path</span>
                   </a>
                 </div>
               </div>
