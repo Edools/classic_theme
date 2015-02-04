@@ -50,8 +50,8 @@
       <div class="panel-heading">
         <strong class="panel-title" ng-if="schoolProduct.library_resource.resource.type === 'course'">Conteúdo do curso</strong>
         <strong class="panel-title" ng-if="schoolProduct.library_resource.resource.type === 'path'">
-          {{ schoolProduct.path.courses.length }}
-          <ng-pluralize count="schoolProduct.path.courses.length" when="{'one': ' curso ', 'other': ' cursos '}"></ng-pluralize>
+          {{ schoolProduct.path.courses.pagingInfo.totalCount }}
+          <ng-pluralize count="schoolProduct.path.courses.pagingInfo.totalCount" when="{'one': ' curso ', 'other': ' cursos '}"></ng-pluralize>
           neste pacote
         </strong>
       </div>
@@ -59,7 +59,17 @@
         <content-tree type="home" ng-model="schoolProduct.library_resource.resource" ng-if="schoolProduct.library_resource.resource.type === 'course'" lazy="true"></content-tree>
 
         <div class="col-xs-12" ng-if="schoolProduct.library_resource.resource.type === 'path'">
-          <div class="row course-path" ng-repeat="course in schoolProduct.path.courses | limitTo:maxLimit || limitInitial">
+          <div class="form-group input-group input-group-lg">
+            <span class="input-group-addon no-background"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Buscar pelo nome do curso..." ng-change="getCourses()" ng-model="schoolProduct.coursesName">
+            <span class="input-group-btn">
+              <button class="btn" type="button" ng-click="getCourses()">Buscar</button>
+            </span>
+          </div>
+
+          <spinner name="courses" class="small"></spinner>
+
+          <div class="row course-path" ng-repeat="course in schoolProduct.path.courses">
             <div class="col-xs-6" >
               <div class="course-image col-xs-12 text-right col-md-5">
                 <img ng-if="course.image_url" ng-src="{{ course.image_url }}" alt="{{ course.name }}">
@@ -88,11 +98,18 @@
               </div>
             </div>
           </div>
-
-          <div class="row text-center" ng-if="limitInitial < schoolProduct.path.courses.length">
-            <h6 class="text-light-gray text-semibold text-xs" ng-click="toggleMaxLimit(schoolProduct.path.courses)" style="cursor:pointer">
-              {{ maxLimit === limitInitial || maxLimit === undefined ? 'VER TODOS' : 'RETIRAR A LISTA' }}
-            </h6>
+          <div class="text-center" ng-show="!$loader.isLoading">
+            <ul class="pagination" ed-pagination="schoolProduct.path.courses.pagingInfo" refresh="getCourses(page)">
+              <li ed-pagination-previous>
+                <a href=""><i class="fa fa-caret-left"></i></a>
+              </li>
+              <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+                <a href="">{{ page }}</a>
+              </li>
+              <li ed-pagination-next>
+                <a href=""><i class="fa fa-caret-right"></i></a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
