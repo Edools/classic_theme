@@ -12,19 +12,48 @@
     <h2>Cursos</h2>
     <div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="schoolProduct in schoolProducts">
       <div class="course">
-        <a link-to="school.course({ courseId: schoolProduct.id })">
+        <a link-to="school.product({ schoolProductId: schoolProduct.id })">
           <div class="image">
             <img ng-if="schoolProduct.logo" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
             <img ng-if="!schoolProduct.logo" src="assets/images/missing-course-logo.png" alt="Em construção">
           </div>
           <div class="body">
             <h4 class="title">{{ schoolProduct.title }}</h4>
+            <p class="btn btn-xs btn-primary" ng-if="schoolProduct.product.plan.trial_enabled">
+              <ng-pluralize count="schoolProduct.product.plan.trial_days" when="{'one': '1 dia grátis!', 'other': '{} dias grátis!'}"></ng-pluralize>
+            </p>
             <p max-lines="3" class="subtitle">{{ schoolProduct.subtitle }}</p>
           </div>
         </a>
         <div class="footer">
-          <div class="pull-left well">{{ schoolProduct.product.price | money:'R$' }}</div>
-          <button type="button" add-to-cart="schoolProduct" class="btn btn-success">Matricule-se</button>
+          <div class="col-xs-12 info" ng-if="schoolProduct.product.plans.length === 0">
+            <div class="pull-left well">{{ schoolProduct.product.price | money:'R$' }}</div>
+            <button type="button" add-to-cart="schoolProduct" class="btn btn-success">Comprar</button>
+          </div>
+
+          <div class="col-xs-12 info" ng-if="schoolProduct.product.plans.length !== 0">
+            <div class="pull-left well">
+              <subscription-plan plan="schoolProduct.product.plan" hide-trial="true"></subscription-plan>
+            </div>
+
+            <button ng-click="goToSubscriptionCheckout(schoolProduct.product.plan, schoolProduct)"
+              type="button" class="btn btn-success" ng-if="schoolProduct.product.plans.length === 1">
+              Assinar
+            </button>
+
+            <div class="btn-group pull-right" ng-if="schoolProduct.product.plans.length > 1">
+              <a class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                Assinar
+              </a>
+              <ul class="dropdown-menu">
+                <li ng-repeat="plan in schoolProduct.product.plans">
+                  <a ng-click="goToSubscriptionCheckout(plan, schoolProduct)">
+                    <subscription-plan plan="plan"></subscription-plan>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
