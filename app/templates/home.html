@@ -9,7 +9,7 @@
 </header>
 <section class="course-list home" ng-if="schoolProducts != null && schoolProducts.length > 0">
   <div class="container">
-    <h2>Cursos</h2>
+    <h2>CURSOS</h2>
     <div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="schoolProduct in schoolProducts">
       <div class="course">
         <a link-to="school.product({ schoolProductId: schoolProduct.id })">
@@ -25,6 +25,11 @@
             <p max-lines="3" class="subtitle">{{ schoolProduct.subtitle }}</p>
           </div>
         </a>
+
+        <div class="body">
+          <p max-lines="3" class="subtitle">{{ schoolProduct.subtitle }}</p>
+        </div>
+
         <div class="footer">
           <div class="col-xs-12 info" ng-if="schoolProduct.product.plans.length === 0">
             <div class="pull-left well">{{ schoolProduct.product.price | money:'R$' }}</div>
