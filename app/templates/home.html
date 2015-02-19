@@ -17,8 +17,9 @@
             <img ng-if="schoolProduct.logo" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
             <img ng-if="!schoolProduct.logo" src="assets/images/missing-course-logo.png" alt="Em construção">
           </div>
-                <h4 class="title">{{ schoolProduct.title }}</h4>   
         </a>
+
+        <div class="title">{{ schoolProduct.title }}</div>  
 
         <div class="body">
           <p max-lines="3" class="subtitle">{{ schoolProduct.subtitle }}</p>

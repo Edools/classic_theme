@@ -38,19 +38,19 @@
         font-size: 40px;
         line-height: 1.5em;
       }
-
-    }
-
+    width: 253px;
+    color: #000;
+    text-align: center;
+    min-height: 25px;
+    text-decoration: none;
     .subtitle {
       @media (max-width: $screen-small) {
         font-size: 24px;
         line-height: 32px;
       }
-
       font-weight: 300;
       font-size: 32px;
       line-height: 40px;
-
       margin-top: 15px;
     }
   }
@@ -69,6 +69,11 @@
     @include card();
 
     a:hover {
+    }
+      .title{
+      font-size: 14px;
+      text-align: center;
+      border: 0;
     }
   }
 
@@ -90,7 +95,7 @@
     text-decoration: none;
 
     .subtitle{
-        font-size: 14px;
+      font-size: 14px;
       color: #777;
       letter-spacing: 1px;
       padding: 1px;
@@ -103,12 +108,10 @@
   }
 
   .footer {
-    padding: 7px 5px 5px 5px;
+    padding: 7px 19px 5px 19px;
     border-top: 1px solid lighten(#ccc, 15%);
     min-height: $course-height/6;
-    margin-top: -48px;
-    padding-left: 14px;
-padding-right: 14px;
+    margin-top: -35px;
 
     $footer-elem-height: 34px;
     .well {
@@ -160,26 +163,6 @@ padding-right: 14px;
 }
 
 
-//Titulo da Home "Cursos"
-.container h2{
-  color: #757575;
-  margin-bottom: 20px;
-}
-
-//titulo do curso na caixa abaixo da imagem
-
-.title{
-    width: 253px;
-    color: #000;
-    text-align: center;
-    min-height: 25px;
-    text-decoration: none;
-    font-size: 18px;
-    h4{
-    font-size: 18px;
-    text-align: center;
-  }
-}
 
 
 
