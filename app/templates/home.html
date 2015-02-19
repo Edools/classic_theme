@@ -17,13 +17,11 @@
             <img ng-if="schoolProduct.logo" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
             <img ng-if="!schoolProduct.logo" src="assets/images/missing-course-logo.png" alt="Em construção">
           </div>
-          <div class="body">
-            <h4 class="title">{{ schoolProduct.title }}</h4>
-            <p class="btn btn-xs btn-primary" ng-if="schoolProduct.product.plan.trial_enabled">
-              <ng-pluralize count="schoolProduct.product.plan.trial_days" when="{'one': '1 dia grátis!', 'other': '{} dias grátis!'}"></ng-pluralize>
-            </p>
-            <p max-lines="3" class="subtitle">{{ schoolProduct.subtitle }}</p>
-          </div>
+
+
+      <div id="titulo">
+                <h4 class="title">{{ schoolProduct.title }}</h4>
+      </div>
         </a>
 
         <div class="body">
