@@ -117,6 +117,10 @@
                 <subscription-plan plan="plan"></subscription-plan>
               </span>
             </div>
+            <div class="course" ng-if="credit">
+              <span class="title">{{ credit.name }}</span>
+              <span class="price">{{ credit.price | money:'R$' }}</span>
+            </div>
             <div class="course" ng-repeat="schoolProduct in schoolProducts">
               <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
               <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
