@@ -5,6 +5,8 @@
 *
 *********************************************************************/
 .course.main-header {
+  overflow: visible;
+
   @media (max-width: $screen-small) {
     min-height: 495px;
   }
@@ -41,6 +43,11 @@
         display: block;
       }
     }
+  }
+
+  .dropdown-menu a:hover {
+    color: #000;
+    cursor: pointer;
   }
 }
 
@@ -118,4 +125,9 @@
   .title {
     font-size: 14px;
   }
+}
+
+.course-path {
+  padding: 15px 0;
+  border-bottom: 1px solid lighten(#ccc, 10%);
 }
