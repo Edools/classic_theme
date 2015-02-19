@@ -1,0 +1,37 @@
+<div class="forum-panel">
+  <spinner name="section"></spinner>
+
+  <div class="container">
+    <div hide-on-load="section" class="panel-heading">
+      <strong>Tópicos</strong>
+      <div class="panel-heading-controls">
+        <div class="panel-heading-icon">
+          <a class="panel-collapse-button" ng-click="collapsed = !collapsed">
+            <i class="fa" ng-class="{'fa-plus': collapsed, 'fa-minus': !collapsed}"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div hide-on-load="section" collapse="collapsed" class="forum-sections list-group widget-threads">
+      <div hide-on-load="section" ng-if="section.child_forum_sections === undefined || section.child_forum_sections.length === 0" class="alert alert-info text-center">Ainda não há tópicos aqui.</div>
+
+      <article ng-repeat="topic in section.child_forum_sections | orderBy:'created_at':true" class="section list-group-item">
+        <spinner name="topic{{ topic.id }}" class="medium"></spinner>
+        <div class="section-content clearfix">
+          <h4 class="list-group-item-heading">
+            <a ng-if="!topic.editable" ui-sref="school.forums.questions({ topicId: topic.id })">{{ topic.title }}</a>
+            <span ng-if="topic.editable" editable-text="topic.title" required>{{ topic.title }}</span>
+          </h4>
+
+          <p ng-if="!topic.editable" class="list-group-item-text" clamp="3">{{ topic.description }}</p>
+          <p ng-if="topic.editable" e-style="width: 100%;" editable-textarea="topic.description" required>{{ topic.description }}</p>
+        </div>
+
+        <div ng-if="!topic.editable" class="section-meta pull-right">
+          <strong>{{ topic.forum_questions_count || 0 }} perguntas</strong>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

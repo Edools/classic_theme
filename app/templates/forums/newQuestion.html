@@ -18,7 +18,7 @@
       <div class="panel-footer">
         <div class="text-left">
           <a link-to="school.forums.section({ sectionId: $state.params.sectionId })" class="btn btn-danger">Voltar</a>
-          <a ask-question-button="question" ng-disabled="questionForm.$invalid" class="btn btn-success pull-right">Perguntar</a>
+          <a ng-click="askQuestion(question)" ng-disabled="questionForm.$invalid" class="btn btn-success pull-right">Perguntar</a>
         </div>
       </div>
     </form>

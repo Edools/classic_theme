@@ -1,0 +1,34 @@
+<div class="forum-panel">
+  <spinner name="questions"></spinner>
+
+  <div class="container">
+    <div hide-on-load="questions">
+      <div class="panel-heading">
+        <strong>Perguntas</strong>
+        <div class="panel-heading-controls">
+          <a link-to="school.forums.question.new({ topicId: topic.id })" class="btn btn-xs btn-primary">Fazer uma pergunta</a>
+        </div>
+      </div>
+      <div hide-on-load="questions" ng-if="topic.forum_questions === undefined || topic.forum_questions.length === 0" class="alert alert-info text-center">Ainda não há perguntas nesse tópico.</div>
+    </div>
+    <div ng-if="topic.forum_questions !== undefined && topic.forum_questions.length > 0" class="panel-body forum-questions widget-threads">
+      <article ng-repeat="question in topic.forum_questions" class="thread">
+        <img class="thread-avatar" ng-src="{{ question.user.cover_image_url }}" alt="Usuário">
+        <div class="thread-body">
+          <timeago class="thread-time" ng-model="question.created_at"></timeago>
+          <a ui-sref="school.forums.question.view({ questionId: question.id })" class="thread-title">{{ question.title }}</a>
+          <div class="thread-info votes">
+            <a ui-sref="school.forums.question.view({ questionId: question.id })">{{ question.forum_answers_count || 0 }} respostas</a>,
+            feita por <a href="">{{ question.user.first_name }}</a>
+            <!-- <a class="vote up">
+              <span>{{ question.upvotes }} <i class="fa fa-thumbs-up"></i></span>
+            </a>
+            <a class="vote down">
+              <span>{{ question.downvotes }} <i class="fa fa-thumbs-down"></i></span>
+            </a> -->
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
