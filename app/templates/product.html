@@ -1,5 +1,5 @@
 <header class="main-header course">
-  <div ng-if="schoolProduct.logo || schoolProduct.video_cover" class="course-image col-xs-12 text-right col-md-5">
+  <div ng-if="schoolProduct.logo || schoolProduct.video_cover" class="image col-xs-12 text-right col-md-5">
     <img ng-if="!schoolProduct.video_cover" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
     <video-player ng-if="schoolProduct.video_cover" width="450" height="210" ng-model="schoolProduct.video_cover.media"></video-player>
   </div>
