@@ -5,3 +5,5 @@ public
 .sass-cache
 app/bower_components
 .idea/
+.DS_STORE
+npm-debug.log
