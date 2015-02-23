@@ -121,6 +121,11 @@
       font-size: 18px;
       bottom: 0;
       float: left;
+
+      max-width: 160px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     .btn {
