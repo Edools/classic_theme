@@ -8,26 +8,24 @@
             <br/>
             <div class="row">
               <a link-to=".">
-                <img class="course-page-image" ng-src="{{ course.logo }}" alt="{{ course.title }}">
+                <img class="course-page-image" ng-src="{{ course.image_url }}" alt="{{ course.name }}">
               </a>
             </div>
             <div class="row">
               <h4>
                 <a link-to=".">
-                  <strong>{{ course.title }}</strong>
+                  <strong>{{ course.name }}</strong>
                 </a>
               </h4>
             </div>
           </div>
-          <article ng-if="course.modules !== undefined && course.modules.length > 0"
-            class="course-content panel">
-
+          <article class="course-content panel">
             <div class="panel-heading">
               <strong class="panel-title">Conteúdo do curso</strong>
             </div>
 
             <div class="panel-body">
-              <content-tree type="dashboard" ng-model="course" lessons-info="lessons_info"></content-tree>
+              <content-tree type="dashboard" ng-model="course" lessons-info="lessons_info" lazy="true"></content-tree>
             </div>
           </article>
         </div>
@@ -47,7 +45,7 @@
                 <span class="label label-warning">{{lessons_info.in_progress.length}}</span> aula(s) iniciada(s)
                 <span class="label label-info">{{lessons_info.total}}</span> aula(s) no total
               </header>
-              <stacked-progress success="{{progress.completed}}" warning="{{progress.in_progress}}"></stacked-progress>
+              <stacked-progress success="{{ lessons_info.completed.length }}" warning="{{ lessons_info.in_progress.length }}" total="{{ lessons_info.total }}"></stacked-progress>
             </div>
           </div>
         </div>
