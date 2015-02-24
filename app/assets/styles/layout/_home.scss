@@ -37,13 +37,12 @@
       @media (max-width: $screen-small) {
         font-size: 40px;
         line-height: 1.5em;
+        text-align: center;
       }
 
-      font-size: 50px;
-      line-height: 55px;
-      font-weight: bold;
-
-      margin-top: 0;
+      color: #000;
+      min-height: 25px;
+      text-decoration: none;
     }
 
     .subtitle {
@@ -53,9 +52,8 @@
       }
 
       font-weight: 300;
-      font-size: 32px;
+      font-size: 20px;
       line-height: 40px;
-
       margin-top: 15px;
     }
   }
@@ -65,16 +63,13 @@
 .home.course-list {
   background: lighten($light-gray, 2%);
 
-  $course-height: 300px;
+  $course-height: 349px;
+
   .course {
     height: $course-height;
     background: white;
     margin-bottom: 20px;
     @include card();
-
-    a:hover {
-      color: $text-color;
-    }
   }
 
   .image img {
@@ -82,27 +77,37 @@
     max-width: 100%;
     max-height: $course-height/2;
     height: $course-height/2;
+    text-align: center;
+    padding: 10px;
   }
 
   .body {
     padding: 10px;
     max-height: $course-height/3;
     height: $course-height/3;
-    @include colorful-link($text-color);
     text-overflow: hidden;
     overflow: hidden;
+    text-decoration: none;
+
+    .title {
+      font-size: 14px;
+      text-align: center;
+      border: 0;
+    }
 
     .subtitle {
-      font-size: 1em;
-      font-style: italic;
-      color: #ccc;
-      line-height: 1em;
-      word-wrap: break-word;
+      font-size: 14px;
+      color: #777;
+      letter-spacing: 1px;
+      padding: 1px;
+      text-align: center;
+      line-height: 20px;
+      font-weight: 300;
     }
   }
 
   .footer {
-    padding: 10px 5px 5px 5px;
+    padding: 7px 10px 0 10px;
     border-top: 1px solid lighten(#ccc, 15%);
     min-height: $course-height/6;
 
@@ -110,18 +115,48 @@
     .well {
       position: relative;
       height: $footer-elem-height;
-      padding: 7px 8px 5px 8px;
+      padding: 4px 8px 5px 8px;
       margin: 0;
-
+      background-color: #f5f5f5;
+      font-size: 18px;
       bottom: 0;
       float: left;
+
+      max-width: 160px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     .btn {
       position: relative;
       height: $footer-elem-height;
-      bottom: 0;
+      padding: 6px 8px;
+      bottom: 0px;
       float: right;
+
+    }
+
+    .info {
+      padding: 0px;
+    }
+
+    a:hover {
+      color: #FFF;
+    }
+
+    .dropdown-menu a:hover {
+      color: #000;
+      cursor: pointer;
+      margin-top: 1px;
     }
   }
 }
+
+
+
+
+
+
+
+

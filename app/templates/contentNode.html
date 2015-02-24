@@ -1,6 +1,8 @@
 <div class="module">
   <div class="module-info">
-    <div class="title">{{ module.name }}</div>
+    <div class="title">
+      <a href ng-click="getCourseContents(module)">{{ module.name }}</a>
+    </div>
   </div>
 </div>
 <ol ui-tree-nodes ng-model="module.modules">

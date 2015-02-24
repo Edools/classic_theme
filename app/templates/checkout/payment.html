@@ -43,7 +43,7 @@
         </div>
         <div class="wizard-content panel">
           <div class="payment-form">
-            <div class="inline">
+            <div class="inline" ng-if="!plan">
               <img src="assets/images/lock.png" width="45" height="45" alt="Pagamento seguro">
               <h3>Selecione sua forma de pagamento:</h3>
             </div>
@@ -63,13 +63,14 @@
                     <div class="form-group" ng-class="{'has-error': !cardForm.number.$pristine && cardForm.number.$invalid, 'has-success': cardForm.number.$valid}">
                       <label class="control-label">Nº do cartão de crédito</label>
                       <div class="input-group">
-                        <input type="text" name="number" class="form-control" ng-model="card.number" payments-validate="card" payments-type-model="card.type" payments-format="card" required>
+                        <input type="text" name="number" class="form-control" ng-model="card.number" payments-validate="card" payments-type-model="card.type" payments-format="card" fixed-card="moip" fixed-card-type="gateway" required>
                         <span class="input-group-addon" ng-if="card.type != null">
                           <span card-flag ng-model="card.type"></span>
                         </span>
                       </div>
                       <p class="help-block" ng-show="cardForm.number.$error.required && !cardForm.number.$pristine">O campo é obrigatório</p>
-                      <p class="help-block" ng-show="cardForm.number.$error.card && !cardForm.number.$pristine">Insira um número de cartão válido</p>
+                      <p class="help-block" ng-show="cardForm.number.$error.card && !cardForm.number.$pristine && !cardForm.number.$error.fixedCard">Insira um número de cartão válido</p>
+                      <p class="help-block" ng-show="cardForm.number.$error.fixedCard && !cardForm.number.$pristine">Insira um cartão Visa ou Mastercard</p>
                     </div>
                     <div class="form-inline row">
                       <div class="form-group col-xs-12 col-sm-6" ng-class="{'has-error': !cardForm.cvc.$pristine && cardForm.cvc.$invalid, 'has-success': cardForm.cvc.$valid}">
@@ -81,7 +82,7 @@
                         <input type="text" name="expiry" ng-model="card.expiry" payments-validate="expiry" payments-format="expiry" class="form-control" required>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-if="!plan">
                       <label class="control-label">Parcelas</label>
                       <div installments-select ng-model="card.installments" maximum-installments="gateway.maximum_number_of_installments" total-price="totalPrice"></div>
                     </div>
@@ -89,7 +90,7 @@
                 </form>
                 <button type="button" pay ng-disabled="cardForm.$invalid" class="btn btn-success pull-right">Efetuar pagamento</button>
               </tab>
-              <tab heading="Boleto Bancário" select="selectPayment('boleto')">
+              <tab heading="Boleto Bancário" select="selectPayment('boleto')" ng-if="!plan">
                 <div class="note note-warning">
                   <span>Desabilite o bloqueio de pop-ups do seu navegador</span>
                 </div>
@@ -113,12 +114,18 @@
         </div>
         <div class="panel-body">
           <div class="courses">
+            <div class="course" ng-if="plan">
+              <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
+              <span class="price">
+                <subscription-plan plan="plan"></subscription-plan>
+              </span>
+            </div>
             <div class="course" ng-repeat="schoolProduct in schoolProducts">
               <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
               <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
             </div>
           </div>
-          <div class="total clearfix">
+          <div class="total clearfix" ng-if="schoolProducts">
             <span class="pull-right">
               {{ totalPrice | money:'R$' }}
             </span>
