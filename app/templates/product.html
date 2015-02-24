@@ -46,7 +46,7 @@
     <article ng-if="schoolProduct.description" class="course-description">
       <section ng-bind-html="schoolProduct.description"></section>
     </article>
-    <article class="course-content panel">
+    <article class="course-content panel" ng-if="schoolProduct.library_resource.resource.type === 'course' && schoolProduct.library_resource.resource.has_content">
       <div class="panel-heading">
         <strong class="panel-title" ng-if="schoolProduct.library_resource.resource.type === 'course'">Conteúdo do curso</strong>
         <strong class="panel-title" ng-if="schoolProduct.library_resource.resource.type === 'path'">
