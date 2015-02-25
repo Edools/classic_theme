@@ -5,9 +5,11 @@
 *
 *********************************************************************/
 .school-footer {
-  background: #595959;
-  border-top: 4px solid #7B7B7B;
-  padding: 20px 0;
+ background: #ff0000;
+/* border-top: 4px solid #7B7B7B; */
+/* padding: 20px 0; */
+height: 58px;
+/* color: white; */
 
   color: white;
   a {
@@ -31,10 +33,25 @@
     margin-top: 20px;
     font-size: 0.8em;
   }
+
 }
 
 .copyright-footer {
   padding: 10px 0;
   background: #373737;
   color: white;
+}
+
+
+footer.container.logo-footer{
+  
+  @media (min-width: 1200px) {
+    float: right;
+        padding-left: 136px;
+
+  }
+  img{
+    width: 300px;
+    height:57px;
+  }
 }

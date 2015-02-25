@@ -4,6 +4,15 @@
 *  Main content styles
 *
 *********************************************************************/
+
+
+#interface{
+background: url(../assets/images/fundo.png) fixed no-repeat;
+margin: 0;
+padding: 0;
+
+}
+
 .main-header {
   margin: 0;
   padding: 30px;
@@ -48,6 +57,4 @@
   }
 }
 
-.app-content {
-  min-height: 400px;
-}
+

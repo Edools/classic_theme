@@ -7,8 +7,12 @@
 
 .school-header {
   .navbar-brand {
-    @include colorful-link(white);
-
+background: url(../assets/images/logosantander1.png) no-repeat;
+width: 400px;
+height: 110px;
+float: right;
+margin-left: 0px;
+margin-top: 25px;
     h2 {
       margin-top: 8px;
     }
@@ -20,7 +24,8 @@
 
   .navbar {
     margin-bottom: 0;
-    background: $dark-gray;
+    background: #FF0000;
+    height: 170px;
 
     .navbar-nav {
       position: relative;
@@ -36,5 +41,11 @@
 
   .dropdown-menu li a {
     color: #000 !important;
+  }
+
+  #menu-horizontal{
+    width: 100%;
+    height: 50px;
+    background: #ece1e2;
   }
 }

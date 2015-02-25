@@ -4,8 +4,6 @@
 // --------------------------------------------------
 
 .page-signin-alt {
-  padding-bottom: 40px;
-  background: lighten($light-gray, 2%);
 
   .signin-header {
     background: #fff;
@@ -45,6 +43,7 @@
   .panel {
     margin: 0 16px;
     padding: 20px;
+    background: #ff0000;
   }
 
   .signin-password {

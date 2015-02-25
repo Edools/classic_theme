@@ -1,0 +1,52 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.36
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/Users/macbook/santander/classic_theme',
+5 verbose install   [ 'express',
+5 verbose install     'grunt',
+5 verbose install     'grunt-autoprefixer',
+5 verbose install     'grunt-bower-install',
+5 verbose install     'grunt-cdnify',
+5 verbose install     'grunt-concurrent',
+5 verbose install     'grunt-contrib-clean',
+5 verbose install     'grunt-contrib-compress',
+5 verbose install     'grunt-contrib-concat',
+5 verbose install     'grunt-contrib-copy',
+5 verbose install     'grunt-contrib-cssmin',
+5 verbose install     'grunt-contrib-htmlmin',
+5 verbose install     'grunt-contrib-imagemin',
+5 verbose install     'grunt-contrib-jshint',
+5 verbose install     'grunt-contrib-uglify',
+5 verbose install     'grunt-contrib-watch',
+5 verbose install     'grunt-edools-deploy',
+5 verbose install     'grunt-edools-server',
+5 verbose install     'grunt-libsass',
+5 verbose install     'grunt-newer',
+5 verbose install     'grunt-rev',
+5 verbose install     'grunt-svgmin',
+5 verbose install     'grunt-usemin',
+5 verbose install     'jshint-stylish',
+5 verbose install     'load-grunt-tasks',
+5 verbose install     'time-grunt' ] ]
+6 info preinstall classic_theme@0.0.1
+7 verbose unsafe-perm in lifecycle true
+8 info classic_theme@0.0.1 Failed to exec preinstall script
+9 error classic_theme@0.0.1 preinstall: `npm install -g bower grunt-cli`
+9 error Exit status 3
+10 error Failed at the classic_theme@0.0.1 preinstall script.
+10 error This is most likely a problem with the classic_theme package,
+10 error not with npm itself.
+10 error Tell the author that this fails on your system:
+10 error     npm install -g bower grunt-cli
+10 error You can get their info via:
+10 error     npm owner ls classic_theme
+10 error There is likely additional logging output above.
+11 error System Darwin 14.1.0
+12 error command "node" "/usr/local/bin/npm" "install"
+13 error cwd /Users/macbook/santander/classic_theme
+14 error node -v v0.10.36
+15 error npm -v 1.4.28
+16 error code ELIFECYCLE
+17 verbose exit [ 1, true ]

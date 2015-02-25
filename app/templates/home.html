@@ -1,32 +1,68 @@
-<header class="main-header home">
-  <div class="image col-xs-12 col-md-5 text-center">
-    <img src="assets/images/capa_tema_classico.png" alt="BizStart">
-  </div>
-  <div class="info col-xs-12 col-md-7">
-    <h2 class="title">Tema clássico</h2>
-    <h4 class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue lectus, pretium quis lobortis sollicitudin, viverra eget lacus. Curabitur vitae hendrerit ex, id iaculis tellus</h4>
-  </div>
-</header>
-<section class="course-list home" ng-if="schoolProducts != null && schoolProducts.length > 0">
-  <div class="container">
-    <h2>Cursos</h2>
-    <div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="schoolProduct in schoolProducts">
-      <div class="course">
-        <a link-to="school.course({ courseId: schoolProduct.id })">
-          <div class="image">
-            <img ng-if="schoolProduct.logo" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
-            <img ng-if="!schoolProduct.logo" src="assets/images/missing-course-logo.png" alt="Em construção">
+
+
+<div class="login-content container">
+
+
+  <div class="total">
+
+    <div class="row">
+     <div class="col-lg-4">
+       <div class="logo-santander">
+         <img src="/assets/images/logosantander1.png" alt="">  
+       </div>
+     </div>
+     <div class="col-lg-8">
+     <div class="logo-endeavor">
+       <img src="assets/images/endeavor.png" alt="">
+     </div>
+     </div>
+   </div>
+
+   <div class="row">
+    <div class="col-lg-4">
+      <div class="page-signin-alt">
+        <form login-form="user" class="panel">
+          <div class="alert alert-danger" ng-show="userForm.invalidPassword">
+            <span>Usuário ou senha inválidos</span>
           </div>
-          <div class="body">
-            <h4 class="title">{{ schoolProduct.title }}</h4>
-            <p max-lines="3" class="subtitle">{{ schoolProduct.subtitle }}</p>
+          <div class="alert alert-danger" ng-show="lostSession">
+            <span>Sua sessão expirou. Faça login novamente.</span>
           </div>
-        </a>
-        <div class="footer">
-          <div class="pull-left well">{{ schoolProduct.product.price | money:'R$' }}</div>
-          <button type="button" add-to-cart="schoolProduct" class="btn btn-success">Matricule-se</button>
-        </div>
-      </div>
+          <div class="form-group" ng-class="{'has-error': !userForm.email.$pristine && userForm.email.$invalid, 'has-success': userForm.email.$valid}">
+            <input type="email" autofocus="true" name="email" class="form-control input-lg" placeholder="E-mail" ng-model="user.email" required>
+            <p class="help-block" ng-show="userForm.email.$error.required && !userForm.email.$pristine">O campo Email é obrigatório</p>
+            <p class="help-block" ng-show="userForm.email.$error.email && !userForm.email.$pristine">Este campo deve ser um e-email válido</p>
+          </div> <!-- / Username -->
+
+          <div class="form-group signin-password" ng-class="{'has-error': !userForm.password.$pristine && userForm.password.$invalid, 'has-success': userForm.password.$valid}">
+            <input type="password" name="password" class="form-control input-lg" placeholder="Senha" ng-model="user.password" required>
+            <a link-to="school.auth.password.request" class="forgot">Esqueceu?</a>
+            <p class="help-block" ng-show="userForm.password.$error.required && !userForm.password.$pristine">O campo Senha é obrigatório</p>
+          </div> <!-- / Password -->
+
+          <div class="form-actions" style="background: #fff;">
+            <input type="submit" value="Entrar" next="school.dashboard.enrollments" ng-disabled="userForm.$invalid" class="btn btn-primary btn-flat btn-block btn-lg" style="background: #fff; color:#000;">
+          </div> <!-- / .form-actions -->
+        </form>
+        <!-- / Form -->
+      </div>  
     </div>
+
   </div>
-</section>
+
+</div>
+
+</div>
+
+<footer class="school-footer">
+  <div class="container">
+      <div class="logo-footer col-lg-4" style="float: right;">
+          <img src="/assets/images/logo-footer.png" alt="" style="padding-left: 136px;">  
+      </div>
+  </div>
+</footer>
+
+
+
+
+
