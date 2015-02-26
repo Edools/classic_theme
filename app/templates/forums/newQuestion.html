@@ -4,8 +4,8 @@
       <div class="panel-body">
         <article class="question row">
           <div class="question-user col-xs-12 col-sm-1">
-            <img class="avatar" ng-src="{{ $session.get().cover_image_url }}" alt="{{ $session.get().first_name }}">
-            <span class="name">{{ $session.get().first_name }}</span>
+            <img class="avatar" ng-src="{{ user.cover_image_url }}" alt="{{ user.first_name }}">
+            <span class="name">{{ user.first_name }}</span>
           </div>
           <div class="content col-xs-12 col-sm-11">
             <input type="text" class="title form-control" ng-model="question.title" name="title" placeholder="Título da sua pergunta" required>
@@ -17,8 +17,8 @@
       </div>
       <div class="panel-footer">
         <div class="text-left">
-          <a link-to="school.forums.section({ sectionId: $state.params.sectionId })" class="btn btn-danger">Voltar</a>
-          <a ask-question-button="question" ng-disabled="questionForm.$invalid" class="btn btn-success pull-right">Perguntar</a>
+          <a link-to="school.forums.forum.questions({ topicId: $state.params.topicId })" class="btn btn-danger">Voltar</a>
+          <a ng-click="askQuestion(question)" ng-disabled="questionForm.$invalid" class="btn btn-success pull-right">Perguntar</a>
         </div>
       </div>
     </form>

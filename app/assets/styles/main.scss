@@ -4,13 +4,13 @@
 *  Main project file
 *
 *********************************************************************/
-
 @import "compass";
-@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 
 // The loading order is very important
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
 @import "base/variables";
 
+@import "custom_bootstrap";
 @import "../../bower_components/font-awesome/scss/font-awesome";
 
 @import "base/functions";
@@ -53,8 +53,10 @@
 @import "layout/checkout/wizard/connect";
 @import "layout/checkout/wizard/complete";
 @import "layout/checkout/wizard/payment";
+@import "layout/forums/forum";
 @import "layout/forums/forums";
 @import "layout/forums/question";
+@import "layout/forums/questions";
 
 @import "plugins/ng_tree";
 @import "plugins/ng_breadcrumb";
