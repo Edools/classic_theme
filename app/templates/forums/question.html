@@ -1,6 +1,12 @@
 <div class="forum-panel">
   <div hide-on-load="question" class="question-page container">
     <div class="panel-body">
+      <div class="question-header">
+        <a type="button" class="btn btn-default btn-xs btn-labeled" link-to="school.forums.forum.questions({ topicId: $state.params.topicId })">
+          <i class="fa fa-arrow-left btn-label"></i>
+          <span>Voltar</span>
+        </a>
+      </div>
       <article class="question row">
         <div class="question-user col-xs-12 col-sm-1">
           <img class="avatar" ng-src="{{ question.user.cover_image_url }}" alt="">

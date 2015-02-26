@@ -1,0 +1,43 @@
+<div class="forum-panel">
+  <div class="container">
+    <spinner name="forum"></spinner>
+    <h3 hide-on-load="forum">{{ forum.title }}</h3>
+
+    <div hide-on-load="forum">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a link-to="school.forums.forum.detail({ forumId: $state.params.forumId })">Fórum</a>
+        </li>
+      </ul>
+      <div class="tab-content tab-content-bordered panel-body">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon no-background"><i class="fa fa-search"></i></span>
+          <input type="text" class="form-control" placeholder="Buscar por nome..." search ng-model="filterInput.title">
+          <span class="input-group-btn">
+            <button class="btn" type="button">Buscar</button>
+          </span>
+        </div>
+        <hr/>
+        <div class="forum-sections list-group widget-threads">
+          <article class="section list-group-item" ng-repeat="section in forum.child_forum_sections | filter:filterInput">
+            <spinner name="section{{ section.id }}" class="small"></spinner>
+            <div class="section-content clearfix">
+              <h4 class="list-group-item-heading">
+                <a href ng-click="toggleCollapsed(section)">{{ section.title }}</a>
+              </h4>
+
+              <p class="list-group-item-text" clamp="3">{{ section.description }}</p>
+            </div>
+            <div class="section-topics-list" ng-if="section.topics != null && section.topics.length > 0" collapse="section.collapsed">
+              <div class="section-topic section-topic-striped" ng-repeat="topic in section.topics">
+                <h4 class="title">
+                  <a link-to="school.forums.forum.questions({ topicId: topic.id })">{{ topic.title }}</a>
+                </h4>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
