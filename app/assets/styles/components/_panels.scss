@@ -23,7 +23,7 @@
 }
 
 .panel-heading {
-  background: $panel-heading-bg;
+  background: linear-gradient(#fff,#ededed);
   border-bottom: 2px solid #ececec;
   padding-bottom: 9px;
   padding-left: $panel-content-padding;
@@ -46,9 +46,9 @@
 
 // Body
 .panel-body {
-  background: #fff;
-  margin: 0;
-  padding: $panel-content-padding;
+  background: #f4f4f4; 
+  margin: 0; 
+  padding: 20px;
 
   > li {
     list-style: none;
@@ -67,11 +67,11 @@
 
 // Title
 .panel-title {
-  color: $text-color;
-  font-size: 14px;
-  // font-weight: 600;
-  // text-transform: uppercase;
-  line-height: 20px;
+ padding-left: 10px; 
+ font-weight: 400; 
+ font-size: 16px; 
+ color:#9c9c9c; 
+ font-family: Lato,sans-serif;
 }
 
 // Title icon
