@@ -1,0 +1,33 @@
+/*********************************************************************
+*
+*  messages/inbox
+*  Inbox styles:
+*
+*********************************************************************/
+.inbox.message-list {
+  border: 1px solid #eee;
+
+  .message-item {
+    padding: 10px;
+    height: 40px;
+
+    td {
+      vertical-align: middle;
+    }
+  }
+
+  .message-item.unread {
+    font-weight: bold;
+  }
+}
+
+.message-filter-row {
+  .input-group {
+    float: left;
+    @extend %clearfix;
+  }
+
+  .btn-group {
+    display: block;
+  }
+}
