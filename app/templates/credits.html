@@ -1,0 +1,25 @@
+<spinner name="credits"></spinner>
+<div hide-on-load="credits" class="credits-page">
+  <div class="container">
+    <h2>Créditos</h2>
+    <p>Você pode usar esses créditos para comprar alguns produtos.</p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Créditos</th>
+          <th>Valor</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="credit in credits">
+          <td>{{ credit.name }}</td>
+          <td>{{ credit.price | money:'R$' }}</td>
+          <td>
+            <button type="button" class="btn btn-xs btn-success center" ng-click="buy(credit)">Comprar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

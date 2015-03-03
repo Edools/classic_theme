@@ -1,0 +1,57 @@
+<div class="forum-panel">
+  <div class="container sections-page">
+    <spinner name="questions"></spinner>
+    <h3>{{ topic.title }}</h3>
+    <div hide-on-load="questions">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a link-to="school.forums.forum.detail({ forumId: $state.params.forumId })">Fórum</a>
+        </li>
+      </ul>
+      <div class="tab-content tab-content-bordered panel-body">
+        <div class="topic-question-list-heading">
+          <a link-to="school.forums.forum.detail({ forumId: $state.params.forumId })" class="btn btn-xs btn-default btn-labeled">
+            <i class="fa fa-arrow-left btn-label"></i>
+            <span>Voltar</span>
+          </a>
+
+          <a link-to="school.forums.forum.question.new({ topicId: topic.id })" class="btn btn-xs btn-primary btn-labeled pull-right">
+            <i class="fa fa-plus btn-label"></i>
+            <span>Fazer pergunta</span>
+          </a>
+        </div>
+        <div class="topic-question-list">
+          <article class="topic-question panel" ng-repeat="question in topic.forum_questions">
+            <div class="panel-body question-body">
+              <div class="question-user">
+                <img ng-src="{{ question.user.cover_image_url }}" alt="{{ question.user | fullname }}" class="avatar">
+                <span class="name">{{ question.user | fullname }}</span>
+              </div>
+              <div class="question-content">
+                <h4 class="title">
+                  <a link-to="school.forums.forum.question.view({ questionId: question.id, topicId: topic.id })">{{ question.title }}</a>
+                </h4>
+                <p ng-bind-html="question.description" class="description" clamp="3"></p>
+              </div>
+            </div>
+            <div class="panel-footer question-meta">
+              <div class="question-widget time">
+                <i class="fa fa-clock-o"></i>
+                <timeago ng-model="question.created_at" class="time"></timeago>
+              </div>
+              <div class="question-widget answers">
+                <i class="fa fa-comment"></i>
+                <span>{{ question.forum_answers_count }} respostas</span>
+              </div>
+            </div>
+            <div class="panel-footer answer-panel" requires-auth>
+              <spinner name="postAnswer{{ question.id }}" class="small"></spinner>
+              <textarea type="text" class="form-control" ng-model="answer.text" placeholder="Clique para responder"></textarea>
+              <button class="btn btn-xs btn-primary" type="button" ng-show="answer.text && answer.text !== ''" ng-click="postAnswer(answer, question)">Responder</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

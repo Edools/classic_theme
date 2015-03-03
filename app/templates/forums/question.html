@@ -1,7 +1,12 @@
 <div class="forum-panel">
-  <div class="question-page container">
-    <forum-breadcrumb ng-model="section" question="question"></forum-breadcrumb>
+  <div hide-on-load="question" class="question-page container">
     <div class="panel-body">
+      <div class="question-header">
+        <a type="button" class="btn btn-default btn-xs btn-labeled" link-to="school.forums.forum.questions({ topicId: $state.params.topicId })">
+          <i class="fa fa-arrow-left btn-label"></i>
+          <span>Voltar</span>
+        </a>
+      </div>
       <article class="question row">
         <div class="question-user col-xs-12 col-sm-1">
           <img class="avatar" ng-src="{{ question.user.cover_image_url }}" alt="">
@@ -26,9 +31,9 @@
       </article>
       <hr>
       <div class="answer-action">
-        <textarea type="text" autogrow-input ng-model="answer.text" placeholder="Responder..." class="form-control"></textarea>
-        <button ng-disabled="!answer.text" ng-click="postAnswer(answer)" class="btn btn-success pull-right">Responder</button>
-        <spinner name="answer" class="small"></spinner>
+        <ck-editor ng-model="answer.text" hide-source="true"></ck-editor>
+        <button ng-disabled="!answer.text || answer.text == ''" ng-click="postAnswer(answer)" class="btn btn-success pull-right">Responder</button>
+        <spinner name="postAnswer" class="small"></spinner>
       </div>
       <div ng-if="question.forum_answers == null || question.forum_answers.length == 0" class="note note-warning">
         <h4 class="note-title">Atenção!</h4>
@@ -90,5 +95,5 @@
       </section>
     </div>
   </div>
-  <spinner name="forum"></spinner>
+  <spinner name="question"></spinner>
 </div>

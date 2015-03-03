@@ -10,26 +10,14 @@
   }
 }
 
-@mixin forum-answer-avatar ($size) {
-  text-align: center;
-
-  & .avatar {
-    height: $size;
-    width: $size;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-
-  & .name {
-    display: block;
-    font-size: 14px;
-  }
+.question-header {
+  margin-bottom: 10px;
 }
 
 
 $question-user-avatar-size: 48px;
 .question-user {
-  @include forum-answer-avatar($question-user-avatar-size);
+  @include forum-user-avatar($question-user-avatar-size);
 }
 
 .question {
@@ -54,12 +42,8 @@ $question-user-avatar-size: 48px;
   position: relative;
   padding-bottom: 45px;
 
-  [autogrow-input] {
-    resize: vertical;
-    height: 35px;
-    max-height: 100px;
-    margin-bottom: 10px;
-    transition: height 0.3s;
+  .btn {
+    margin-top: 10px;
   }
 }
 
@@ -110,7 +94,7 @@ $question-user-avatar-size: 48px;
   }
 
   .user {
-    @include forum-answer-avatar($question-user-avatar-size);
+    @include forum-user-avatar($question-user-avatar-size);
   }
 }
 
