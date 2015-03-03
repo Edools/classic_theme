@@ -23,7 +23,10 @@
             <spinner name="section{{ section.id }}" class="small"></spinner>
             <div class="section-content clearfix">
               <h4 class="list-group-item-heading">
-                <a href ng-click="toggleCollapsed(section)">{{ section.title }}</a>
+                <a href ng-click="toggleCollapsed(section)">
+                  <span>{{ section.title }}</span>
+                  <i class="fa" ng-class="{'fa-caret-right': section.collapsed, 'fa-caret-down': !section.collapsed}"></i>
+                </a>
               </h4>
 
               <p class="list-group-item-text" clamp="3">{{ section.description }}</p>
