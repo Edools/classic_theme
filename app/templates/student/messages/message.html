@@ -1,0 +1,31 @@
+<div class="container dashboard-panel">
+  <div class="panel-body message-panel">
+    <div class="row">
+      <button type="button" class="btn btn-xs btn-default btn-labeled">
+        <i class="fa fa-arrow-left btn-label"></i>
+        <span>Voltar</span>
+      </button>
+    </div>
+    <article class="message">
+      <div class="message-header">
+        <subject-label subject="{{ message.label }}"></subject-label>
+        <h3 class="title">{{ message.subject }}</h3>
+      </div>
+      <div class="message-meta">
+        <div class="user-info">
+          <div class="user-avatar">
+            <img ng-src="{{ message.sender.cover_image_url }}" alt="{{ message.sender | fullname }}">
+          </div>
+          <h4>{{ message.sender | fullname }}</h4>
+          <small>{{ message.sender.email }}</small>
+        </div>
+        <div class="pull-right">
+          <timeago ng-model="message.created_at"></timeago>
+        </div>
+      </div>
+      <div class="message-body" ng-class="{'highlighted': message.sender.type == 'Collaborator'}">
+        <p ng-bind-html="message.text"></p>
+      </div>
+    </article>
+  </div>
+</div>
