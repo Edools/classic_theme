@@ -11,6 +11,10 @@
     padding: 10px;
     height: 40px;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     td {
       vertical-align: middle;
     }
@@ -21,10 +25,29 @@
   }
 }
 
+.message-filter-panel {
+  padding: 15px;
+}
+
 .message-filter-row {
+  margin-bottom: 10px;
+
+  .btn-new-message {
+    height: 46px;
+    & > * {
+      vertical-align: middle;
+      height: 46px;
+    }
+
+    &.btn-labeled i.btn-label {
+      padding: 13px;
+    }
+  }
+
   .input-group {
     float: left;
     @extend %clearfix;
+    height: 46px;
   }
 
   .btn-group {
