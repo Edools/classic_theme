@@ -1,31 +1,41 @@
 <div class="container dashboard-panel">
-  <div class="panel-body message-panel">
-    <div class="row">
-      <button type="button" class="btn btn-xs btn-default btn-labeled">
-        <i class="fa fa-arrow-left btn-label"></i>
-        <span>Voltar</span>
-      </button>
+  <div class="panel">
+    <div class="panel-body message-panel">
+      <div class="row message-panel-header">
+        <a link-to="school.messages.inbox" class="btn btn-xs btn-default btn-labeled">
+          <i class="fa fa-arrow-left btn-label"></i>
+          <span>Voltar</span>
+        </a>
+      </div>
+      <article class="channel">
+        <div class="channel-header">
+          <subject-label subject="{{ channel.permission_key }}"></subject-label>
+          <h3 class="title">{{ channel.subject }}</h3>
+        </div>
+        <div class="message-list">
+          <article class="message" ng-repeat="message in channel.messages">
+            <div class="message-meta">
+              <div class="user-info col-xs-10">
+                <div class="user-avatar">
+                  <img ng-src="{{ message.sender.cover_image_url }}" alt="{{ message.sender | fullname }}">
+                </div>
+                <span class="user-name">{{ message.sender | fullname }}</span>
+                <small class="user-email light-gray-text">{{ message.sender.email }}</small>
+              </div>
+              <div class="pull-right col-xs-2">
+                <timeago class="light-gray-text" ng-model="message.created_at"></timeago>
+              </div>
+            </div>
+            <div class="message-body" ng-class="{'highlighted': message.sender.type == 'Collaborator'}">
+              <p class="text" ng-bind-html="message.text"></p>
+              <div class="reply-input" ng-if="$index == 0">
+                <ck-editor ng-model="newMessage.text" hide-source="true"></ck-editor>
+                <button type="button" class="btn btn-success pull-right" ng-disabled="!newMessage.text || newMessage.text == ''" ng-click="postReply(newMessage)">Responder</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </article>
     </div>
-    <article class="message">
-      <div class="message-header">
-        <subject-label subject="{{ message.label }}"></subject-label>
-        <h3 class="title">{{ message.subject }}</h3>
-      </div>
-      <div class="message-meta">
-        <div class="user-info">
-          <div class="user-avatar">
-            <img ng-src="{{ message.sender.cover_image_url }}" alt="{{ message.sender | fullname }}">
-          </div>
-          <h4>{{ message.sender | fullname }}</h4>
-          <small>{{ message.sender.email }}</small>
-        </div>
-        <div class="pull-right">
-          <timeago ng-model="message.created_at"></timeago>
-        </div>
-      </div>
-      <div class="message-body" ng-class="{'highlighted': message.sender.type == 'Collaborator'}">
-        <p ng-bind-html="message.text"></p>
-      </div>
-    </article>
   </div>
 </div>

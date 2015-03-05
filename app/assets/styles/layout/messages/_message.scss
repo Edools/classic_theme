@@ -1,0 +1,77 @@
+/*********************************************************************
+*
+*  messages/message
+*  Inbox message detail styles
+*
+*********************************************************************/
+.message-panel {
+  padding: 0;
+
+  .message-panel-header {
+    padding: 15px 20px;
+  }
+
+  .channel-header {
+    height: 40px;
+    padding: 0 10px 15px 10px;
+
+    subject-label {
+      margin-top: 5px;
+      margin-right: 10px;
+    }
+
+    .title {
+      margin: 0;
+    }
+
+    & > * {
+      float: left;
+      @extend %clearfix;
+    }
+  }
+
+  .message-meta {
+    height: 60px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+  }
+
+  .user-info {
+    .user-avatar {
+      float: left;
+      margin-right: 15px;
+    }
+
+    .user-name, .user-email {
+      display: block;
+    }
+  }
+
+  $avatar-size: 40px;
+  .user-avatar img {
+    height: $avatar-size;
+    width: $avatar-size;
+    border-radius: 50%;
+  }
+
+  .message-body {
+    padding: 15px;
+
+    &.highlighted {
+      background: lighten($highlighting-color, 8%);
+    }
+
+    .text {
+      font-size: 15px;
+    }
+  }
+
+  .reply-input {
+    @extend %clearfix;
+
+    .btn {
+      margin-top: 10px;
+    }
+  }
+}
