@@ -29,12 +29,12 @@
                   <span>Adicionar Filtro</span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li filter-input-toggle="read"><a href>Filtrar por status de leitura</a></li>
-                  <li filter-input-toggle="label"><a href>Filtrar por assunto</a></li>
+                  <!-- <li filter-input-toggle="read"><a href>Filtrar por status de leitura</a></li> -->
+                  <li filter-input-toggle="permission_key"><a href>Filtrar por assunto</a></li>
                 </ul>
               </div>
 
-              <filter-input-container field="read">
+              <!-- <filter-input-container field="read">
                 <div class="input-group">
                   <span class="input-group-addon text-info">
                     <span filter-input-toggle="read" class="icon fa fa-times-circle"></span>&nbsp;&nbsp;Lido
@@ -45,13 +45,19 @@
                     <option value="false">Não</option>
                   </select>
                 </div>
-              </filter-input-container>
+              </filter-input-container> -->
 
-              <filter-input-container field="label">
+              <filter-input-container field="permission_key">
                 <div class="input-group">
                   <span class="input-group-addon text-info">
-                    <span filter-input-toggle="label" class="icon fa fa-times-circle"></span>&nbsp;&nbsp;Assunto
+                    <span filter-input-toggle="permission_key" class="icon fa fa-times-circle"></span>&nbsp;&nbsp;Assunto
                   </span>
+                  <select class="form-control" filter-input="permission_key" ng-model="filterInput.permission_key">
+                    <option value=""></option>
+                    <option value="content_management">Acadêmico</option>
+                    <option value="school_management">Administrativo</option>
+                    <option value="finance">Financeiro</option>
+                  </select>
                 </div>
               </filter-input-container>
             </filter-menu>

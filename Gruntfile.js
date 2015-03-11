@@ -68,7 +68,6 @@ module.exports = function (grunt) {
           '<%= theme.temp %>/styles/**/*.css',
           '<%= theme.app %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= theme.app %>/bower_components/edools-school/dist/*.js',
-          '<%= theme.app %>/bower_components/edools-school/dist/*.css',
           'params.json'
         ]
       }

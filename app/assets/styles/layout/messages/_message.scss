@@ -57,6 +57,7 @@
 
   .message-body {
     padding: 15px;
+    position: relative;
 
     &.highlighted {
       background: lighten($highlighting-color, 8%);
