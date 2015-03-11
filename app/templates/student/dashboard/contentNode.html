@@ -14,7 +14,7 @@
       <div class="class-info" ng-class="{'active': $state.params.contentId == class.lesson.id.toString()}">
         <progress-icon ng-model="class"></progress-icon>
         <class-icon ng-model="class"></class-icon>
-        <a class="title" link-to=".content({ contentId: class.lesson.id })">{{ class.lesson.title }}</a>
+        <a class="title" link-to=".content({ contentId: class.id })">{{ class.lesson.title }}</a>
       </div>
     </div>
   </li>

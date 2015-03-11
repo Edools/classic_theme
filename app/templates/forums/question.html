@@ -31,8 +31,8 @@
       </article>
       <hr>
       <div class="answer-action">
-        <textarea type="text" autogrow-input ng-model="answer.text" placeholder="Responder..." class="form-control"></textarea>
-        <button ng-disabled="!answer.text" ng-click="postAnswer(answer)" class="btn btn-success pull-right">Responder</button>
+        <ck-editor ng-model="answer.text" hide-source="true"></ck-editor>
+        <button ng-disabled="!answer.text || answer.text == ''" ng-click="postAnswer(answer)" class="btn btn-success pull-right">Responder</button>
         <spinner name="postAnswer" class="small"></spinner>
       </div>
       <div ng-if="question.forum_answers == null || question.forum_answers.length == 0" class="note note-warning">
