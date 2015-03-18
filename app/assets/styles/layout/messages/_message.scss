@@ -12,8 +12,11 @@
   }
 
   .channel-header {
-    height: 40px;
     padding: 0 10px 15px 10px;
+  }
+
+  .channel-info {
+    height: 40px;
 
     subject-label {
       margin-top: 5px;
@@ -22,11 +25,28 @@
 
     .title {
       margin: 0;
+      margin-top: 2px;
     }
 
     & > * {
       float: left;
-      @extend %clearfix;
+      @include clearfix();
+    }
+  }
+
+  .channel-members {
+    .member-label {
+      width: 50px;
+      float: left;
+    }
+
+    .channel-owner {
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .btn.btn-xs {
+      margin-right: 3px;
     }
   }
 
@@ -56,12 +76,9 @@
   }
 
   .message-body {
-    padding: 15px;
+    padding: 30px 0 30px 65px;
     position: relative;
-
-    &.highlighted {
-      background: lighten($highlighting-color, 8%);
-    }
+    background: #f8f8f8;
 
     .text {
       font-size: 15px;
@@ -70,9 +87,10 @@
 
   .reply-input {
     @extend %clearfix;
+    margin-top: 20px;
 
     .btn {
-      margin-top: 10px;
+      margin: 10px 0;
     }
   }
 }
