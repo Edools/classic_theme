@@ -49,9 +49,9 @@ module.exports = function (grunt) {
         files: ['test/spec/**/*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
-      libsass: {
+      sass: {
         files: ['<%= theme.app %>/assets/styles/**/*.{scss,sass}'],
-        tasks: ['libsass:server', 'autoprefixer']
+        tasks: ['sass:server', 'autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -68,7 +68,6 @@ module.exports = function (grunt) {
           '<%= theme.temp %>/styles/**/*.css',
           '<%= theme.app %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= theme.app %>/bower_components/edools-school/dist/*.js',
-          '<%= theme.app %>/bower_components/edools-school/dist/*.css',
           'params.json'
         ]
       }
@@ -156,9 +155,9 @@ module.exports = function (grunt) {
     },
 
     // Compiles Sass to CSS and generates necessary files if requested
-    libsass: {
+    sass: {
       options: {
-        loadPath: ['<%= theme.app %>/bower_components/compass-mixins/lib']
+        includePaths: ['<%= theme.app %>/bower_components/compass-mixins/lib']
       },
       server: {
         files: [{
@@ -307,13 +306,13 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'libsass:server'
+        'sass:server'
       ],
       test: [
-        'libsass'
+        'sass'
       ],
       dist: [
-        'libsass:server',
+        'sass:server',
         'imagemin',
         'svgmin'
       ]

@@ -98,13 +98,12 @@ $question-user-avatar-size: 48px;
   }
 }
 
-$teacher-answer-color: #f9f1c7;
 .highlighted-answers {
   .answer {
-    background: $teacher-answer-color;
+    background: $highlighting-color;
 
     &:hover {
-      background: darken($teacher-answer-color, 3%);
+      background: darken($highlighting-color, 3%);
     }
   }
 }

@@ -1,0 +1,65 @@
+<div class="container dashboard-panel">
+  <spinner name="channel"></spinner>
+  <div class="panel" hide-on-load="channel">
+    <div class="panel-body message-panel">
+      <div class="row message-panel-header">
+        <a link-to="school.messages.inbox" class="btn btn-xs btn-default btn-labeled">
+          <i class="fa fa-arrow-left btn-label"></i>
+          <span>Voltar</span>
+        </a>
+      </div>
+      <article class="channel">
+        <div class="channel-header">
+          <div class="channel-info">
+            <subject-label subject="{{ channel.permission_key }}"></subject-label>
+            <h3 class="title">{{ channel.subject }}</h3>
+          </div>
+          <div class="channel-members">
+            <div class="channel-owner">
+              <strong class="member-label">De:</strong>
+              <span>{{ channel.owner | fullname }}</span>
+            </div>
+            <div>
+              <strong class="member-label">Para:</strong>
+              <div class="member-list-wrapper">
+                <span ng-repeat="member in channel.members | limitTo: memberLimit">{{ member.user | fullname }}, </span>
+                <a href ng-click="toggleExpandMembers()">
+                  Mostrar
+                  <span ng-hide="membersExpanded">mais</span>
+                  <span ng-show="membersExpanded">menos</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="message-list">
+          <article class="message" ng-repeat="message in channel.messages">
+            <div class="message-meta">
+              <div class="user-info col-xs-10">
+                <div class="user-avatar">
+                  <img ng-src="{{ message.sender.cover_image_url }}" alt="{{ message.sender | fullname }}">
+                </div>
+                <strong class="user-name">{{ message.sender | fullname }}</strong>
+                <small class="user-email light-gray-text">{{ message.sender.email }}</small>
+              </div>
+              <div class="pull-right col-xs-2">
+                <timeago class="light-gray-text pull-right" ng-model="message.created_at"></timeago>
+              </div>
+            </div>
+            <div class="message-body">
+              <p class="text" ng-bind-html="message.text"></p>
+            </div>
+          </article>
+          <div class="reply-input col-xs-12">
+            <ck-editor ng-model="newMessage.text" hide-source="true"></ck-editor>
+            <button type="button" class="btn btn-success btn-labeled pull-right" ng-disabled="!newMessage.text || newMessage.text == ''" ng-click="postReply(newMessage, channel)">
+              <i class="fa fa-paper-plane btn-label"></i>
+              <span>Responder</span>
+            </button>
+            <spinner name="postMessage"></spinner>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
