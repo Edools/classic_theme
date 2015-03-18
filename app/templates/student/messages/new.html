@@ -1,70 +1,52 @@
-<spinner name="inbox"></spinner>
 <div class="container dashboard-panel">
-  <ul class="nav nav-tabs nav-tabs-lg">
-    <li ui-sref-active="active">
-      <a link-to="school.messages.inbox({ type: 'received' })">
-        <i class="fa fa-inbox"></i>
-        <div>Recebidas</div>
-      </a>
-    </li>
-    <li ui-sref-active="active">
-      <a link-to="school.messages.inbox({ type: 'sent' })">
-        <i class="fa fa-mail-forward"></i>
-        <div>Enviadas</div>
-      </a>
-    </li>
-  </ul>
-  <section class="tab-content tab-content-bordered panel">
-    <h4 class="form-title">
-      <i class="fa fa-edit"></i>
-      <span>Nova mensagem</span>
-    </h4>
+  <spinner name="newMessage"></spinner>
+  <div class="panel">
+  	<section class="panel-body">
+	    <h4 class="form-title">
+	      <i class="fa fa-edit"></i>
+	      <span>Nova mensagem</span>
+	    </h4>
+	    <hr>
 
-    <hr>
+	    <div class="row">
+	      <div class="col-xs-10 col-xs-offset-1">
+			<form class="form-horizontal">
+			  <div class="form-group">
+			    <label for="inputEmail3" class="col-sm-2 control-label">Para a equipe:</label>
+			    <div class="col-sm-9">
+		    		<select class="form-control" ng-model="channel.permission_key" required>
+						<option value="content_management" selected="selected">Acadêmica</option>
+						<option value="school_management">Administrativa</option>
+						<option value="finance">Financeira</option>
+					</select>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Assunto:</label>
+			    
+			    <div class="col-sm-9">
+					<input type="text" ng-model="channel.subject" class="form-control" placeholder="">
+			    </div>
+			  </div>
 
-    <div class="row">
-      <div class="col-xs-10 col-xs-offset-1">
-		<form class="form-horizontal">
-		  <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">Para a equipe:</label>
-		    <div class="col-sm-9">
-	    		<select class="form-control" ng-model="channel.permission_key" required>
-					<option value="content_management" selected="selected">Acadêmica</option>
-					<option value="school_management">Administrativa</option>
-					<option value="finance">Financeira</option>
-				</select>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="col-sm-2 control-label">Assunto:</label>
-		    
-		    <div class="col-sm-9">
-				<input type="text" ng-model="channel.subject" class="form-control" placeholder="">
-		    </div>
-		  </div>
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Mensagem:</label>
+			    <div class="col-sm-9">
+			      <ck-editor ng-model="message.text" hide-source="true"></ck-editor>
+			    </div>
+			  </div>
 
-		  <div class="form-group">
-		    <label class="col-sm-2 control-label">Mensagem:</label>
-		    <div class="col-sm-9">
-		      <ck-editor ng-model="message.text" hide-source="true"></ck-editor>
-		    </div>
-		  </div>
-
-		  <div class="form-group">
-		    <div class="col-sm-9 col-sm-offset-2">
-		       <button class="btn btn-lg btn-success btn-labeled ng-scope" type="button" ui-sref="school.messages.new" ng-click="sendMessage()">
-	            <i class="fa fa-send btn-label"></i>
-	            <span>Enviar</span>
-	          </button>
-		    </div>
-		  </div>
-
-		 
-
-		</form>
-
-      </div>
-    </div>
-
-  </section>
+			  <div class="form-group">
+			    <div class="col-sm-9 col-sm-offset-2">
+			       <button class="btn btn-lg btn-success btn-labeled ng-scope" type="button" ng-click="sendMessage(channel, message)">
+		            <i class="fa fa-send btn-label"></i>
+		            <span>Enviar</span>
+		          </button>
+			    </div>
+			  </div>
+			</form>
+	      </div>
+	    </div>
+	 </section>
+  </div>
 </div>
