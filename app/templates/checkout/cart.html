@@ -14,7 +14,7 @@
         </div>
         <div class="panel cart-product" ng-repeat="item in order.items">
           <div class="panel-heading">
-            <strong>{{ item.product.name }}</strong>
+            <strong>{{ item.schoolProduct.title }}</strong>
             <div class="pull-right">
               <a class="pointer" ng-click="removeFromCart(item)">
                 <i class="fa fa-trash-o"></i>
@@ -22,15 +22,13 @@
             </div>
           </div>
           <div class="panel-body">
-            <div class="col-xs-12 col-md-4 card cart-image">
-              <img ng-src="{{ item.product.logo }}" alt="{{ item.product.name }}">
+            <div class="col-xs-12 col-md-4 card cart-image" ng-if="item.schoolProduct.logo">
+              <img ng-src="{{ item.schoolProduct.logo }}" alt="{{ item.schoolProduct.title }}">
             </div>
-            <div class="col-xs-12 col-md-8 cart-subtitle" style="font-size: 14px; letter-spacing:1px;">
-              <p>{{ item.price.description }}</p>
+            <div class="col-xs-12 cart-subtitle" ng-class="{'col-md-8': item.schoolProduct.logo }">
+              <p ng-bind-html="item.schoolProduct.description"></p>
               <hr>
-              <div class="col-xs-12 col-sm-4">
-                <h4><strong>{{ item.amount_to_pay | money:'R$' }}</strong></h4>
-              </div>
+              <h4><strong>{{ item.amount_to_pay | money:'R$' }}</strong></h4>
             </div>
           </div>
         </div>
@@ -45,7 +43,7 @@
         <div class="panel-body">
           <div class="courses">
             <div class="course" ng-repeat="item in order.items">
-              <span class="title">{{ item.product.name }}</span>
+              <span class="title">{{ item.schoolProduct.title }}</span>
               <span class="price">
                 <s ng-if="item.amount_to_pay !== item.total">
                   {{ item.total | money:'R$' }}
