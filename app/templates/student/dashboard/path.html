@@ -68,7 +68,7 @@
               <p>Ainda não há nenhum aviso aqui.</p>
             </div>
             <div class="bulletin" ng-repeat="bulletin in bulletins">
-              <a ui-sref="school.dashboard.bulletin({ bulletinId: bulletin.id, pathId: path.id enrollmentId: enrollment.id })">{{ bulletin.subject }}</a>
+              <a ui-sref="school.dashboard.bulletin({ bulletinId: bulletin.id, pathId: path.id, enrollmentId: enrollment.id })">{{ bulletin.subject }}</a>
             </div>
             <div class="center" ng-if="bulletins.length > 0" ed-pagination="bulletins.pagingInfo" refresh="getBoard(enrollment, path, page)">
               <ul class="pagination">
