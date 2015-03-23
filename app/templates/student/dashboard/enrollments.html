@@ -18,64 +18,57 @@
           <div>Certificados</div>
         </a>
       </li>
-      <!-- Not implemented yet -->
-      <!-- <li>
-        <a link-to="school.dashboard.contact">
-          <i class="fa fa-comment"></i>
-          <div>Contato</div>
-        </a>
-      </li> -->
     </ul>
     <section class="panel tab-content tab-content-bordered">
-      <div ng-show="!$loader.isLoading">
-        <div ng-if="(enrollments == undefined || enrollments.length == 0) && (pendingEnrollments == undefined || pendingEnrollments.length === 0) && !$loader.get('dashboard').isLoading" class="alert alert-warning">Você ainda não está matriculado em nenhum curso.</div>
-        <div class="container">
-          <article class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in enrollments">
-            <div class="course">
-              <div class="course-image">
-                <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
-                <img ng-if="enrollment.course.logo === null" src="assets/images/missing-course-logo.png" />
-                <div class="course-edit-overlay" ng-if="enrollment.school_product.library_resource.resource_type === 'Course'">
-                  <a class="btn btn-default btn-edit" link-to=".course({ courseId: enrollment.school_product.library_resource.resource_id, enrollmentId: enrollment.id })">
-                    <i class="fa fa-video-camera"></i>
-                    <span>Assistir curso</span>
-                  </a>
-                </div>
-                <div class="course-edit-overlay" ng-if="enrollment.school_product.library_resource.resource_type === 'Path'">
-                  <a class="btn btn-default btn-edit" link-to=".path({ pathId: enrollment.school_product.library_resource.resource_id, enrollmentId: enrollment.id })">
-                    <i class="fa fa-video-camera"></i>
-                    <span>Acessar Path</span>
-                  </a>
-                </div>
+      <div hide-on-load="dashboard">
+        <div ng-if="(enrollments == undefined || enrollments.length == 0) && (pendingEnrollments == undefined || pendingEnrollments.length === 0)" class="alert alert-warning">Você ainda não está matriculado em nenhum curso.</div>
+        <article class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in enrollments">
+          <div class="course">
+            <div class="course-image">
+              <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
+              <img ng-if="enrollment.course.logo === null" src="assets/images/missing-course-logo.png" />
+              <div class="course-edit-overlay" ng-if="enrollment.school_product.library_resource.resource_type === 'Course'">
+                <a class="btn btn-default btn-edit" link-to="school.dashboard.course.detail({ courseId: enrollment.school_product.library_resource.resource_id, enrollmentId: enrollment.id })">
+                  <i class="fa fa-video-camera"></i>
+                  <span>Assistir curso</span>
+                </a>
               </div>
-              <div class="course-label">
-                <span max-lines="1">{{ enrollment.course.title }}</span>
-                <div>
-                  <i class="light-gray-text"><enrollment-status ng-model="enrollment"></enrollment-status></i>
-                </div>
+              <div class="course-edit-overlay" ng-if="enrollment.school_product.library_resource.resource_type === 'Path'">
+                <a class="btn btn-default btn-edit" link-to="school.dashboard.path({ pathId: enrollment.school_product.library_resource.resource_id, enrollmentId: enrollment.id })">
+                  <i class="fa fa-video-camera"></i>
+                  <span>Acessar Path</span>
+                </a>
               </div>
             </div>
-          </article>
-        </div>
-        <div class="container">
-          <h4 ng-if="pendingEnrollments != undefined && pendingEnrollments.length > 0">Matrículas pendentes:</h4>
-          <article class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in pendingEnrollments">
-            <div class="course">
-              <div class="course-image">
-                <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
-                <img ng-if="enrollment.course.logo === null" src="assets/images/missing-course-logo.png" />
-              </div>
-              <div class="course-label">
-                <span max-lines="1">{{ enrollment.course.title }}</span>
-                <div>
-                  <i class="light-gray-text"><enrollment-status ng-model="enrollment"></enrollment-status></i>
-                </div>
+            <div class="course-label">
+              <span max-lines="1">{{ enrollment.course.title }}</span>
+              <div>
+                <i class="light-gray-text"><enrollment-status ng-model="enrollment"></enrollment-status></i>
               </div>
             </div>
-          </article>
+          </div>
+        </article>
+        <div class="row">
+          <div class="col-xs-12">
+            <h4 ng-if="pendingEnrollments != undefined && pendingEnrollments.length > 0">Matrículas pendentes:</h4>
+            <article class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in pendingEnrollments">
+              <div class="course">
+                <div class="course-image">
+                  <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
+                  <img ng-if="enrollment.course.logo === null" src="assets/images/missing-course-logo.png" />
+                </div>
+                <div class="course-label">
+                  <span max-lines="1">{{ enrollment.course.title }}</span>
+                  <div>
+                    <i class="light-gray-text"><enrollment-status ng-model="enrollment"></enrollment-status></i>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
-      <spinner name="dashboard" class="small"></spinner>
+      <spinner name="dashboard"></spinner>
     </section>
   </div>
 </div>

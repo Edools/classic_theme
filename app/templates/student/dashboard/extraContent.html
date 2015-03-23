@@ -15,30 +15,23 @@
           </h4>
         </div>
 
-        <div class="course-content panel">
+        <div class="panel" ng-if="extraContents.length > 0">
           <div class="panel-heading">
-            <strong class="panel-title">Conteúdo do curso</strong>
+            <strong class="panel-title">Material complementar</strong>
           </div>
-
           <div class="panel-body">
-            <content-tree type="dashboard" ng-model="course" lessons-info="lessons_info" lazy="true"></content-tree>
-          </div>
-        </div>
-
-        <div class="course-progress panel">
-          <div class="panel-heading">
-            <span class="panel-title">
-              <i class="panel-title-icon fa fa-check"></i>Progresso
-            </span>
-          </div>
-
-          <div class="panel-body">
-            <header class="progress-header">
-              <span class="label label-success">{{lessons_info.completed.length}}</span> aula(s) completa(s)
-              <span class="label label-warning">{{lessons_info.in_progress.length}}</span> aula(s) iniciada(s)
-              <span class="label label-info">{{lessons_info.total}}</span> aula(s) no total
-            </header>
-            <stacked-progress success="{{ lessons_info.completed.length }}" warning="{{ lessons_info.in_progress.length }}" total="{{ lessons_info.total }}"></stacked-progress>
+            <ul class="modules">
+              <li class="module-item root" ng-repeat="extraContent in extraContents">
+                <div class="class">
+                  <div class="class-info" ng-class="{'active': $state.params.extraContentId == extraContent.id.toString()}">
+                    <media-icon type="extraContent.media.type"></media-icon>
+                    <span ng-class="{'label-info': $state.params.extraContentId == extraContent.id.toString()}">
+                      <a class="title" link-to="school.dashboard.course.extraContent({ extraContentId: extraContent.id })">{{ extraContent.title }}</a>
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -47,7 +40,7 @@
         <activity ng-model="activity" respond-activity="true" enrollment-id="enrollmentId" lesson-id="lesson.id" ng-if="activity"></activity>
 
         <media-player trackeable="true" ng-model="media" enrollment-id="enrollmentId" lesson-id="lesson.id" owner="courseContent || extraContent" ng-if="media"></media-player>
-        <spinner name="content" class="small"></spinner>
+        <spinner name="extraContent" class="small"></spinner>
       </div>
     </div>
   </div>
