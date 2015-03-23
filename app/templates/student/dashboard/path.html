@@ -70,7 +70,7 @@
             <div class="bulletin" ng-repeat="bulletin in bulletins">
               <a ui-sref="school.dashboard.bulletin({ bulletinId: bulletin.id, pathId: path.id enrollmentId: enrollment.id })">{{ bulletin.subject }}</a>
             </div>
-            <div class="center" ng-if="bulletins.length > 0" ed-pagination="bulletins.pagingInfo" refresh="getBulletins(enrollment, path, page)">
+            <div class="center" ng-if="bulletins.length > 0" ed-pagination="bulletins.pagingInfo" refresh="getBoard(enrollment, path, page)">
               <ul class="pagination">
                 <li ed-pagination-previous>
                   <a href=""><i class="fa fa-caret-left"></i></a>
