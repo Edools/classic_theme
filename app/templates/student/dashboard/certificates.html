@@ -15,26 +15,24 @@
       </li>
     </ul>
     <section class="panel tab-content tab-content-bordered">
-      <div ng-show="!$loader.isLoading">
-        <div class="container">
-          <article class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in enrollments">
-            <div class="course">
-              <div class="course-image">
-                <img ng-if="enrollment.school_product.logo !== null" ng-src="{{enrollment.school_product.logo}}" />
-                <img ng-if="enrollment.school_product.logo === null" src="assets/images/missing-course-logo.png" />
-                <div class="course-edit-overlay">
-                  <a class="btn btn-default btn-edit" ng-href="{{ enrollment.certificate.s3_file_url }}">
-                    <i class="fa fa-download"></i>
-                    <span>Download certificado</span>
-                  </a>
-                </div>
-              </div>
-              <div class="course-label">
-                <span max-lines="1">{{ enrollment.course.title }}</span>
+      <div class="container">
+        <article class="col-md-4 col-sm-6 col-xs-12" ng-repeat="enrollment in enrollments">
+          <div class="course">
+            <div class="course-image">
+              <img ng-if="enrollment.school_product.logo !== null" ng-src="{{enrollment.school_product.logo}}" />
+              <img ng-if="enrollment.school_product.logo === null" src="assets/images/missing-course-logo.png" />
+              <div class="course-edit-overlay">
+                <a class="btn btn-default btn-edit" ng-href="{{ enrollment.certificate.s3_file_url }}">
+                  <i class="fa fa-download"></i>
+                  <span>Download certificado</span>
+                </a>
               </div>
             </div>
-          </article>
-        </div>
+            <div class="course-label">
+              <span max-lines="1">{{ enrollment.course.title }}</span>
+            </div>
+          </div>
+        </article>
       </div>
       <spinner name="dashboard" class="small"></spinner>
     </section>

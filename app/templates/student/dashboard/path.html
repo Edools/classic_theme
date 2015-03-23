@@ -1,56 +1,91 @@
 <div class="dashboard">
   <div class="container dashboard-panel">
-    <article class="course-content panel">
-      <div class="panel-heading">
-        <strong class="panel-title">{{ path.name }}</strong>
-      </div>
+    <spinner name="path"></spinner>
+    <div class="row" hide-on-load="path">
+      <div class="col-xs-12 col-md-8">
+        <div class="panel path-panel">
+          <div class="panel-heading">
+            <strong class="panel-title">{{ path.name }}</strong>
+          </div>
 
-      <div class="panel-body" ng-show="!$loader.isLoading">
-        <div class="form-group input-group input-group-lg">
-          <span class="input-group-addon no-background"><i class="fa fa-search"></i></span>
-          <input type="text" class="form-control" placeholder="Buscar pelo nome do curso..." ng-change="getCourses()" ng-model="coursesName">
-          <span class="input-group-btn">
-            <button class="btn" type="button" ng-click="getCourses()">Buscar</button>
-          </span>
-        </div>
-
-
-        <div class="container">
-          <article class="col-md-4 col-sm-6 col-xs-12" ng-repeat="course in courses">
-            <div class="course">
-              <div class="course-image">
-                <img ng-if="course.image_url !== null" ng-src="{{ course.image_url }}" />
-                <img ng-if="course.logo === null" src="assets/images/missing-course-logo.png" />
-                <div class="course-edit-overlay">
-                  <a class="btn btn-default btn-edit" link-to="school.dashboard.enrollments.course({ courseId: course.id, enrollmentId: enrollmentId })">
-                    <i class="fa fa-video-camera"></i>
-                    <span>Assistir curso</span>
-                  </a>
+          <div class="panel-body">
+            <div class="row">
+              <filter-bar refresh="getCourses(filters)">
+                <div class="form-group input-group input-group-lg">
+                  <span class="input-group-addon no-background"><i class="fa fa-search"></i></span>
+                  <input type="text" class="form-control" placeholder="Buscar pelo nome do curso..." filter-input="name" search ng-model="filterInput.name">
+                  <span class="input-group-btn">
+                    <button class="btn" type="button">Buscar</button>
+                  </span>
                 </div>
-              </div>
-              <div class="course-label">
-                <span max-lines="1">{{ course.name }}</span>
-              </div>
+              </filter-bar>
+
+              <article class="col-sm-6 col-xs-12" ng-repeat="course in courses">
+                <div class="course">
+                  <div class="course-image">
+                    <img ng-if="course.image_url" ng-src="{{ course.image_url }}" />
+                    <img ng-if="!course.image_url" src="assets/images/missing-course-logo.png" />
+                    <div class="course-edit-overlay">
+                      <a class="btn btn-default btn-edit" link-to="school.dashboard.course.detail({ courseId: course.id, enrollmentId: enrollmentId })">
+                        <i class="fa fa-video-camera"></i>
+                        <span>Assistir curso</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="course-label">
+                    <span max-lines="1">{{ course.name }}</span>
+                  </div>
+                </div>
+              </article>
             </div>
-          </article>
-        </div>
 
-        <spinner name="courses" class="small"></spinner>
+            <spinner name="courses"></spinner>
 
-        <div class="text-center" ng-show="!$loader.isLoading">
-          <ul class="pagination" ed-pagination="courses.pagingInfo" refresh="getCourses(page)">
-            <li ed-pagination-previous>
-              <a href=""><i class="fa fa-caret-left"></i></a>
-            </li>
-            <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
-              <a href="">{{ page }}</a>
-            </li>
-            <li ed-pagination-next>
-              <a href=""><i class="fa fa-caret-right"></i></a>
-            </li>
-          </ul>
+            <div class="center" ed-pagination="courses.pagingInfo" refresh="getCourses(filters, page)">
+              <ul class="pagination">
+                <li ed-pagination-previous>
+                  <a href=""><i class="fa fa-caret-left"></i></a>
+                </li>
+                <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+                  <a href="">{{ page }}</a>
+                </li>
+                <li ed-pagination-next>
+                  <a href=""><i class="fa fa-caret-right"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </article>
+      <div class="col-xs-12 col-md-4">
+        <div class="panel">
+          <div class="panel-heading">
+            <strong class="panel-title">Quadro de avisos</strong>
+          </div>
+          <div class="panel-body">
+            <spinner name="board" class="small"></spinner>
+            <div class="note note-info" ng-hide="bulletins.length > 0" hide-on-load="board" hide-on-load="enrollment">
+              <p>Ainda não há nenhum aviso aqui.</p>
+            </div>
+            <div class="bulletin" ng-repeat="bulletin in bulletins">
+              <a ui-sref="school.dashboard.bulletin({ bulletinId: bulletin.id, pathId: path.id enrollmentId: enrollment.id })">{{ bulletin.subject }}</a>
+            </div>
+            <div class="center" ng-if="bulletins.length > 0" ed-pagination="bulletins.pagingInfo" refresh="getBulletins(enrollment, path, page)">
+              <ul class="pagination">
+                <li ed-pagination-previous>
+                  <a href=""><i class="fa fa-caret-left"></i></a>
+                </li>
+                <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+                  <a href="">{{ page }}</a>
+                </li>
+                <li ed-pagination-next>
+                  <a href=""><i class="fa fa-caret-right"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
