@@ -18,7 +18,7 @@
     <div hide-on-load="forum" collapse="collapsed" class="forum-sections list-group widget-threads">
       <div hide-on-load="forum" ng-if="forums === undefined || forums.length === 0" class="alert alert-info text-center">Ainda não há fóruns aqui.</div>
 
-      <article ng-repeat="forum in forums | filter:filterInput | orderBy:'created_at':true" class="section list-group-item">
+      <article ng-repeat="forum in forums | filter:filterInput | orderBy:'created_at':true | filterByForumCategory:selectedCategory" class="section list-group-item">
         <div class="section-content clearfix">
           <h4 class="list-group-item-heading">
             <a link-to="school.forums.forum.detail({ forumId: forum.id })">{{ forum.title }}</a>
