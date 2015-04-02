@@ -21,6 +21,26 @@
       					</select>
     			    </div>
     			  </div>
+
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Para:</label>
+                <div class="col-sm-11">
+                  <ui-select multiple ng-model="to.selected" required>
+                    <ui-select-match placeholder="Procurar pessoas">
+                      {{$item.name}} &lt;{{$item.email}}&gt;
+                    </ui-select-match>
+                    <ui-select-choices repeat="user.id as user in users | propsFilter: {name: $select.search, email: $select.search}" refresh="searchUsers({ full_name: $select.search })" refresh-delay="0">
+                      <div>
+                      <span ng-bind-html="user.name | highlight: $select.search"></span>
+                    </div>
+                    <small>
+                      <span ng-bind-html="user.email | highlight: $select.search"></span>
+                    </small>
+                    </ui-select-choices>
+                  </ui-select>
+              </div>
+            </div>
+
     			  <div class="form-group">
     			    <label class="col-sm-1 control-label">Assunto:</label>
 
