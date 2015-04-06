@@ -31,13 +31,14 @@
                     </ui-select-match>
                     <ui-select-choices repeat="user.id as user in users | propsFilter: {name: $select.search, email: $select.search}" refresh="searchUsers({ full_name: $select.search })" refresh-delay="0">
                       <div>
-                      <span ng-bind-html="user.name | highlight: $select.search"></span>
-                    </div>
-                    <small>
-                      <span ng-bind-html="user.email | highlight: $select.search"></span>
-                    </small>
+                        <span ng-bind-html="user.name | highlight: $select.search"></span>
+                      </div>
+                      <small>
+                        <span ng-bind-html="user.email | highlight: $select.search"></span>
+                      </small>
                     </ui-select-choices>
                   </ui-select>
+                </div>
               </div>
             </div>
 
@@ -45,7 +46,7 @@
     			    <label class="col-sm-1 control-label">Assunto:</label>
 
     			    <div class="col-sm-11">
-    					<input type="text" class="form-control" ng-model="channel.subject" required>
+    					  <input type="text" class="form-control" ng-model="channel.subject" required>
     			    </div>
     			  </div>
 
