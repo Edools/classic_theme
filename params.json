@@ -9,9 +9,193 @@
   "forum": {
     "id": 1
   },
-  "apps":["school", "ecommerce", "forum", "sso",
-          "facebook-social", "facebook-analytics",
-          "google-analytics"],
+  "apps":[{
+    "name": "home",
+    "dependencies": {
+      "auth": "latest"
+    },
+    "routes": [{
+      "name": "school",
+      "views": {
+        "@": {
+          "templateUrl": "templates/layout.html",
+          "controller": "schoolController"
+        }
+      },
+      "data": {
+        "schema": {}
+      }
+    }, {
+      "name": "school.home",
+      "url": "/",
+      "schema": true,
+      "views": {
+        "root@school": {
+          "templateUrl": "templates/home.html",
+          "controller": "homeController"
+        }
+      }
+    }, {
+      "name": "school.products",
+      "url": "/products",
+      "schema": true,
+      "views": {
+        "root@school": {
+          "templateUrl": "templates/products.html",
+          "controller": "homeController"
+        }
+      }
+    }, {
+      "name": "school.product",
+      "url": "/products/:schoolProductId",
+      "schema": true,
+      "views": {
+        "root@school": {
+          "templateUrl": "templates/product.html",
+          "controller": "schoolProductController"
+        }
+      }
+    }, {
+      "name": "school.course",
+      "url": "/courses/:schoolProductId",
+      "schema": true,
+      "views": {
+        "root@school": {
+          "templateUrl": "templates/product.html",
+          "controller": "schoolProductController"
+        }
+      }
+    }, {
+      "name": "school.page",
+      "abstract": true,
+      "views": {
+        "root@school": {
+          "template": "<ui-view />"
+        }
+      }
+    }, {
+      "name": "school.page.{page.name}",
+      "url": "/{page.slug}",
+      "schema": true,
+      "templateUrl": "templates/page.html",
+      "controller": "pageController",
+      "controllerAs": "page",
+      "resolve": {
+        "page": "{page}"
+      }
+    }]
+  }, {
+    "name": "auth",
+    "version": "0.8.0-beta.17",
+    "routes": [{
+      "name": "school.auth",
+      "abstract": true,
+      "views": {
+        "root@school": {
+          "template": "<ui-view />"
+        }
+      }
+    }, {
+      "name": "school.auth.login",
+      "url": "/login?lost_session?next?nextParams",
+      "templateUrl": "templates/student/login.html",
+      "controller": "loginController"
+    }, {
+      "name": "school.auth.register",
+      "url": "/register",
+      "templateUrl": "templates/student/register.html",
+      "controller": "registerController"
+    }, {
+      "name": "school.auth.logout",
+      "url": "/logout",
+      "controller": "logoutController"
+    }, {
+      "name": "school.auth.confirm",
+      "url": "/users/confirm?token",
+      "controller": "userConfirmController"
+    }, {
+      "name": "school.auth.password",
+      "url": "/password",
+      "abstract": true,
+      "template": "<ui-view />"
+    }, {
+      "name": "school.auth.password.request",
+      "url": "/request",
+      "templateUrl": "templates/student/password/request.html",
+      "controller": "passwordController"
+    }, {
+      "name": "school.auth.password.reset",
+      "url": "/reset?token",
+      "templateUrl": "templates/student/password/reset.html",
+      "controller": "passwordController"
+    }]
+  }, {
+    "name": "ecommerce",
+    "version": "0.8.0-beta.17",
+    "dependencies": {
+      "auth": "latest"
+    },
+    "routes": [{
+      "name": "school.checkout",
+      "url": "/checkout",
+      "abstract": true,
+      "views": {
+        "root@school": {
+          "template": "<ui-view />",
+          "controller": "checkoutController"
+        }
+      }
+    }, {
+      "name": "school.checkout.cart",
+      "url": "/cart",
+      "templateUrl": "templates/checkout/cart.html",
+      "controller": "cartController"
+    }, {
+      "name": "school.checkout.connect",
+      "url": "/connect",
+      "templateUrl": "templates/checkout/connect.html",
+      "controller": "checkoutConnectController"
+    }, {
+      "name": "school.checkout.complete",
+      "url": "/complete",
+      "authorization": true,
+      "templateUrl": "templates/checkout/complete.html",
+      "controller": "checkoutCompleteController"
+    }, {
+      "name": "school.checkout.payment",
+      "url": "/payment",
+      "authorization": true,
+      "templateUrl": "templates/checkout/payment.html",
+      "controller": "checkoutPaymentController"
+    }, {
+      "name": "school.checkout.processing",
+      "url": "/processing?paymentId?subscriptionId",
+      "authorization": true,
+      "templateUrl": "templates/checkout/processing.html",
+      "controller": "paymentProcessingController"
+    }, {
+      "name": "school.checkout.success",
+      "url": "/success/:paymentId",
+      "authorization": true,
+      "templateUrl": "templates/checkout/success.html",
+      "controller": "paymentSuccessController"
+    }, {
+      "name": "school.dashboard.orders",
+      "url": "/orders",
+      "authorization": true,
+      "templateUrl": "templates/student/dashboard/orders.html",
+      "controller": "ordersController"
+    }, {
+      "name": "school.credits",
+      "url": "/credits",
+      "views": {
+        "root@school": {
+          "templateUrl": "templates/credits.html",
+          "controller": "creditsController"
+        }
+      }
+    }]
+  }],
   "version":"0.8.0-beta.15",
   "key": "0deeefea8ed413cfd46deaee6a9e0a8f:8905479a41af1d94b85c5186ec33408d",
   "pages": [{
