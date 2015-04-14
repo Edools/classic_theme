@@ -1,0 +1,32 @@
+<div class="dashbaord">
+  <div class="container dashboard-panel">
+    <spinner name="bulletins"></spinner>
+    <div class="panel" hide-on-load="bulletins">
+      <div class="panel-body">
+        <button class="btn btn-xs btn-default btn-labeled" type="button" back-button>
+          <i class="fa fa-arrow-left btn-label"></i>
+          <span>Voltar</span>
+        </button>
+        <hr />
+        <div class="bulletin" ng-repeat="bulletin in bulletins">
+          <h4>{{ bulletin.subject }}</h4>
+          <p ng-bind-html="bulletin.text"></p>
+          <hr />
+        </div>
+        <div class="center" ed-pagination="bulletins.pagingInfo" refresh="getBuletins(enrollment, page)">
+          <ul class="pagination">
+            <li ed-pagination-previous>
+              <a href=""><i class="fa fa-caret-left"></i></a>
+            </li>
+            <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+              <a href="">{{ page }}</a>
+            </li>
+            <li ed-pagination-next>
+              <a href=""><i class="fa fa-caret-right"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
