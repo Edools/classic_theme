@@ -88,7 +88,7 @@
                     </div>
                   </div>
                 </form>
-                <button type="button" pay ng-disabled="cardForm.$invalid" disable-on-load="customer" class="btn btn-success pull-right">Efetuar pagamento</button>
+                <button type="button" pay ng-disabled="cardForm.$invalid" disable-on-load="payment" class="btn btn-success pull-right">Efetuar pagamento</button>
               </tab>
               <tab heading="Boleto Bancário" select="selectPayment('boleto')" ng-if="!plan">
                 <div class="note note-warning">
@@ -98,7 +98,7 @@
                   <span>O prazo para compensação de um boleto bancário é de até 3 dias úteis, após a realização do pagamento. O curso só irá ser liberado após a compensação do mesmo.</span>
                 </div>
                 <div class="text-center">
-                  <button type="button" pay disable-on-load="customer" class="btn btn-lg btn-success">Gerar Boleto</button>
+                  <button type="button" pay disable-on-load="payment" class="btn btn-lg btn-success">Gerar Boleto</button>
                 </div>
               </tab>
               <tab ng-if="canBuyWithCredits(order)" heading="Carteira de créditos" select="selectPayment('wallet')">
@@ -110,7 +110,7 @@
                 <div class="note note-warning" ng-if="customer.wallet.balance < totalPriceInCredits">
                   Você não possui créditos suficientes para comprar esse produto. Adiquira <a ui-sref="school.credits">aqui</a>
                 </div>
-                <button type="button" class="btn btn-success btn-lg pull-right" ng-disabled="customer.wallet.balance < totalPriceInCredits" ng-click="payWallet()">Confirmar compra</button>
+                <button type="button" disable-on-load="payment" class="btn btn-success btn-lg pull-right" ng-disabled="customer.wallet.balance < totalPriceInCredits" ng-click="payWallet()">Confirmar compra</button>
               </tab>
             </tabset>
           </div>
