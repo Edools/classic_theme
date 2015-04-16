@@ -22,6 +22,12 @@
   .module-item {
     list-style: none;
   }
+
+  .module-info spinner {
+    position: relative;
+    float: right;
+    margin: 10px 15px 0 0;
+  }
 }
 
 .dashboard-panel {
