@@ -1,0 +1,81 @@
+/*********************************************************************
+*
+*  layout/education/forums/questions
+*  Questions list screen layout
+*
+*********************************************************************/
+.topic-question-list-heading {
+  margin-bottom: 20px;
+}
+
+.topic-question {
+  .question-body {
+    padding: 0;
+    height: 130px;
+  }
+
+  .question-user {
+    float: left;
+    padding: 10px 0;
+    height: 100%;
+
+    @media (min-width: $screen-tablet) {
+      width: 10%;
+    }
+
+    @include forum-user-avatar(50px);
+  }
+
+  .question-content {
+    float: left;
+    padding: 5px 0;
+    @extend %clearfix;
+
+    @media (min-width: $screen-tablet) {
+      width: 90%;
+    }
+  }
+
+  .panel-footer {
+    padding: 10px 0;
+    @media (min-width: $screen-tablet) {
+      margin-left: 10%;
+    }
+  }
+
+  .question-meta {
+    height: 40px;
+  }
+
+  .answer-panel {
+    position: relative;
+    padding-right: 10px;
+    @extend %clearfix;
+
+    .form-control {
+      height: 30px;
+      margin-bottom: 5px;
+      transition: height 0.3s;
+
+      &:focus {
+        height: 100px;
+      }
+    }
+
+    .btn {
+      float: right;
+    }
+  }
+
+  $widget-margin: 15px;
+  .question-widget {
+    float: left;
+    @extend %clearfix;
+    margin-right: $widget-margin;
+  }
+
+  .question-control {
+    float: right;
+    margin-right: $widget-margin;
+  }
+}

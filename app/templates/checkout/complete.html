@@ -183,7 +183,7 @@
               </form>
             </div>
             <div class="pull-right">
-              <button type="button" go-to-payment ng-disabled="customerForm.$invalid || addressForm.$invalid" class="btn btn-lg btn-success">Prosseguir para pagamento</button>
+              <button type="button" go-to-payment ng-disabled="customerForm.$invalid || addressForm.$invalid" class="btn btn-lg btn-success" disable-on-load="complete">Prosseguir para pagamento</button>
             </div>
           </div>
         </div>
@@ -203,12 +203,18 @@
                 <subscription-plan plan="plan"></subscription-plan>
               </span>
             </div>
-            <div class="course" ng-repeat="schoolProduct in schoolProducts">
-              <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
-              <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
+            <div class="course" ng-repeat="item in order.items">
+              <span class="title">{{ item.product.name }}</span>
+              <span class="price">
+                <s ng-if="item.amount_to_pay !== item.total">
+                  {{ item.total | money:'R$' }}
+                  <br>
+                </s>
+                {{ item.amount_to_pay | money:'R$' }}
+              </span>
             </div>
           </div>
-          <div class="total clearfix" ng-if="schoolProducts">
+          <div class="total clearfix" ng-if="order">
             <span class="pull-right">
               {{ totalPrice | money:'R$' }}
             </span>

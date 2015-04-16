@@ -1,0 +1,45 @@
+<div class="dashboard">
+  <div class="container dashboard-panel">
+    <spinner name="course"></spinner>
+    <div hide-on-load="course" class="row course-container">
+      <div class="course-infos col-md-4">
+        <div class="course-page panel text-center">
+          <br/>
+          <a link-to="school.dashboard.course.detail" ng-if="course.image_url">
+            <img class="course-page-image" ng-src="{{ course.image_url }}" alt="{{ course.name }}">
+          </a>
+          <h4>
+            <a link-to="school.dashboard.course.detail">
+              <strong>{{ course.name }}</strong>
+            </a>
+          </h4>
+        </div>
+
+        <div class="panel" ng-if="extraContents.length > 0">
+          <div class="panel-heading">
+            <strong class="panel-title">Material complementar</strong>
+          </div>
+          <div class="panel-body">
+            <ul class="modules">
+              <li class="module-item root" ng-repeat="extraContent in extraContents">
+                <div class="class">
+                  <div class="class-info" ng-class="{'active': $state.params.extraContentId == extraContent.id.toString()}">
+                    <media-icon type="extraContent.media.type"></media-icon>
+                    <span ng-class="{'label-info': $state.params.extraContentId == extraContent.id.toString()}">
+                      <a class="title" link-to="school.dashboard.course.extraContent.media({ extraContentId: extraContent.id })">{{ extraContent.title }}</a>
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card panel col-md-8 course-content-player">
+        <div ui-view></div>
+        <spinner name="extraContent" class="small"></spinner>
+      </div>
+    </div>
+  </div>
+</div>

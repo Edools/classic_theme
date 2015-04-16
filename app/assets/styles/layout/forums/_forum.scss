@@ -1,0 +1,46 @@
+/*********************************************************************
+*
+*  layout/forums/forum
+*  Forum detail screen styles
+*
+*********************************************************************/
+.sections-page .forum-sections {
+  & > .section {
+    background: transparent;
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.section-topics-list {
+  width: 100%;
+  border: 1px solid #bbb;
+  margin-top: 10px;
+}
+
+.section-content .list-group-item-heading i {
+  margin-left: 1px;
+  font-size: 14px;
+}
+
+.section-topic {
+  margin: 0;
+  padding: 5px 10px;
+
+  .title a {
+    color: $text-color;
+
+    &:hover {
+      color: $text-color;
+    }
+  }
+}
+
+.section-topic-striped:nth-child(odd) {
+  background: #fff;
+}
+
+.section-topic-striped:nth-child(even) {
+  background: #e6e6e6;
+}

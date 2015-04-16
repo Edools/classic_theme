@@ -88,7 +88,7 @@
                     </div>
                   </div>
                 </form>
-                <button type="button" pay ng-disabled="cardForm.$invalid" class="btn btn-success pull-right">Efetuar pagamento</button>
+                <button type="button" pay ng-disabled="cardForm.$invalid" disable-on-load="['customer', 'payment']" class="btn btn-success pull-right">Efetuar pagamento</button>
               </tab>
               <tab heading="Boleto Bancário" select="selectPayment('boleto')" ng-if="!plan">
                 <div class="note note-warning">
@@ -98,8 +98,19 @@
                   <span>O prazo para compensação de um boleto bancário é de até 3 dias úteis, após a realização do pagamento. O curso só irá ser liberado após a compensação do mesmo.</span>
                 </div>
                 <div class="text-center">
-                  <button type="button" pay class="btn btn-lg btn-success">Gerar Boleto</button>
+                  <button type="button" pay disable-on-load="['customer', 'payment']" class="btn btn-lg btn-success">Gerar Boleto</button>
                 </div>
+              </tab>
+              <tab ng-if="canBuyWithCredits(order)" heading="Carteira de créditos" select="selectPayment('wallet')">
+                <div class="center well">
+                  <h4>Preço dos produtos: {{ totalPriceInCredits }} créditos</h4>
+                  <br>
+                  <h4>Balanço da carteira de créditos: {{ customer.wallet.balance }} créditos</h4>
+                </div>
+                <div class="note note-warning" ng-if="customer.wallet.balance < totalPriceInCredits">
+                  Você não possui créditos suficientes para comprar esse produto. Adiquira <a ui-sref="school.credits">aqui</a>
+                </div>
+                <button type="button" disable-on-load="['customer', 'payment']" class="btn btn-success btn-lg pull-right" ng-disabled="customer.wallet.balance < totalPriceInCredits" ng-click="payWallet()">Confirmar compra</button>
               </tab>
             </tabset>
           </div>
@@ -120,12 +131,18 @@
                 <subscription-plan plan="plan"></subscription-plan>
               </span>
             </div>
-            <div class="course" ng-repeat="schoolProduct in schoolProducts">
-              <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
-              <span class="price">{{ schoolProduct.product.price | money:'R$' }}</span>
+            <div class="course" ng-repeat="item in order.items">
+              <span class="title">{{ item.product.name }}</span>
+              <span class="price">
+                <s ng-if="item.amount_to_pay !== item.total">
+                  {{ item.total | money:'R$' }}
+                  <br>
+                </s>
+                {{ item.amount_to_pay | money:'R$' }}
+              </span>
             </div>
           </div>
-          <div class="total clearfix" ng-if="schoolProducts">
+          <div class="total clearfix" ng-if="order">
             <span class="pull-right">
               {{ totalPrice | money:'R$' }}
             </span>

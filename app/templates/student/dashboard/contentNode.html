@@ -3,6 +3,7 @@
     <div class="title">
       <a href ng-click="getCourseContents(module)">{{ module.name }}</a>
     </div>
+    <spinner name="module{{ module.id }}.content" class="small"></spinner>
   </div>
 </div>
 <ol ui-tree-nodes ng-model="module.modules">
@@ -11,10 +12,10 @@
 <ol ui-tree-nodes ng-model="module.modules">
   <li class="module-item sub" ng-repeat="class in module.classes" ui-tree-node>
     <div class="class">
-      <div class="class-info" ng-class="{'active': $state.params.contentId == class.lesson.id.toString()}">
+      <div class="class-info" ng-class="{'active': $state.params.contentId == class.id.toString()}">
         <progress-icon ng-model="class"></progress-icon>
         <class-icon ng-model="class"></class-icon>
-        <a class="title" link-to=".content({ contentId: class.lesson.id })">{{ class.lesson.title }}</a>
+        <a class="title" link-to="school.dashboard.course.content.media({ contentId: class.id })">{{ class.lesson.title }}</a>
       </div>
     </div>
   </li>

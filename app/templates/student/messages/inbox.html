@@ -1,0 +1,97 @@
+<div class="container dashboard-panel">
+  <spinner name="inbox"></spinner>
+  <div class="panel">
+    <section class="panel-body">
+      <div class="message-filter-panel">
+        <filter-bar refresh="getChannels(filters)">
+          <div class="row message-filter-row">
+            <div class="input-group input-group-lg col-xs-12 col-md-10">
+              <span class="input-group-addon no-background"><i class="fa fa-search"></i></span>
+              <input type="text" class="form-control" placeholder="Buscar por título..." filter-input="subject" search ng-model="filterInput.subject">
+              <span class="input-group-btn">
+                <button class="btn" type="button">Buscar</button>
+              </span>
+            </div>
+
+            <div class="input-group input-group-lg">
+              <a link-to="school.messages.new" type="button" class="btn btn-lg btn-success btn-labeled btn-new-message">
+                <i class="fa fa-edit btn-label"></i>
+                <span>Nova mensagem</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="row">
+            <filter-menu>
+              <div class="btn-group dropdown">
+                <button class="btn btn-sm btn-labeled btn-outline dropdown-toggle" data-toggle="dropdown">
+                  <span class="btn-label icon fa fa-search-plus"></span>
+                  <span>Adicionar Filtro</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <!-- <li filter-input-toggle="read"><a href>Filtrar por status de leitura</a></li> -->
+                  <li filter-input-toggle="permission_key"><a href>Filtrar por assunto</a></li>
+                </ul>
+              </div>
+
+              <!-- <filter-input-container field="read">
+                <div class="input-group">
+                  <span class="input-group-addon text-info">
+                    <span filter-input-toggle="read" class="icon fa fa-times-circle"></span>&nbsp;&nbsp;Lido
+                  </span>
+                  <select class="form-control" filter-input="read" ng-model="filterInput.read">
+                    <option value=""></option>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                  </select>
+                </div>
+              </filter-input-container> -->
+
+              <filter-input-container field="permission_key">
+                <div class="input-group">
+                  <span class="input-group-addon text-info">
+                    <span filter-input-toggle="permission_key" class="icon fa fa-times-circle"></span>&nbsp;&nbsp;Assunto
+                  </span>
+                  <select class="form-control" filter-input="permission_key" ng-model="filterInput.permission_key">
+                    <option value=""></option>
+                    <option value="content_management">Acadêmico</option>
+                    <option value="school_management">Administrativo</option>
+                    <option value="finance">Financeiro</option>
+                  </select>
+                </div>
+              </filter-input-container>
+            </filter-menu>
+          </div>
+
+        </filter-bar>
+      </div>
+      <table class="table table-striped message-list inbox">
+        <tbody>
+          <tr ng-repeat="channel in channels | orderBy:'updated_at':true" class="message-item" ng-class="{'unread': !channel.read}" ui-sref="school.messages.detail({ channelId: channel.id })">
+            <td>{{ channel.owner | fullname }}</td>
+            <td>{{ channel.subject }}</td>
+            <td>
+              <subject-label subject="{{ channel.permission_key }}"></subject-label>
+            </td>
+            <td>
+              <timeago ng-model="channel.updated_at"></timeago>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="center" ed-pagination="channels.pagingInfo" refresh="getChannels(filters, page)">
+        <ul class="pagination">
+          <li ed-pagination-previous>
+            <a href=""><i class="fa fa-caret-left"></i></a>
+          </li>
+          <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+            <a href="">{{ page }}</a>
+          </li>
+          <li ed-pagination-next>
+            <a href=""><i class="fa fa-caret-right"></i></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
