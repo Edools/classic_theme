@@ -15,7 +15,10 @@
       <div class="class-info" ng-class="{'active': $state.params.contentId == class.id.toString()}">
         <progress-icon ng-model="class"></progress-icon>
         <class-icon ng-model="class"></class-icon>
-        <a class="title" link-to="school.dashboard.course.content.media({ contentId: class.id })">{{ class.lesson.title }}</a>
+        <a class="title" ng-class="class.lesson.progress.views === enrollment.max_attendance_length ? 'disabled' : ''" link-to="school.dashboard.course.content.media({ contentId: class.id })">{{ class.lesson.title }}</a>
+        <span ng-if="enrollment.max_attendance_type === 'attempts' && class.lesson.progress">
+          <span>{{ class.lesson.progress.views }} / {{ enrollment.max_attendance_length }}</span>
+        </span>
       </div>
     </div>
   </li>
