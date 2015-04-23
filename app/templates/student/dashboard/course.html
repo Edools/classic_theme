@@ -19,6 +19,7 @@
         <div class="course-content panel">
           <div class="panel-heading">
             <strong class="panel-title">Conteúdo do curso</strong>
+            <span style="font-size: 11px ;float: right;">Disponível até:  {{enrollment.available_until | toSaoPauloTimeZone | toDateTime}}</span>
           </div>
           <div class="panel-body">
             <content-tree type="dashboard" ng-model="course" enrollment="enrollment" lessons-info="lessons_info" lazy="true"></content-tree>
@@ -26,74 +27,89 @@
         </div>
       </div>
 
-      <div class="col-md-5">
-        <div class="course-progress panel" ng-if="">
-          <div class="panel-heading">
-            <span class="panel-title">
-              <i class="panel-title-icon fa fa-check"></i>Progresso
-            </span>
-          </div>
 
-          <div class="panel-body">
-            <header class="progress-header">
-              <span class="label label-success">{{ lessons_info.completed.length }}</span> aula(s) completa(s)
-              <span class="label label-warning">{{ lessons_info.in_progress.length }}</span> aula(s) iniciada(s)
-              <span class="label label-info">{{ lessons_info.total }}</span> aula(s) no total
-            </header>
-            <stacked-progress success="{{ lessons_info.completed.length }}" warning="{{ lessons_info.in_progress.length }}" total="{{ lessons_info.total }}"></stacked-progress>
-          </div>
+<!--     <div class="col-md-5">
+        <div  class="total-attempt panel">
+         <div class="panel-heading">
+           <strong class="panel-title">Visualização de Conteúdo</strong>
+         </div>
+         <div class="panel-body">
+          <span>* Sua visualização de conteúdo só é contabilizada a cada 24 horas.</span>
         </div>
+        <div class="panel-body">
+         <span >* Curso disponível até:  {{enrollment.available_until | toSaoPauloTimeZone | toDateTime}} </span>
+       </div>
+     </div>
+   </div> -->
 
-        <div class="panel" ng-if="extraContents.length > 0">
-          <div class="panel-heading">
-            <strong class="panel-title">Material complementar</strong>
-          </div>
-          <div class="panel-body">
-            <spinner name="extraContents" class="small"></spinner>
-            <ul class="modules">
-              <li class="module-item root" ng-repeat="extraContent in extraContents">
-                <div class="class">
-                  <div class="class-info" ng-class="{'active': $state.params.extraContentId == extraContent.id.toString()}">
-                    <media-icon type="extraContent.media.type"></media-icon>
-                    <span ng-class="{'label-info': $state.params.extraContentId == extraContent.id.toString()}">
-                      <a class="title" link-to="school.dashboard.course.extraContent.media({ extraContentId: extraContent.id })">{{ extraContent.title }}</a>
-                    </span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+   <div class="col-md-5">
+    <div class="course-progress panel" ng-if="">
+      <div class="panel-heading">
+        <span class="panel-title">
+          <i class="panel-title-icon fa fa-check"></i>Progresso
+        </span>
+      </div>
+
+      <div class="panel-body">
+        <header class="progress-header">
+          <span class="label label-success">{{ lessons_info.completed.length }}</span> aula(s) completa(s)
+          <span class="label label-warning">{{ lessons_info.in_progress.length }}</span> aula(s) iniciada(s)
+          <span class="label label-info">{{ lessons_info.total }}</span> aula(s) no total
+        </header>
+        <stacked-progress success="{{ lessons_info.completed.length }}" warning="{{ lessons_info.in_progress.length }}" total="{{ lessons_info.total }}"></stacked-progress>
+      </div>
+    </div>
+
+    <div class="panel" ng-if="extraContents.length > 0">
+      <div class="panel-heading">
+        <strong class="panel-title">Material complementar</strong>
+      </div>
+      <div class="panel-body">
+        <spinner name="extraContents" class="small"></spinner>
+        <ul class="modules">
+          <li class="module-item root" ng-repeat="extraContent in extraContents">
+            <div class="class">
+              <div class="class-info" ng-class="{'active': $state.params.extraContentId == extraContent.id.toString()}">
+                <media-icon type="extraContent.media.type"></media-icon>
+                <span ng-class="{'label-info': $state.params.extraContentId == extraContent.id.toString()}">
+                  <a class="title" link-to="school.dashboard.course.extraContent.media({ extraContentId: extraContent.id })">{{ extraContent.title }}</a>
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel bulletinboard-panel">
+      <div class="panel-heading">
+        <strong class="panel-title">Quadro de avisos</strong>
+      </div>
+      <div class="panel-body">
+        <spinner name="board" class="small"></spinner>
+        <spinner name="enrollment" class="small"></spinner>
+        <div class="note note-info" ng-hide="bulletins == null || bulletins.length > 0" hide-on-load="board">
+          <p>Ainda não há nenhum aviso aqui.</p>
         </div>
-
-        <div class="panel bulletinboard-panel">
-          <div class="panel-heading">
-            <strong class="panel-title">Quadro de avisos</strong>
-          </div>
-          <div class="panel-body">
-            <spinner name="board" class="small"></spinner>
-            <spinner name="enrollment" class="small"></spinner>
-            <div class="note note-info" ng-hide="bulletins == null || bulletins.length > 0" hide-on-load="board">
-              <p>Ainda não há nenhum aviso aqui.</p>
-            </div>
-            <div class="bulletin" ng-repeat="bulletin in bulletins">
-              <a ui-sref="school.dashboard.bulletin({ bulletinId: bulletin.id, courseId: course.id, courseClassId: courseClass.id, enrollmentId: enrollment.id })">{{ bulletin.subject }}</a>
-            </div>
-            <div class="center" ng-if="bulletins.length > 0" ed-pagination="bulletins.pagingInfo" refresh="getBoard(enrollment, course, page)">
-              <ul class="pagination pagination-sm">
-                <li ed-pagination-previous>
-                  <a href=""><i class="fa fa-caret-left"></i></a>
-                </li>
-                <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
-                  <a href="">{{ page }}</a>
-                </li>
-                <li ed-pagination-next>
-                  <a href=""><i class="fa fa-caret-right"></i></a>
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div class="bulletin" ng-repeat="bulletin in bulletins">
+          <a ui-sref="school.dashboard.bulletin({ bulletinId: bulletin.id, courseId: course.id, courseClassId: courseClass.id, enrollmentId: enrollment.id })">{{ bulletin.subject }}</a>
+        </div>
+        <div class="center" ng-if="bulletins.length > 0" ed-pagination="bulletins.pagingInfo" refresh="getBoard(enrollment, course, page)">
+          <ul class="pagination pagination-sm">
+            <li ed-pagination-previous>
+              <a href=""><i class="fa fa-caret-left"></i></a>
+            </li>
+            <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+              <a href="">{{ page }}</a>
+            </li>
+            <li ed-pagination-next>
+              <a href=""><i class="fa fa-caret-right"></i></a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>

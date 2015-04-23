@@ -15,11 +15,21 @@
       <div class="class-info" ng-class="{'active': $state.params.contentId == class.id.toString()}">
         <progress-icon ng-model="class"></progress-icon>
         <class-icon ng-model="class"></class-icon>
-        <a class="title" ng-class="class.lesson.progress.views === enrollment.max_attendance_length ? 'disabled' : ''" link-to="school.dashboard.course.content.media({ contentId: class.id })">{{ class.lesson.title }}</a>
-        <span ng-if="enrollment.max_attendance_type === 'attempts' && class.lesson.progress">
-          <span>{{ class.lesson.progress.views }} / {{ enrollment.max_attendance_length }}</span>
+        <span ng-if="class.lesson.progress.views + 1 < enrollment.max_attendance_length">
+
+          <a  title="* Sua visualização é contabilizada a cada 24 horas." class="title" link-to="school.dashboard.course.content.media({ contentId: class.id })">{{ class.lesson.title }}</a>
+
+        </span>
+        <span title="* Sua visualização é contabilizada a cada 24 horas." ng-if="class.lesson.progress.views + 1 === enrollment.max_attendance_length">
+          {{ class.lesson.title }}
+        </span>
+        <span  title="* Sua visualização é contabilizada a cada 24 horas." ng-class="class.lesson.progress.views + 1 === enrollment.max_attendance_length ? 'red-attempt' : 'attempt' " ng-if="enrollment.max_attendance_type === 'attempts' && class.lesson.progress" >
+          <span> - {{ class.lesson.progress.views + 1}} de {{ enrollment.max_attendance_length }} Visualizações</span>
         </span>
       </div>
     </div>
   </li>
 </ol>
+
+
+
