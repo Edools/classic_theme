@@ -15,17 +15,26 @@
       <div class="class-info" ng-class="{'active': $state.params.contentId == class.id.toString()}">
         <progress-icon ng-model="class"></progress-icon>
         <class-icon ng-model="class"></class-icon>
-        <span ng-if="class.lesson.progress.views + 1 < enrollment.max_attendance_length">
+        
+        <span ng-if="class.lesson.progress.views === enrollment.max_attendance_length && enrollment.max_attendance_type === 'attempts' && class.lesson.progress" >
+              
+            <a  class="title" link-to="school.dashboard.course.content.media({ contentId: class.id })">{{ class.lesson.title }}</a>
 
-          <a  title="* Sua visualização é contabilizada a cada 24 horas." class="title" link-to="school.dashboard.course.content.media({ contentId: class.id })">{{ class.lesson.title }}</a>
+            <span tooltip-placement="left" tooltip="Você não possui mais visualizações nesta aula">
+              <i style="color:#B21816; float: right; font-size:10px;margin-top: 6px;" class="fa fa-eye attempt-red">{{ class.lesson.progress.views }}/{{ enrollment.max_attendance_length }}</i>
+            </span>
+        </span>
+        
 
+        <span ng-if="class.lesson.progress.views < enrollment.max_attendance_length && enrollment.max_attendance_type === 'attempts' && class.lesson.progress" >
+        
+      <a  class="title" link-to="school.dashboard.course.content.media({ contentId: class.id })">{{ class.lesson.title }}</a>
+
+          <span tooltip-placement="left" tooltip="Você não possui mais visualizações nesta aula">
+            <i style="color:#B21816; float: right; font-size:10px;margin-top: 6px;" class="fa fa-eye attempt-red">{{ class.lesson.progress.views }}/{{ enrollment.max_attendance_length }}</i>
+          </span>
         </span>
-        <span title="* Sua visualização é contabilizada a cada 24 horas." ng-if="class.lesson.progress.views + 1 === enrollment.max_attendance_length">
-          {{ class.lesson.title }}
-        </span>
-        <span  title="* Sua visualização é contabilizada a cada 24 horas." ng-class="class.lesson.progress.views + 1 === enrollment.max_attendance_length ? 'red-attempt' : 'attempt' " ng-if="enrollment.max_attendance_type === 'attempts' && class.lesson.progress" >
-          <span> - {{ class.lesson.progress.views + 1}} de {{ enrollment.max_attendance_length }} Visualizações</span>
-        </span>
+
       </div>
     </div>
   </li>
