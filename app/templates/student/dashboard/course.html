@@ -19,17 +19,8 @@
         <div class="course-content panel">
           <div class="panel-heading">
             <strong class="panel-title">Conteúdo do curso</strong>
-
-
-<!-- 
-            <div class="viads" ng-if="{{enrollment.progress === 0}}">
-            <p>* As visualizações são contabilizadas a cada 24h</p>
-            </div> -->
-
-
-            <span style="font-size: 11px ;float: right;">Disponível até:  {{enrollment.available_until | toDateTime}} horas</span>
+            <span class="available-title">Disponível até:  {{enrollment.available_until | toDateTime}} horas</span>
             <br/>
-
           </div>
           <div class="panel-body">
             <content-tree type="dashboard" ng-model="course" enrollment="enrollment" lessons-info="lessons_info" lazy="true"></content-tree>
