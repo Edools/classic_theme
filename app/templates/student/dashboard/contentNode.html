@@ -15,8 +15,19 @@
       <div class="class-info" ng-class="{'active': $state.params.contentId == class.id.toString()}">
         <progress-icon ng-model="class"></progress-icon>
         <class-icon ng-model="class"></class-icon>
-        <a class="title" link-to="school.dashboard.course.content.media({ contentId: class.id })">{{ class.lesson.title }}</a>
+        <a  class="title" link-to="school.dashboard.course.content.media({ contentId: class.id })">{{ class.lesson.title }}</a>
+        <span ng-if="class.lesson.progress.views < enrollment.max_attendance_length && enrollment.max_attendance_type === 'attempts' && class.lesson.progress" >
+          <i tooltip="Você possui {{class.lesson.progress.views}} de {{enrollment.max_attendance_length}} visualizações. (Visualizações no mesmo dia são contabilizadas apenas uma vez)" tooltip-placement="left" class="fa fa-eye attempt">{{ class.lesson.progress.views }}/{{ enrollment.max_attendance_length }}</i>
+        </span>
+
+        <span ng-if="class.lesson.progress.views === enrollment.max_attendance_length && enrollment.max_attendance_type === 'attempts' && class.lesson.progress" >
+          <i tooltip="Você não possui mais visualizações nesta aula" tooltip-placement="left" class="fa fa-eye attempt attempt-red">{{ class.lesson.progress.views }}/{{ enrollment.max_attendance_length }}</i>
+        </span>
+
       </div>
     </div>
   </li>
 </ol>
+
+
+

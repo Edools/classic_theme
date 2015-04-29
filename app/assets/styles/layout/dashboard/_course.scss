@@ -32,6 +32,8 @@
 
 .dashboard-panel {
   .class-info {
+    margin-top: 5px;
+    margin-bottom: 5px;
     .title {
       text-decoration: none;
       color: #555;
@@ -66,4 +68,9 @@
   .bulletinboard-panel .pagination {
     margin-bottom: 0;
   }
+}
+
+.available-title{
+  font-size: 11px ;
+  float: right;
 }

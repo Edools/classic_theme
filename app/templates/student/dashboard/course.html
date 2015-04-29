@@ -19,10 +19,11 @@
         <div class="course-content panel">
           <div class="panel-heading">
             <strong class="panel-title">Conteúdo do curso</strong>
+            <span class="available-title">Disponível até:  {{enrollment.available_until | toDateTime}} horas</span>
+            <br/>
           </div>
-
           <div class="panel-body">
-            <content-tree type="dashboard" ng-model="course" lessons-info="lessons_info" lazy="true"></content-tree>
+            <content-tree type="dashboard" ng-model="course" enrollment="enrollment" lessons-info="lessons_info" lazy="true"></content-tree>
           </div>
         </div>
       </div>
