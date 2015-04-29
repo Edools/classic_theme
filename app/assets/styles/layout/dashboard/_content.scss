@@ -11,6 +11,18 @@ $player-padding: 30px;
   min-height: $min-player-height;
 }
 
+.class-info {
+  .attempt {
+    float: right;
+    font-size:10px;
+    margin-top: 6px;
+  }
+
+  .attempt-red {
+    color:#B21816;
+  }
+}
+
 #box-viewer {
   height: 100%;
   min-height: 380px;
