@@ -3,7 +3,7 @@
     <img ng-if="!schoolProduct.video_cover" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
     <video-player ng-if="schoolProduct.video_cover" width="450" height="210" ng-model="schoolProduct.video_cover.media"></video-player>
   </div>
-  <div class="col-xs-12 text-center" ng-class="{'col-md-7': schoolProduct.logo !== null || schoolProduct.logo !== '', 'col-md-12': schoolProduct.logo === null || schoolProduct.logo === ''}">
+  <div class="col-xs-12 text-center" ng-class="{'col-md-7': schoolProduct.logo != null, 'col-md-12': schoolProduct.logo == null}">
     <div class="info">
       <h2 class="title">{{ schoolProduct.title }}</h2>
       <span class="subtitle">{{ schoolProduct.subtitle }}</span>
@@ -14,6 +14,10 @@
         <button type="button" add-to-cart="schoolProduct" class="btn btn-success btn-lg">
           <span>Matricule-se agora</span>
           <span class="label label-success">{{ schoolProduct.product.price | money:'R$' }}</span>
+          <span ng-if="schoolProduct.product.price_in_credits">
+            ou
+            <small class="label label-success">{{ schoolProduct.product.price_in_credits }} créditos</small>
+          </span>
         </button>
       </div>
 

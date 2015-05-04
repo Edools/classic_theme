@@ -1,11 +1,14 @@
-<spinner name="credits"></spinner>
 <div class="credits-page">
   <div class="container">
     <h2>Créditos</h2>
     <p>Você pode usar esses créditos para comprar alguns produtos.</p>
-    <div hide-on-load="credits" class="panel">
+    <div class="panel">
       <div class="panel-body">
-        <table class="table table-striped">
+        <spinner name="credits" class="small"></spinner>
+        <div ng-if="customer && customer.wallet" class="note note-info">
+          Seu saldo atual é de <strong>{{ customer.wallet.balance }} créditos</strong>.
+        </div>
+        <table hide-on-load="credits" class="table table-striped">
           <thead>
             <tr>
               <th>Créditos</th>
@@ -27,7 +30,7 @@
           </tbody>
         </table>
 
-        <div class="center" ed-pagination="credits.pagingInfo" refresh="getCredits(page)">
+        <div hide-on-load="credits" class="center" ed-pagination="credits.pagingInfo" refresh="getCredits(page)">
           <ul class="pagination">
             <li ed-pagination-previous>
               <a href=""><i class="fa fa-caret-left"></i></a>
