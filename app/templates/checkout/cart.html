@@ -27,7 +27,7 @@
             </div>
             <div class="col-xs-12 cart-subtitle" ng-class="{'col-md-8': item.schoolProduct.logo }">
               <p ng-bind-html="item.schoolProduct.description"></p>
-              <hr>
+              <hr ng-show="item.schoolProduct.description">
               <h4><strong>{{ item.amount_to_pay | money:'R$' }}</strong></h4>
             </div>
           </div>

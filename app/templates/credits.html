@@ -1,9 +1,9 @@
 <spinner name="credits"></spinner>
-<div hide-on-load="credits" class="credits-page">
+<div class="credits-page">
   <div class="container">
     <h2>Créditos</h2>
     <p>Você pode usar esses créditos para comprar alguns produtos.</p>
-    <div class="panel">
+    <div hide-on-load="credits" class="panel">
       <div class="panel-body">
         <table class="table table-striped">
           <thead>
@@ -18,11 +18,28 @@
               <td>{{ credit.name }}</td>
               <td>{{ credit.price | money:'R$' }}</td>
               <td>
-                <button type="button" class="btn btn-xs btn-success center" ng-click="buy(credit)">Comprar</button>
+                <button type="button" class="btn btn-xs btn-success btn-labeled" ng-click="buy(credit)">
+                  <i class="fa fa-shopping-cart btn-label"></i>
+                  <span>Comprar</span>
+                </button>
               </td>
             </tr>
           </tbody>
         </table>
+
+        <div class="center" ed-pagination="credits.pagingInfo" refresh="getCredits(page)">
+          <ul class="pagination">
+            <li ed-pagination-previous>
+              <a href=""><i class="fa fa-caret-left"></i></a>
+            </li>
+            <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+              <a href="">{{ page }}</a>
+            </li>
+            <li ed-pagination-next>
+              <a href=""><i class="fa fa-caret-right"></i></a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
