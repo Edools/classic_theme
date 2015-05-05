@@ -19,7 +19,9 @@
           </div>
         </a>
         <div class="body">
-          <h4 class="title">{{ schoolProduct.title }}</h4>
+          <h4 class="title">
+            <a link-to="school.product({ schoolProductId: schoolProduct.id })">{{ schoolProduct.title }}</a>
+          </h4>
           <p max-lines="3" class="subtitle">{{ schoolProduct.subtitle }}</p>
         </div>
 

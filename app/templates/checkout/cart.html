@@ -27,8 +27,13 @@
             </div>
             <div class="col-xs-12 cart-subtitle" ng-class="{'col-md-8': item.schoolProduct.logo }">
               <p ng-bind-html="item.schoolProduct.description"></p>
-              <hr>
-              <h4><strong>{{ item.amount_to_pay | money:'R$' }}</strong></h4>
+              <hr ng-show="item.schoolProduct.description">
+              <h4>
+                <strong>{{ item.amount_to_pay | money:'R$' }}</strong>
+                <strong ng-if="item.product.price_in_credits">
+                  ou {{ item.product.price_in_credits }} créditos
+                </strong>
+              </h4>
             </div>
           </div>
         </div>
