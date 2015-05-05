@@ -13,6 +13,7 @@
             <tr>
               <th>Créditos</th>
               <th>Valor</th>
+              <th>Validade</th>
               <th></th>
             </tr>
           </thead>
@@ -20,6 +21,9 @@
             <tr ng-repeat="credit in credits">
               <td>{{ credit.name }}</td>
               <td>{{ credit.price | money:'R$' }}</td>
+              <td>
+                <ng-pluralize count="credit.expiration_period" when="{'1': '1 dia', 'other': '{} dias'}"></ng-pluralize>
+              </td>
               <td>
                 <button type="button" class="btn btn-xs btn-success btn-labeled" ng-click="buy(credit)">
                   <i class="fa fa-shopping-cart btn-label"></i>
