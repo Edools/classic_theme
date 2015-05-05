@@ -1,0 +1,49 @@
+<div class="credits-page">
+  <div class="container">
+    <h2>Créditos</h2>
+    <p>Você pode usar esses créditos para comprar alguns produtos.</p>
+    <div class="panel">
+      <div class="panel-body">
+        <spinner name="credits" class="small"></spinner>
+        <div ng-if="customer && customer.wallet" class="note note-info">
+          Seu saldo atual é de <strong>{{ customer.wallet.balance }} créditos</strong>.
+        </div>
+        <table hide-on-load="credits" class="table table-striped">
+          <thead>
+            <tr>
+              <th>Créditos</th>
+              <th>Valor</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="credit in credits">
+              <td>{{ credit.name }}</td>
+              <td>{{ credit.price | money:'R$' }}</td>
+              <td>
+                <button type="button" class="btn btn-xs btn-success btn-labeled" ng-click="buy(credit)">
+                  <i class="fa fa-shopping-cart btn-label"></i>
+                  <span>Comprar</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div hide-on-load="credits" class="center" ed-pagination="credits.pagingInfo" refresh="getCredits(page)">
+          <ul class="pagination">
+            <li ed-pagination-previous>
+              <a href=""><i class="fa fa-caret-left"></i></a>
+            </li>
+            <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+              <a href="">{{ page }}</a>
+            </li>
+            <li ed-pagination-next>
+              <a href=""><i class="fa fa-caret-right"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

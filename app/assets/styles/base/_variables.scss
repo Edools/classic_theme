@@ -11,6 +11,7 @@ $images-path: "../assets/images";
 // Font-Awesome fonts path
 $fa-font-path: "#{$fonts-path}/font-awesome";
 
+$bg-color: #f3f5f7 !default;
 $text-color : #555 !default;
 $link-color : #4083a9 !default;
 $placeholder-color: #a7a9ac !default;
@@ -24,11 +25,13 @@ $orange: #de8738;
 $light-gray: #f2f2f2;
 $dark-gray: #373737;
 
-
+$primary-color: #1d89cf;
 $info-color: #5bc0de;
 $success-color: #5ebd5e;
 $warning-color: #f4b04f;
 $danger-color: #e66454;
+
+$highlighting-color: #f9f1c7;
 
 $content-wrapper-padding: 18px;
 
@@ -52,6 +55,10 @@ $wizard-step-number-size: 26px;
 $wizard-step-number-border-width: 2px;
 $wizard-step-number-margin: 10px;
 
+// nav tabs
+$nav-tabs-active-link-hover-bg: #1d89cf;
+$nav-tabs-active-link-hover-color: #1a7ab9;
+$nav-tabs-active-link-hover-border-color: #1a7ab9;
 
 /* Screen sizes */
 $screen-desktop: 992px;
