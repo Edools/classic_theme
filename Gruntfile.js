@@ -285,6 +285,8 @@ module.exports = function (grunt) {
             '*.html',
             'templates/**/*.html',
             'schemas/**/*.json',
+            'static-test/**/*.json',
+            'assets/static-test/**/*.json',
             'assets/images/**/*.{webp}',
             'assets/fonts/**/*.{otf,eot,svg,ttf,woff}'
           ]
