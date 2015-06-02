@@ -63,7 +63,7 @@
               {{ totalPrice | money:'R$' }}
             </span>
           </div>
-          <a link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+          <a ng-click="fireAnalyticsCheckout(order)" link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
         </div>
       </div>
       <div class="panel" ng-if="order.amount_to_pay === order.total">
