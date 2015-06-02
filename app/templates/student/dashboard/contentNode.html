@@ -26,11 +26,11 @@
           <i tooltip="Você não possui mais visualizações nesta aula" tooltip-placement="left" class="fa fa-eye attempt attempt-red">{{ class.lesson.progress.views }}/{{ enrollment.max_attendance_length }}</i>
         </span>
 
-        <span ng-if="class.disabled">
+        <span ng-if="class.disabled" class="pull-right">
           <span ng-if="class.lesson.release_at">
             Liberado em {{ class.lesson.release_at | toDateTime:'DD/MM/YYYY' }}
           </span>
-          <span ng-if="class.lesson.release_after">
+          <span ng-if="class.lesson.release_after" class="pull-right">
             Liberado após {{ class.lesson.release_after }} <ng-pluralize count="class.lesson.release_after" when="{'1': 'dia', 'other': 'dias'}"></ng-pluralize>
           </span>
         </span>
