@@ -30,8 +30,11 @@
           <span ng-if="class.lesson.release_at">
             Liberado em {{ class.lesson.release_at | toDateTime:'DD/MM/YYYY' }}
           </span>
-          <span ng-if="class.lesson.release_after" class="pull-right">
-            Liberado após {{ class.lesson.release_after }} <ng-pluralize count="class.lesson.release_after" when="{'1': 'dia', 'other': 'dias'}"></ng-pluralize>
+          <span ng-if="class.lesson.release_after && class.daysUntil" class="pull-right">
+            Liberado após {{ class.daysUntil }} <ng-pluralize count="class.daysUntil" when="{'1': 'dia', 'other': 'dias'}"></ng-pluralize>
+          </span>
+          <span ng-if="class.lesson.release_after && class.hoursUntil" class="pull-right">
+            Liberado após {{ class.hoursUntil }} <ng-pluralize count="class.hoursUntil" when="{'1': 'hora', 'other': 'horas'}"></ng-pluralize>
           </span>
         </span>
       </div>
