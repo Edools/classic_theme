@@ -1,0 +1,23 @@
+/*********************************************************************
+*
+*  layout/category
+*  Footer styles
+*
+*********************************************************************/
+
+
+.category-page{
+	width: 100%;
+	height: 100%;
+	.category-course-name h2{
+		margin-bottom: 20px;
+		font-size: 36px;
+		font-weight: 400;
+		min-width: 400px;
+		word-wrap: break-word;
+	}
+	.home.course-list .body{
+		text-align: center;
+	}
+}
+
