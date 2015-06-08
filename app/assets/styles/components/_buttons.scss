@@ -93,8 +93,8 @@
 .btn.btn-outline.btn-flat,
 .btn.btn-outline.btn-primary,
 .btn.btn-outline.btn-flat.btn-primary {
-  background: none;
   color: $text-color;
+  background: none;
   @include ie-background-none(); // IE fallback
 
   &,
@@ -103,9 +103,9 @@
   .btn-group > &:focus,
   .input-group-btn > &,
   .input-group-btn > &:focus {
-    background: none;
     border-color: #e0e0e0; // IE fallback
     border-color: rgba(0, 0, 0, .12);
+    background: none;
     @include ie-background-none(); // IE fallback
   }
 }
