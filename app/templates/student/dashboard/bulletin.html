@@ -1,0 +1,16 @@
+<div class="dashboard">
+  <div class="container dashboard-panel">
+    <spinner name="bulletin"></spinner>
+    <div class="panel bulletin-panel" hide-on-load="bulletin">
+      <div class="panel-body">
+        <button class="btn btn-default btn-xs btn-labeled" back-button>
+          <i class="fa fa-arrow-left btn-label"></i>
+          <span>Voltar</span>
+        </button>
+        <hr />
+        <h2 class="bulletin-title">Aviso - {{ bulletin.subject }}</h2>
+        <p class="bulletin-text" ng-bind-html="bulletin.text"></p>
+      </div>
+    </div>
+  </div>
+</div>

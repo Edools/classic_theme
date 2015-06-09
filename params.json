@@ -12,11 +12,11 @@
   "apps":["school", "ecommerce", "forum", "sso",
           "facebook-social", "facebook-analytics",
           "google-analytics"],
-  "version":"0.7.3",
+  "version":"0.8.0-beta.67",
   "key": "0deeefea8ed413cfd46deaee6a9e0a8f:8905479a41af1d94b85c5186ec33408d",
   "pages": [{
     "title": "Um titulo ai",
     "slug": "teste",
-    "content": "<p>hahahahahah</p>"
+    "content": "<p>hah</p>"
   }]
 }

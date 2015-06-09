@@ -1,0 +1,31 @@
+<div class="category-page" >
+	<div class="container">
+			<section class="course-list home">
+				<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="schoolProduct in schoolProducts">
+					<div class="category-course-name">
+						<h2>{{category.title}}</h2>
+						<spinner name="category"></spinner>
+					</div>
+					<div class="course">
+						<a link-to="school.product({ schoolProductId: schoolProduct.id })">
+							<div class="image">
+								<img ng-if="schoolProduct.logo" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
+								<img ng-if="!schoolProduct.logo" src="assets/images/missing-course-logo.png" alt="Em construção">
+							</div>
+						</a>
+						<div class="body">
+							<a link-to="school.product({ schoolProductId: schoolProduct.id })">
+								<h4 class="title" style="font-align: center;">{{ schoolProduct.title }}</h4>
+								{{ schoolProduct.product.price | money:'R$' }}
+							</a>
+						</div> 
+						<button type="button" link-to="school.product({ schoolProductId: schoolProduct.id })" class="btn btn-success" >
+							<span>Matricule-se agora</span>
+						</button>
+
+					</div>
+					<spinner name="schoolProducts"></spinner>
+				</div>
+			</section>
+		</div>
+</div>

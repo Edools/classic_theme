@@ -1,0 +1,178 @@
+<div class="dashboard student-profile">
+  <div class="container dashboard-panel">
+    <h3>Meu Perfil</h3>
+
+    <div class="panel">
+      <div class="panel-body">
+        <div class="user-form">
+          <form name="studentForm">
+            <h4 class="form-title">
+              <i class="fa fa-edit"></i>
+              <span>Dados Pessoais</span>
+            </h4>
+            <hr>
+            <div class="row">
+              <div class="col-xs-12 col-md-3">
+                <div class="form-group profile-photo">
+                  <img ng-if="profileCtrl.student.cover_image_url !== null" ng-src="{{ profileCtrl.student.cover_image_url }}" />
+                  <img ng-if="profileCtrl.student.cover_image_url === null" src="https://cdn.edools.com/assets/images/users/default.jpeg" />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <spinner name="student"></spinner>
+                  <div class="center">
+                    <button class="btn btn-default" open-cover-modal
+                      entity="profileCtrl.student"
+                      on-change="profileCtrl.saveStudent(entity)"
+                      cover-prop="cover_image_url"
+                      resource-type="Student"
+                      resource-id="profileCtrl.student.id">
+                      Editar foto do perfil
+                    </button>
+                  </div><br/>
+                </div><br/>
+              </div>
+              <div class="col-xs-12- col-md-3">
+                <div class="form-group">
+                  <label class="control-label">Nome</label>
+                  <input type="text" ng-model="profileCtrl.student.first_name" name="first_name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Sobrenome</label>
+                  <input type="text" ng-model="profileCtrl.student.last_name" name="last_name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">E-mail</label>
+                  <input type="email" ng-model="profileCtrl.student.email" name="email" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Data de nascimento</label>
+                  <input type="text" class="form-control input-sm" datepicker-popup="dd/MM/yyyy" is-open="profileCtrl.student.bornAtOpened"
+                    ng-click="profileCtrl.toggleDateField(profileCtrl.student, $event)" ng-model="profileCtrl.student.born_at"/>
+                </div>
+              </div>
+              <div class="col-xs-12- col-md-3">
+                <div class="form-group">
+                  <label class="control-label">CPF</label>
+                  <input type="text" ng-model="profileCtrl.student.cpf" ng-cpf ui-mask="999.999.999-99" name="cpf" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">RG</label>
+                  <input type="text" ng-model="profileCtrl.student.rg" ng-cpf name="rg" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Telefone</label>
+                  <input type="text" ui-mask="(99) 99999-999?9" ng-model="profileCtrl.student.phone" name="phone" class="form-control">
+                </div>
+              </div>
+              <div class="col-xs-12- col-md-3">
+                <div class="form-group">
+                  <label class="control-label">Skype</label>
+                  <input type="text" ng-model="profileCtrl.student.skype" name="skype" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Empresa</label>
+                  <input type="text" ng-model="profileCtrl.student.company_name" name="company_name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Cargo</label>
+                  <input type="text" ng-model="profileCtrl.student.company_position" name="company_position" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <button type="button" ng-click="profileCtrl.saveStudent(profileCtrl.student)" class="btn btn-lg btn-success pull-right" disable-on-load="student">Salvar</button>
+              </div>
+            </div>
+          </form>
+          <spinner name="student"></spinner>
+        </div>
+
+        <div class="address-form">
+          <form name="addressForm">
+            <h4 class="form-title">
+              <i class="fa fa-map-marker"></i>
+              <span>Endereço</span>
+            </h4>
+            <hr>
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <div class="form-group required" ng-class="{'has-error': !addressForm.street.$pristine && addressForm.street.$invalid, 'has-success': addressForm.street.$valid}">
+                  <label class="control-label">Logradouro</label>
+                  <input type="text" ng-model="profileCtrl.address.street" name="street" class="form-control" required>
+                  <p class="help-block" ng-show="addressForm.street.$error.required && !addressForm.street.$pristine">O campo é obrigatório</p>
+                </div>
+                <div class="form-group required" ng-class="{'has-error': !addressForm.number.$pristine && addressForm.number.$invalid, 'has-success': addressForm.number.$valid}">
+                  <label class="control-label">Nº</label>
+                  <input type="text" ng-model="profileCtrl.address.number" name="number" class="form-control" required>
+                  <p class="help-block" ng-show="addressForm.number.$error.required && !addressForm.number.$pristine">O campo é obrigatório</p>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Complemento</label>
+                  <input type="text" ng-model="profileCtrl.address.complement" name="complement" class="form-control">
+                </div>
+                <div class="form-group required" ng-class="{'has-error': !addressForm.district.$pristine && addressForm.district.$invalid, 'has-success': addressForm.district.$valid}">
+                  <label class="control-label">Bairro</label>
+                  <input type="text" ng-model="profileCtrl.address.district" name="district" class="form-control" required>
+                  <p class="help-block" ng-show="addressForm.district.$error.required && !addressForm.district.$pristine">O campo é obrigatório</p>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="form-group required" ng-class="{'has-error': !addressForm.city.$pristine && addressForm.city.$invalid, 'has-success': addressForm.city.$valid}">
+                  <label class="control-label">Cidade</label>
+                  <input type="text" ng-model="profileCtrl.address.city" name="city" class="form-control" required>
+                  <p class="help-block" ng-show="addressForm.city.$error.required && !addressForm.city.$pristine">O campo é obrigatório</p>
+                </div>
+                <div class="form-group required" ng-class="{'has-error': !addressForm.state.$pristine && addressForm.state.$invalid, 'has-success': addressForm.state.$valid}">
+                  <label class="control-label">Estado</label>
+                  <select ng-model="profileCtrl.address.state" name="state" class="form-control" required>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espirito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="PR">Paraná</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="TO">Tocantins</option>
+                  </select>
+                  <p class="help-block" ng-show="addressForm.state.$error.required && !addressForm.state.$pristine">O campo é obrigatório</p>
+                </div>
+                <div class="form-group required" ng-class="{'has-error': !addressForm.zip_code.$pristine && addressForm.zip_code.$invalid, 'has-success': addressForm.zip_code.$valid}">
+                  <label class="control-label">CEP</label>
+                  <input type="text" ng-model="profileCtrl.address.zip_code" ui-mask="99999-999" name="zip_code" class="form-control" required>
+                  <p class="help-block" ng-show="addressForm.zip_code.$error.required && !addressForm.zip_code.$pristine">O campo é obrigatório</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <button type="button" ng-click="profileCtrl.saveAddress(profileCtrl.address)" ng-disabled="addressForm.$invalid" class="btn btn-lg btn-success pull-right">Salvar</button>
+              </div>
+            </div>
+          </form>
+          <spinner name="address"></spinner>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

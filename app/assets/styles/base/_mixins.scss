@@ -156,3 +156,129 @@
     color: $color;
   }
 }
+
+// Gradient
+//
+@mixin pixel-gradient($fallback: #888, $start: #000, $end: #fff, $start-percent: 0%, $end-percent: 100%) {
+  background: $fallback;
+  background-image: -webkit-linear-gradient(top, $start $start-percent, $end $end-percent);  // Safari 5.1-6, Chrome 10+
+  background-image: linear-gradient(to bottom, $start $start-percent, $end $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+}
+
+@mixin pixel-gradient-forced($fallback: #888, $start: #000, $end: #fff, $start-percent: 0%, $end-percent: 100%) {
+  background: $fallback !important;
+  background-image: -webkit-linear-gradient(top, $start $start-percent, $end $end-percent) !important;  // Safari 5.1-6, Chrome 10+
+  background-image: linear-gradient(to bottom, $start $start-percent, $end $end-percent) !important; // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+  background-repeat: repeat-x;
+}
+
+// IE background: none fix
+//
+@mixin ie-background-none() {
+  background: url('#{$images-path}/pixel-admin/blank.png')\9;
+}
+
+// Button mixin
+//
+@mixin pixel-button($color, $gradient: 6%, $hover: 3%, $border: 0%, $font-color: #fff, $gradient-offset: 2%) {
+  color: $font-color;
+
+  &,
+  &:focus {
+    border-color: darken($color, 5% + $border);
+    border-bottom-color: darken($color, 11% + $border);
+    @include pixel-gradient(
+      $fallback: $color,
+      $start:    lighten($color, floor($gradient/2.0%) - $gradient-offset),
+      $end:      darken($color, floor($gradient/2.0%) + $gradient-offset)
+    );
+  }
+
+  &:hover {
+    color: $font-color;
+    border-color: darken($color, 8% + $border);
+    border-bottom-color: darken($color, 18% + $border);
+    @include pixel-gradient-forced(
+      $fallback: darken($color, $hover + $gradient-offset),
+      $start:    darken(lighten($color, floor($gradient/2.0%) - $gradient-offset), $hover),
+      $end:      darken(darken($color, floor($gradient/2.0%) + $gradient-offset), $hover)
+    );
+  }
+
+  &:active,
+  &.active,
+  .open &.dropdown-toggle {
+    background: none;
+    background: darken($color, $gradient/2.0% + 1%) !important;
+    border-color: darken($color, 14% + $border);
+    border-bottom-color: darken($color, 14% + $border) !important;
+    color: $font-color;
+    @include box-shadow(0 0 12px rgba(0, 0, 0, .1) inset);
+  }
+
+  &.btn-flat {
+    background: darken($color, 3%);
+
+    &:hover,
+    &:active,
+    &.active,
+    .open &.dropdown-toggle {
+      background: darken($color, 3%) !important;
+      color: $font-color;
+    }
+  }
+
+  &.btn-outline,
+  &.btn-outline.btn-flat {
+    &:hover {
+      color: $font-color;
+      border-color: darken($color, 8% + $border);
+      border-bottom-color: darken($color, 18% + $border);
+    }
+
+    &:active {
+      border-color: darken($color, 14% + $border);
+    }
+  }
+
+  // Button groups & Input groups
+  //
+  .btn-group &,
+  .btn-group &:focus,
+  .input-group-btn &,
+  .input-group-btn &:focus {
+    border-left-color: darken($color, 8% + $border);
+    border-right-color: darken($color, 8% + $border);
+  }
+  .btn-group &:hover,
+  .btn-group.open &.dropdown-toggle,
+  .input-group-btn &:hover,
+  .input-group-btn.open &.dropdown-toggle {
+    border-color: darken($color, 8% + $border);
+    border-bottom-color: darken($color, 18% + $border);
+  }
+  .btn-group &:active,
+  .btn-group &.active,
+  .input-group-btn &:active,
+  .input-group-btn &.active {
+    border-left-color: darken($color, 14% + $border);
+    border-right-color: darken($color, 14% + $border);
+  }
+}
+
+@mixin forum-user-avatar ($size) {
+  text-align: center;
+
+  & .avatar {
+    height: $size;
+    width: $size;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+
+  & .name {
+    display: block;
+    font-size: 14px;
+  }
+}

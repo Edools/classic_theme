@@ -4,13 +4,13 @@
 *  Main project file
 *
 *********************************************************************/
-
 @import "compass";
-@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
 
 // The loading order is very important
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
 @import "base/variables";
 
+@import "custom_bootstrap";
 @import "../../bower_components/font-awesome/scss/font-awesome";
 
 @import "base/functions";
@@ -40,21 +40,29 @@
 @import "layout/product";
 @import "layout/home";
 @import "layout/page";
+@import "layout/category";
 @import "layout/auth/login";
 @import "layout/auth/register";
 @import "layout/dashboard/panel";
 @import "layout/dashboard/nav";
 @import "layout/dashboard/courses";
+@import "layout/dashboard/path";
 @import "layout/dashboard/course";
 @import "layout/dashboard/content";
 @import "layout/dashboard/orders";
+@import "layout/dashboard/bulletin";
 @import "layout/checkout/panel";
 @import "layout/checkout/cart";
 @import "layout/checkout/wizard/connect";
 @import "layout/checkout/wizard/complete";
 @import "layout/checkout/wizard/payment";
+@import "layout/forums/forum";
 @import "layout/forums/forums";
 @import "layout/forums/question";
+@import "layout/forums/questions";
+@import "layout/messages/inbox";
+@import "layout/messages/message";
+@import "layout/users/profile";
 
 @import "plugins/ng_tree";
 @import "plugins/ng_breadcrumb";
