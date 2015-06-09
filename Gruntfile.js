@@ -58,7 +58,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          livereload: '<%= edools_server.server.options.livereload %>'
+          livereload: '<%= connect.server.options.livereload %>'
         },
         files: [
           '<%= theme.app %>/*.html',
@@ -74,19 +74,24 @@ module.exports = function (grunt) {
     },
 
     // The actual grunt server settings
-    edools_server: {
+    connect: {
       server: {
         options: {
           port: 9000,
           // Change this to '0.0.0.0' to access the server from outside.
-          hostname: '0.0.0.0',
+          hostname: 'localhost',
           livereload: 35729,
           open: true,
           keepAlive: true,
-          base: [
-            '<%= theme.temp %>',
-            '<%= theme.app %>'
-          ]
+          base: ['./.tmp', './app'],
+          middleware: function (connect, opts, middlewares) {
+            var edoolsMiddleware = require('edools-connect-middleware')({
+              theme: 'your_theme_id',
+              token: 'your_deploy_key'
+            });
+            middlewares.unshift(edoolsMiddleware);
+            return middlewares;
+          }
         }
       }
     },
@@ -366,9 +371,9 @@ module.exports = function (grunt) {
 
     edools_deploy: {
       options: {
-        domain: 'you_domain',
         theme: 'your_theme_id',
-        token: 'your_deploy_token',
+        token: 'your_deploy_key',
+        apps: require('./Appfile.json'),
         package_file: '<%= theme.public %>/<%= pkg.name %>.zip'
       },
       dist: {
@@ -395,7 +400,7 @@ module.exports = function (grunt) {
       'concurrent:server',
       'autoprefixer',
       'concat:dev',
-      'edools_server',
+      'connect:server',
       'watch'
     ]);
   });

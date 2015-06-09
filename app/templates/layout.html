@@ -75,7 +75,7 @@
 </header>
 
 <div class="app-content">
-  <div ui-view="content" ng-class="{'loading': $loader.get('global').isLoading}"></div>
+  <div ui-view="root" ng-class="{'loading': $loader.get('global').isLoading}"></div>
   <spinner name="global" class="large"></spinner>
 </div>
 
