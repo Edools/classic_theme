@@ -25,15 +25,17 @@
         <span ng-if="class.lesson.progress.views === enrollment.max_attendance_length && enrollment.max_attendance_type === 'attempts' && class.lesson.progress" >
           <i tooltip="Você não possui mais visualizações nesta aula" tooltip-placement="left" class="fa fa-eye attempt attempt-red">{{ class.lesson.progress.views }}/{{ enrollment.max_attendance_length }}</i>
         </span>
-
-        <span ng-if="class.disabled" class="pull-right">
-          <span ng-if="class.lesson.release_at">
-            Liberado em {{ class.lesson.release_at | toDateTime:'DD/MM/YYYY' }}
+        <span ng-if="class.disabled" class="pull-right scheduling-text">
+         <span ng-if="class.lesson.release_at">
+           Agendada para {{ class.lesson.release_at | toDateTime:'DD/MM/YYYY' }}
+         </span>
+         <span ng-if="class.lesson.release_after && class.daysUntil" class="pull-right">
+           Agendada para daqui a  {{ class.daysUntil }} <ng-pluralize count="class.daysUntil" when="{'1': 'dia', 'other': 'dias'}"></ng-pluralize>
           </span>
-          <span ng-if="class.lesson.release_after" class="pull-right">
-            Liberado após {{ class.lesson.release_after }} <ng-pluralize count="class.lesson.release_after" when="{'1': 'dia', 'other': 'dias'}"></ng-pluralize>
+          <span ng-if="class.lesson.release_after && class.hoursUntil" class="pull-right">
+           Agendada para daqui a {{ class.hoursUntil }} <ng-pluralize count="class.hoursUntil" when="{'1': 'hora', 'other': 'horas'}"></ng-pluralize>
           </span>
-        </span>
+         </span>
       </div>
     </div>
   </li>

@@ -5,33 +5,15 @@
     </div>
   </div>
 </div>
+<ol ui-tree-nodes ng-model="module.modules">
+  <li class="module-item sub" ng-repeat="module in module.course_modules | orderBy:'order'" ng-include="subTemplateUrl" ui-tree-node></li>
+</ol>
 <ol ui-tree-nodes ng-model="module.classes">
   <li class="module-item sub" ng-repeat="class in module.classes | orderBy:'order'" ui-tree-node>
     <div class="class">
-      <div class="class-info" ng-class="{'active': $state.params.contentId == class.id.toString()}">
-        <progress-icon ng-model="class" ng-if="!class.disabled"></progress-icon>
+      <div class="class-info" ng-class="{'active': $state.params.contentId == class.lesson.id.toString()}">
         <class-icon ng-model="class"></class-icon>
-        <a class="title" link-to="school.dashboard.course.content.media({ contentId: class.id })" ng-if="!class.disabled">{{ class.lesson.title }}</a>
-        <span class="title" ng-if="class.disabled">{{ class.lesson.title }}</span>
-
-        <span ng-if="class.lesson.progress.views < enrollment.max_attendance_length && enrollment.max_attendance_type === 'attempts' && class.lesson.progress" >
-          <i tooltip="Você possui {{class.lesson.progress.views}} de {{enrollment.max_attendance_length}} visualizações. (Visualizações no mesmo dia são contabilizadas apenas uma vez)" tooltip-placement="left" class="fa fa-eye attempt">{{ class.lesson.progress.views }}/{{ enrollment.max_attendance_length }}</i>
-        </span>
-
-        <span ng-if="class.lesson.progress.views === enrollment.max_attendance_length && enrollment.max_attendance_type === 'attempts' && class.lesson.progress" >
-          <i tooltip="Você não possui mais visualizações nesta aula" tooltip-placement="left" class="fa fa-eye attempt attempt-red">{{ class.lesson.progress.views }}/{{ enrollment.max_attendance_length }}</i>
-        </span>
-        <span ng-if="class.disabled" class="pull-right scheduling-text">
-         <span ng-if="class.lesson.release_at">
-           Agendada para {{ class.lesson.release_at | toDateTime:'DD/MM/YYYY' }}
-         </span>
-         <span ng-if="class.lesson.release_after && class.daysUntil" class="pull-right">
-           Agendada para daqui a  {{ class.daysUntil }} <ng-pluralize count="class.daysUntil" when="{'1': 'dia', 'other': 'dias'}"></ng-pluralize>
-          </span>
-          <span ng-if="class.lesson.release_after && class.hoursUntil" class="pull-right">
-           Agendada para daqui a {{ class.hoursUntil }} <ng-pluralize count="class.hoursUntil" when="{'1': 'hora', 'other': 'horas'}"></ng-pluralize>
-          </span>
-         </span>
+        <span class="title">{{ class.lesson.title }}</span>
       </div>
     </div>
   </li>
