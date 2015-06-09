@@ -1,0 +1,22 @@
+{
+  "school": {
+    "id": 224,
+    "type": "School"
+  },
+  "library": {
+    "id": 2
+  },
+  "forum": {
+    "id": 1
+  },
+  "apps":["school", "ecommerce", "forum", "sso",
+          "facebook-social", "facebook-analytics",
+          "google-analytics"],
+  "version":"0.8.0-beta.65",
+  "key": "0deeefea8ed413cfd46deaee6a9e0a8f:8905479a41af1d94b85c5186ec33408d",
+  "pages": [{
+    "title": "Um titulo ai",
+    "slug": "teste",
+    "content": "<p>hah</p>"
+  }]
+}

@@ -43,6 +43,12 @@
             </a>
             <ul class="dropdown-menu">
               <li>
+                <a link-to="school.users.profile">
+                  <i class="fa fa-user"></i>
+                  <span>Meu Perfil</span>
+                </a>
+              </li>
+              <li>
                 <a link-to="school.dashboard.orders">
                   <i class="fa fa-list-ul"></i>
                   <span>Meus Pedidos</span>
@@ -106,7 +112,7 @@
   <div class="container">
     <div class="pull-right">
       Plataforma de ensino por
-      <a href="http://www.edools.com" class="brand scroller" target="blank" title="Edools">
+      <a ng-click="fireAnalytics()" href="http://www.edools.com" class="brand scroller" target="blank" title="Edools">
         <img alt="Edools" src="assets/images/logo-edools.png" width="90" />
       </a>
     </div>

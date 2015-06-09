@@ -37,12 +37,7 @@
           </div>
 
           <div class="panel-body">
-            <header class="progress-header">
-              <span class="label label-success">{{ lessons_info.completed.length }}</span> aula(s) completa(s)
-              <span class="label label-warning">{{ lessons_info.in_progress.length }}</span> aula(s) iniciada(s)
-              <span class="label label-info">{{ lessons_info.total }}</span> aula(s) no total
-            </header>
-            <stacked-progress success="{{ lessons_info.completed.length }}" warning="{{ lessons_info.in_progress.length }}" total="{{ lessons_info.total }}"></stacked-progress>
+            <stacked-progress enrollment-id="{{ enrollment.id }}" success="{{ lessons_info.completed.length }}" warning="{{ lessons_info.in_progress.length }}" total="{{ lessons_info.total }}"></stacked-progress>
           </div>
         </div>
 
