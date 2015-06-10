@@ -43,7 +43,7 @@ module.exports = function (grunt) {
       },
       bower: {
         files: ['bower.json'],
-        tasks: ['wiredep']
+        tasks: ['bowerInstall']
       },
       jsTest: {
         files: ['test/spec/**/*.js'],
@@ -145,21 +145,19 @@ module.exports = function (grunt) {
     },
 
     // Automatically inject Bower components into the app
-    wiredep: {
-      app: {
-        src: ['<%= theme.app %>/index.html'],
-        options: {
-          ignorePath: '<%= theme.app %>/',
-          exclude: ['bower_components/font-awesome/css/font-awesome.css']
-        }
-      },
-      sass: {
-        src: ['<%= theme.app %>/styles/**/*.{scss,sass}'],
-        options: {
-          ignorePath: '<%= theme.app %>/bower_components/'
-        }
-      }
-    },
+    bowerInstall: {
+     app: {
+       src: ['<%= theme.app %>/index.html'],
+       ignorePath: '<%= theme.app %>/',
+       exclude: [
+         'bower_components/font-awesome/css/font-awesome.css'
+       ]
+     },
+     sass: {
+       src: ['<%= theme.app %>/styles/**/*.{scss,sass}'],
+       ignorePath: '<%= theme.app %>/bower_components/'
+     }
+   },
 
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
@@ -265,7 +263,7 @@ module.exports = function (grunt) {
     },
 
     cdnify: {
-      dist: {
+      html: {
         options: {
           base: '//CDN_THEME_URL::'
         },
@@ -273,7 +271,19 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= theme.dist %>',
           dest: '<%= theme.dist %>',
-          src: ['*.html', '**/*.{css,html}']
+          src: ['**/*.html']
+        }]
+      },
+
+      css: {
+        options: {
+          base: '//CDN_THEME_URL::/ignored'
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= theme.dist %>',
+          dest: '<%= theme.dist %>',
+          src: ['**/*.css']
         }]
       }
     },
@@ -398,7 +408,7 @@ module.exports = function (grunt) {
   grunt.registerTask('serve', function (target) {
     grunt.task.run([
       'clean:server',
-      'wiredep',
+      'bowerInstall',
       'concurrent:server',
       'autoprefixer',
       'concat:dev',
@@ -421,7 +431,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
+    'bowerInstall',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
