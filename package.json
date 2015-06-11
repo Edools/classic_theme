@@ -37,6 +37,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "preinstall": "npm install -g bower grunt-cli"
+    "preinstall": "npm install -g bower grunt-cli",
+    "postinstall": "npm rebuild gulp-sass node-sass"
   }
 }
