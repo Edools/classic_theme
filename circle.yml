@@ -1,0 +1,17 @@
+machine:
+  node:
+    version: 0.12.4
+
+dependencies:
+  pre:
+    - npm install -g npm@latest
+    - npm install -g grunt-cli bower
+    - bower install
+
+deployment:
+  staging:
+    branch: develop
+    commands:
+      - sed -i 's/your_theme_id/'"$DEMO_THEME_ID"'/g' Gruntfile.js
+      - sed -i 's/your_deploy_token/'"$DEMO_DEPLOY_KEY"'/g' Gruntfile.js
+      - grunt deploy
