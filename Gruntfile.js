@@ -67,8 +67,7 @@ module.exports = function (grunt) {
           '<%= theme.app %>/assets/scripts/**/*.js',
           '<%= theme.temp %>/styles/**/*.css',
           '<%= theme.app %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= theme.app %>/bower_components/edools-school/dist/*.js',
-          'params.json'
+          '<%= theme.app %>/bower_components/edools-school/dist/*.js'
         ]
       }
     },
@@ -87,7 +86,7 @@ module.exports = function (grunt) {
           middleware: function (connect, opts, middlewares) {
             var edoolsMiddleware = require('edools-connect-middleware').middleware({
               theme: 'your_theme_id',
-              token: 'your_deploy_key'
+              token: 'your_deploy_token'
             });
             middlewares.unshift(edoolsMiddleware);
             return middlewares;
@@ -384,7 +383,7 @@ module.exports = function (grunt) {
     edools_deploy: {
       options: {
         theme: 'your_theme_id',
-        token: 'your_deploy_key',
+        token: 'your_deploy_token',
         apps: require('./Appfile.json'),
         package_file: '<%= theme.public %>/<%= pkg.name %>.zip'
       },
