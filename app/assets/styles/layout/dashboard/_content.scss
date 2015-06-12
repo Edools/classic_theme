@@ -5,7 +5,25 @@
 *
 *********************************************************************/
 $min-player-height: 450px;
+$player-padding: 30px;
 .course-content-player {
-  padding: 30px;
+  padding: $player-padding;
   min-height: $min-player-height;
+}
+
+.class-info {
+  .attempt {
+    float: right;
+    font-size:10px;
+    margin-top: 6px;
+  }
+
+  .attempt-red {
+    color:#B21816;
+  }
+}
+
+#box-viewer {
+  height: 100%;
+  min-height: 380px;
 }

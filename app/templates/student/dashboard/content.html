@@ -1,6 +1,49 @@
-<div class="course-content-player card panel">
-  <activity ng-model="activity" respond-activity="true" enrollment-id="enrollmentId" lesson-id="lesson.id" ng-if="activity"></activity>
-  <media-player trackeable="true" ng-model="media" enrollment-id="enrollmentId" lesson-id="lesson.id" ng-if="media"></media-player>
-  <media-player ng-model="mediaExtraContent" ng-if="mediaExtraContent"></media-player>
-  <spinner name="content" class="small"></spinner>
+<div class="dashboard">
+  <div class="container dashboard-panel">
+    <spinner name="course"></spinner>
+    <div hide-on-load="course" class="row course-container">
+      <div class="course-infos col-md-4">
+        <div class="course-page panel text-center">
+          <br/>
+          <a link-to="school.dashboard.course.detail" ng-if="course.image_url">
+            <img class="course-page-image" ng-src="{{ course.image_url }}" alt="{{ course.name }}">
+          </a>
+          <h4>
+            <a link-to="school.dashboard.course.detail">
+              <strong>{{ course.name }}</strong>
+            </a>
+          </h4>
+        </div>
+
+        <div class="course-content panel">
+          <div class="panel-heading">
+            <strong class="panel-title">Conteúdo do curso</strong>
+          </div>
+
+          <div class="panel-body">
+            <content-tree type="dashboard" enrollment="enrollment" ng-model="course" lessons-info="lessons_info" lazy="true"></content-tree>
+          </div>
+        </div>
+
+
+
+        <div class="course-progress panel">
+          <div class="panel-heading">
+            <span class="panel-title">
+              <i class="panel-title-icon fa fa-check"></i>Progresso
+            </span>
+          </div>
+
+          <div class="panel-body">
+            <stacked-progress enrollment-id="{{ enrollment.id }}" success="{{ lessons_info.completed.length }}" warning="{{ lessons_info.in_progress.length }}" total="{{ lessons_info.total }}"></stacked-progress>
+          </div>
+        </div>
+      </div>
+
+      <div class="card panel col-md-8 course-content-player">
+        <div ui-view></div>
+        <spinner name="content" class="small"></spinner>
+      </div>
+    </div>
+  </div>
 </div>

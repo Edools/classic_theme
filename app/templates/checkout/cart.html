@@ -9,30 +9,31 @@
     <hr>
     <div class="col-xs-12 col-md-8">
       <div class="cart">
-        <div ng-if="schoolProducts == undefined || schoolProducts.length == 0" class="note note-warning">
+        <div ng-if="order.items == undefined || order.items.length == 0" class="note note-warning">
           Ainda não há items no seu carrinho.
         </div>
-        <div class="panel cart-product" ng-repeat="schoolProduct in schoolProducts">
+        <div class="panel cart-product" ng-repeat="item in order.items">
           <div class="panel-heading">
-            <a class="panel-title" link-to="school.course({ courseId: schoolProduct.id })">
-              <strong>{{ schoolProduct.title }}</strong>
-            </a>
+            <strong>{{ item.schoolProduct.title }}</strong>
             <div class="pull-right">
-              <a class="pointer" remove-from-cart="schoolProduct">
+              <a class="pointer" ng-click="removeFromCart(item)">
                 <i class="fa fa-trash-o"></i>
               </a>
             </div>
           </div>
           <div class="panel-body">
-            <div class="col-xs-12 col-md-4 card cart-image">
-              <img ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
+            <div class="col-xs-12 col-md-4 card cart-image" ng-if="item.schoolProduct.logo">
+              <img ng-src="{{ item.schoolProduct.logo }}" alt="{{ item.schoolProduct.title }}">
             </div>
-            <div class="col-xs-12 col-md-8 cart-subtitle" style="font-size: 14px; letter-spacing:1px;">
-              <p>{{ schoolProduct.subtitle }}</p>
-              <hr>
-              <div class="col-xs-12 col-sm-4">
-                <h4><strong>{{ (schoolProduct.item.amount_to_pay | money:'R$') || 'R$ --' }}</strong></h4>
-              </div>
+            <div class="col-xs-12 cart-subtitle" ng-class="{'col-md-8': item.schoolProduct.logo }">
+              <p ng-bind-html="item.schoolProduct.description"></p>
+              <hr ng-show="item.schoolProduct.description">
+              <h4>
+                <strong>{{ item.amount_to_pay | money:'R$' }}</strong>
+                <strong ng-if="item.product.price_in_credits">
+                  ou {{ item.product.price_in_credits }} créditos
+                </strong>
+              </h4>
             </div>
           </div>
         </div>
@@ -46,14 +47,14 @@
         </div>
         <div class="panel-body">
           <div class="courses">
-            <div class="course" ng-repeat="schoolProduct in schoolProducts">
-              <a class="title" link-to="school.course({ courseId: schoolProduct.id })">{{ schoolProduct.title }}</a>
+            <div class="course" ng-repeat="item in order.items">
+              <span class="title">{{ item.schoolProduct.title }}</span>
               <span class="price">
-                <s ng-if="schoolProduct.item.amount_to_pay !== schoolProduct.item.total">
-                  {{ schoolProduct.item.total | money:'R$' }}
+                <s ng-if="item.amount_to_pay !== item.total">
+                  {{ item.total | money:'R$' }}
                   <br>
                 </s>
-                {{ schoolProduct.item.amount_to_pay | money:'R$' }}
+                {{ item.amount_to_pay | money:'R$' }}
               </span>
             </div>
           </div>
@@ -62,7 +63,7 @@
               {{ totalPrice | money:'R$' }}
             </span>
           </div>
-          <a link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+          <a ng-click="fireAnalyticsCheckout(order)" link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
         </div>
       </div>
       <div class="panel" ng-if="order.amount_to_pay === order.total">

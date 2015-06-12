@@ -49,16 +49,16 @@ module.exports = function (grunt) {
         files: ['test/spec/**/*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
-      libsass: {
+      sass: {
         files: ['<%= theme.app %>/assets/styles/**/*.{scss,sass}'],
-        tasks: ['libsass:server', 'autoprefixer']
+        tasks: ['sass:server', 'autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
       },
       livereload: {
         options: {
-          livereload: '<%= edools_server.server.options.livereload %>'
+          livereload: '<%= connect.server.options.livereload %>'
         },
         files: [
           '<%= theme.app %>/*.html',
@@ -67,27 +67,30 @@ module.exports = function (grunt) {
           '<%= theme.app %>/assets/scripts/**/*.js',
           '<%= theme.temp %>/styles/**/*.css',
           '<%= theme.app %>/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= theme.app %>/bower_components/edools-school/dist/*.js',
-          '<%= theme.app %>/bower_components/edools-school/dist/*.css',
-          'params.json'
+          '<%= theme.app %>/bower_components/edools-school/dist/*.js'
         ]
       }
     },
 
     // The actual grunt server settings
-    edools_server: {
+    connect: {
       server: {
         options: {
           port: 9000,
           // Change this to '0.0.0.0' to access the server from outside.
-          hostname: '0.0.0.0',
+          hostname: 'localhost',
           livereload: 35729,
           open: true,
           keepAlive: true,
-          base: [
-            '<%= theme.temp %>',
-            '<%= theme.app %>'
-          ]
+          base: ['./.tmp', './app'],
+          middleware: function (connect, opts, middlewares) {
+            var edoolsMiddleware = require('edools-connect-middleware').middleware({
+              theme: 'your_theme_id',
+              token: 'your_deploy_token'
+            });
+            middlewares.unshift(edoolsMiddleware);
+            return middlewares;
+          }
         }
       }
     },
@@ -142,23 +145,23 @@ module.exports = function (grunt) {
 
     // Automatically inject Bower components into the app
     bowerInstall: {
-      app: {
-        src: ['<%= theme.app %>/index.html'],
-        ignorePath: '<%= theme.app %>/',
-        exclude: [
-          'bower_components/font-awesome/css/font-awesome.css'
-        ]
-      },
-      sass: {
-        src: ['<%= theme.app %>/styles/**/*.{scss,sass}'],
-        ignorePath: '<%= theme.app %>/bower_components/'
-      }
-    },
+     app: {
+       src: ['<%= theme.app %>/index.html'],
+       ignorePath: '<%= theme.app %>/',
+       exclude: [
+         'bower_components/font-awesome/css/font-awesome.css'
+       ]
+     },
+     sass: {
+       src: ['<%= theme.app %>/styles/**/*.{scss,sass}'],
+       ignorePath: '<%= theme.app %>/bower_components/'
+     }
+   },
 
     // Compiles Sass to CSS and generates necessary files if requested
-    libsass: {
+    sass: {
       options: {
-        loadPath: ['<%= theme.app %>/bower_components/compass-mixins/lib']
+        includePaths: ['<%= theme.app %>/bower_components/compass-mixins/lib']
       },
       server: {
         files: [{
@@ -259,7 +262,7 @@ module.exports = function (grunt) {
     },
 
     cdnify: {
-      dist: {
+      html: {
         options: {
           base: '//CDN_THEME_URL::'
         },
@@ -267,7 +270,19 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= theme.dist %>',
           dest: '<%= theme.dist %>',
-          src: ['*.html', '**/*.{css,html}']
+          src: ['**/*.html']
+        }]
+      },
+
+      css: {
+        options: {
+          base: '//CDN_THEME_URL::/ignored'
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= theme.dist %>',
+          dest: '<%= theme.dist %>',
+          src: ['**/*.css']
         }]
       }
     },
@@ -286,6 +301,8 @@ module.exports = function (grunt) {
             '*.html',
             'templates/**/*.html',
             'schemas/**/*.json',
+            'static-test/**/*.json',
+            'assets/static-test/**/*.json',
             'assets/images/**/*.{webp}',
             'assets/fonts/**/*.{otf,eot,svg,ttf,woff}'
           ]
@@ -307,14 +324,14 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'libsass:server'
+        'sass:server'
       ],
       test: [
-        'libsass'
+        'sass'
       ],
       dist: [
-        'libsass:server',
-        'imagemin',
+        'sass:server',
+        // 'imagemin',
         'svgmin'
       ]
     },
@@ -365,9 +382,9 @@ module.exports = function (grunt) {
 
     edools_deploy: {
       options: {
-        domain: 'you_domain',
         theme: 'your_theme_id',
         token: 'your_deploy_token',
+        apps: require('./Appfile.json'),
         package_file: '<%= theme.public %>/<%= pkg.name %>.zip'
       },
       dist: {
@@ -394,7 +411,7 @@ module.exports = function (grunt) {
       'concurrent:server',
       'autoprefixer',
       'concat:dev',
-      'edools_server',
+      'connect:server',
       'watch'
     ]);
   });

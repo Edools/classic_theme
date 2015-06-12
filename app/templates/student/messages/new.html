@@ -1,0 +1,53 @@
+<div class="container dashboard-panel">
+  <spinner name="newMessage"></spinner>
+  <div class="panel">
+  	<section class="panel-body">
+	    <h4 class="form-title">
+	      <i class="fa fa-edit"></i>
+	      <span>Nova mensagem</span>
+	    </h4>
+	    <hr>
+
+	    <div class="row">
+	      <div class="col-xs-12">
+    			<form name="messageForm" ng-submit="sendMessage(channel, message)" class="form-horizontal">
+    			  <div class="form-group">
+    			    <label class="col-sm-1 control-label">Para a equipe:</label>
+    			    <div class="col-sm-11">
+    		    		<select class="form-control" ng-model="channel.permission_key">
+      						<option value="content_management" selected="selected">Acadêmica</option>
+      						<option value="school_management">Administrativa</option>
+      						<option value="finance">Financeira</option>
+      					</select>
+    			    </div>
+    			  </div>
+
+    			  <div class="form-group">
+    			    <label class="col-sm-1 control-label">Assunto:</label>
+
+    			    <div class="col-sm-11">
+    					  <input type="text" class="form-control" ng-model="channel.subject" required>
+    			    </div>
+    			  </div>
+
+    			  <div class="form-group">
+    			    <label class="col-sm-1 control-label">Mensagem:</label>
+    			    <div class="col-sm-11">
+    			      <ck-editor ng-model="message.text" hide-source="true" required></ck-editor>
+    			    </div>
+    			  </div>
+
+    			  <div class="form-group">
+    			    <div class="col-sm-12">
+    			      <button type="submit" ng-disabled="messageForm.$invalid" class="btn btn-lg btn-success btn-labeled pull-right">
+  		            <i class="fa fa-send btn-label"></i>
+  		            <span>Enviar</span>
+  		          </button>
+    			    </div>
+    			  </div>
+    			</form>
+	      </div>
+	    </div>
+	 </section>
+  </div>
+</div>
