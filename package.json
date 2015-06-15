@@ -23,7 +23,7 @@
     "grunt-contrib-jshint": "~0.7.1",
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-watch": "~0.5.2",
-    "grunt-edools-deploy": "^0.1.1",
+    "grunt-edools-deploy": "^0.1.2",
     "grunt-newer": "~0.6.1",
     "grunt-rev": "^0.1.0",
     "grunt-sass": "^1.0.0",
