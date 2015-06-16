@@ -48,7 +48,7 @@
 <div class="course-body row">
   <div class="col-xs-12 col-md-8">
     <article ng-if="schoolProduct.description" class="course-description">
-      <section ng-bind-html="schoolProduct.description"></section>
+      <section ed-bind-html="schoolProduct.description"></section>
     </article>
     <article class="course-content panel" ng-if="schoolProduct.library_resource.resource.has_content" hide-on-load="resource">
       <div class="panel-heading">
@@ -86,9 +86,7 @@
                 <h3 class="title">
                   {{ course.name }}
                 </h3>
-                <span class="subtitle">
-                  {{ course.description }}
-                </span>
+                <span class="subtitle" ed-bind-html="course.description"></span>
                 <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
                       ng-if="!course.details" ng-click="toggleDetails(course)">
                   VER CURSO DETALHADO
@@ -126,7 +124,7 @@
         <strong class="title panel-title">{{ topic.title }}</strong>
       </div>
       <div class="panel-body">
-        <p class="description" ng-bind-html="topic.description"></p>
+        <p class="description" ed-bind-html="topic.description"></p>
       </div>
     </section>
 
@@ -138,7 +136,7 @@
         <div ng-repeat="teacher in schoolProduct.class_teachers">
           <img ng-if="teacher.photo_url" ng-src="{{ teacher.photo_url }}" alt="{{ teacher.full_name }}" class="image col-xs-12 col-md-12">
           <h4 class="teacher-name">{{ teacher.full_name }}</h4>
-          <p class="description" ng-bind-html="teacher.about"></p>
+          <p class="description" ed-bind-html="teacher.about"></p>
         </div>
       </div>
     </section>
