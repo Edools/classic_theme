@@ -30,7 +30,7 @@
         </div>
       </article>
       <hr>
-      <div class="answer-action">
+      <div class="answer-action" requires-auth>
         <ck-editor ng-model="answer.text" hide-source="true"></ck-editor>
         <button ng-disabled="!answer.text || answer.text == ''" ng-click="postAnswer(answer)" class="btn btn-success pull-right">Responder</button>
         <spinner name="postAnswer" class="small"></spinner>
