@@ -31,8 +31,8 @@
 
               <p class="list-group-item-text" clamp="3">{{ section.description }}</p>
             </div>
-            <div class="section-topics-list" ng-if="section.topics != null && section.topics.length > 0" collapse="section.collapsed">
-              <div class="section-topic section-topic-striped" ng-repeat="topic in section.topics">
+            <div class="section-topics-list" ng-if="section.child_forum_sections != null && section.child_forum_sections.length > 0" collapse="section.collapsed">
+              <div class="section-topic section-topic-striped" ng-repeat="topic in section.child_forum_sections">
                 <h4 class="title">
                   <a link-to="school.forums.forum.questions({ topicId: topic.id })">{{ topic.title }}</a>
                 </h4>

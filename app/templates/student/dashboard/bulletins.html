@@ -10,7 +10,7 @@
         <hr />
         <div class="bulletin" ng-repeat="bulletin in bulletins">
           <h4>{{ bulletin.subject }}</h4>
-          <p ng-bind-html="bulletin.text"></p>
+          <p ed-bind-html="bulletin.text"></p>
           <hr />
         </div>
         <div class="center" ed-pagination="bulletins.pagingInfo" refresh="getBuletins(enrollment, page)">
