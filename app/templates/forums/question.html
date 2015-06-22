@@ -30,7 +30,7 @@
         </div>
       </article>
       <hr>
-      <div class="answer-action">
+      <div class="answer-action" requires-auth>
         <ck-editor ng-model="answer.text" hide-source="true"></ck-editor>
         <button ng-disabled="!answer.text || answer.text == ''" ng-click="postAnswer(answer)" class="btn btn-success pull-right">Responder</button>
         <spinner name="postAnswer" class="small"></spinner>
@@ -52,7 +52,7 @@
           </div>
           <div class="content col-xs-12 col-sm-11">
             <timeago ng-model="question.created_at" class="time"></timeago>
-            <div class="text" ng-bind-html="answer.text"></div>
+            <div class="text" ed-bind-html="answer.text"></div>
             <!-- <div class="votes">
               <a class="vote up active">
                 <span>80</span>
@@ -79,7 +79,7 @@
           </div>
           <div class="content col-xs-12 col-sm-11">
             <timeago class="time" ng-model="answer.created_at"></timeago>
-            <div class="text" ng-bind-html="answer.text"></div>
+            <div class="text" ed-bind-html="answer.text"></div>
             <!-- <div class="votes">
               <a class="vote up active">
                 <span>80</span>

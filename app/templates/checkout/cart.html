@@ -26,7 +26,7 @@
               <img ng-src="{{ item.schoolProduct.logo }}" alt="{{ item.schoolProduct.title }}">
             </div>
             <div class="col-xs-12 cart-subtitle" ng-class="{'col-md-8': item.schoolProduct.logo }">
-              <p ng-bind-html="item.schoolProduct.description"></p>
+              <p ed-bind-html="item.schoolProduct.description"></p>
               <hr ng-show="item.schoolProduct.description">
               <h4>
                 <strong>{{ item.amount_to_pay | money:'R$' }}</strong>
