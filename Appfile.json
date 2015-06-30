@@ -1,8 +1,8 @@
 {
   "home": "0.8.1",
   "ecommerce": "0.8.0",
-  "dashboard": "0.8.0",
-  "auth": "0.8.0",
+  "dashboard": "0.8.1-beta.1",
+  "auth": "0.8.1-beta.1",
   "facebook-analytics": "0.8.0",
   "facebook-social": "0.8.0",
   "forum": "0.8.0",
