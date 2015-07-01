@@ -25,7 +25,7 @@
                       entity="profileCtrl.user"
                       on-change="profileCtrl.saveUser(entity)"
                       cover-prop="cover_image_url"
-                      resource-type="User"
+                      resource-type="{{ profileCtrl.user.type }}"
                       resource-id="profileCtrl.user.id">
                       Editar foto do perfil
                     </button>
@@ -81,15 +81,20 @@
               </div>
             </div>
 
-            <div class="row" if-user="collaborator">
-              <div class="form-group">
-                <label class="control-label">Biografia</label>
-                <ck-editor ng-model="profileCtrl.user.biography" class="form-control"></ck-editor>
+            <div if-user="'collaborator'">
+              <h4 class="form-title">
+                <i class="fa fa-book"></i>
+                <span>Biografia</span>
+              </h4>
+              <hr>
+              <div class="col-xs-12">
+                <ck-editor ng-model="profileCtrl.user.biography"></ck-editor>
               </div>
             </div>
 
             <div class="row">
               <div class="col-xs-12">
+                <br>
                 <button type="button" ng-click="profileCtrl.saveUser(profileCtrl.user)" class="btn btn-lg btn-success pull-right" disable-on-load="student">Salvar</button>
               </div>
             </div>
@@ -98,7 +103,7 @@
           <spinner name="collaborator"></spinner>
         </div>
 
-        <div class="address-form" if-user="student">
+        <div class="address-form" if-user="'student'">
           <form name="addressForm">
             <h4 class="form-title">
               <i class="fa fa-map-marker"></i>
