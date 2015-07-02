@@ -15,3 +15,9 @@ deployment:
       - sed -i 's/your_theme_id/'"$DEMO_THEME_ID"'/g' Gruntfile.js
       - sed -i 's/your_deploy_token/'"$DEMO_DEPLOY_KEY"'/g' Gruntfile.js
       - grunt deploy
+  production:
+    branch: master
+    commands:
+      - sed -i 's/your_theme_id/'"$GENERATOR_THEME_ID"'/g' Gruntfile.js
+      - sed -i 's/your_deploy_token/'"$GENERATOR_DEPLOY_KEY"'/g' Gruntfile.js
+      - grunt deploy
