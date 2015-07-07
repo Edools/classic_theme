@@ -48,7 +48,7 @@
               <h3>Selecione sua forma de pagamento:</h3>
             </div>
             <tabset justified="true" type="pills">
-              <tab heading="Cartão de crédito" select="selectPayment('credit')">
+              <tab heading="Cartão de crédito" select="selectPayment('credit')" ng-if="acceptPaymentMethod('CreditCardPayment')">
                 <div ng-if="creditCardError" class="alert alert-danger">Ocorreu um erro com seu pagamento. Tente novamente ou entre em contato conosco.</div>
                 <form name="cardForm">
                   <!-- <skeuocard ng-model="card"></skeuocard> -->
@@ -90,7 +90,7 @@
                 </form>
                 <button type="button" pay ng-disabled="cardForm.$invalid" disable-on-load="['customer', 'payment']" class="btn btn-success pull-right">Efetuar pagamento</button>
               </tab>
-              <tab heading="Boleto Bancário" select="selectPayment('boleto')" ng-if="!plan">
+              <tab heading="Boleto Bancário" select="selectPayment('boleto')" ng-if="!plan && acceptPaymentMethod('BoletoPayment')">
                 <div class="note note-warning">
                   <span>Desabilite o bloqueio de pop-ups do seu navegador</span>
                 </div>
@@ -156,25 +156,26 @@
         </div>
         <div class="panel-body">
           <ul class="payment-ways-list">
-            <li>
+            <li ng-if="acceptPaymentMethod('CreditCardPayment')">
               <i class="fa fa-check"></i>
               <span>Cartão de Crédito</span>
             </li>
-            <!-- <li>
+            <li ng-if="acceptPaymentMethod('OnlineDebitPayment')">
               <i class="fa fa-check"></i>
               <span>Débito Online</span>
-            </li> -->
-            <li>
+            </li>
+            <li ng-if="acceptPaymentMethod('BoletoPayment')">
               <i class="fa fa-check"></i>
               <span>Boleto Bancário</span>
             </li>
           </ul>
           <hr>
           <div class="inline-images">
-            <img src="assets/images/formas-pagamento-cartoes.png" width="160" alt="Cartões">
-            <img src="assets/images/formas-pagamento-debito.png" width="100" alt="Cartões">
-            <img src="assets/images/formas-pagamento-boleto.png" width="30" alt="Cartões">
+            <img ng-if="acceptPaymentMethod('CreditCardPayment')" src="assets/images/formas-pagamento-cartoes.png" width="160" alt="Cartões">
+            <img ng-if="acceptPaymentMethod('OnlineDebitPayment')" src="assets/images/formas-pagamento-debito.png" width="100" alt="Cartões">
+            <img ng-if="acceptPaymentMethod('BoletoPayment')" src="assets/images/formas-pagamento-boleto.png" width="30" alt="Cartões">
           </div>
+          <spinner name="gateway"></spinner>
         </div>
       </div>
       <div class="well secure-site">
