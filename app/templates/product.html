@@ -74,13 +74,11 @@
           <spinner name="courses" class="small"></spinner>
 
           <div class="row course-path" ng-repeat="course in schoolProduct.path.courses">
-            <div class="col-xs-6" >
-              <div class="course-image col-xs-12 text-right col-md-5">
-                <img ng-if="course.image_url" ng-src="{{ course.image_url }}" alt="{{ course.name }}">
-                <img ng-if="!course.image_url" src="assets/images/missing-course-logo.png">
-              </div>
+            <div class="course-image col-xs-12 text-right col-md-6">
+              <img ng-if="course.image_url" ng-src="{{ course.image_url }}" alt="{{ course.name }}">
+              <img ng-if="!course.image_url" src="assets/images/missing-course-logo.png">
             </div>
-
+            
             <div class="col-xs-6" >
               <div class="info">
                 <h3 class="title">
