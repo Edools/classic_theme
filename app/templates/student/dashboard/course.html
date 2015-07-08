@@ -52,8 +52,22 @@
                 <div class="class">
                   <div class="class-info" ng-class="{'active': $state.params.extraContentId == extraContent.id.toString()}">
                     <media-icon type="extraContent.media.type"></media-icon>
-                    <span ng-class="{'label-info': $state.params.extraContentId == extraContent.id.toString()}">
+                    <span ng-class="{'label-info': $state.params.extraContentId == extraContent.id.toString()}" ng-if="!extraContent.disabled">
                       <a class="title" link-to="school.dashboard.course.extraContent.media({ extraContentId: extraContent.id })">{{ extraContent.title }}</a>
+                    </span>
+                    <span ng-if="extraContent.disabled" class="title">
+                      {{ extraContent.title }}
+                    </span>
+                    <span ng-if="extraContent.disabled" class="pull-right">
+                      <span ng-if="extraContent.release_at">
+                        Liberado em {{ extraContent.release_at | toDateTime:'DD/MM/YYYY' }}
+                      </span>
+                      <span ng-if="extraContent.release_after && extraContent.daysUntil" class="pull-right">
+                        Liberado após {{ extraContent.daysUntil }} <ng-pluralize count="extraContent.daysUntil" when="{'1': 'dia', 'other': 'dias'}"></ng-pluralize>
+                      </span>
+                      <span ng-if="extraContent.release_after && extraContent.hoursUntil" class="pull-right">
+                        Liberado após {{ extraContent.hoursUntil }} <ng-pluralize count="extraContent.hoursUntil" when="{'1': 'hora', 'other': 'horas'}"></ng-pluralize>
+                      </span>
                     </span>
                   </div>
                 </div>
