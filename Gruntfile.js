@@ -1,6 +1,6 @@
 // Generated on 2014-06-05 using generator-angular 0.8.0
 'use strict';
-var configFile = require('edools-cfg.json');
+var configFile = require('theme-config.json');
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/**/*.js'
