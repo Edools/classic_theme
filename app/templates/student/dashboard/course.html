@@ -29,7 +29,7 @@
       </div>
 
       <div class="col-md-5">
-        <div class="course-progress panel" ng-if="">
+        <div class="course-progress panel">
           <div class="panel-heading">
             <span class="panel-title">
               <i class="panel-title-icon fa fa-check"></i>Progresso
@@ -59,6 +59,19 @@
                 </div>
               </li>
             </ul>
+            <div class="center" ed-pagination="extraContents.pagingInfo" refresh="getExtraContents(page)">
+              <ul class="pagination">
+                <li ed-pagination-previous>
+                  <a href=""><i class="fa fa-caret-left"></i></a>
+                </li>
+                <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+                  <a href="">{{ page }}</a>
+                </li>
+                <li ed-pagination-next=>
+                  <a href=""><i class="fa fa-caret-right"></i></a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 

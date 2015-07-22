@@ -6,7 +6,7 @@
     <spinner name="module{{ module.id }}.content" class="small"></spinner>
   </div>
 </div>
-<ol ui-tree-nodes ng-model="module.modules">
+<ol ui-tree-nodes ng-model="module.course_modules">
   <li class="module-item sub" ng-repeat="module in module.course_modules | orderBy:'order'" ng-include="subTemplateUrl" ui-tree-node></li>
 </ol>
 <ol ui-tree-nodes ng-model="module.classes">
