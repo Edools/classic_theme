@@ -71,7 +71,7 @@
           <i class="fa fa-graduation-cap"></i>
           <span>Respostas dos alunos</span>
         </h4>
-        <article ng-repeat="answer in question.answers | orderBy:'created_at':true" class="answer row">
+        <article ng-repeat="answer in question.answers | orderBy:'created_at':false" class="answer row">
           <div class="user col-xs-12 col-sm-1">
             <img class="avatar" ng-src="{{ answer.user.cover_image_url }}" alt="{{ answer.user | fullname }}">
             <span class="name">{{ answer.user | fullname }}</span>
