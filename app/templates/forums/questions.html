@@ -37,7 +37,7 @@
             <div class="panel-footer question-meta">
               <div class="question-widget time">
                 <i class="fa fa-clock-o"></i>
-                <span>{{ question.created_at | date:'dd MMM yyyy - hh:mm a' }}</span>
+                <span>{{ question.created_at | toDateTime }}</span>
               </div>
               <div class="question-widget answers">
                 <a link-to="school.forums.forum.question.view({ questionId: question.id, topicId: topic.id })">

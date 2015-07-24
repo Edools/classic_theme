@@ -14,7 +14,7 @@
           <i class="fa" ng-class="{'fa-group': question.user.type == 'Collaborator', 'fa-graduation-cap': question.user.type == 'Student'}" tooltip="{{ question.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
         </div>
         <div class="content col-xs-12 col-sm-11">
-          <span class="time">{{ question.created_at | date:'dd MMM yyyy - hh:mm a' }}</span>
+          <span class="time">{{ question.created_at | toDateTime }}</span>
           <h3 class="title">{{ question.title }}</h3>
           <div class="description" ng-bind-html="question.description"></div>
           <!-- <div class="votes">
@@ -51,7 +51,7 @@
             <i class="fa" ng-class="{'fa-group': answer.user.type == 'Collaborator', 'fa-graduation-cap': answer.user.type == 'Student'}" tooltip="{{ answer.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
           </div>
           <div class="content col-xs-12 col-sm-11">
-            <span class="time">{{ question.created_at | date:'dd MMM yyyy - hh:mm a' }}</span>
+            <span class="time">{{ question.created_at | toDateTime }}</span>
             <div class="text" ed-bind-html="answer.text"></div>
             <!-- <div class="votes">
               <a class="vote up active">
@@ -78,7 +78,7 @@
             <i class="fa" ng-class="{'fa-group': answer.user.type == 'Collaborator', 'fa-graduation-cap': answer.user.type == 'Student'}" tooltip="{{ answer.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
           </div>
           <div class="content col-xs-12 col-sm-11">
-            <span class="time">{{ question.created_at | date:'dd MMM yyyy - hh:mm a' }}</span>
+            <span class="time">{{ question.created_at | toDateTime }}</span>
             <div class="text" ed-bind-html="answer.text"></div>
             <!-- <div class="votes">
               <a class="vote up active">
