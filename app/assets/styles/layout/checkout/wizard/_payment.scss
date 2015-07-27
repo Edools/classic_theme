@@ -74,7 +74,13 @@
 
     &.hipercard {
       &:after {
-        background-position: -110px 1px;
+        background-position: -107px 1px;
+      }
+    }
+
+    &.elo {
+      &:after {
+        background-position: -180px 1px;
       }
     }
   }
