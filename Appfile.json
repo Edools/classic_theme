@@ -5,7 +5,7 @@
   "auth": "0.8.1-beta.2",
   "facebook-analytics": "0.8.0",
   "facebook-social": "0.8.0",
-  "forum": "0.8.1-beta.2",
+  "forum": "0.8.1-beta.3",
   "google-analytics": "0.8.1-beta.1",
   "messages": "0.8.1-beta.0",
   "rollbar": "0.8.0",
