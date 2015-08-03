@@ -63,7 +63,7 @@
                     <div class="form-group" ng-class="{'has-error': !cardForm.number.$pristine && cardForm.number.$invalid, 'has-success': cardForm.number.$valid}">
                       <label class="control-label">Nº do cartão de crédito</label>
                       <div class="input-group">
-                        <input type="text" name="number" class="form-control" ng-model="card.number" payments-validate="card" payments-type-model="card.type" payments-format="card" fixed-card="moip" fixed-card-type="gateway" required>
+                        <input type="text" name="number" class="form-control" ng-model="card.number" payments-validate="card" payments-type-model="card.type" payments-format="card" fixed-card="{{ gateway.category }}" fixed-card-type="gateway" required>
                         <span class="input-group-addon" ng-if="card.type != null">
                           <span card-flag ng-model="card.type"></span>
                         </span>
