@@ -9,5 +9,5 @@
   "google-analytics": "0.8.0",
   "messages": "0.8.0",
   "rollbar": "0.8.0",
-  "sso": "0.8.1-beta.2"
+  "sso": "0.8.1-beta.3"
 }
