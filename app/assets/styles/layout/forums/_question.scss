@@ -80,16 +80,20 @@ $question-user-avatar-size: 48px;
     }
 
     .time {
-      float: right;
       color: #aaa;
       padding-left: 5px;
     }
 
     .btn {
-      position: absolute;
+      float: right;
       display: none;
       right: 0;
       bottom: -5px;
+      margin: 2px;
+    }
+
+    .save {
+      display: block;
     }
   }
 

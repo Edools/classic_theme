@@ -78,8 +78,29 @@
             <i class="fa" ng-class="{'fa-group': answer.user.type == 'Collaborator', 'fa-graduation-cap': answer.user.type == 'Student'}" tooltip="{{ answer.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
           </div>
           <div class="content col-xs-12 col-sm-11">
-            <span class="time">{{ question.created_at | toDateTime }}</span>
-            <div class="text" ed-bind-html="answer.text"></div>
+            <ul class="nav pull-right">
+              <li>
+                <span class="time">{{ answer.created_at | toDateTime }}</span>
+              </li>
+              <li>
+                <button type="button" ng-show="!answer.editable" class="btn btn-xs btn-danger" ng-if="answer.fromUser" ng-click="eraseAnswer(answer)" tooltip="Apagar">
+                  <i class="fa fa-trash-o"></i>
+                  <span>Apagar</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" ng-show="!answer.editable" class="btn btn-xs btn-success" ng-if="answer.fromUser" ng-click="editAnswer(answer)" tooltip="Editar">
+                  <i class="fa fa-pencil-square-o"></i>
+                  <span>Editar</span>
+                </button>
+              </li>
+            </ul>
+            <div class="text" ng-show="!answer.editable" ed-bind-html="answer.text"></div>
+            <ck-editor ng-show="answer.editable" ng-model="answer.text" hide-source="true"></ck-editor>
+            <button type="button" class="btn btn-xs btn-success save" ng-if="answer.fromUser && answer.editable" ng-click="updateAnswer(answer)" tooltip="Salvar">
+              <i class="fa fa-floppy-o"></i>
+              <span>Salvar</span>
+            </button>
             <!-- <div class="votes">
               <a class="vote up active">
                 <span>80</span>
