@@ -1,0 +1,345 @@
+{
+  "version": "0.8.0",
+  "expectations": {
+    "checkout/cart.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in order.items/",
+      "message": "To display the order items on cart page, add an element with the {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ng-click",
+      "value": "removeFromCart(item)",
+      "message": "To successfully remove items from cart, add an element with the {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "link-to",
+      "value": "school.checkout.connect",
+      "message": "To link cart page to checkout steps, add an element with the {{ value }} attribute on this file."
+    }],
+    "checkout/connect.html": [{
+      "type": "A",
+      "name": "login-form",
+      "value": "user",
+      "message": "For your login form to work, add an element with the {{ value }} attribute on this page."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "name": "email",
+        "ng-model": "user.email"
+      },
+      "message": "For your login form to work, add an element with the {{ value }} attribute on this page."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "name": "password",
+        "ng-model": "user.password"
+      },
+      "message": "For your login form to work, add an element with the {{ value }} attribute on this page."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "type": "submit",
+        "next": "school.checkout.complete"
+      },
+      "message": "For your login form to work, add an element with the {{ value }} attribute on this page."
+    }, {
+      "type": "A",
+      "name": "register-form",
+      "value": "newUser",
+      "message": "In order to registration form to work, add an element with the {{ value }} attribute on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "name": "name",
+        "ng-model": "newUser.name"
+      },
+      "message": "In order to registration form to work, add an element with the {{ value }} attribute on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "name": "email",
+        "ng-model": "newUser.email"
+      },
+      "message": "In order to registration form to work, add an element with the {{ value }} attribute on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "name": "password",
+        "ng-model": "newUser.password"
+      },
+      "message": "In order to registration form to work, add an element with the {{ value }} attribute on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "name": "passwordConfirm",
+        "ng-model": "newUser.password_confirmation",
+        "equals": "{{ newUser.password }}"
+      },
+      "message": "In order to registration form to work, add an element with the {{ value }} attribute on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "type": "submit",
+        "next": "school.checkout.complete"
+      },
+      "message": "In order to registration form to work, add an element with the {{ value }} attribute on this file."
+    }],
+    "checkout/complete.html": [{
+      "type": "E",
+      "name": "form",
+      "attributes": {
+        "name": "customerForm"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "customer.first_name",
+        "name": "first_name"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "customer.last_name",
+        "name": "last_name"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "customer.email",
+        "name": "email"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "customer.cpf",
+        "name": "cpf",
+        "ng-cpf": "",
+        "ui-mask": "999.999.999-99"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "customer.rg",
+        "name": "rg"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "customer.bornAt",
+        "name": "born_at",
+        "ui-mask": "99/99/9999"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "customer.phone",
+        "name": "phone",
+        "ui-mask": "(99) 99999-999?9"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "customer.skype",
+        "name": "skype"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "customer.company_name",
+        "name": "company_name"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "customer.company_position",
+        "name": "company_position"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "form",
+      "attributes": {
+        "name": "addressForm"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "address.street",
+        "name": "street"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "address.number",
+        "name": "number"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "address.complement",
+        "name": "complement"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "address.district",
+        "name": "district"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "address.city",
+        "name": "city"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "address.state",
+        "name": "state"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "address.zip_code",
+        "name": "zip_code"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "button",
+      "attributes": {
+        "go-to-payment": "",
+        "ng-disabled": "customerForm.$invalid || addressForm.$invalid"
+      },
+      "message": "In order to customer form to work, add the element {{ value }} on this file."
+    }],
+    "checkout/payment.html": [{
+      "type": "E",
+      "name": "form",
+      "attributes": {
+        "name": "cardForm"
+      },
+      "message": "In order to payment form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "name": "name",
+        "ng-model": "card.name"
+      },
+      "message": "In order to payment form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "name": "number",
+        "ng-model": "card.number",
+        "payments-validate": "card",
+        "payments-type-model": "card.type",
+        "payments-format": "card"
+      },
+      "message": "In order to payment form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "name": "cvc",
+        "ng-model": "card.cvc",
+        "payments-type-model": "card.type",
+        "payments-validate": "cvc",
+        "payments-format": "cvc"
+      },
+      "message": "In order to payment form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "name": "expiry",
+        "ng-model": "card.expiry",
+        "payments-validate": "expiry",
+        "payments-format": "expiry"
+      },
+      "message": "In order to payment form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "div",
+      "attributes": {
+        "installments-select": "",
+        "ng-model": "card.installments",
+        "maximum-installments": "gateway.maximum_number_of_installments",
+        "total-price": "totalPrice"
+      },
+      "message": "In order to payment form to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "button",
+      "attributes": {
+        "pay": "",
+        "ng-disabled": "cardForm.$invalid",
+        "disable-on-load": "['customer', 'payment']"
+      },
+      "message": "In order to payment form to work, add the element {{ value }} on this file."
+    }],
+    "checkout/success.html": [{
+      "type": "A",
+      "name": "ng-href",
+      "value": "{{ payment.link }}",
+      "message": "To display the payment link on success page, add an element with {{ value }} attribute on this file."
+    }],
+    "credits.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in credits/",
+      "message": "To display the credits on credits page, add an element with {{ value }} attribute on this file."
+    }],
+    "student/dashboard/orders.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in orders/",
+      "message": "To display the orders on customer orders page, add an element with {{ value }} attribute on this file."
+    }]
+  }
+}

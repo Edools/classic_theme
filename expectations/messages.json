@@ -1,0 +1,66 @@
+{
+  "version": "0.8.0",
+  "expectations": {
+    "student/messages/inbox.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in channels/",
+      "message": "To show the channels on inbox page, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "E",
+      "name": "div",
+      "attributes": {
+        "ed-pagination": "channels.pagingInfo",
+        "refresh": "getChannels(filters, page)"
+      },
+      "message": "To be able to paginate channels on inbox page, add the element {{ value }} on this file."
+    }],
+    "student/messages/message.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in channel.messages/",
+      "message": "To show the messages list on channel page, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ng-click",
+      "value": "postReply(newMessage, channel)",
+      "message": "To be able to post a reply on channel page, add an element with {{ value }} attribute on this file."
+    }],
+    "student/messages/new.html": [{
+      "type": "E",
+      "name": "form",
+      "attributes": {
+        "ng-submit": "sendMessages(channel, message)"
+      },
+      "message": "To be able to send a message, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "select",
+      "attributes": {
+        "ng-model": "channel.permission_key"
+      },
+      "message": "To be able to send a message, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "channel.subject"
+      },
+      "message": "To be able to send a message, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "ck-editor",
+      "attributes": {
+        "ng-model": "message.text"
+      },
+      "message": "To be able to send a message, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "button",
+      "attributes": {
+        "type": "submit"
+      },
+      "message": "To be able to send a message, add the element {{ value }} on this file."
+    }]
+  }
+}

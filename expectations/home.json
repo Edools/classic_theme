@@ -1,0 +1,61 @@
+{
+  "version": "0.8.1",
+  "expectations": {
+    "layout.html": [{
+      "type": "A",
+      "name": "ui-view",
+      "value": "root",
+      "message": "Your file needs an element with an attribute {{ value }} to display the application content."
+    }, {
+      "type": "E",
+      "name": "spinner",
+      "attributes": {
+        "name": "global"
+      },
+      "optional": true,
+      "message": "To display a loader while you home loads, include {{ value }} on your file."
+    }],
+    "home.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "schoolProduct in schoolProducts",
+      "message": "To display the list of your products on home, use an element with {{ value }} on this file."
+    }],
+    "products.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "schoolProduct in schoolProducts",
+      "message": "To display the list of your products on home, use an element with {{ value }} on this file."
+    }],
+    "product.html": [{
+      "type": "E",
+      "name": "content-tree",
+      "attributes": {
+        "type": "home",
+        "ng-model": "^[\\w]*.library_resource.resource$"
+      },
+      "message": "To show the contents of your product's course, use an element with {{ value }} on this file."
+    }, {
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "^[\\w]* in [\\w]*.path.courses$",
+      "message": "To show your path courses, use an element with the {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "^[\\w]* in [\\w]*.topics$",
+      "message": "To show your product topics, use an element with the {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "^[\\w]* in [\\w]*.class_teachers$",
+      "message": "To show your product teachers, use an element with the {{ value }} attribute on this file."
+    }],
+    "page.html": [{
+      "type": "A",
+      "name": "ed-bind-html",
+      "value": "page.content",
+      "message": "To show your static page content, use an element with the {{ value }} attribute on this file."
+    }]
+  }
+}

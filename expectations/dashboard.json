@@ -1,0 +1,167 @@
+{
+  "version": "0.8.0",
+  "expectations": {
+    "student/dashboard/course.html": [{
+      "type": "E",
+      "name": "content-tree",
+      "attributes": {
+        "type": "dashboard",
+        "ng-model": "course"
+      },
+      "message": "To the your content tree on course page, add the {{ value }} element on this file."
+    }, {
+      "type": "E",
+      "name": "stacked-progress",
+      "attributes": {
+        "enrollment-id": "{{ enrollment.id }}",
+        "success": "{{ lessons_info.completed.length }}",
+        "warning": "{{ lessons_info.in_progress.length }}",
+        "total": "{{ lessons_info.total }}"
+      },
+      "message": "To show the course progress on course page, add the {{ value }} element on this file."
+    }, {
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in extraContents$/",
+      "optinal": true,
+      "message": "To show the extra contents on course page, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w] in bulletins$/",
+      "optinal": true,
+      "message": "To show the bulletins on course page, add an element with {{ value }} attribute on this file."
+    }],
+    "student/dashboard/content.html": [{
+      "type": "E",
+      "name": "content-tree",
+      "attributes": {
+        "type": "dashboard",
+        "ng-model": "course"
+      },
+      "message": "To the your content tree on content page, add the {{ value }} element on this file."
+    }, {
+      "type": "E",
+      "name": "stacked-progress",
+      "attributes": {
+        "enrollment-id": "{{ enrollment.id }}",
+        "success": "{{ lessons_info.completed.length }}",
+        "warning": "{{ lessons_info.in_progress.length }}",
+        "total": "{{ lessons_info.total }}"
+      },
+      "message": "To show the course progress on content page, add the {{ value }} element on this file."
+    }, {
+      "type": "A",
+      "name": "ui-view",
+      "value": "",
+      "message": "To show the media on content page, add an element with the attribute {{ value }} on this file."
+    }],
+    "student/dashboard/enrollment.html": [{
+      "type": "A",
+      "name": "ng-if",
+      "value": "hasEnrollmentWithCertificate(enrollments)",
+      "message": "To show correctly the certificate tab on enrollments page, add an element with the attribute {{ value }} on this file."
+    }, {
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in enrollments$/",
+      "message": "To show the list of enrollments on enrollment page, add an element with the attribute {{ value }} on this file."
+    }, {
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in enrollments$/",
+      "optinal": true,
+      "message": "To show the list of pending enrollments on enrollment page, add an element with the attribute {{ value }} on this file."
+    }],
+    "student/dashboard/certificates.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in enrollments$/",
+      "message": "To show the list of enrollments with certificate on certificates page, add an element with the attribute {{ value }} on this file."
+    }],
+    "student/dashboard/bulletins.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in bulletins$/",
+      "message": "To show the list of bulletins, add an element with the attribute {{ value }} on this file."
+    }],
+    "student/dashboard/extraContent.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in extraContents$/",
+      "message": "To show the extra contents on extra content page, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ui-view",
+      "value": "",
+      "message": "To show the media on extra content page, add an element with the attribute {{ value }} on this file."
+    }],
+    "student/dashboard/media.html": [{
+      "type": "E",
+      "name": "activity",
+      "attributes": {
+        "ng-model": "activity",
+        "respond-activity": "true",
+        "enrollment-id": "enrollmentId",
+        "lesson-id": "courseContent.lesson.id"
+      },
+      "message": "To show the media on any of the content pages, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "media-player",
+      "attributes": {
+        "trackeable": "true",
+        "ng-model": "media",
+        "enrollment-id": "enrollmentId",
+        "lesson-id": "courseContent.lesson.id",
+        "owner": "courseContent || extraContent"
+      },
+      "message": "To show the media on any of the content pages, add the element {{ value }} on this file."
+    }],
+    "student/dashboard/path.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in courses$/",
+      "message": "To display the courses on path page, add an element with {{ value }} on this file."
+    }],
+    "student/dashboard/contentNode.html": [{
+      "type": "E",
+      "name": "ol",
+      "attributes": {
+        "ui-tree-nodes": "",
+        "ng-model": "module.modules"
+      },
+      "message": "In order to the content tree on content page to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "li",
+      "attributes": {
+        "ng-repeat": "/^[\\w]* in module.course_modules/",
+        "ng-include": "subTemplateUrl",
+        "ui-tree-node": ""
+      },
+      "message": "In order to the content tree on content page to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "ol",
+      "attributes": {
+        "ui-tree-nodes": "",
+        "ng-model": "module.classes"
+      },
+      "message": "In order to the content tree on content page to work, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "li",
+      "attributes": {
+        "ng-repeat": "/^[\\w]* in module.classes/",
+        "ui-tree-node": ""
+      },
+      "message": "In order to the content tree on content page to work, add the element {{ value }} on this file."
+    }, {
+      "type": "A",
+      "name": "link-to",
+      "value": "school.dashboard.course.content.media({ contentId: class.id })",
+      "message": "In order to the content tree on content page to work, add the element {{ value }} on this file."
+    }]
+  }
+}

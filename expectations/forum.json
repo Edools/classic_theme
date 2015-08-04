@@ -1,0 +1,103 @@
+{
+  "version": "0.8.0",
+  "expectations": {
+    "forums/forums.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in forums/",
+      "message": "To show the forums list on forums page, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "link-to",
+      "value": "school.forums.forum.detail({ forumId: forum.id })",
+      "message": "To link to the forum detail page, add a link with {{ value }} attribute on this file."
+    }],
+    "forums/forum.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in forum.child_forum_sections/",
+      "message": "To show the section list on forum page, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ng-click",
+      "value": "toggleCollapsed(section)",
+      "message": "To load the section topics, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in section.child_forum_sections/",
+      "message": "To show the topics list on forum page, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "link-to",
+      "value": "school.forums.forum.questions({ topicId: topic.id })",
+      "message": "To link to a topic detail on forum page, add an element with {{ value }} attribute on this file."
+    }],
+    "forums/questions.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in topic.forum_questions/",
+      "message": "To show question list on topic page, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "E",
+      "name": "textarea",
+      "attributes": {
+        "ng-model": "answer.text"
+      },
+      "message": "To be able to post an answer, add the element {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ng-click",
+      "value": "postAnswer(answer, question)",
+      "message": "To be able to post an answer, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "link-to",
+      "value": "school.forums.forum.question.new({ topicId: topic.id })",
+      "message": "To link to a question detail, add an element with {{ value }} attribute on this file."
+    }],
+    "forums/question.html": [{
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in question.highlighted_answers/",
+      "message": "To show the highlighted answers on question page, add the element {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ng-repeat",
+      "value": "/^[\\w]* in question.answers/",
+      "message": "To show the answers on question page, add the element {{ value }} attribute on this file."
+    }, {
+      "type": "A",
+      "name": "ng-click",
+      "value": "postAnswer(answer)",
+      "message": "To be able to post an answer, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "E",
+      "name": "ck-editor",
+      "attributes": {
+        "ng-model": "answer.text"
+      },
+      "message": "To be able to post an answer, add the element {{ value }} on this file."
+    }],
+    "forums/newQuestion.html": [{
+      "type": "A",
+      "name": "ng-click",
+      "value": "askQuestion(question)",
+      "message": "To be able to post a question, add an element with {{ value }} attribute on this file."
+    }, {
+      "type": "E",
+      "name": "input",
+      "attributes": {
+        "ng-model": "question.title"
+      },
+      "message": "To be able to post a question, add the element {{ value }} on this file."
+    }, {
+      "type": "E",
+      "name": "ck-editor",
+      "attributes": {
+        "ng-model": "question.description"
+      },
+      "message": "To be able to post a question, add the element {{ value }} on this file."
+    }]
+  }
+}
