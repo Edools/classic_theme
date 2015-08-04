@@ -27,3 +27,12 @@ $player-padding: 30px;
   height: 100%;
   min-height: 380px;
 }
+
+.next-prev-container {
+  text-align: center;
+  margin: 20px auto 0 auto;
+
+  .btn {
+    width: 150px;
+  }
+}

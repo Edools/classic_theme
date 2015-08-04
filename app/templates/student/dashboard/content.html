@@ -18,14 +18,6 @@
         <div class="course-content panel">
           <div class="panel-heading">
             <strong class="panel-title">Conteúdo do curso</strong>
-            <div class="panel-heading-controls">
-              <button class="btn btn-default btn-xs" goto-previous-content tooltip="Anterior">
-                <i class="fa fa-fast-backward"></i>
-              </button>
-              <button class="btn btn-default btn-xs" goto-next-content tooltip="Próximo">
-                <i class="fa fa-fast-forward"></i>
-              </button>
-            </div>
           </div>
 
           <div class="panel-body">
@@ -51,6 +43,14 @@
       <div class="card panel col-md-8 course-content-player">
         <div ui-view></div>
         <spinner name="content" class="small"></spinner>
+        <div class="next-prev-container">
+          <button class="btn btn-default btn-lg" goto-previous-content tooltip="Anterior">
+            <i class="fa fa-fast-backward btn-label"></i>
+          </button>
+          <button class="btn btn-default btn-lg" goto-next-content tooltip="Próximo">
+            <i class="fa fa-fast-forward btn-label"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
