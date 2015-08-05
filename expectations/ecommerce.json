@@ -1,5 +1,5 @@
 {
-  "version": "0.8.0",
+  "version": "0.8.1",
   "expectations": {
     "checkout/cart.html": [{
       "type": "A",
