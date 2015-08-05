@@ -1,6 +1,6 @@
 // Generated on 2014-06-05 using generator-angular 0.8.0
 'use strict';
-
+var configFile = require('theme-config.json');
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/**/*.js'
@@ -85,8 +85,8 @@ module.exports = function (grunt) {
           base: ['./.tmp', './app'],
           middleware: function (connect, opts, middlewares) {
             var edoolsMiddleware = require('edools-connect-middleware').middleware({
-              theme: 'your_theme_id',
-              token: 'your_deploy_token'
+              theme: configFile.theme_id,
+              token: configFile.token
             });
             middlewares.unshift(edoolsMiddleware);
             return middlewares;
@@ -382,8 +382,8 @@ module.exports = function (grunt) {
 
     edools_deploy: {
       options: {
-        theme: 'your_theme_id',
-        token: 'your_deploy_token',
+        theme: configFile.theme_id,
+        token: configFile.token,
         apps: require('./Appfile.json'),
         package_file: '<%= theme.public %>/<%= pkg.name %>.zip'
       },
