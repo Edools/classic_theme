@@ -1,13 +1,13 @@
 {
-  "home": "0.8.1",
-  "ecommerce": "0.8.0",
-  "dashboard": "0.8.0",
-  "auth": "0.8.0",
+  "home": "0.8.2",
+  "ecommerce": "0.8.1",
+  "dashboard": "0.8.1",
+  "auth": "0.8.1",
   "facebook-analytics": "0.8.0",
   "facebook-social": "0.8.0",
-  "forum": "0.8.0",
-  "google-analytics": "0.8.0",
-  "messages": "0.8.0",
+  "forum": "0.8.1",
+  "google-analytics": "0.8.1",
+  "messages": "0.8.1",
   "rollbar": "0.8.0",
-  "sso": "0.8.1-beta.3"
+  "sso": "0.8.1"
 }

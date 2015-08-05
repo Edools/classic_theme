@@ -7,10 +7,10 @@
       </h2>
       <p>Acesse a <a link-to="school.dashboard.enrollments">dashboard do aluno</a> para assistir ao(s) curso(s). Ele(s) serão liberados após a confirmação do pagamento.</p>
     </div>
-    <div class="note note-warning">
+    <div class="note note-warning" ng-if="payment.link">
       Caso o link para o seu pagamento não tenha sido aberto, desative o bloqueio de pop-ups no seu navegador e clique <a target="_blank" ng-href="{{ payment.link }}">aqui</a>
     </div>
   </div>
 </div>
 <facebook-conversion-pixel value="{{ totalPrice | money:'' }}"></facebook-conversion-pixel>
-<ga-ecommerce-tracker></ga-ecommerce-tracker>
+<ga-ecommerce-tracker order="order"></ga-ecommerce-tracker>

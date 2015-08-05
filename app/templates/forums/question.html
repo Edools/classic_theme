@@ -14,7 +14,7 @@
           <i class="fa" ng-class="{'fa-group': question.user.type == 'Collaborator', 'fa-graduation-cap': question.user.type == 'Student'}" tooltip="{{ question.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
         </div>
         <div class="content col-xs-12 col-sm-11">
-          <timeago ng-model="question.created_at" class="time"></timeago>
+          <span class="time">{{ question.created_at | toDateTime }}</span>
           <h3 class="title">{{ question.title }}</h3>
           <div class="description" ng-bind-html="question.description"></div>
           <!-- <div class="votes">
@@ -51,7 +51,7 @@
             <i class="fa" ng-class="{'fa-group': answer.user.type == 'Collaborator', 'fa-graduation-cap': answer.user.type == 'Student'}" tooltip="{{ answer.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
           </div>
           <div class="content col-xs-12 col-sm-11">
-            <timeago ng-model="question.created_at" class="time"></timeago>
+            <span class="time">{{ question.created_at | toDateTime }}</span>
             <div class="text" ed-bind-html="answer.text"></div>
             <!-- <div class="votes">
               <a class="vote up active">
@@ -71,15 +71,36 @@
           <i class="fa fa-graduation-cap"></i>
           <span>Respostas dos alunos</span>
         </h4>
-        <article ng-repeat="answer in question.answers | orderBy:'created_at':true" class="answer row">
+        <article ng-repeat="answer in question.answers | orderBy:'created_at':false" class="answer row">
           <div class="user col-xs-12 col-sm-1">
             <img class="avatar" ng-src="{{ answer.user.cover_image_url }}" alt="{{ answer.user | fullname }}">
             <span class="name">{{ answer.user | fullname }}</span>
             <i class="fa" ng-class="{'fa-group': answer.user.type == 'Collaborator', 'fa-graduation-cap': answer.user.type == 'Student'}" tooltip="{{ answer.user.type == 'Collaborator' ? 'Professor' : 'Aluno' }}"></i>
           </div>
           <div class="content col-xs-12 col-sm-11">
-            <timeago class="time" ng-model="answer.created_at"></timeago>
-            <div class="text" ed-bind-html="answer.text"></div>
+            <ul class="nav pull-right">
+              <li>
+                <span class="time">{{ answer.created_at | toDateTime }}</span>
+              </li>
+              <li>
+                <button type="button" ng-show="!answer.editable" class="btn btn-xs btn-danger" ng-if="answer.fromUser" ng-click="eraseAnswer(answer)" tooltip="Apagar">
+                  <i class="fa fa-trash-o"></i>
+                  <span>Apagar</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" ng-show="!answer.editable" class="btn btn-xs btn-success" ng-if="answer.fromUser" ng-click="editAnswer(answer)" tooltip="Editar">
+                  <i class="fa fa-pencil-square-o"></i>
+                  <span>Editar</span>
+                </button>
+              </li>
+            </ul>
+            <div class="text" ng-show="!answer.editable" ed-bind-html="answer.text"></div>
+            <ck-editor ng-show="answer.editable" ng-model="answer.text" hide-source="true"></ck-editor>
+            <button type="button" class="btn btn-xs btn-success save" ng-if="answer.fromUser && answer.editable" ng-click="updateAnswer(answer)" tooltip="Salvar">
+              <i class="fa fa-floppy-o"></i>
+              <span>Salvar</span>
+            </button>
             <!-- <div class="votes">
               <a class="vote up active">
                 <span>80</span>
