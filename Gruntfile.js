@@ -1,11 +1,5 @@
-// Generated on 2014-06-05 using generator-angular 0.8.0
 'use strict';
-var configFile = require('theme-config.json');
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/**/*.js'
-// use this if you want to recursively match all subfolders:
-// 'test/spec/**/*.js'
+var config = require('./theme-config.json');
 
 module.exports = function (grunt) {
 
@@ -85,8 +79,8 @@ module.exports = function (grunt) {
           base: ['./.tmp', './app'],
           middleware: function (connect, opts, middlewares) {
             var edoolsMiddleware = require('edools-connect-middleware').middleware({
-              theme: configFile.theme_id,
-              token: configFile.token
+              theme: config.theme_id,
+              token: config.token
             });
             middlewares.unshift(edoolsMiddleware);
             return middlewares;
@@ -382,8 +376,8 @@ module.exports = function (grunt) {
 
     edools_deploy: {
       options: {
-        theme: configFile.theme_id,
-        token: configFile.token,
+        theme: config.theme_id,
+        token: config.token,
         apps: require('./Appfile.json'),
         package_file: '<%= theme.public %>/<%= pkg.name %>.zip'
       },
