@@ -12,12 +12,12 @@ deployment:
   staging:
     branch: develop
     commands:
-      - sed -i 's/your_theme_id/'"$DEMO_THEME_ID"'/g' Gruntfile.js
-      - sed -i 's/your_deploy_token/'"$DEMO_DEPLOY_KEY"'/g' Gruntfile.js
+      - sed -i 's/your_theme_id/'"$DEMO_THEME_ID"'/g' theme-config.json
+      - sed -i 's/your_deploy_token/'"$DEMO_DEPLOY_KEY"'/g' theme-config.json
       - grunt deploy
   production:
     branch: master
     commands:
-      - sed -i 's/your_theme_id/'"$GENERATOR_THEME_ID"'/g' Gruntfile.js
-      - sed -i 's/your_deploy_token/'"$GENERATOR_DEPLOY_KEY"'/g' Gruntfile.js
+      - sed -i 's/your_theme_id/'"$GENERATOR_THEME_ID"'/g' theme-config.json
+      - sed -i 's/your_deploy_token/'"$GENERATOR_DEPLOY_KEY"'/g' theme-config.json
       - grunt deploy
