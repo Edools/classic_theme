@@ -46,12 +46,6 @@
                       <span ng-if="extraContent.release_at">
                         Liberado em {{ extraContent.release_at | toDateTime:'DD/MM/YYYY' }}
                       </span>
-                      <span ng-if="extraContent.release_after && extraContent.daysUntil" class="pull-right">
-                        Liberado após {{ extraContent.daysUntil }} <ng-pluralize count="extraContent.daysUntil" when="{'1': 'dia', 'other': 'dias'}"></ng-pluralize>
-                      </span>
-                      <span ng-if="extraContent.release_after && extraContent.hoursUntil" class="pull-right">
-                        Liberado após {{ extraContent.hoursUntil }} <ng-pluralize count="extraContent.hoursUntil" when="{'1': 'hora', 'other': 'horas'}"></ng-pluralize>
-                      </span>
                     </span>
                   </div>
                 </div>
