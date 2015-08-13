@@ -5,8 +5,15 @@ machine:
 dependencies:
   pre:
     - npm install -g npm@latest
-    - npm install -g grunt-cli bower
+    - npm install -g grunt-cli bower @edools/bamboo-linter
     - bower install
+  post:
+    - npm rebuild gulp-sass node-sass
+
+test:
+  pre:
+    - sed -i 's/your_theme_id/'"$DEMO_THEME_ID"'/g' theme-config.json
+    - sed -i 's/your_deploy_token/'"$DEMO_DEPLOY_KEY"'/g' theme-config.json
 
 deployment:
   staging:

@@ -24,7 +24,54 @@
             <content-tree type="dashboard" enrollment="enrollment" ng-model="course" lessons-info="lessons_info" lazy="true"></content-tree>
           </div>
         </div>
-
+  
+        <div class="panel" ng-if="extraContents.length > 0">
+          <div class="panel-heading">
+            <strong class="panel-title">Material complementar</strong>
+          </div>
+          <div class="panel-body">
+            <spinner name="extraContents" class="small"></spinner>
+            <ul class="modules">
+              <li class="module-item root" ng-repeat="extraContent in extraContents">
+                <div class="class">
+                  <div class="class-info" ng-class="{'active': $state.params.extraContentId == extraContent.id.toString()}">
+                    <media-icon type="extraContent.media.type"></media-icon>
+                    <span ng-class="{'label-info': $state.params.extraContentId == extraContent.id.toString()}" ng-if="!extraContent.disabled">
+                      <a class="title" link-to="school.dashboard.course.extraContent.media({ extraContentId: extraContent.id })">{{ extraContent.title }}</a>
+                    </span>
+                    <span ng-if="extraContent.disabled" class="title">
+                      {{ extraContent.title }}
+                    </span>
+                    <span ng-if="extraContent.disabled" class="pull-right">
+                      <span ng-if="extraContent.release_at">
+                        Liberado em {{ extraContent.release_at | toDateTime:'DD/MM/YYYY' }}
+                      </span>
+                      <span ng-if="extraContent.release_after && extraContent.daysUntil" class="pull-right">
+                        Liberado após {{ extraContent.daysUntil }} <ng-pluralize count="extraContent.daysUntil" when="{'1': 'dia', 'other': 'dias'}"></ng-pluralize>
+                      </span>
+                      <span ng-if="extraContent.release_after && extraContent.hoursUntil" class="pull-right">
+                        Liberado após {{ extraContent.hoursUntil }} <ng-pluralize count="extraContent.hoursUntil" when="{'1': 'hora', 'other': 'horas'}"></ng-pluralize>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="center" ed-pagination="extraContents.pagingInfo" refresh="getExtraContents(page)">
+              <ul class="pagination">
+                <li ed-pagination-previous>
+                  <a href=""><i class="fa fa-caret-left"></i></a>
+                </li>
+                <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+                  <a href="">{{ page }}</a>
+                </li>
+                <li ed-pagination-next>
+                  <a href=""><i class="fa fa-caret-right"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
 
         <div class="course-progress panel">
