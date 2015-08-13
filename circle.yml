@@ -5,7 +5,7 @@ machine:
 dependencies:
   pre:
     - npm install -g npm@latest
-    - npm install -g grunt-cli bower
+    - npm install -g grunt-cli bower @edools/bamboo-linter
     - bower install
   post:
     - npm rebuild gulp-sass node-sass
