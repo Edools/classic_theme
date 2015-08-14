@@ -19,8 +19,9 @@
         <div class="course-content panel">
           <div class="panel-heading">
             <strong class="panel-title">Conteúdo do curso</strong>
-            <span class="available-title">Disponível até:  {{enrollment.available_until | toDateTime}} horas</span>
-            <br/>
+            <span ng-if="enrollment.available_until" class="available-title">
+              Disponível até: {{ enrollment.available_until | toDateTime }} horas
+            </span>
           </div>
           <div class="panel-body">
             <content-tree type="dashboard" ng-model="course" enrollment="enrollment" lessons-info="lessons_info" lazy="true"></content-tree>
@@ -61,12 +62,6 @@
                     <span ng-if="extraContent.disabled" class="pull-right">
                       <span ng-if="extraContent.release_at">
                         Liberado em {{ extraContent.release_at | toDateTime:'DD/MM/YYYY' }}
-                      </span>
-                      <span ng-if="extraContent.release_after && extraContent.daysUntil" class="pull-right">
-                        Liberado após {{ extraContent.daysUntil }} <ng-pluralize count="extraContent.daysUntil" when="{'1': 'dia', 'other': 'dias'}"></ng-pluralize>
-                      </span>
-                      <span ng-if="extraContent.release_after && extraContent.hoursUntil" class="pull-right">
-                        Liberado após {{ extraContent.hoursUntil }} <ng-pluralize count="extraContent.hoursUntil" when="{'1': 'hora', 'other': 'horas'}"></ng-pluralize>
                       </span>
                     </span>
                   </div>
