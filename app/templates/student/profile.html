@@ -90,6 +90,25 @@
               <div class="col-xs-12">
                 <ck-editor ng-model="profileCtrl.user.biography"></ck-editor>
               </div>
+              <br/><br/>
+            </div>
+
+            <div>
+              <h4 class="form-title">
+                <i class="fa fa-key"></i>
+                <span>Redefinir senha</span>
+              </h4>
+              <hr>
+              <div class="col-xs-12 col-md-6 ">
+                <div class="form-group">
+                  <label class="control-label">Nova Senha</label>
+                  <input type="password" ng-model="profileCtrl.user.password" name="password" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Confirmação de Senha</label>
+                  <input type="password" ng-model="profileCtrl.user.password_confirmation" name="password_confirmation" class="form-control">
+                </div>
+              </div>
             </div>
 
             <div class="row">
