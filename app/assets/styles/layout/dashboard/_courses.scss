@@ -82,7 +82,10 @@
     }
   }
 
-  .min-height-80 {
-    height: 80px;
+  .course-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 115px;
   }
 }
