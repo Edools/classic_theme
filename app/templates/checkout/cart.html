@@ -63,7 +63,16 @@
               {{ totalPrice | money:'R$' }}
             </span>
           </div>
-          <a ng-click="fireAnalyticsCheckout(order)" link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+          <a ng-hide="termsOfUse" ng-click="fireAnalyticsCheckout(order)" link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+
+          <div ng-show="termsOfUse">
+            <span class="pull-right">
+              <input type="checkbox" ng-model="order.readAndAccepted" />
+              Eu li e aceito os <a ng-click="showTermsOfUse()" href="javascript:void(0);">termos de uso.</a>
+            </span>
+
+            <a ng-disabled="!order.readAndAccepted" ng-click="fireAnalyticsCheckout(order)" link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+          </div>
         </div>
       </div>
       <div class="panel" ng-if="order.amount_to_pay === order.total">
