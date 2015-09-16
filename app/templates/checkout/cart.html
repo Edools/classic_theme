@@ -67,11 +67,12 @@
 
           <div ng-show="termsOfUse">
             <span class="pull-right">
-              <input type="checkbox" ng-model="order.readAndAccepted" />
+              <input class="margin-terms" type="checkbox" ng-model="order.readAndAccepted" />
               Eu li e aceito os <a ng-click="showTermsOfUse()" href="">termos de uso.</a>
             </span>
-
-            <a ng-disabled="!order.readAndAccepted" ng-click="fireAnalyticsCheckout(order)" link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+            <br/>
+            <br/>
+            <button ng-disabled="!order.readAndAccepted" ng-click="fireAnalyticsCheckout(order)" link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</button>
           </div>
         </div>
       </div>
