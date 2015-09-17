@@ -88,9 +88,7 @@
                 <button type="button" class="btn btn-success" ng-click="applyCoupon(coupon, order)">Ok</button>
               </span>
             </div>
-            <p class="help-block" ng-if="coupon.errors.length > 0">
-              <div ng-repeat="error in coupon.errors">{{ error }}</div>
-            </p>
+            <p class="help-block" ng-repeat="error in coupon.errors">{{ error }}</p>
           </div>
           <spinner name="coupon"></spinner>
         </div>
