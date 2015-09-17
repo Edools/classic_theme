@@ -89,7 +89,7 @@
               </span>
             </div>
             <p class="help-block" ng-if="coupon.errors.length > 0">
-              <span ng-repeat="error in coupon.errors">{{ error }}</span>
+              <div ng-repeat="error in coupon.errors">{{ error }}</div>
             </p>
           </div>
           <spinner name="coupon"></spinner>
