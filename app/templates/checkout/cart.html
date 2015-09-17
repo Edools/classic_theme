@@ -81,14 +81,16 @@
           <strong class="panel-title">Cupom</strong>
         </div>
         <div class="panel-body">
-          <div class="form-group simple" ng-class="{'has-error': coupon.errorMessages.length > 0}">
+          <div class="form-group simple" ng-class="{'has-error': coupon.errors.length > 0}">
             <div class="input-group">
               <input type="text" placeholder="Cupom de desconto" class="form-control input-sm" ng-model="coupon.name">
               <span class="input-group-btn">
                 <button type="button" class="btn btn-success" ng-click="applyCoupon(coupon, order)">Ok</button>
               </span>
             </div>
-            <p class="help-block" ng-if="coupon.errorMessages.length > 0">{{ coupon.errorMessages.join(', ') }}</p>
+            <p class="help-block" ng-if="coupon.errors.length > 0">
+              <span ng-repeat="error in coupon.errors">{{ error }}</span>
+            </p>
           </div>
           <spinner name="coupon"></spinner>
         </div>
