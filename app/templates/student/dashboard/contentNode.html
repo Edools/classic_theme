@@ -7,11 +7,11 @@
   </div>
 </div>
 <div ed-module-toggle-area="{module: module}">
-  <ol ui-tree-nodes ng-model="module.course_modules">
-    <li class="module-item sub" ng-repeat="module in module.course_modules | orderBy:'order'" ng-include="subTemplateUrl" ui-tree-node></li>
+  <ol>
+    <li class="module-item sub" ng-repeat="module in module.course_modules | orderBy:'order'" ng-include="subTemplateUrl"></li>
   </ol>
-  <ol ui-tree-nodes ng-model="module.classes">
-    <li class="module-item sub" ng-repeat="class in module.classes | orderBy:'order'" ui-tree-node>
+  <ol>
+    <li class="module-item sub" ng-repeat="class in module.classes | orderBy:'order'">
       <div class="class">
         <div class="class-info" ng-class="{'active': $state.params.contentId == class.id.toString()}">
           <progress-icon ng-model="class" ng-if="!class.disabled"></progress-icon>

@@ -80,7 +80,8 @@ module.exports = function (grunt) {
           middleware: function (connect, opts, middlewares) {
             var edoolsMiddleware = require('edools-connect-middleware').middleware({
               theme: config.theme_id,
-              token: config.token
+              token: config.token,
+              parseSchemas: true
             });
             middlewares.unshift(edoolsMiddleware);
             return middlewares;
