@@ -1,12 +1,4 @@
-<header class="main-header home">
-  <div class="image col-xs-12 col-md-5 text-center">
-    <img src="assets/images/capa_tema_classico.png" alt="BizStart">
-  </div>
-  <div class="info col-xs-12 col-md-7">
-    <h2 class="title">Tema clássico</h2>
-    <h4 class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue lectus, pretium quis lobortis sollicitudin, viverra eget lacus. Curabitur vitae hendrerit ex, id iaculis tellus</h4>
-  </div>
-</header>
+
 <section class="course-list home" ng-if="schoolProducts != null && schoolProducts.length > 0">
   <div class="container">
     <h2>CURSOS</h2>
@@ -27,7 +19,10 @@
 
         <div class="footer">
           <div class="col-xs-12 info" ng-if="schoolProduct.product.plans.length === 0">
-            <div class="pull-left well">{{ schoolProduct.product.price | money:'R$' }}</div>
+
+            De {{ schoolProduct.product.base_price | money:'R$' }}  por {{ schoolProduct.product.price | money:'R$' }}
+            
+
             <button type="button" add-to-cart="schoolProduct" class="btn btn-success">Comprar</button>
           </div>
 

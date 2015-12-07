@@ -61,7 +61,8 @@
 
 // home courses list
 .home.course-list {
-  background: lighten($light-gray, 2%);
+  // background: lighten($light-gray, 2%);
+  background-color:#fff;
 
   $course-height: 349px;
 
@@ -69,7 +70,7 @@
     height: $course-height;
     background: white;
     margin-bottom: 20px;
-    @include card();
+    // @include card();
   }
 
   .image img {
