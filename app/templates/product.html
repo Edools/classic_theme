@@ -124,20 +124,21 @@
             <div class="col-xs-6" >
               <div class="info">
                 <h3 class="title">
+                  {{ course.path }}
                   {{ course.name }}
                 </h3>
                 <h2>Duracao{{ course.duration }}</h2>
                 <span class="subtitle" ed-bind-html="course.description"></span>
-                <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
+<!--                 <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
                       ng-if="!course.details" ng-click="toggleDetails(course)">
                   VER CURSO DETALHADO
                 </span>
                 <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
                       ng-if="course.details" ng-click="toggleDetails(course)">
                   ESCONDER DETALHE DO CURSO
-                </span>
+                </span> -->
 
-                <content-tree type="home" ng-model="course" ng-show="course.details"></content-tree>
+                <content-tree type="course" ng-model="course" ></content-tree>
               </div>
             </div>
           </div>
