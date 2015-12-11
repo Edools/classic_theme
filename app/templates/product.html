@@ -101,7 +101,7 @@
 
 
       <div class="panel-body">
-        <content-tree type="home" ng-model="schoolProduct.library_resource.resource" ng-if="schoolProduct.library_resource.resource.type === 'course'" lazy="true"></content-tree>
+        <content-tree type="product" ng-model="schoolProduct.library_resource.resource" ng-if="schoolProduct.library_resource.resource.type === 'course'" lazy="true"></content-tree>
 
         <div class="col-xs-12" ng-if="schoolProduct.library_resource.resource.type === 'path'">
 
@@ -113,9 +113,10 @@
             </span>
           </div>
  -->
-          <spinner name="courses" class="small"></spinner>
+          <!-- <spinner name="courses" class="small"></spinner> -->
 
           <div class="row course-path" ng-repeat="course in schoolProduct.path.courses">
+
             <div class="course-image col-xs-12 text-right col-md-6">
               <img ng-if="course.image_url" ng-src="{{ course.image_url }}" alt="{{ course.name }}" width="100" height="80">
               <img ng-if="!course.image_url" src="assets/images/missing-course-logo.png">
@@ -124,24 +125,26 @@
             <div class="col-xs-6" >
               <div class="info">
                 <h3 class="title">
-                  {{ course.path }}
                   {{ course.name }}
+ 
                 </h3>
                 <h2>Duracao{{ course.duration }}</h2>
                 <span class="subtitle" ed-bind-html="course.description"></span>
-<!--                 <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
+                <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
                       ng-if="!course.details" ng-click="toggleDetails(course)">
                   VER CURSO DETALHADO
                 </span>
                 <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
                       ng-if="course.details" ng-click="toggleDetails(course)">
                   ESCONDER DETALHE DO CURSO
-                </span> -->
+                </span>
 
-                <content-tree type="course" ng-model="course" ></content-tree>
+                <content-tree type="produt" ng-model="course" ng-show="course.details"></content-tree>
               </div>
             </div>
           </div>
+
+
 
 
           <div class="text-center" ed-pagination="schoolProduct.path.courses.pagingInfo" refresh="getCourses(page)">
@@ -160,7 +163,7 @@
         </div>
       </div>
     </article>
-    <div class="fb-comments" data-href="{{ $location.absUrl() }}" data-width="790" data-numposts="10" data-colorscheme="light"></div>
+    <!-- <div class="fb-comments" data-href="{{ $location.absUrl() }}" data-width="790" data-numposts="10" data-colorscheme="light"></div> -->
   </div>
 
 
