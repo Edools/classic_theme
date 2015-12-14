@@ -4,11 +4,11 @@
 *  Contains all typographical elements styles
 *
 *******************************************************************************/
-body{
-	font-family: "Roboto Condensed", sans-serif;
+body, p {
+	font-family: "Open Sans", sans-serif;
 }
-h2, h3, h4, p, a, button {
-  font-family: 'Roboto', sans-serif;
+h1, h2, h3, h4, button {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .light-gray-text {

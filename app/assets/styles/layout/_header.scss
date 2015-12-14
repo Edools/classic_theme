@@ -7,7 +7,7 @@
 
 .school-header {
   .navbar-brand {
-    @include colorful-link(white);
+    // @include colorful-link(white);
 
     h2 {
       margin-top: 8px;
@@ -20,7 +20,7 @@
 
   .navbar {
     margin-bottom: 0;
-    background: $dark-gray;
+    // background: $dark-gray;
 
     .navbar-nav {
       position: relative;
@@ -30,7 +30,7 @@
     }
 
     li a {
-      @include colorful-link(white);
+      // @include colorful-link(white);
     }
   }
 

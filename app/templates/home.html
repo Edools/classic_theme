@@ -3,18 +3,18 @@
   <div class="container">
 
 
-
+<!-- 
     <h2>TRILHAS?</h2>
         <div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="course in schoolProduct.path.courses">
                   {{ course.name }}
           </div>
-
+ -->
 
     <h2>CURSOS</h2>
 
     <div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="schoolProduct in schoolProducts">
       <div class="course">
-    {{}}
+
         <a link-to="school.product({ schoolProductId: schoolProduct.id })">
           <div class="image">
             <img ng-if="schoolProduct.logo" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
@@ -31,10 +31,13 @@
         <div class="footer">
           <div class="col-xs-12 info" ng-if="schoolProduct.product.plans.length === 0">
 
-            De {{ schoolProduct.product.base_price | money:'R$' }}  por {{ schoolProduct.product.price | money:'R$' }}
+            <div class="price">
+                <p class="discount">De <span>{{ schoolProduct.product.base_price | money:'R$' }}</span></p>
+                <p class="full"> por {{ schoolProduct.product.price | money:'R$' }}</p>
+              <button type="button" add-to-cart="schoolProduct" class="btn btn-success">MATRICULE-SE</button>
+            </div>
             
 
-            <button type="button" add-to-cart="schoolProduct" class="btn btn-success">Comprar</button>
           </div>
 
           <div class="col-xs-12 info" ng-if="schoolProduct.product.plans.length !== 0">

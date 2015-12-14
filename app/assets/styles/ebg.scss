@@ -1,0 +1,32 @@
+h4.title, h2.title{
+	text-transform:uppercase;
+}
+
+.navbar-default{
+	background-color:#fff;
+	border-color:#fff;
+}
+
+.price{
+	text-align:center;
+
+	p{
+		line-height: 14px;
+		margin:0 0 5px 0;
+	}
+
+	.discount{
+		font-weight:normal;
+		font-size:11px;
+		color:#666;
+		span{
+			text-decoration: line-through;
+		}
+	}
+	.full{
+		font-weight:normal;
+		font-size:14px;
+		color:#000;
+		margin-bottom:20px;
+	}
+}
