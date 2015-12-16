@@ -84,7 +84,7 @@
                     </div>
                     <div class="form-group" ng-if="!plan">
                       <label class="control-label">Parcelas</label>
-                      <div installments-select ng-model="card.installments" maximum-installments="gateway.maximum_number_of_installments" total-price="totalPrice"></div>
+                      <div installments-select ng-model="card.installments" maximum-installments="gateway.maximum_number_of_installments" min-installment-amount="gateway.min_installment_amount" total-price="totalPrice"></div>
                     </div>
                   </div>
                 </form>
@@ -99,6 +99,17 @@
                 </div>
                 <div class="text-center">
                   <button type="button" pay disable-on-load="['customer', 'payment']" class="btn btn-lg btn-success">Gerar Boleto</button>
+                </div>
+              </tab>
+              <tab heading="Débito Online" select="selectPayment('debit')" ng-if="!plan && acceptPaymentMethod('OnlineDebitPayment')">
+                <div class="note note-warning">
+                  <span>Desabilite o bloqueio de pop-ups do seu navegador</span>
+                </div>
+                <div class="note note-info">
+                  <span>Você será redirecionado para a página do Banco para inserir as informações necessárias para o débito online. Sendo a transação realizada com sucesso, o curso será liberado.</span>
+                </div>
+                <div class="text-center">
+                  <button type="button" ng-click="pay('bank_transfer')" disable-on-load="['customer', 'payment']" class="btn btn-lg btn-success">Ir para o Banco</button>
                 </div>
               </tab>
               <tab ng-if="canBuyWithCredits(order)" heading="Carteira de créditos" select="selectPayment('wallet')">
