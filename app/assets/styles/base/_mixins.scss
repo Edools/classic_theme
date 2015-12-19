@@ -35,9 +35,9 @@
 *  }
 *********************************************************************/
 @mixin panel($border-color: #ccc) {
-  border: 1px solid $border-color;
-  border-radius: 5px;
-  box-shadow: 3px 4px 0 rgba(0,0,0,0.06);
+  // border: 1px solid $border-color;
+  // border-radius: 5px;
+  // box-shadow: 3px 4px 0 rgba(0,0,0,0.06);
 }
 
 /*********************************************************************
@@ -49,9 +49,9 @@
 *  }
 *********************************************************************/
 @mixin card($border-color: #ccc) {
-  border: 1px solid $border-color;
-  border-radius: 5px;
-  box-shadow: 0 2px 3px 0 rgba(0,0,0, 0.26);
+  // border: 1px solid $border-color;
+  // border-radius: 5px;
+  // box-shadow: 0 2px 3px 0 rgba(0,0,0, 0.26);
 }
 
 /*********************************************************************

@@ -1,4 +1,4 @@
-h4.title, h2.title{
+h4.title, h2.title, h2 span{
 	text-transform:uppercase;
 }
 
@@ -29,4 +29,8 @@ h4.title, h2.title{
 		color:#000;
 		margin-bottom:20px;
 	}
+}
+
+.price.lf{
+	text-align:left;
 }

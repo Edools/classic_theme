@@ -13,27 +13,35 @@
           Ainda não há items no seu carrinho.
         </div>
         <div class="panel cart-product" ng-repeat="item in order.items">
-          <div class="panel-heading">
-            <strong>{{ item.schoolProduct.title }}</strong>
-            <div class="pull-right">
-              <a class="pointer" ng-click="removeFromCart(item)">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </div>
-          </div>
+
+
           <div class="panel-body">
             <div class="col-xs-12 col-md-4 card cart-image" ng-if="item.schoolProduct.logo">
               <img ng-src="{{ item.schoolProduct.logo }}" alt="{{ item.schoolProduct.title }}">
             </div>
             <div class="col-xs-12 cart-subtitle" ng-class="{'col-md-8': item.schoolProduct.logo }">
+
+              <div class="pull-right">
+                <a class="pointer" ng-click="removeFromCart(item)">
+                  <i class="fa fa-trash-o"></i>
+                </a>
+              </div>
+             <h4>{{ item.schoolProduct.title }}</h4>
+
+
+
               <p ed-bind-html="item.schoolProduct.description"></p>
               <hr ng-show="item.schoolProduct.description">
-              <h4>
-                <strong>{{ item.amount_to_pay | money:'R$' }}</strong>
+              
+              <div class="price lf">
+                <strong>{{ item.amount_to_pay | money:'R$ ' }}</strong>
                 <strong ng-if="item.product.price_in_credits">
                   ou {{ item.product.price_in_credits }} créditos
                 </strong>
-              </h4>
+              </div>
+
+
+
             </div>
           </div>
         </div>
