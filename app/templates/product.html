@@ -20,6 +20,24 @@
             <small class="label label-success">{{ schoolProduct.product.price_in_credits }} créditos</small>
           </span>
           
+
+
+            <div class="price">
+
+              <div ng-if="schoolProduct.product.base_price > schoolProduct.product.price">
+                <p class="discount">De <span>{{ schoolProduct.product.base_price | money:'R$' }}</span></p>
+                <p class="full"> por {{ schoolProduct.product.price | money:'R$' }}</p>    
+              </div>
+
+              <div ng-if="schoolProduct.product.base_price == 0">
+                <p class="full">  {{ schoolProduct.product.price | money:'R$' }}</p>    
+              </div>
+
+              <button type="button" add-to-cart="schoolProduct" class="btn btn-success">MATRICULE-SE</button>
+            </div>
+            
+
+
             <div class="price">
                 <p class="discount">De <span>{{ schoolProduct.product.base_price | money:'R$' }}</span></p>
                 <p class="full"> por {{ schoolProduct.product.price | money:'R$' }}</p>
