@@ -3,14 +3,16 @@
     <img ng-if="!schoolProduct.video_cover" ng-src="{{ schoolProduct.logo }}" alt="{{ schoolProduct.title }}">
     <video-player ng-if="schoolProduct.video_cover" width="450" height="210" ng-model="schoolProduct.video_cover.media"></video-player>
   </div>
-  <div class="col-xs-12 text-center" ng-class="{'col-md-7': schoolProduct.logo != null, 'col-md-12': schoolProduct.logo == null}">
+  <div class="col-xs-12 " ng-class="{'col-md-7': schoolProduct.logo != null, 'col-md-12': schoolProduct.logo == null}">
+
+
     <div class="info">
-      <h2 class="title">{{ schoolProduct.title }}</h2>
+      <h4 class="title">{{ schoolProduct.title }}</h4>
       <span class="subtitle">{{ schoolProduct.subtitle }}</span>
       <!-- <span class="subtitle">{{ schoolProduct.categories }}</span> -->
     </div>
 
-    <div class="enroll text-center">
+    <div class="enroll ">
       <div class="col-xs-12" ng-if="schoolProduct.product.plans.length === 0">
 
         <section ed-bind-html="schoolProduct.description"></section>
@@ -22,27 +24,22 @@
           
 
 
-            <div class="price">
+            <div class="price product-page">
 
               <div ng-if="schoolProduct.product.base_price > schoolProduct.product.price">
-                <p class="discount">De <span>{{ schoolProduct.product.base_price | money:'R$' }}</span></p>
-                <p class="full"> por {{ schoolProduct.product.price | money:'R$' }}</p>    
+                <p class="discount">De <span>{{ schoolProduct.product.base_price | money:'R$ ' }}</span></p>
+                <p class="full"> por {{ schoolProduct.product.price | money:'R$ ' }}</p>    
               </div>
 
               <div ng-if="schoolProduct.product.base_price == 0">
-                <p class="full">  {{ schoolProduct.product.price | money:'R$' }}</p>    
+                <p class="full">  {{ schoolProduct.product.price | money:'R$ ' }}</p>    
               </div>
 
-              <button type="button" add-to-cart="schoolProduct" class="btn btn-success">MATRICULE-SE</button>
+              <button type="button" add-to-cart="schoolProduct" class="btn btn-lg btn-success">MATRICULE-SE</button>
             </div>
             
 
 
-            <div class="price">
-                <p class="discount">De <span>{{ schoolProduct.product.base_price | money:'R$' }}</span></p>
-                <p class="full"> por {{ schoolProduct.product.price | money:'R$' }}</p>
-              <button type="button" add-to-cart="schoolProduct" class="btn btn-success btn-lg">MATRICULE-SE AGORA</button>
-            </div>
 
 
 
@@ -179,23 +176,27 @@
 
 
   <div class="topics col-xs-12 col-md-4">
-
     <section ng-if="schoolProduct.class_teachers.length > 0" class="topic panel teachers">
+
       <div class="panel-heading">
         <strong class="title panel-title">Professores</strong>
       </div>
+
       <div class="panel-body">
+        
         <div ng-repeat="teacher in schoolProduct.class_teachers">
-          <img ng-if="teacher.photo_url" ng-src="{{ teacher.photo_url }}" alt="{{ teacher.full_name }}" class="image col-xs-12 col-md-12">
+          <div class="img-teacher">
+            <img ng-if="teacher.photo_url" ng-src="{{ teacher.photo_url }}" alt="{{ teacher.full_name }}" class="image  ">
+          </div>
           <h4 class="teacher-name">{{ teacher.full_name }}</h4>
           <p class="description" ed-bind-html="teacher.about"></p>
         </div>
+
       </div>
+
     </section>
-
-
-
-
-
   </div>
+
+
+
 </div>

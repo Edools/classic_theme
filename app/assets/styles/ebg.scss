@@ -1,4 +1,4 @@
-h4.title, h2.title, h2 span{
+h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2{
 	text-transform:uppercase;
 }
 
@@ -31,6 +31,39 @@ h4.title, h2.title, h2 span{
 	}
 }
 
+.price.product-page{
+		margin:30px 0 10px;
+	p{
+		line-height: 18px;
+	}	
+	.discount{
+		font-size:14px;
+	}
+	.full{
+		font-size:20px;
+	}
+	.btn{
+		margin:10px 0;
+	}
+}
+
 .price.lf{
 	text-align:left;
+}
+
+.panel{
+	box-shadow:none;
+	border:0;
+	border-radius:0;
+	border-bottom:solid 1px #ccc;
+}
+
+.img-teacher{
+	margin:0 auto 20px;
+	width:200px;
+	max-width:200px;
+	text-align:center;
+}
+.img-teacher img{
+	width:100%;
 }

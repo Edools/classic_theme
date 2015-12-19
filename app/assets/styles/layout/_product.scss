@@ -53,12 +53,12 @@
   min-height: 300px;
   padding: 15px 30px;
   margin: 0;
-  background: lighten($light-gray, 2%);
+  background-color:#fff;
 }
 
 .course-description {
   padding: 10px 20px;
-  background: white;
+  background-color:#fff;
   margin-bottom: 20px;
   @include panel();
 
