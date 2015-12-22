@@ -22,18 +22,14 @@
       </div>
 
       <div class="col-xs-12" ng-if="schoolProduct.product.plans.length !== 0">
-        <button ng-click="goToSubscriptionCheckout(schoolProduct.product.plan, schoolProduct)"
-          type="button" class="btn btn-success" ng-if="schoolProduct.product.plans.length === 1">
-          Matricule-se agora
-          <subscription-plan plan="schoolProduct.product.plan"></subscription-plan>
-        </button>
-
         <div class="btn-group">
-          <a class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" ng-if="schoolProduct.product.plans.length > 1">
+          <a class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown">
             Matricule-se agora
-            <subscription-plan plan="schoolProduct.product.plan"></subscription-plan>
           </a>
           <ul class="dropdown-menu">
+            <li>
+              <a add-to-cart="schoolProduct">{{ schoolProduct.product.price | money:'R$' }} (Pagamento Único)</a>
+            </li>
             <li ng-repeat="plan in schoolProduct.product.plans">
               <a ng-click="goToSubscriptionCheckout(plan, schoolProduct)">
                 <subscription-plan plan="plan"></subscription-plan>
@@ -78,7 +74,7 @@
               <img ng-if="course.image_url" ng-src="{{ course.image_url }}" alt="{{ course.name }}">
               <img ng-if="!course.image_url" src="assets/images/missing-course-logo.png">
             </div>
-            
+
             <div class="col-xs-6" >
               <div class="info">
                 <h3 class="title">
