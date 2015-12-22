@@ -32,20 +32,15 @@
           </div>
 
           <div class="col-xs-12 info" ng-if="schoolProduct.product.plans.length !== 0">
-            <div class="pull-left well">
-              <subscription-plan plan="schoolProduct.product.plan" hide-trial="true"></subscription-plan>
-            </div>
-
-            <button ng-click="goToSubscriptionCheckout(schoolProduct.product.plan, schoolProduct)"
-              type="button" class="btn btn-success" ng-if="schoolProduct.product.plans.length === 1">
-              Assinar
-            </button>
-
-            <div class="btn-group pull-right" ng-if="schoolProduct.product.plans.length > 1">
+            <div class="pull-left well">{{ schoolProduct.product.price | money:'R$' }}</div>
+            <div class="btn-group pull-right">
               <a class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                Assinar
+                Comprar
               </a>
               <ul class="dropdown-menu">
+                <li>
+                  <a add-to-cart="schoolProduct">{{ schoolProduct.product.price | money:'R$' }} (Pagamento Único)</a>
+                </li>
                 <li ng-repeat="plan in schoolProduct.product.plans">
                   <a ng-click="goToSubscriptionCheckout(plan, schoolProduct)">
                     <subscription-plan plan="plan"></subscription-plan>
