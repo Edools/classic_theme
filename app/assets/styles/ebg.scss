@@ -2,7 +2,11 @@
 	width: 970px;
 }
 
-h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2{
+h1, h2, h3, h4, h5, h6 {
+margin-bottom: 20px;
+}
+
+h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2, h1.form-header{
 	text-transform:uppercase;
 }
 
@@ -79,4 +83,24 @@ h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2{
 		color:#000;
 	}
 	font-size:18px;
+}
+
+// cart
+
+.price-row{
+	border-bottom:dashed 1px #ccc;
+	margin:0 0 5px 0;
+	padding:0 0 5px 0;
+	font-size:12px;
+	.title{
+		width: 59%;
+		font-weight: normal;
+		display: inline-table;
+	}
+	.price{
+		width: 39%;
+		text-align: right;
+		display: inline-table;
+
+	}
 }
