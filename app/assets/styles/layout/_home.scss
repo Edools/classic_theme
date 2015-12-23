@@ -62,13 +62,13 @@
 // home courses list
 .home.course-list {
   // background: lighten($light-gray, 2%);
-  background-color:#fff;
+  // background-color:#fff;
 
-  // $course-height: 399px;
+  $course-height: 399px;
 
   .course {
-    // height: $course-height;
-    background: white;
+    height: $course-height;
+    // background: white;
     margin-bottom: 110px;
     // @include card();
   }
@@ -82,6 +82,7 @@
     max-width: 100%;
     // max-height: $course-height/2;
     // height: $course-height/2;
+    text-align: center;
     padding: 10px;
 
     @media (max-width: $screen-tablet) {
@@ -91,15 +92,14 @@
   }
 
   .body {
-    padding: 10px;
-    max-height: $course-height/3;
-    height: $course-height/3;
+    padding: 0 10px;
+    height:152px;
     text-overflow: hidden;
     overflow: hidden;
     text-decoration: none;
 
     .title {
-      font-size: 14px;
+      font-size: 16px;
       text-align: center;
       border: 0;
       
@@ -130,7 +130,7 @@
       height: $footer-elem-height;
       padding: 4px 8px 5px 8px;
       margin: 0;
-      background-color: #f5f5f5;
+      // background-color: #f5f5f5;
       font-size: 18px;
       bottom: 0;
       float: left;
