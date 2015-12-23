@@ -73,13 +73,21 @@
     // @include card();
   }
 
+  .image{
+    text-align: center;
+  }
+
   .image img {
     width: 100%;
     max-width: 100%;
-    max-height: $course-height/2;
-    height: $course-height/2;
-    text-align: center;
+    // max-height: $course-height/2;
+    // height: $course-height/2;
     padding: 10px;
+
+    @media (max-width: $screen-tablet) {
+        width: 380px;
+
+    }    
   }
 
   .body {

@@ -19,9 +19,10 @@
             <div class="col-xs-12 col-md-4 card cart-image" ng-if="item.schoolProduct.logo">
               <img ng-src="{{ item.schoolProduct.logo }}" alt="{{ item.schoolProduct.title }}">
             </div>
+            
             <div class="col-xs-12 cart-subtitle" ng-class="{'col-md-8': item.schoolProduct.logo }">
 
-              <div class="pull-right">
+              <div class="pull-right remove-product">
                 <a class="pointer" ng-click="removeFromCart(item)">
                   <i class="fa fa-trash-o"></i>
                 </a>
@@ -30,8 +31,8 @@
 
 
 
-              <p ed-bind-html="item.schoolProduct.description"></p>
-              <hr ng-show="item.schoolProduct.description">
+              <p ed-bind-html="item.schoolProduct.subtitle"></p>
+
               
               <div class="price lf">
                 <strong>{{ item.amount_to_pay | money:'R$ ' }}</strong>

@@ -10,8 +10,8 @@
   }
 
   .info {
-    min-height: 100px;
-    max-height: 120px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-bottom: 20px;
     @extend %clearfix;
 
@@ -22,9 +22,10 @@
   }
 
   .image {
-    height: 230px;
-    max-height: 230px;
-    text-align: right;
+    text-align: center;
+    height: 250px;
+    // max-height: 230px;
+
 
     @media (min-width: $screen-tablet) {
       text-align: center;
@@ -32,7 +33,8 @@
   }
 
   .enroll {
-    margin-top: 40px;
+    background-color:#f90;
+    margin-top: 20px;
     margin-bottom: 20px;
     max-width: 100%;
 
@@ -57,7 +59,7 @@
 }
 
 .course-description {
-  padding: 10px 20px;
+  padding: 0 20px 0 0;
   background-color:#fff;
   margin-bottom: 20px;
   @include panel();
@@ -74,8 +76,8 @@
   p {
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
-    line-height: 1.8em;
-    text-align: justify;
+    // line-height: 1.8em;
+    // text-align: justify;
     margin-bottom: 20px;
   }
 }
@@ -105,8 +107,8 @@
   }
 
   .title {
-    font-size: 18px;
-    font-weight: 100;
+    font-size: 15px;
+    font-weight: bold;
   }
 }
 

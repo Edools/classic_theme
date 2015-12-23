@@ -1,3 +1,7 @@
+.schoolapp{
+	width: 970px;
+}
+
 h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2{
 	text-transform:uppercase;
 }
@@ -32,7 +36,7 @@ h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2{
 }
 
 .price.product-page{
-		margin:30px 0 10px;
+	margin:0 0 10px;
 	p{
 		line-height: 18px;
 	}	
@@ -43,7 +47,7 @@ h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2{
 		font-size:20px;
 	}
 	.btn{
-		margin:10px 0;
+		// margin:10px 0;
 	}
 }
 
@@ -66,4 +70,13 @@ h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2{
 }
 .img-teacher img{
 	width:100%;
+}
+
+.remove-product{
+	margin-left:20px;
+	margin-top:10px;
+	a{
+		color:#000;
+	}
+	font-size:18px;
 }
