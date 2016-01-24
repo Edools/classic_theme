@@ -16,8 +16,12 @@
     @extend %clearfix;
 
     @media (max-width: $screen-small) {
-      min-height: 150px;
-      max-height: 170px;
+      // min-height: 150px;
+      // max-height: 170px;
+      h2{
+        font-size: 22px;
+      }
+
     }
   }
 
