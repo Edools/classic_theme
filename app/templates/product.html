@@ -72,65 +72,86 @@
                 <div class="panel-body">
                     <p class="description" ed-bind-html="topic.description"></p>
                 </div>
-            </section>
+            </section><!-- topic panel -->
 
-            yy
-            <article class="course-content panel" ng-if="schoolProduct.library_resource.resource.has_content" hide-on-load="resource"></article>
-            xx
-            <div class="panel-heading">
-                <strong class="panel-title" ng-if="schoolProduct.library_resource.resource.type === 'course'">Conteúdo do curso</strong> <strong class="panel-title" ng-if="schoolProduct.library_resource.resource.type === 'path'">{{ schoolProduct.path.courses.pagingInfo.totalCount }} nesta trilha</strong>
-            </div>
 
-<!-- <pre>
-</pre> -->
-            <div class="panel-body">
-                <div class="col-xs-12" ng-if="schoolProduct.library_resource.resource.type === 'path'">
-                    <!--      <div class="form-group input-group input-group-lg">
-            <span class="input-group-addon no-background"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control" placeholder="Buscar pelo nome do curso..." ng-change="getCourses()" ng-model="courseFilters.name">
-            <span class="input-group-btn">
-              <button class="btn" type="button" ng-click="getCourses()">Buscar</button>
-            </span>
-          </div>
- -->
-                    <!-- <spinner name="courses" class="small"></spinner> -->
-                    <div class="row course-path" ng-repeat="course in schoolProduct.path.courses">
-                        <div class="course-image col-xs-12 text-right col-md-6">
-                            <img ng-if="course.image_url" ng-src="{{ course.image_url }}" alt="{{ course.name }}" width="100" height="80"> <img ng-if="!course.image_url" src="assets/images/missing-course-logo.png">
+            <article class="course-content panel" ng-if="schoolProduct.library_resource.resource.has_content" hide-on-load="resource">
+
+  
+                <div class="panel-heading">
+                    <strong class="panel-title" ng-if="schoolProduct.library_resource.resource.type === 'course'">Conteúdo do curso</strong>
+                    <strong class="panel-title" ng-if="schoolProduct.library_resource.resource.type === 'path'">
+                      {{ schoolProduct.path.courses.pagingInfo.totalCount }}
+                      <ng-pluralize count="schoolProduct.path.courses.pagingInfo.totalCount" when="{'one': ' curso ', 'other': ' cursos '}"></ng-pluralize>
+                      neste pacote
+                    </strong>
+                </div><!-- panel-heading -->
+
+
+                <div class="panel-body">
+                    <content-tree type="home" ng-model="schoolProduct.library_resource.resource" ng-if="schoolProduct.library_resource.resource.type === 'course'" lazy="true"></content-tree>
+
+                    <div class="col-xs-12" ng-if="schoolProduct.library_resource.resource.type === 'path'">
+
+                        <div class="form-group input-group input-group-lg">
+                            <span class="input-group-addon no-background"><i class="fa fa-search"></i></span>
+                                <input type="text" class="form-control" placeholder="Buscar pelo nome do curso..." ng-change="getCourses()" ng-model="courseFilters.name">
+                                <span class="input-group-btn">
+                                <button class="btn" type="button" ng-click="getCourses()">Buscar</button>
+                                </span>
                         </div>
-                        <div class="col-xs-6">
-                            <div class="info">
-                                <h3 class="title">
-                                    {{ course.name }}
-                                </h3>
-                                <h2>
-                                    Duracao{{ course.duration }}
-                                </h2><span class="text-light-gray text-semibold text-xs" style="cursor:pointer" ng-if="!course.details" ng-click="toggleDetails(course)">VER CURSO DETALHADO</span> <span class="text-light-gray text-semibold text-xs" style="cursor:pointer" ng-if="course.details" ng-click="toggleDetails(course)">ESCONDER DETALHE DO CURSO</span>
+
+
+                        <spinner name="courses" class="small"></spinner>
+
+                        <div class="row course-path" ng-repeat="course in schoolProduct.path.courses">
+                            <div class="course-image col-xs-12 text-right col-md-6">
+                                <img ng-if="course.image_url" ng-src="{{ course.image_url }}" alt="{{ course.name }}" width="100" height="80">
+                                <img ng-if="!course.image_url" src="assets/images/missing-course-logo.png">
                             </div>
-                        </div>
-                    </div>
+                            <div class="col-xs-6">
+                                <div class="info">
+                                    <h3 class="title">
+                                        {{ course.name }}
+                                    </h3>
+                                    <h2>
+                                        Duração {{ course.duration }}
+                                    </h2>
 
-                    <div class="text-center" ed-pagination="schoolProduct.path.courses.pagingInfo" refresh="getCourses(page)">
-                        <ul class="pagination">
-                            <li ed-pagination-previous="">
-                                <a href=""></a>
-                            </li>
-                            <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
-                                <a href="">{{ page }}</a>
-                            </li>
-                            <li ed-pagination-next="">
-                                <a href=""></a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                </div>
-            </div>
-<!-- <pre> -->
-<!-- <div class="fb-comments" data-href="{{ $location.absUrl() }}" data-width="790" data-numposts="10" data-colorscheme="light"></div> -->
-<!-- </pre> -->
-        </div>
+                                    <span class="subtitle" ed-bind-html="course.description"></span>
+                                    <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
+                                          ng-if="!course.details" ng-click="toggleDetails(course)">
+                                      VER CURSO DETALHADO
+                                    </span>
+                                    <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
+                                          ng-if="course.details" ng-click="toggleDetails(course)">
+                                      ESCONDER DETALHE DO CURSO
+                                    </span>
 
+                                    <content-tree type="home" ng-model="course" ng-show="course.details"></content-tree>
+                                </div>
+                            </div>
+                        </div><!-- row course-path -->
+
+                        <div class="text-center" ed-pagination="schoolProduct.path.courses.pagingInfo" refresh="getCourses(page)">
+                            <ul class="pagination">
+                                <li ed-pagination-previous="">
+                                    <a href=""></a>
+                                </li>
+                                <li ed-pagination-page="page" ng-repeat="page in paginationCtrl.pages">
+                                    <a href="">{{ page }}</a>
+                                </li>
+                                <li ed-pagination-next="">
+                                    <a href=""></a>
+                                </li>
+                            </ul>
+                        </div><!-- text-center -->
+                        
+                    </div><!-- col-xs-12 -->
+                </div><!-- panel-body -->
+
+            </article>
+        </div><!-- col-xs-12 -->
 
         <div class="topics col-xs-12 col-md-4">
             <section ng-if="schoolProduct.class_teachers.length &gt; 0" class="topic panel teachers">
@@ -151,8 +172,7 @@
                 </div>
 
             </section>
-        </div>
+        </div><!-- topics -->
 
-
-    </div>
+    </div><!-- course-body -->
 </div><!-- container -->
