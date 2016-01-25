@@ -8,13 +8,19 @@
 .school-header {
   .navbar-brand {
     // @include colorful-link(white);
+    @media (max-width: $screen-small) {
+        padding: 5px 0 10px 10px;
+    }
 
     h2 {
       margin-top: 8px;
     }
 
     img {
-      height: 45px;
+      height: 60px;
+      @media (max-width: $screen-small) {
+          height: 45px;
+      }
     }
   }
 
