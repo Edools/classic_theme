@@ -190,6 +190,44 @@
       </div>
       <spinner name="complete"></spinner>
     </div>
+
+
+
+    <div class="col-xs-12 col-md-4">
+      <div class="cart-total panel">
+        <div class="panel-heading">
+          <strong class="panel-title">Total do pedido</strong>
+        </div>
+        <div class="panel-body">
+          <div class="courses">
+            <div class="course" ng-repeat="item in order.items">
+
+              <div class="price-row">
+              <div class="title">{{ item.schoolProduct.title }}</div>
+
+                <div class="price">
+                  <s ng-if="item.amount_to_pay !== item.total">
+                    {{ item.total | money:'R$ ' }}
+                    <br>
+                  </s>
+                  {{ item.amount_to_pay | money:'R$ ' }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="total clearfix">
+            <span class="pull-right">
+              {{ totalPrice | money:'R$ ' }}
+            </span>
+          </div>
+           <a ng-if="$state.is('school.checkout.cart')" link-to="school.checkout.wizard.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
+       
+        </div>
+      </div>
+
+
+
+<!-- 
     <div class="col-xs-12 col-md-4">
       <div class="cart-total panel">
         <div class="panel-heading">
@@ -221,7 +259,13 @@
           </div>
           <a ng-if="$state.is('school.checkout.cart')" link-to="school.checkout.wizard.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
         </div>
-      </div>
+      </div> -->
+
+
+
+
+
+
       <div ng-if="$state.is('school.checkout.cart')" class="payment-ways panel">
         <div class="panel-heading">
           <strong class="panel-title">Formas de pagamento</strong>
