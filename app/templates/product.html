@@ -119,6 +119,7 @@
                                     </h2>
 
                                     <span class="subtitle" ed-bind-html="course.description"></span>
+                                    <!-- 
                                     <span class="text-light-gray text-semibold text-xs" style="cursor:pointer"
                                           ng-if="!course.details" ng-click="toggleDetails(course)">
                                       VER CURSO DETALHADO
@@ -127,7 +128,7 @@
                                           ng-if="course.details" ng-click="toggleDetails(course)">
                                       ESCONDER DETALHE DO CURSO
                                     </span>
-
+ -->
                                     <content-tree type="home" ng-model="course" ng-show="course.details"></content-tree>
                                 </div>
                             </div>
