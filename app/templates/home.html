@@ -41,15 +41,17 @@
                         </div>
                     </div>
                     <div class="col-xs-12 info" ng-if="schoolProduct.product.plans.length !== 0">
-                        <div class="pull-left well"></div><button ng-click="goToSubscriptionCheckout(schoolProduct.product.plan, schoolProduct)" type="button" class="btn btn-success" ng-if="schoolProduct.product.plans.length === 1">Assinar</button>
-                        <div class="btn-group pull-right" ng-if="schoolProduct.product.plans.length &gt; 1">
-                            <a class="btn btn-success dropdown-toggle" data-toggle="dropdown">Assinar</a>
-                            <ul class="dropdown-menu">
-                                <li ng-repeat="plan in schoolProduct.product.plans">
-                                    <a ng-click="goToSubscriptionCheckout(plan, schoolProduct)"></a>
-                                </li>
-                            </ul>
-                        </div>
+                        <div class="price">
+                            <button ng-click="goToSubscriptionCheckout(schoolProduct.product.plan, schoolProduct)" type="button" class="btn btn-success" ng-if="schoolProduct.product.plans.length === 1">Assinar</button>
+                            <div class="btn-group pull-right" ng-if="schoolProduct.product.plans.length &gt; 1">
+                                <a class="btn btn-success dropdown-toggle" data-toggle="dropdown">Assinar</a>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="plan in schoolProduct.product.plans">
+                                        <a ng-click="goToSubscriptionCheckout(plan, schoolProduct)"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- price -->
                     </div>
                 </div>
             </div>

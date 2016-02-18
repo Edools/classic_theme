@@ -1,3 +1,5 @@
+@import "base/variables";
+
 .schoolapp{
 	width: 970px;
 }
@@ -34,8 +36,8 @@ h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2, h1.fo
 	}
 	.full{
 		font-weight:normal;
-		font-size:14px;
-		color:#000;
+		font-size:18px;
+		color:#333;
 		margin-bottom:20px;
 	}
 }
@@ -103,5 +105,11 @@ h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2, h1.fo
 		text-align: right;
 		display: inline-table;
 
+	}
+}
+
+.wizard-wrapper{
+	@media (max-width: $screen-small) {
+		font-size: 10px;
 	}
 }
