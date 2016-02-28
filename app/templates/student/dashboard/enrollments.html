@@ -26,7 +26,7 @@
           <div class="course">
             <div class="course-image">
               <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
-              <img ng-if="enrollment.course.logo === null" src="assets/images/missing-course-logo.png" />
+              <img ng-if="enrollment.course.logo === null" src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F6286ec9ed3e973ffec54768195eadb54%2Fmissing-course-logo.png" />
               <div class="course-edit-overlay" ng-if="enrollment.school_product.library_resource.resource_type === 'Course'">
                 <a class="btn btn-default btn-edit" link-to="school.dashboard.course.detail({ courseId: enrollment.school_product.library_resource.resource_id, enrollmentId: enrollment.id })">
                   <i class="fa fa-video-camera"></i>
@@ -55,7 +55,7 @@
               <div class="course">
                 <div class="course-image">
                   <img ng-if="enrollment.course.logo !== null" ng-src="{{ enrollment.course.logo }}" />
-                  <img ng-if="enrollment.course.logo === null" src="assets/images/missing-course-logo.png" />
+                  <img ng-if="enrollment.course.logo === null" src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F6286ec9ed3e973ffec54768195eadb54%2Fmissing-course-logo.png" />
                 </div>
                 <div class="course-label">
                   <span max-lines="1">{{ enrollment.course.title }}</span>

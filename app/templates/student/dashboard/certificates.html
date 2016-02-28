@@ -20,7 +20,7 @@
           <div class="course">
             <div class="course-image">
               <img ng-if="enrollment.school_product.logo !== null" ng-src="{{enrollment.school_product.logo}}" />
-              <img ng-if="enrollment.school_product.logo === null" src="assets/images/missing-course-logo.png" />
+              <img ng-if="enrollment.school_product.logo === null" src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F6286ec9ed3e973ffec54768195eadb54%2Fmissing-course-logo.png" />
               <div class="course-edit-overlay">
                 <a class="btn btn-default btn-edit" ng-href="{{ enrollment.certificate.s3_file_url }}">
                   <i class="fa fa-download"></i>
