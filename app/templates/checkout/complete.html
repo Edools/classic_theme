@@ -45,12 +45,7 @@
                 <hr>
                 <div class="row">
                   <div class="col-xs-12 col-md-6">
-                    <div class="form-group has-feedback required" ng-class="{'has-error': !customerForm.first_name.$pristine && customerForm.first_name.$invalid, 'has-success': customerForm.first_name.$valid}">
-                      <label class="control-label">Nome</label>
-                      <input type="text" ng-model="customer.first_name" name="first_name" class="form-control" required>
-                      <p class="help-block" ng-show="customerForm.first_name.$error.required && !customerForm.first_name.$pristine">O campo é obrigatório</p>
-                      <p class="help-block" ng-show="customerForm.first_name.$error.email && !customerForm.first_name.$pristine">Este campo deve ser um e-email válido</p>
-                    </div>
+    
                     <div class="form-group required" ng-class="{'has-error': !customerForm.last_name.$pristine && customerForm.last_name.$invalid, 'has-success': customerForm.last_name.$valid}">
                       <label class="control-label">Sobrenome</label>
                       <input type="text" ng-model="customer.last_name" name="last_name" class="form-control" required>
@@ -83,7 +78,7 @@
                       <p class="help-block" ng-show="customerForm.born_at.$error.required && !customerForm.born_at.$pristine">O campo é obrigatório</p>
                     </div>
                   </div>
-                  <div class="col-xs-12- col-md-6">
+                  <div class="col-xs-12 col-md-6">
                     <div class="form-group required" ng-class="{'has-error': !customerForm.phone.$pristine && customerForm.phone.$invalid, 'has-success': customerForm.phone.$valid}">
                       <label class="control-label">Telefone</label>
                       <input type="text" ui-mask="(99) 99999-999?9" ng-model="customer.phone" name="phone" class="form-control" required>
@@ -190,44 +185,6 @@
       </div>
       <spinner name="complete"></spinner>
     </div>
-
-
-
-    <div class="col-xs-12 col-md-4">
-      <div class="cart-total panel">
-        <div class="panel-heading">
-          <strong class="panel-title">Total do pedido</strong>
-        </div>
-        <div class="panel-body">
-          <div class="courses">
-            <div class="course" ng-repeat="item in order.items">
-
-              <div class="price-row">
-              <div class="title">{{ item.schoolProduct.title }}</div>
-
-                <div class="price">
-                  <s ng-if="item.amount_to_pay !== item.total">
-                    {{ item.total | money:'R$ ' }}
-                    <br>
-                  </s>
-                  {{ item.amount_to_pay | money:'R$ ' }}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="total clearfix">
-            <span class="pull-right">
-              {{ totalPrice | money:'R$ ' }}
-            </span>
-          </div>
-           <a ng-if="$state.is('school.checkout.cart')" link-to="school.checkout.wizard.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
-       
-        </div>
-      </div>
-
-
-
-<!-- 
     <div class="col-xs-12 col-md-4">
       <div class="cart-total panel">
         <div class="panel-heading">
@@ -259,13 +216,7 @@
           </div>
           <a ng-if="$state.is('school.checkout.cart')" link-to="school.checkout.wizard.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
         </div>
-      </div> -->
-
-
-
-
-
-
+      </div>
       <div ng-if="$state.is('school.checkout.cart')" class="payment-ways panel">
         <div class="panel-heading">
           <strong class="panel-title">Formas de pagamento</strong>
@@ -306,7 +257,7 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="inline-images">
-              <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Fe3b024399c8dbc87dbc66f42c4942ba3%2Faws.png" width="90" alt="Amazon Web Services">
+              <img src="assets/images/aws.png" width="90" alt="Amazon Web Services">
               <img src="assets/images/rede-logotipo.png" width="90" alt="Moip">
               <script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=cOgBuInvPIKcjurG96qea0LtVll3Y6UnK6RSR6PsxhZ6ejjPps"></script>
               <img style="cursor:pointer;cursor:hand" width="90" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();">
