@@ -18,7 +18,7 @@
 
     img {
       height: 60px;
-      @media (max-width: $screen-small) {
+      @media (max-width: $screen-tablet) {
           height: 45px;
       }
     }

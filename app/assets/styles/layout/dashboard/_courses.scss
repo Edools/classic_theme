@@ -11,10 +11,40 @@
     margin-bottom: 40px;
     @include card();
 
+
+
+// $screen-desktop: 992px;
+// $screen-tablet:  768px;
+// $screen-small:   480px;
+
+
     .course-image {
-      height: 300px;
+
+      height: 236px;
+
+      @media(max-width: $screen-small) {
+        height: 200px;
+      }      
+
+      @media(min-width: $screen-small) {
+        height: 236px;
+      }      
+
+
+
       margin-bottom: 2px;
-      border-bottom: 1px solid #ccc;
+
+
+      img {
+  // display: block;
+  // max-width: 100%;
+  // height: auto;
+
+  display: block;
+  max-height: 100%;
+  width: auto;  
+      position: absolute;
+      }
     }
 
     .course-label {
@@ -35,12 +65,12 @@
   .course-image {
     position: relative;
 
-    img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
+    // img {
+   
+    //   width: 100%;
+    //   height: 100%;
+    //   border: 0;
+    // }
 
     .course-edit-overlay {
       position: absolute;
