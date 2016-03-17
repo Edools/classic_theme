@@ -13,27 +13,36 @@
           Ainda não há items no seu carrinho.
         </div>
         <div class="panel cart-product" ng-repeat="item in order.items">
-          <div class="panel-heading">
-            <strong>{{ item.schoolProduct.title }}</strong>
-            <div class="pull-right">
-              <a class="pointer" ng-click="removeFromCart(item)">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </div>
-          </div>
+
+
           <div class="panel-body">
             <div class="col-xs-12 col-md-4 card cart-image" ng-if="item.schoolProduct.logo">
               <img ng-src="{{ item.schoolProduct.logo }}" alt="{{ item.schoolProduct.title }}">
             </div>
+
             <div class="col-xs-12 cart-subtitle" ng-class="{'col-md-8': item.schoolProduct.logo }">
-              <p ed-bind-html="item.schoolProduct.description"></p>
-              <hr ng-show="item.schoolProduct.description">
-              <h4>
-                <strong>{{ item.amount_to_pay | money:'R$' }}</strong>
+
+              <div class="pull-right remove-product">
+                <a class="pointer" ng-click="removeFromCart(item)">
+                  <i class="fa fa-trash-o"></i>
+                </a>
+              </div>
+             <h4>{{ item.schoolProduct.title }}</h4>
+
+
+
+              <p ed-bind-html="item.schoolProduct.subtitle"></p>
+
+              
+              <div class="price lf">
+                <strong>{{ item.amount_to_pay | money:'R$ ' }}</strong>
                 <strong ng-if="item.product.price_in_credits">
                   ou {{ item.product.price_in_credits }} créditos
                 </strong>
-              </h4>
+              </div>
+
+
+
             </div>
           </div>
         </div>
@@ -43,24 +52,32 @@
     <div class="col-xs-12 col-md-4">
       <div class="cart-total panel">
         <div class="panel-heading">
-          <strong class="panel-title">Total</strong>
+          <strong class="panel-title">Total do pedido</strong>
         </div>
         <div class="panel-body">
           <div class="courses">
             <div class="course" ng-repeat="item in order.items">
-              <span class="title">{{ item.schoolProduct.title }}</span>
-              <span class="price">
-                <s ng-if="item.amount_to_pay !== item.total">
-                  {{ item.total | money:'R$' }}
-                  <br>
-                </s>
-                {{ item.amount_to_pay | money:'R$' }}
-              </span>
+
+              <div class="price-row">
+              <div class="title">{{ item.schoolProduct.title }}</div>
+
+                <div class="price">
+                  <s ng-if="item.amount_to_pay !== item.total">
+                    {{ item.total | money:'R$ ' }}
+                    <br>
+                  </s>
+                  {{ item.amount_to_pay | money:'R$ ' }}
+                </div>
+              </div>
+
+              
+
+
             </div>
           </div>
           <div class="total clearfix">
             <span class="pull-right">
-              {{ totalPrice | money:'R$' }}
+              {{ totalPrice | money:'R$ ' }}
             </span>
           </div>
           <a ng-hide="termsOfUse" ng-click="fireAnalyticsCheckout(order)" link-to="school.checkout.connect" class="btn btn-success btn-lg pull-right" type="button">Finalizar compra</a>
@@ -114,9 +131,9 @@
           </ul>
           <hr>
           <div class="inline-images" style="margin-left:15px;">
-            <img ng-if="acceptPaymentMethod('CreditCardPayment')" src="assets/images/formas-pagamento-cartoes.png" width="160" alt="Cartões">
-            <img ng-if="acceptPaymentMethod('OnlineDebitPayment')" src="assets/images/formas-pagamento-debito.png" width="100" alt="Cartões">
-            <img ng-if="acceptPaymentMethod('BoletoPayment')" src="assets/images/formas-pagamento-boleto.png" width="30" alt="Cartões">
+            <img ng-if="acceptPaymentMethod('CreditCardPayment')" src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Fc4e43dbc26bba02ad00f9276acae53a3%2Fformas-pagamento-cartoes.png" width="160" alt="Cartões">
+            <img ng-if="acceptPaymentMethod('OnlineDebitPayment')" src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F5699f16371cc4c10b9d66d033952a8c4%2Fformas-pagamento-debito.png" width="100" alt="Cartões">
+            <img ng-if="acceptPaymentMethod('BoletoPayment')" src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Fd8197ebd3a209ac0110469037c4dd501%2Fformas-pagamento-boleto.png" width="30" alt="Cartões">
           </div>
           <spinner name="gateway"></spinner>
         </div>
@@ -124,7 +141,7 @@
       <div class="well secure-site">
         <div class="row">
           <div class="col-xs-4 lock">
-            <img class="pull-left" src="assets/images/lock.png" alt="Site seguro">
+            <img class="pull-left" src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Feb13fe32cb8dd71b440704cc6f2fd028%2Flock.png" alt="Site seguro">
           </div>
           <div class="col-xs-8">
             <h4><strong>Este site é seguro</strong></h4>
@@ -134,8 +151,8 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="inline-images">
-              <img src="assets/images/aws.png" width="90" alt="Amazon Web Services">
-              <img src="assets/images/rede-logotipo.png" width="90" alt="Redecard">
+              <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Fe3b024399c8dbc87dbc66f42c4942ba3%2Faws.png" width="90" alt="Amazon Web Services">
+              <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F86910432dcd66c234b035b9a3166486b%2Frede-logotipo.png" width="90" alt="Redecard">
               <script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=cOgBuInvPIKcjurG96qea0LtVll3Y6UnK6RSR6PsxhZ6ejjPps"></script>
               <img style="cursor:pointer;cursor:hand" width="90" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();">
             </div>

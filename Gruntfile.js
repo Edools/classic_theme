@@ -162,7 +162,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= theme.app %>/assets/styles',
-          src: ['main.scss'],
+          src: ['main.scss','ebg.scss'],
           dest: '<%= theme.temp %>/styles',
           ext: '.css'
         }]
@@ -326,7 +326,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'sass:server',
-        'imagemin',
+        // 'imagemin',
         'svgmin'
       ]
     },

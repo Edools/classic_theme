@@ -20,7 +20,7 @@
         height: 270px;
         max-height: 270px;
 
-        box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+        // box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
       }
     }
   }
@@ -61,36 +61,45 @@
 
 // home courses list
 .home.course-list {
-  background: lighten($light-gray, 2%);
+  // background: lighten($light-gray, 2%);
+  // background-color:#fff;
 
-  $course-height: 349px;
+  $course-height: 399px;
 
   .course {
     height: $course-height;
-    background: white;
-    margin-bottom: 20px;
-    @include card();
+    // background: white;
+    margin-bottom: 110px;
+    // @include card();
+  }
+
+  .image{
+    text-align: center;
   }
 
   .image img {
     width: 100%;
     max-width: 100%;
-    max-height: $course-height/2;
-    height: $course-height/2;
+    // max-height: $course-height/2;
+    // height: $course-height/2;
     text-align: center;
     padding: 10px;
+
+    @media (max-width: $screen-tablet) {
+        width: 380px;
+
+    }    
   }
 
   .body {
-    padding: 10px;
-    max-height: $course-height/3;
-    height: $course-height/3;
+    padding: 0 10px;
+    height:152px;
     text-overflow: hidden;
     overflow: hidden;
     text-decoration: none;
 
     .title {
-      font-size: 14px;
+      font-size: 16px;
       text-align: center;
       border: 0;
       
@@ -103,7 +112,6 @@
     .subtitle {
       font-size: 14px;
       color: #777;
-      letter-spacing: 1px;
       padding: 1px;
       text-align: center;
       line-height: 20px;
@@ -113,7 +121,7 @@
 
   .footer {
     padding: 7px 10px 0 10px;
-    border-top: 1px solid lighten(#ccc, 15%);
+    // border-top: 1px solid lighten(#ccc, 15%);
     min-height: $course-height/6;
 
     $footer-elem-height: 34px;
@@ -122,7 +130,7 @@
       height: $footer-elem-height;
       padding: 4px 8px 5px 8px;
       margin: 0;
-      background-color: #f5f5f5;
+      // background-color: #f5f5f5;
       font-size: 18px;
       bottom: 0;
       float: left;
@@ -134,11 +142,12 @@
     }
 
     .btn {
-      position: relative;
+      // position: relative;
       height: $footer-elem-height;
-      padding: 6px 8px;
+      // padding: 6px 8px;
       bottom: 0px;
-      float: right;
+      // float: right;
+      text-align: center;
 
     }
 

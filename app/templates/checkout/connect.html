@@ -104,6 +104,44 @@
       </div>
       <spinner name="connect"></spinner>
     </div>
+
+
+
+
+    <div class="col-xs-12 col-md-4">
+      <div class="cart-total panel">
+        <div class="panel-heading">
+          <strong class="panel-title">Total do pedido</strong>
+        </div>
+        <div class="panel-body">
+          <div class="courses">
+            <div class="course" ng-repeat="item in order.items">
+
+              <div class="price-row">
+              <div class="title">{{ item.schoolProduct.title }}</div>
+
+                <div class="price">
+                  <s ng-if="item.amount_to_pay !== item.total">
+                    {{ item.total | money:'R$ ' }}
+                    <br>
+                  </s>
+                  {{ item.amount_to_pay | money:'R$ ' }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="total clearfix">
+            <span class="pull-right">
+              {{ totalPrice | money:'R$ ' }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+
+<!-- 
+
     <div class="col-xs-12 col-md-4">
       <div class="cart-total panel">
         <div class="panel-heading">
@@ -135,10 +173,15 @@
           </div>
         </div>
       </div>
+
+ -->
+
+
+
       <div class="well secure-site">
         <div class="row">
           <div class="col-xs-4 lock">
-            <img class="pull-left" src="assets/images/lock.png" alt="Site seguro">
+            <img class="pull-left" src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Feb13fe32cb8dd71b440704cc6f2fd028%2Flock.png" alt="Site seguro">
           </div>
           <div class="col-xs-8">
             <h4><strong>Este site é seguro</strong></h4>
@@ -148,8 +191,8 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="inline-images">
-              <img src="assets/images/aws.png" width="90" alt="Amazon Web Services">
-              <img src="assets/images/rede-logotipo.png" width="90" alt="Moip">
+              <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Fe3b024399c8dbc87dbc66f42c4942ba3%2Faws.png" width="90" alt="Amazon Web Services">
+              <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F86910432dcd66c234b035b9a3166486b%2Frede-logotipo.png" width="90" alt="Moip">
               <script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=cOgBuInvPIKcjurG96qea0LtVll3Y6UnK6RSR6PsxhZ6ejjPps"></script>
               <img style="cursor:pointer;cursor:hand" width="90" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();">
             </div>

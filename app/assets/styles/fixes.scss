@@ -1,0 +1,10 @@
+@media (max-width: $screen-tablet) {
+  #edools-player-container {
+    width: inherit !important;
+    height: 278px !important;
+
+    #wistia_grid_13_center {
+      height: 60% !important;
+    }
+  }
+}

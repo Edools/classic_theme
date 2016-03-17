@@ -1,0 +1,129 @@
+@import "base/variables";
+
+.schoolapp{
+	width: 970px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+margin-bottom: 20px;
+}
+
+h4.title, h2.title, h2 span, .panel-title, .teacher-name, .forum-panel h2, h1.form-header{
+	text-transform:uppercase;
+}
+
+.navbar-default{
+	background-color:#fff;
+	border-color:#fff;
+}
+
+.price{
+	text-align:center;
+
+	p{
+		line-height: 14px;
+		margin:0 0 5px 0;
+	}
+
+	.discount{
+		font-weight:normal;
+		font-size:11px;
+		color:#666;
+		span{
+			text-decoration: line-through;
+		}
+	}
+	.full{
+		font-weight:normal;
+		font-size:18px;
+		color:#333;
+		margin-bottom:20px;
+	}
+}
+
+.price.product-page{
+	margin:0 0 10px;
+	p{
+		line-height: 18px;
+	}	
+	.discount{
+		font-size:14px;
+	}
+	.full{
+		font-size:20px;
+	}
+	.btn{
+		// margin:10px 0;
+	}
+}
+
+.price.lf{
+	text-align:left;
+}
+
+.panel{
+	box-shadow:none;
+	border:0;
+	border-radius:0;
+	border-bottom:solid 1px #ccc;
+}
+
+.img-teacher{
+	margin:0 auto 20px;
+	width:200px;
+	max-width:200px;
+	text-align:center;
+}
+.img-teacher img{
+	width:100%;
+}
+
+.remove-product{
+	margin-left:20px;
+	margin-top:10px;
+	a{
+		color:#000;
+	}
+	font-size:18px;
+}
+
+// cart
+
+.price-row{
+	border-bottom:dashed 1px #ccc;
+	margin:0 0 5px 0;
+	padding:0 0 5px 0;
+	font-size:12px;
+	.title{
+		width: 59%;
+		font-weight: normal;
+		display: inline-table;
+	}
+	.price{
+		width: 39%;
+		text-align: right;
+		display: inline-table;
+
+	}
+}
+
+.wizard-wrapper{
+	@media (max-width: $screen-small) {
+		font-size: 10px;
+	}
+}
+
+.course-image{
+
+
+	img {
+	  display: block;
+	  max-width: 100%;
+	  height: auto;
+	}
+}	
+
+
+// $screen-desktop: 992px;
+// $screen-tablet:  768px;
+// $screen-small:   480px;

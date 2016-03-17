@@ -45,12 +45,7 @@
                 <hr>
                 <div class="row">
                   <div class="col-xs-12 col-md-6">
-                    <div class="form-group has-feedback required" ng-class="{'has-error': !customerForm.first_name.$pristine && customerForm.first_name.$invalid, 'has-success': customerForm.first_name.$valid}">
-                      <label class="control-label">Nome</label>
-                      <input type="text" ng-model="customer.first_name" name="first_name" class="form-control" required>
-                      <p class="help-block" ng-show="customerForm.first_name.$error.required && !customerForm.first_name.$pristine">O campo é obrigatório</p>
-                      <p class="help-block" ng-show="customerForm.first_name.$error.email && !customerForm.first_name.$pristine">Este campo deve ser um e-email válido</p>
-                    </div>
+
                     <div class="form-group required" ng-class="{'has-error': !customerForm.last_name.$pristine && customerForm.last_name.$invalid, 'has-success': customerForm.last_name.$valid}">
                       <label class="control-label">Sobrenome</label>
                       <input type="text" ng-model="customer.last_name" name="last_name" class="form-control" required>
@@ -71,6 +66,13 @@
                       <p class="help-block" ng-show="customerForm.cpf.$error.cpf && !customerForm.cpf.$pristine">Preencha com um CPF válido</p>
                       <p class="help-block" ng-show="customerForm.cpf.$error.server && !customerForm.cpf.$pristine">{{ customerForm.cpf.message }}</p>
                     </div>
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <div class="form-group required" ng-class="{'has-error': !customerForm.phone.$pristine && customerForm.phone.$invalid, 'has-success': customerForm.phone.$valid}">
+                      <label class="control-label">Telefone</label>
+                      <input type="text" ui-mask="(99) 99999-999?9" ng-model="customer.phone" name="phone" class="form-control" required>
+                      <p class="help-block" ng-show="customerForm.phone.$error.required && !customerForm.phone.$pristine">O campo é obrigatório</p>
+                    </div>
                     <div class="form-group required" ng-class="{'has-error': !customerForm.rg.$pristine && customerForm.rg.$invalid, 'has-success': customerForm.rg.$valid}">
                       <label class="control-label">Identidade</label>
                       <input type="text" ng-model="customer.rg" name="rg" ng-change="cleanServerErrors(customerForm.rg)" class="form-control" required>
@@ -81,25 +83,6 @@
                       <label class="control-label">Data de nascimento</label>
                       <input type="text" ng-model="customer.bornAt" ui-mask="99/99/9999" name="born_at" class="form-control" required>
                       <p class="help-block" ng-show="customerForm.born_at.$error.required && !customerForm.born_at.$pristine">O campo é obrigatório</p>
-                    </div>
-                  </div>
-                  <div class="col-xs-12- col-md-6">
-                    <div class="form-group required" ng-class="{'has-error': !customerForm.phone.$pristine && customerForm.phone.$invalid, 'has-success': customerForm.phone.$valid}">
-                      <label class="control-label">Telefone</label>
-                      <input type="text" ui-mask="(99) 99999-999?9" ng-model="customer.phone" name="phone" class="form-control" required>
-                      <p class="help-block" ng-show="customerForm.phone.$error.required && !customerForm.phone.$pristine">O campo é obrigatório</p>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Skype</label>
-                      <input type="text" ng-model="customer.skype" name="skype" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Empresa</label>
-                      <input type="text" ng-model="customer.company_name" name="company_name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Cargo</label>
-                      <input type="text" ng-model="customer.company_position" name="company_position" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -243,16 +226,16 @@
           </ul>
           <hr>
           <div class="inline-images">
-            <img src="assets/images/formas-pagamento-cartoes.png" width="160" alt="Cartões">
-            <img src="assets/images/formas-pagamento-debito.png" width="100" alt="Cartões">
-            <img src="assets/images/formas-pagamento-boleto.png" width="30" alt="Cartões">
+            <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Fc4e43dbc26bba02ad00f9276acae53a3%2Fformas-pagamento-cartoes.png" width="160" alt="Cartões">
+            <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F5699f16371cc4c10b9d66d033952a8c4%2Fformas-pagamento-debito.png" width="100" alt="Cartões">
+            <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Fd8197ebd3a209ac0110469037c4dd501%2Fformas-pagamento-boleto.png" width="30" alt="Cartões">
           </div>
         </div>
       </div>
       <div class="well secure-site">
         <div class="row">
           <div class="col-xs-4 lock">
-            <img class="pull-left" src="assets/images/lock.png" alt="Site seguro">
+            <img class="pull-left" src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Feb13fe32cb8dd71b440704cc6f2fd028%2Flock.png" alt="Site seguro">
           </div>
           <div class="col-xs-8">
             <h4><strong>Este site é seguro</strong></h4>
@@ -262,8 +245,8 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="inline-images">
-              <img src="assets/images/aws.png" width="90" alt="Amazon Web Services">
-              <img src="assets/images/rede-logotipo.png" width="90" alt="Moip">
+              <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F7c29fba924bcf473a3b9e8156277014b%2Faws.png" width="90" alt="Amazon Web Services">
+              <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F86910432dcd66c234b035b9a3166486b%2Frede-logotipo.png" width="90" alt="Moip">
               <script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=cOgBuInvPIKcjurG96qea0LtVll3Y6UnK6RSR6PsxhZ6ejjPps"></script>
               <img style="cursor:pointer;cursor:hand" width="90" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();">
             </div>

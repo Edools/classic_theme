@@ -9,7 +9,9 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" link-to="school.home">
-          <h2>Tema clássico</h2>
+          <img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F6390e9ac99e24a314ba9987116e71871%2Febglogo.png">
+
+
         </a>
       </div>
       <div class="collapse navbar-collapse" id="header-menu">
@@ -20,16 +22,30 @@
               <span>Carrinho</span>
             </a>
           </li>
+
           <li>
+            <a href="http://www.escolabrasileiradegames.com.br/blog" target="_blank">
+              <span>Blog</span>
+            </a>
+          </li>
+
+<!--           <li>
             <a link-to="school.forums.list">
               <span>Fóruns</span>
             </a>
+          </li> -->
+          <li>
+            <a href="#/quem-somos">
+              <span>Quem somos</span>
+            </a>
           </li>
+<!-- 
           <li>
             <a link-to="school.credits">
               <span>Créditos</span>
             </a>
-          </li>
+          </li> -->
+
           <li ng-if="!$session.get()">
             <a link-to="school.auth.login">Entrar</a>
           </li>
@@ -81,40 +97,39 @@
 
 <footer class="school-footer">
   <div class="container">
+
     <section class="footer-info row">
-      <div class="col-xs-12 col-sm-6 col-md-6">
-        <p class="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue lectus, pretium quis lobortis sollicitu
-        </p>
-        <address>
-          Endereço: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue lectus, pretium quis lobortis sollicitu
-        </address>
+      <div class="col-xs-12 col-sm-6 col-md-8">
+        <h4>Contato</h4>
+        <p><a href="mailto:secretaria@escolabrasileiradegames.com.br">secretaria@escolabrasileiradegames.com.br</a></p>
+
+        <h4>Parceiros e Associações</h4>
+        <ul class="list-inline center-block">
+          <li><a href="http://www.igdasao.com.br/wp/"><img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F5769115b9bcb008b3784acf1d6b29df6%2Flogo_idga.png"></a></li>
+          <li><a href="http://www.abragames.org/"><img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Ff08cd9c731cb3a54424f48e24c688198%2Flogo_abragames.png"></a></li>
+          <li><a href="http://gamebiz.com.br"><img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F4724f479cdcb2bc631bbabd600bf7397%2Flogo-gamebiz.png"></a></li>
+        </ul>
       </div>
+
       <div class="col-xs-12 col-sm-3">
-        <h4>Telefone</h4>
-        <p>(99) 9999-9999</p>
-        <br>
-        <h4>Email</h4>
-        <p><a href="mailto:lorem@ipsum.com.br">lorem@ipsum.com.br</a></p>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <h4>Site</h4>
-        <p><a href="http://www.example.com">www.example.com</a></p>
-        <br>
-        <h4>Redes Sociais</h4>
-        <a href="http://www.facebook.com"><i class="fa fa-facebook fa-lg"></i></a>
-        <a href="http://www.twitter.com"><i class="fa fa-twitter fa-lg"></i></a>
+        <h4>Sociais</h4>
+        <ul class="list-inline center-block">
+          <li><a href="http://facebook.com/escolabrasileiradegames"><img src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2F2999158224765508d752702170da5365%2Fsoc_fb.png"></a></li>
+        </ul>
       </div>
     </section>
+
   </div>
 </footer>
+
 <footer class="copyright-footer">
   <div class="container">
+
+    &copy; 2016 Escola Brasileira de Games - Cursos Online - Todos os direitos reservados | <a href="#/termos-de-uso">Termos de uso</a> | <a href="#/politica-de-privacidade">Política de privacidade</a>
+
     <div class="pull-right">
-      Plataforma de ensino por
-      <a ng-click="fireAnalytics()" href="http://www.edools.com" class="brand scroller" target="blank" title="Edools">
-        <img alt="Edools" src="assets/images/logo-edools.png" width="90" />
-      </a>
+      Plataforma de ensino por <a ng-click="fireAnalytics()" href="http://www.edools.com" class="brand scroller" target="blank" title="Edools"><img alt="Edools" src="https://s3.amazonaws.com/core_prod/org-161%2Fschool-470%2Fc740e3b1243172073eded253900e6f39%2Flogo-edools.png" width="55" /></a>
     </div>
+
   </div>
 </footer>

@@ -7,8 +7,8 @@
 .main-header {
   display: block;
   margin: 0;
-  padding: 30px;
-  background: $light-gray;
+  padding: 10px;
+  background-color:#fff;
   overflow: auto;
 
   @media(max-width: $screen-small) {
@@ -36,8 +36,8 @@
 
     .title {
       margin-bottom: 20px;
-      font-size: 36px;
-      font-weight: 400;
+
+
       word-wrap: break-word;
     }
 

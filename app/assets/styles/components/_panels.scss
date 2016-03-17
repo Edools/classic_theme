@@ -6,7 +6,7 @@
 *********************************************************************/
 .panel,
 .panel-default {
-  border-color: $panels-border-color;
+  // border-color: $panels-border-color;
   margin-bottom: $grid-gutter-width;
   position: relative;
   @include panel();
@@ -23,14 +23,14 @@
 }
 
 .panel-heading {
-  background: $panel-heading-bg;
-  border-bottom: 2px solid #ececec;
+  // background: $panel-heading-bg;
+  // border-bottom: 2px solid #ececec;
   padding-bottom: 9px;
   padding-left: $panel-content-padding;
   padding-right: $panel-content-padding;
   padding-top: 11px;
   position: relative;
-  border-radius: 5px;
+  // border-radius: 5px;
 
   .nav-tabs {
     border-bottom-color: transparent;
@@ -48,7 +48,7 @@
 .panel-body {
   background: #fff;
   margin: 0;
-  padding: $panel-content-padding;
+  padding: 0 20px 20px 20px;
 
   > li {
     list-style: none;
@@ -60,7 +60,7 @@
 // Footer
 .panel-footer {
   background: #fff;
-  border-top: 1px solid #ececec;
+  // border-top: 1px solid #ececec;
   padding-left: $panel-content-padding;
   padding-right: $panel-content-padding;
 }

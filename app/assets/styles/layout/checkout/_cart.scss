@@ -12,13 +12,17 @@
   }
 
   .cart-image {
+    text-align: center;
     padding: 5px;
-    height: 200px;
+    // height: 200px;
 
     img {
-      height: 100%;
       width: 100%;
+      @media (min-width: $screen-tablet) {
+        width:100%;;
+      }
     }
+
 
     .form-inline {
       & > * {
@@ -42,7 +46,7 @@
   }
 
   .title {
-    float: left;
+    // float: left;
     font-weight: bold;
     color: $text-color;
     text-decoration: none;
@@ -54,7 +58,7 @@
   }
 
   .price {
-    float: right;
+    // float: right;
   }
 }
 
@@ -72,8 +76,8 @@
 .secure-site {
   .lock {
     img {
-      width: 110px;
-      height: 110px;
+      width: 90px;
+      height: 90px;
     }
   }
 
