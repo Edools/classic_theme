@@ -45,7 +45,7 @@
                 <hr>
                 <div class="row">
                   <div class="col-xs-12 col-md-6">
-    
+
                     <div class="form-group required" ng-class="{'has-error': !customerForm.last_name.$pristine && customerForm.last_name.$invalid, 'has-success': customerForm.last_name.$valid}">
                       <label class="control-label">Sobrenome</label>
                       <input type="text" ng-model="customer.last_name" name="last_name" class="form-control" required>
@@ -66,6 +66,13 @@
                       <p class="help-block" ng-show="customerForm.cpf.$error.cpf && !customerForm.cpf.$pristine">Preencha com um CPF válido</p>
                       <p class="help-block" ng-show="customerForm.cpf.$error.server && !customerForm.cpf.$pristine">{{ customerForm.cpf.message }}</p>
                     </div>
+                  </div>
+                  <div class="col-xs-12 col-md-6">
+                    <div class="form-group required" ng-class="{'has-error': !customerForm.phone.$pristine && customerForm.phone.$invalid, 'has-success': customerForm.phone.$valid}">
+                      <label class="control-label">Telefone</label>
+                      <input type="text" ui-mask="(99) 99999-999?9" ng-model="customer.phone" name="phone" class="form-control" required>
+                      <p class="help-block" ng-show="customerForm.phone.$error.required && !customerForm.phone.$pristine">O campo é obrigatório</p>
+                    </div>
                     <div class="form-group required" ng-class="{'has-error': !customerForm.rg.$pristine && customerForm.rg.$invalid, 'has-success': customerForm.rg.$valid}">
                       <label class="control-label">Identidade</label>
                       <input type="text" ng-model="customer.rg" name="rg" ng-change="cleanServerErrors(customerForm.rg)" class="form-control" required>
@@ -76,25 +83,6 @@
                       <label class="control-label">Data de nascimento</label>
                       <input type="text" ng-model="customer.bornAt" ui-mask="99/99/9999" name="born_at" class="form-control" required>
                       <p class="help-block" ng-show="customerForm.born_at.$error.required && !customerForm.born_at.$pristine">O campo é obrigatório</p>
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-md-6">
-                    <div class="form-group required" ng-class="{'has-error': !customerForm.phone.$pristine && customerForm.phone.$invalid, 'has-success': customerForm.phone.$valid}">
-                      <label class="control-label">Telefone</label>
-                      <input type="text" ui-mask="(99) 99999-999?9" ng-model="customer.phone" name="phone" class="form-control" required>
-                      <p class="help-block" ng-show="customerForm.phone.$error.required && !customerForm.phone.$pristine">O campo é obrigatório</p>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Skype</label>
-                      <input type="text" ng-model="customer.skype" name="skype" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Empresa</label>
-                      <input type="text" ng-model="customer.company_name" name="company_name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Cargo</label>
-                      <input type="text" ng-model="customer.company_position" name="company_position" class="form-control">
                     </div>
                   </div>
                 </div>
